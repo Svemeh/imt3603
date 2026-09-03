@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bdcbw4f3huqul"]
+
+[ext_resource type="PackedScene" uid="uid://citi8vkh1rf21" path="res://scenes/vineyard.tscn" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bepr0l4ydcf10" path="res://scenes/player.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/UI/hud.tscn" id="3_iywne"]
+
+[node name="Game" type="Node" unique_id=992513680]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=299118941]
+
+[node name="Hud" parent="." unique_id=1628769219 instance=ExtResource("3_iywne")]
+
+[node name="Player" parent="." unique_id=356390014 instance=ExtResource("2_lbhrr")]
+
+[node name="Vineyard" parent="." unique_id=1223427269 instance=ExtResource("1_lnu2h")]

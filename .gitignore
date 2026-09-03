@@ -1,0 +1,28 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Exports
+export_presets.cfg
+build/
+*.exe
+*.pck
+*.apk
+*.aab
+*.zip
+
+# Godot-specific ignores
+*.translation
+
+# Imported files (Godot regenerates these)
+*.import
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
