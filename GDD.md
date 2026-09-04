@@ -64,9 +64,9 @@ Everything from here down is what you copy into a new GDD.md document
 
 | Pillar | What it means | Consequences (what it forbids/forces) |
 |---|---|---|
-| 1. "[pillar]" | | |
-| 2. "[pillar]" | | |
-| 3. "[pillar]" | | |
+| 1. The chain is only as strong as its weakest link | Every stage — pick, sort, press, ferment, bottle — is mandatory. Players repeatedly depend on each other, shared work creates chaos. One station stalling stalls the next part of the chain. Promotes teamplay | avoids making any part of the game loop feel inconsequential |
+| 2. One vienyard that grows / changes | the map is set in stone, you can upgrade and plant more on the farm but not expand the size or move to a new farm | avoids content creep|
+| 3. intuitive mechanics | all mechanics should be simple enough and conveyed to the user in a way that makes it obvious what the course of action should be | avoids steering the game in a direction where individual tasks take more focus than the whole picture|
 
 ## 1.3 Core loop
 
