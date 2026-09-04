@@ -53,9 +53,7 @@ Everything from here down is what you copy into a new GDD.md document
 
 ## 1.1 Hook
 
-> One paragraph. A useful formula: *For [audience] who want [experience], [title] is a [genre] where [the one thing no
-> other game does].* Known-quantity anchors ("Overcooked meets…") buy instant context. If the hook needs three
-> paragraphs, the concept is not clear yet — that is a design problem, not a writing problem.
+A chaotic co-op game about making the perfect bottle of wine. Corked! is a friend-slop game where you and your friends run a small Italian vineyard together, turning grapes into bottled wine through a hands-on production process. Harvest, carry, stomp, press, bottle, and deliver while trying to keep the whole operation running. Everyone has something to do, everyone depends on someone else, and when one person falls behind, the whole vineyard starts falling apart. Making wine is the goal, but the real fun is the chaos you create together while trying to get there.
 
 ## 1.2 Design pillars
 
