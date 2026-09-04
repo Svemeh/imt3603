@@ -1,38 +1,11 @@
-
-# Game Design Document — IMT3603 (2026)
-
-A game design document (GDD) is a **living record of design intent**. It has two jobs: force you to make decisions,
-and communicate those decisions to teammates (and markers) who were not in the conversation.
-
-It lives in your repo as `GDD.md`, it changes via commits and merge requests, and it is reviewed against the build
-every sprint. The need for a GDD grows with team size and project length — but even a solo project benefits, because
-week-11-you is effectively a different developer from week-2-you.
-
-**Your design will be larger than one semester. That is expected.** The scope tables in sec.1.6 are where you decide what
-actually gets built, and in what order.
-
-> **How to use this file.** Copy the template below into your repo as `GDD.md`. Guidance appears as `> quote blocks` —
-> replace each with actual decisions, or delete it. sec.1 is mandatory and always current. Everything after sec.1 is a module:
-> write it when someone is about to build from it, not before.
-
-Related: [Pitching your game](game-pitching.md) · [Playtesting task](play_test.md) ·
-[GenAI and provenance](genai-and-provenance.md) · [GameBadges](gamebadges.md)
-
-
-# The template
-
-Everything from here down is what you copy into a new GDD.md document
-
----
-
-# [Game Title] — Game Design Document
+# Corked! — Game Design Document
 
 | | |
 |---|---|
 | **Team** | [team name] |
 | **Members & roles** | @name (design lead) · @name (tech lead) · @name (art lead) · @name (producer) … ( animal roles included here for IMT3603 )|
 | **Engine / platform** | [e.g. Godot 4.7 / PC + Steam Deck] |
-| **Repo** | [link] |
+| **Repo** | [imt3603/](https://github.com/Svemeh/imt3603/) |
 | **Doc version** | v0.1 |
 | **Last updated** | YYYY-MM-DD |
 
@@ -62,9 +35,9 @@ A chaotic co-op game about making the perfect bottle of wine. Corked! is a frien
 
 | Pillar | What it means | Consequences (what it forbids/forces) |
 |---|---|---|
-| 1. The chain is only as strong as its weakest link | Every stage — pick, sort, press, ferment, bottle — is mandatory. Players repeatedly depend on each other, shared work creates chaos. One station stalling stalls the next part of the chain. Promotes teamplay | avoids making any part of the game loop feel inconsequential |
-| 2. One vienyard that grows / changes | the map is set in stone, you can upgrade and plant more on the farm but not expand the size or move to a new farm | avoids content creep|
-| 3. intuitive mechanics | all mechanics should be simple enough and conveyed to the user in a way that makes it obvious what the course of action should be | avoids steering the game in a direction where individual tasks take more focus than the whole picture|
+| 1. The chain is only as strong as its weakest link | Every stage — pick, sort, press, ferment, bottle — is mandatory. Players repeatedly depend on each other, shared work creates chaos. One station stalling stalls the next part of the chain. Promotes teamplay | Avoids making any part of the game loop feel inconsequential |
+| 2. One vienyard that grows / changes | The map is set in stone, you can upgrade and plant more on the farm but not expand the size or move to a new farm | Avoids content creep|
+| 3. Intuitive mechanics | All mechanics should be simple enough and conveyed to the user in a way that makes it obvious what the course of action should be | Avoids steering the game in a direction where individual tasks take more focus than the whole picture|
 
 ## 1.3 Core loop
 
