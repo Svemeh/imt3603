@@ -58,6 +58,15 @@ flowchart LR
 > Who plays this, what do they play now, what will they recognise, and what will surprise them? "Everyone" is not an
 > audience. Name two or three comparison games and what you take from each and reject from each.
 
+Our targeted audience are groups of friends from 2-4 players. The game is about cooperation and is a topdown game, similar to "plateUp!", where 2-4 players run around on a small map to complete tasks in order to satisfy their customers. 
+Our audience play games like: PlateUp, PEAK, How To Fish - or any other friendslop game about cooperating with eachother and chaotic games. They will recognise the chaos, fun, immersive and stressful gameplay "corked!" as to offer. Even though they operate on the same theme, our game differentiates by the core mehcanics of the game that consists of equipment can break down, weather can slow down progress, pests can trample on crops, or players can bump into eachother so hard that their carried items can be dropped.
+
+| Game | Take  | Reject |
+|---|---|---|
+|PlateUp!| Art style | cooking mechanism|
+||  Day/Year sycle | Money Making Method|
+| How To Fish | Coop | 3D artstyle |  
+
 ## 1.5 Look, feel, and tone — in one paragraph
 
 > Mood, palette, one or two reference images. Full art direction lives in sec.9.
