@@ -60,7 +60,9 @@ flowchart LR
 
 ## 1.5 Look, feel, and tone — in one paragraph
 
-> Mood, palette, one or two reference images. Full art direction lives in sec.9.
+Corked! uses a warm, saturated and stylised 3D-like interpretation of an Italian vineyard. The environment combines sunlit stone buildings, terracotta roofs, wooden barrels, grape-purple accents, green vines/flowers and warm yellow/orange lighting. Shapes are rounded, clean, and readable rather than sharp and detailed. The camera uses a slightly tilted top-down 3D perspective, combining the readability of *PlateUp!* with enough depth for physical interactions, ragdolls, vehicles and other environmental comedy. The vineyard should feel simple, cosy, warm and inviting while production becomes increasingly stressful and chaotic. 
+
+Core palette: terracotta orange · warm yellow · grape purple · olive/vine green · warm stone · dark wood.
 
 ## 1.6 Scope: goals and non-goals
 
