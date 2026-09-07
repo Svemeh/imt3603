@@ -71,9 +71,16 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 > The most valuable sentences in a student GDD usually start with "No". Non-goals are decisions too — written down so
 > they stay decided and do not get re-litigated every week. Move cut features here with a changelog note.
 
-- No …
-- No …
-- No …
+- **No open world.** The game will take place on one vineyard and winery instead of having several large areas to travel between.
+- **No fully realistic wine simulation.** We want to show the main steps of making wine, but we do not need to include every real-life detail.
+- **No large number of wine types or locations.** For this project, we will focus on red wine and an Italian-inspired vineyard. Other wine types and locations can be ideas for later.
+- **No overly complicated mechanics.** Interactions should be fun and physical, but still easy for players to understand.
+- **No gameplay where everyone can just work alone.** The game should encourage players to cooperate and depend on each other.
+- **No travelling to other locations to collect or buy resources.** The main gameplay should stay focused on the vineyard and the wine-making process.
+- **No major vineyard expansion.** If we add expansion, it should mainly be about unlocking or improving parts of the vineyard we already have.
+- **No large amount of random events in the vertical slice.** Things like fires, broken machines, birds damaging crops, or tractor problems can be added later if there is enough time.
+- **No drunk mode as an important feature for this semester.**
+- **No chaos just for the sake of chaos.** The game can be stressful and messy, but players should still understand what they are supposed to do.
 
 ### MoSCoW scope table
 
@@ -81,11 +88,37 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 > **Could** = first against the wall when you are late. **Won't** = not this semester; belongs in non-goals.
 > Every row needs an owner.
 
+- 
+
 | Feature | Priority | Milestone | Owner | Status |
-|---|---|---|---|---|
-| [core mechanic] | Must | Vertical slice (wk N) | @name | not started |
-| [second system] | Should | Full build (wk N) | @name | not started |
-| [polish item] | Could | Final (wk N) | @name | not started |
+| --- | --- | --- | --- | --- |
+| Cooperative multiplayer for 2+ players | Must |  | - | Not started |
+| Top-down / high-angle 3D player movement and interaction | Must |  | - | Not started |
+| Harvest grapes from vineyard | Must |  | - | Not started |
+| Pick up, carry and transfer grapes/resources between production stations | Must |  | - | Not started |
+| Physical grape crushing / pressing interaction | Must |  | - | Not started |
+| Basic wine-processing station. | Must |  | - | Not started |
+| Bottling interaction | Must |  | - | Not started |
+| Deliver / Sell completed wine | Must |  | - | Not started |
+| Production quota / round objective | Must |  | - | Not started |
+| Approx. 5 minute production-day/session structure | Must |  | - | Not started |
+| Clear visual communication of interactive stations and items | Must |  | - | Not started |
+| Warm stylised italian vineyard environment | Must |  | - | Not started |
+| Money/Reward from completed production | Should |  | - | Not started |
+| increasing quotas / difficulty across production days | Should |  | - | Not started |
+| Equipment / station uppgrades | Should |  | - | Not started |
+| Tasks where multiple players can cooperate to work faster or move objects | Should |  | - | Not started |
+| Short contextual onboarding/tutorial prompts | Should |  | - | Not started |
+| Bonus reward for producing beyond the quota | Should |  | - | Not started |
+| Difficulty options affecting time and/or quota | Could |  | - | Not started |
+| Equipment breakdowns and temporary emergencies | Could |  | - | Not started |
+| Crop disruptions such as birds damaging grape bushes | Could |  | - | Not started |
+| Unlockable/expanded areas within the vineyard | Could |  | - | Not started |
+| Exaggerated ragdoll / physics-based comedy and polish | Could |  | - | Not started |
+| Additional vineyard regions or wine types | Won’t |  | - | Not started |
+| Open-world travel between vineyards | Won’t |  | - | Not started |
+| Fully realistic wine-production simulation | Won’t |  | - | Not started |
+| Drunk gameplay mode | Won’t |  | - | Not started |
 
 ---
 
