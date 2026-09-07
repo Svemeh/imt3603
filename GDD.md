@@ -46,10 +46,10 @@ A chaotic co-op game about making the perfect bottle of wine. Corked! is a frien
 
 ```mermaid
 flowchart LR
-    A[Explore<br/>~60 s] --> B[Fight<br/>5-15 s] --> C[Salvage<br/>~10 s] --> D[Upgrade<br/>~30 s] --> A
+    A[Harvest<br/>15-30 s] --> B[Carry<br/>5-15 s] --> C[Press/Stomp<br/>15-25 s] --> D[Bottle<br/>15-25 s] --> E[Deliver<br/>10-20 s] --> A
 ```
 
-- **Moment loop (seconds):** …
+- **Moment loop (seconds):** One grape's full serial journey through the chain is **60-115 s** (sum of all five stations), this does not account for actual travel time and if teammates sabotage the player. That number is *not* the throughput a table of 3-4 players actually feels, though with 5 stations and 3-4 players, someone is always covering more than one station, and stages run in parallel once the pipeline is full. Once running, a new bottle should complete roughly every **20-30 s**, gated by whichever station is currently the bottleneck (pillar 1: the chain is only as strong as its weakest link, a stalled station is what the player *feels*, not the 60-115 s total)
 - **Session loop (minutes):** … A meaningful session lasts **[N] minutes**.
 - **Meta loop (hours):** …
 
