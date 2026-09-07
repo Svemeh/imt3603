@@ -50,8 +50,8 @@ flowchart LR
 ```
 
 - **Moment loop (seconds):** One grape's full serial journey through the chain is **60-115 s** (sum of all five stations), this does not account for actual travel time and if teammates sabotage the player. That number is *not* the throughput a table of 3-4 players actually feels, though with 5 stations and 3-4 players, someone is always covering more than one station, and stages run in parallel once the pipeline is full. Once running, a new bottle should complete roughly every **20-30 s**, gated by whichever station is currently the bottleneck (pillar 1: the chain is only as strong as its weakest link, a stalled station is what the player *feels*, not the 60-115 s total)
-- **Session loop (minutes):** … A meaningful session lasts **[N] minutes**.
-- **Meta loop (hours):** …
+- **Session loop (minutes):** A meaningful session lasts **5-10 minutes**. A single delivery "round" against one order. At a ~20-30 s/bottle throughput once the gameplay loop is warm, that's roughly **8-15 bottles** possible if the table runs clean, so a round's order target should sit under that ceiling (e.g. 6-10 bottles) to leave room for the pipeline-fill time at the start and the chaos/mistakes pillar 1 exists to create. [Confirm the exact order size against sec.11 playtesting.]
+- **Meta loop (hours):** Across sessions, deliveries earn currency spent on vineyard upgrades. Faster or additional stations (a second press, a bigger cart for Carry, more harvest plots), which raises next session's per-station and throughput numbers. This is the "grows" half of pillar 2: the vineyard's footprint stays fixed, but its stations get faster/more numerous, which is what should make session 10 feel different from session 1.
 
 ## 1.4 Audience & genre
 
