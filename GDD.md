@@ -46,12 +46,12 @@ A chaotic co-op game about making the perfect bottle of wine. Corked! is a frien
 
 ```mermaid
 flowchart LR
-    A[Explore<br/>~60 s] --> B[Fight<br/>5-15 s] --> C[Salvage<br/>~10 s] --> D[Upgrade<br/>~30 s] --> A
+    A[Harvest<br/>15-30 s] --> B[Carry<br/>5-15 s] --> C[Press/Stomp<br/>15-25 s] --> D[Bottle<br/>15-25 s] --> E[Deliver<br/>10-20 s] --> A
 ```
 
-- **Moment loop (seconds):** …
-- **Session loop (minutes):** … A meaningful session lasts **[N] minutes**.
-- **Meta loop (hours):** …
+- **Moment loop (seconds):** One grape's full serial journey through the chain is **60-115 s** (sum of all five stations), this does not account for actual travel time and if teammates sabotage the player. That number is *not* the throughput a table of 3-4 players actually feels, though with 5 stations and 3-4 players, someone is always covering more than one station, and stages run in parallel once the pipeline is full. Once running, a new bottle should complete roughly every **20-30 s**, gated by whichever station is currently the bottleneck (pillar 1: the chain is only as strong as its weakest link, a stalled station is what the player *feels*, not the 60-115 s total)
+- **Session loop (minutes):** A meaningful session lasts **5-10 minutes**. A single delivery "round" against one order. At a ~20-30 s/bottle throughput once the gameplay loop is warm, that's roughly **8-15 bottles** possible if the table runs clean, so a round's order target should sit under that ceiling (e.g. 6-10 bottles) to leave room for the pipeline-fill time at the start and the chaos/mistakes pillar 1 exists to create. [Confirm the exact order size against sec.11 playtesting.]
+- **Meta loop (hours):** Across sessions, deliveries earn currency spent on vineyard upgrades. Faster or additional stations (a second press, a bigger cart for Carry, more harvest plots), which raises next session's per-station and throughput numbers. This is the "grows" half of pillar 2: the vineyard's footprint stays fixed, but its stations get faster/more numerous, which is what should make session 10 feel different from session 1.
 
 ## 1.4 Audience & genre
 
@@ -69,7 +69,9 @@ Our audience play games like: PlateUp, PEAK, How To Fish - or any other friendsl
 
 ## 1.5 Look, feel, and tone — in one paragraph
 
-> Mood, palette, one or two reference images. Full art direction lives in sec.9.
+Corked! uses a warm, saturated and stylised 3D-like interpretation of an Italian vineyard. The environment combines sunlit stone buildings, terracotta roofs, wooden barrels, grape-purple accents, green vines/flowers and warm yellow/orange lighting. Shapes are rounded, clean, and readable rather than sharp and detailed. The camera uses a slightly tilted top-down 3D perspective, combining the readability of *PlateUp!* with enough depth for physical interactions, ragdolls, vehicles and other environmental comedy. The vineyard should feel simple, cosy, warm and inviting while production becomes increasingly stressful and chaotic. 
+
+Core palette: terracotta orange · warm yellow · grape purple · olive/vine green · warm stone · dark wood.
 
 ## 1.6 Scope: goals and non-goals
 
@@ -78,9 +80,16 @@ Our audience play games like: PlateUp, PEAK, How To Fish - or any other friendsl
 > The most valuable sentences in a student GDD usually start with "No". Non-goals are decisions too — written down so
 > they stay decided and do not get re-litigated every week. Move cut features here with a changelog note.
 
-- No …
-- No …
-- No …
+- **No open world.** The game will take place on one vineyard and winery instead of having several large areas to travel between.
+- **No fully realistic wine simulation.** We want to show the main steps of making wine, but we do not need to include every real-life detail.
+- **No large number of wine types or locations.** For this project, we will focus on red wine and an Italian-inspired vineyard. Other wine types and locations can be ideas for later.
+- **No overly complicated mechanics.** Interactions should be fun and physical, but still easy for players to understand.
+- **No gameplay where everyone can just work alone.** The game should encourage players to cooperate and depend on each other.
+- **No travelling to other locations to collect or buy resources.** The main gameplay should stay focused on the vineyard and the wine-making process.
+- **No major vineyard expansion.** If we add expansion, it should mainly be about unlocking or improving parts of the vineyard we already have.
+- **No large amount of random events in the vertical slice.** Things like fires, broken machines, birds damaging crops, or tractor problems can be added later if there is enough time.
+- **No drunk mode as an important feature for this semester.**
+- **No chaos just for the sake of chaos.** The game can be stressful and messy, but players should still understand what they are supposed to do.
 
 ### MoSCoW scope table
 
@@ -88,11 +97,37 @@ Our audience play games like: PlateUp, PEAK, How To Fish - or any other friendsl
 > **Could** = first against the wall when you are late. **Won't** = not this semester; belongs in non-goals.
 > Every row needs an owner.
 
+- 
+
 | Feature | Priority | Milestone | Owner | Status |
-|---|---|---|---|---|
-| [core mechanic] | Must | Vertical slice (wk N) | @name | not started |
-| [second system] | Should | Full build (wk N) | @name | not started |
-| [polish item] | Could | Final (wk N) | @name | not started |
+| --- | --- | --- | --- | --- |
+| Cooperative multiplayer for 2+ players | Must |  | - | Not started |
+| Top-down / high-angle 3D player movement and interaction | Must |  | - | Not started |
+| Harvest grapes from vineyard | Must |  | - | Not started |
+| Pick up, carry and transfer grapes/resources between production stations | Must |  | - | Not started |
+| Physical grape crushing / pressing interaction | Must |  | - | Not started |
+| Basic wine-processing station. | Must |  | - | Not started |
+| Bottling interaction | Must |  | - | Not started |
+| Deliver / Sell completed wine | Must |  | - | Not started |
+| Production quota / round objective | Must |  | - | Not started |
+| Approx. 5 minute production-day/session structure | Must |  | - | Not started |
+| Clear visual communication of interactive stations and items | Must |  | - | Not started |
+| Warm stylised italian vineyard environment | Must |  | - | Not started |
+| Money/Reward from completed production | Should |  | - | Not started |
+| increasing quotas / difficulty across production days | Should |  | - | Not started |
+| Equipment / station uppgrades | Should |  | - | Not started |
+| Tasks where multiple players can cooperate to work faster or move objects | Should |  | - | Not started |
+| Short contextual onboarding/tutorial prompts | Should |  | - | Not started |
+| Bonus reward for producing beyond the quota | Should |  | - | Not started |
+| Difficulty options affecting time and/or quota | Could |  | - | Not started |
+| Equipment breakdowns and temporary emergencies | Could |  | - | Not started |
+| Crop disruptions such as birds damaging grape bushes | Could |  | - | Not started |
+| Unlockable/expanded areas within the vineyard | Could |  | - | Not started |
+| Exaggerated ragdoll / physics-based comedy and polish | Could |  | - | Not started |
+| Additional vineyard regions or wine types | Won’t |  | - | Not started |
+| Open-world travel between vineyards | Won’t |  | - | Not started |
+| Fully realistic wine-production simulation | Won’t |  | - | Not started |
+| Drunk gameplay mode | Won’t |  | - | Not started |
 
 ---
 
