@@ -4,7 +4,7 @@
 |---|---|
 | **Team** | Godly Games |
 | **Members & roles** | @name (design lead) · @name (tech lead) · @name (art lead) · @name (producer) … ( animal roles included here for IMT3603 )|
-| **Engine / platform** | 4.7
+| **Engine / platform** | Godot 4.7
 | **Repo** | [imt3603/](https://github.com/Svemeh/imt3603/) |
 | **Doc version** | v0.1 |
 | **Last updated** | YYYY-MM-DD |
