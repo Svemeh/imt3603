@@ -7,7 +7,7 @@
 | **Engine / platform** | Godot 4.7
 | **Repo** | [imt3603/](https://github.com/Svemeh/imt3603/) |
 | **Doc version** | v0.1 |
-| **Last updated** | YYYY-MM-DD |
+| **Last updated** | 2026-09-11 |
 
 ## Changelog
 
@@ -59,13 +59,14 @@ flowchart LR
 > audience. Name two or three comparison games and what you take from each and reject from each.
 
 Our targeted audience are groups of friends from 2-4 players. The game is about cooperation and is a topdown game, similar to "plateUp!", where 2-4 players run around on a small map to complete tasks in order to satisfy their customers. 
-Our audience play games like: PlateUp, PEAK, How To Fish - or any other friendslop game about cooperating with eachother and chaotic games. They will recognise the chaos, fun, immersive and stressful gameplay "corked!" as to offer. Even though they operate on the same theme, our game differentiates by the core mehcanics of the game that consists of equipment can break down, weather can slow down progress, pests can trample on crops, or players can bump into eachother so hard that their carried items can be dropped.
+Our audience play games like: PlateUp, PEAK, How To Fish - or any other friendslop game about cooperating with eachother and chaotic games. Anyone can play these games and join in on the fun, every type of player will find something to do along the loop. They will recognise the chaos, fun, immersive and stressful gameplay "corked!" has to offer. Even though they operate on the same theme, our game differentiates by the core mehcanics of the game that consists of equipment can break down, weather can slow down progress, pests can trample on crops, or players can bump into eachother so hard that their carried items can be dropped.
 
 | Game | Take  | Reject |
 |---|---|---|
 |PlateUp!| Art style | cooking mechanism|
 ||  Day/Year sycle | Money Making Method|
 | How To Fish | Coop | 3D artstyle |  
+| Peak  | Ragdolly, physics | objective |      |
 
 ## 1.5 Look, feel, and tone — in one paragraph
 
