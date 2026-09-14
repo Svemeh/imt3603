@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cilq6vapx3113"]
+
+[ext_resource type="Script" uid="uid://b4o3yaq85xjlp" path="res://scenes/UI/menus/settings_menu.gd" id="1_wd0gg"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://scenes/UI/components/menu_button.tscn" id="2_b0j6n"]
+
+[node name="SettingsMenu" type="Control" unique_id=773412079]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wd0gg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=54077533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22745098, 0.14117648, 0.09411765, 1)
+
+[node name="SettingsContainer" type="VBoxContainer" parent="." unique_id=643609074]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="TitleLabel" type="Label" parent="SettingsContainer" unique_id=854452885]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+
+[node name="VolumeContainer" type="HBoxContainer" parent="SettingsContainer" unique_id=1444433277]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VolumeLabel" type="Label" parent="SettingsContainer/VolumeContainer" unique_id=1690560392]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "MASTER VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsContainer/VolumeContainer" unique_id=1213420145]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="SettingsContainer" unique_id=816206957]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="SettingsContainer/FullscreenContainer" unique_id=250164235]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "FULLSCREEN"
+
+[node name="FullscreenToggle" type="CheckButton" parent="SettingsContainer/FullscreenContainer" unique_id=221506924]
+layout_mode = 2
+
+[node name="BackButton" parent="SettingsContainer" unique_id=1051532312 instance=ExtResource("2_b0j6n")]
+layout_mode = 2
+text = "BACK"
+
+[connection signal="value_changed" from="SettingsContainer/VolumeContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="SettingsContainer/FullscreenContainer/FullscreenToggle" to="." method="_on_fullscreen_toggle_toggled"]
+[connection signal="pressed" from="SettingsContainer/BackButton" to="." method="_on_back_button_pressed"]

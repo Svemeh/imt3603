@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://chvampk6c0s4s"]
+
+[ext_resource type="Script" uid="uid://dvjwe21kype1j" path="res://scenes/UI/menus/credits_menu.gd" id="1_avg4p"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://scenes/UI/components/menu_button.tscn" id="2_hcix8"]
+
+[node name="CreditsMenu" type="Control" unique_id=591379799]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_avg4p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=993908946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22745098, 0.14117648, 0.09411765, 1)
+
+[node name="CreditsContainer" type="VBoxContainer" parent="." unique_id=1476772964]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer" unique_id=942645597]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_font_sizes/font_size = 48
+text = "CORKED!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TeamLabel" type="Label" parent="CreditsContainer" unique_id=249560274]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+text = "A GAME BY GODLY GAMES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" parent="CreditsContainer" unique_id=1051532312 instance=ExtResource("2_hcix8")]
+layout_mode = 2
+text = "BACK"
+
+[connection signal="pressed" from="CreditsContainer/BackButton" to="." method="_on_back_button_pressed"]

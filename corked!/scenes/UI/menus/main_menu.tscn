@@ -66,4 +66,6 @@ layout_mode = 2
 text = "QUIT"
 
 [connection signal="pressed" from="MenuContainter/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuContainter/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuContainter/ButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MenuContainter/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
