@@ -15,7 +15,7 @@ script = ExtResource("1_g2els")
 
 [node name="FarmerYellow" parent="VisualRoot" unique_id=1407477971 instance=ExtResource("2_qhqgy")]
 
-[node name="Skeleton3D" parent="VisualRoot/FarmerYellow/Armature" parent_id_path=PackedInt32Array(1407477971, 1140196950) index="0" unique_id=1685282582]
+[node name="Skeleton3D" parent="VisualRoot/FarmerYellow/Armature" parent_id_path=PackedInt32Array(1407477971, 1052828666) index="0" unique_id=1935828306]
 bones/0/position = Vector3(-0.8875929, 59.310207, 4.4148993)
 bones/0/rotation = Quaternion(0.7600202, 0.48767504, -0.0018421153, 0.42957985)
 bones/1/rotation = Quaternion(0.49794352, -0.16927798, 0.30521035, 0.7938791)
@@ -26,25 +26,23 @@ bones/5/rotation = Quaternion(0.21244848, 0.17021395, 0.6894138, 0.6712687)
 bones/6/rotation = Quaternion(0.07552334, -0.060130328, -0.036075346, 0.9946754)
 bones/7/rotation = Quaternion(-0.38180974, 0.051160444, -0.076757304, 0.91962624)
 bones/8/rotation = Quaternion(-0.4349445, 0.074056454, 0.00454368, 0.89739525)
-bones/9/rotation = Quaternion(0.7609168, 0.49891746, 0.023272078, -0.41418037)
+bones/9/rotation = Quaternion(0.77305186, 0.5010015, 0.03311528, -0.38767505)
 bones/10/rotation = Quaternion(-0.06719348, -0.022743015, -0.002322722, 0.997478)
 bones/11/rotation = Quaternion(-0.09222939, 0.0025568937, -0.0018795411, 0.9957327)
 bones/12/rotation = Quaternion(0.4886538, 0.6258922, -0.31831878, 0.51783156)
-bones/13/position = Vector3(-3.1421223e-07, 11.695259, 9.868609e-07)
-bones/13/rotation = Quaternion(0.68342507, 0.38621002, 0.2320663, 0.57438433)
-bones/14/rotation = Quaternion(0.05345095, 0.08620441, 0.07774582, 0.99180007)
+bones/13/position = Vector3(-3.2015964e-07, 11.695257, 1.7751045e-06)
+bones/14/position = Vector3(-8.95809e-06, 21.4301, 1.5240876e-06)
 bones/15/position = Vector3(4.4236754e-07, 14.487096, -3.1416785e-06)
 bones/15/rotation = Quaternion(0.07613621, 0.14061594, 0.046030894, 0.9860587)
-bones/16/rotation = Quaternion(-0.50160605, 0.6083579, -0.3064893, -0.53325075)
-bones/17/position = Vector3(-1.5072055e-07, 11.858923, 1.325854e-05)
-bones/17/rotation = Quaternion(0.6980574, -0.37508947, -0.24961224, 0.5565226)
+bones/16/rotation = Quaternion(-0.5353116, 0.59079295, -0.45739824, -0.39394435)
+bones/17/position = Vector3(7.414237e-07, 11.858925, -7.0659244e-06)
 bones/18/rotation = Quaternion(0.039230116, -0.06401854, -0.058720876, 0.9954469)
 bones/19/rotation = Quaternion(0.08292112, -0.44237676, 0.10405523, 0.8869044)
 bones/20/rotation = Quaternion(0.17117491, -0.011709961, -0.0061623943, 0.9851518)
 bones/21/rotation = Quaternion(0.1702675, 0.0062336912, -0.0076468023, 0.9853486)
 bones/22/rotation = Quaternion(-0.14135417, -0.0016953923, -0.009981029, 0.9899073)
 
-[node name="AnimationPlayer" parent="VisualRoot/FarmerYellow" index="1" unique_id=1924673693]
+[node name="AnimationPlayer" parent="VisualRoot/FarmerYellow" index="1" unique_id=1691867167]
 libraries/Meshy_AI_Animation_Idle_3_withSkin = ExtResource("3_qlg0r")
 libraries/Meshy_AI_Animation_Running_withSkin = ExtResource("3_dqkch")
 libraries/Meshy_AI_Farmer_Tan_Rigged_biped_Animation_Walking_withSkin = ExtResource("3_qhqgy")
