@@ -24,6 +24,7 @@ func _on_volume_slider_value_changed(value: float) -> void:
     var volume_db = linear_to_db(value / 100.0)
     AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)
 
+    $SettingsContainer/VolumeContainer/VolumeValueLabel.text = str(roundi(value)) + "%"
 
 func _on_fullscreen_toggle_toggled(toggled_on: bool) -> void:
     if toggled_on:

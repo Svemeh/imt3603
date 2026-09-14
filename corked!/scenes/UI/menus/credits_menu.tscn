@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dvjwe21kype1j" path="res://scenes/UI/menus/credits_menu.gd" id="1_avg4p"]
 [ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://scenes/UI/components/menu_button.tscn" id="2_hcix8"]
+[ext_resource type="Texture2D" uid="uid://cchye6xstvs4f" path="res://scenes/UI/components/vineyard_background.png" id="2_wasyk"]
+[ext_resource type="Texture2D" uid="uid://daog3amg4q6s5" path="res://scenes/UI/components/settings_panel.png" id="3_8ughu"]
+[ext_resource type="FontFile" uid="uid://ggso6nfce7a3" path="res://scenes/UI/components/PatrickHand-Regular.ttf" id="4_8ughu"]
+[ext_resource type="Texture2D" uid="uid://b4oxoiapx3r5f" path="res://scenes/UI/components/corked_logo.png" id="5_x1up7"]
 
 [node name="CreditsMenu" type="Control" unique_id=591379799]
 layout_mode = 3
@@ -12,14 +16,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_avg4p")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=993908946]
+[node name="Background" type="TextureRect" parent="." unique_id=1233320747]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.22745098, 0.14117648, 0.09411765, 1)
+texture = ExtResource("2_wasyk")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CreditsPanel" type="TextureRect" parent="." unique_id=26241347]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8ughu")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CreditsContainer" type="VBoxContainer" parent="." unique_id=1476772964]
 layout_mode = 1
@@ -39,20 +63,39 @@ theme_override_constants/separation = 20
 [node name="TitleLabel" type="Label" parent="CreditsContainer" unique_id=942645597]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
-theme_override_font_sizes/font_size = 48
-text = "CORKED!"
+theme_override_fonts/font = ExtResource("4_8ughu")
+theme_override_font_sizes/font_size = 50
+text = "CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TeamLabel" type="Label" parent="CreditsContainer" unique_id=249560274]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
-text = "A GAME BY GODLY GAMES"
+theme_override_fonts/font = ExtResource("4_8ughu")
+theme_override_font_sizes/font_size = 22
+text = "A GAME BY GODLY GAMES
+IMT3603 • 2026"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BackButton" parent="CreditsContainer" unique_id=1051532312 instance=ExtResource("2_hcix8")]
 layout_mode = 2
 text = "BACK"
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1906939553]
+custom_minimum_size = Vector2(350, 130)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = 26.0
+offset_right = 175.0
+offset_bottom = 156.0
+grow_horizontal = 2
+texture = ExtResource("5_x1up7")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="CreditsContainer/BackButton" to="." method="_on_back_button_pressed"]

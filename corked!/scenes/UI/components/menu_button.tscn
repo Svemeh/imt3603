@@ -1,52 +1,20 @@
 [gd_scene format=3 uid="uid://c3n3516jdc57l"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgpty"]
-bg_color = Color(0.65882355, 0.3647059, 0.16470589, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.34901962, 0.1882353, 0.12156863, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0.19607843, 0.105882354, 0.078431375, 0.6666667)
-shadow_size = 6
-shadow_offset = Vector2(0, 5)
+[ext_resource type="FontFile" uid="uid://ggso6nfce7a3" path="res://scenes/UI/components/PatrickHand-Regular.ttf" id="1_fh3ug"]
+[ext_resource type="Texture2D" uid="uid://bx8oi3r263mqc" path="res://scenes/UI/components/wood_button_normal.png" id="1_ktyw5"]
+[ext_resource type="Texture2D" uid="uid://dy2yeehfgvvg2" path="res://scenes/UI/components/wood_button_hover.png" id="2_8khls"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lf53o"]
-bg_color = Color(0.47843137, 0.24705882, 0.1254902, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.34901962, 0.1882353, 0.12156863, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0.19607843, 0.105882354, 0.078431375, 0.6666667)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jysfu"]
+texture = ExtResource("1_ktyw5")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvwfg"]
-bg_color = Color(0.78431374, 0.45882353, 0.19607843, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.34901962, 0.1882353, 0.12156863, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0.19607843, 0.105882354, 0.078431375, 0.6666667)
-shadow_size = 6
-shadow_offset = Vector2(0, 5)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8khls"]
+texture = ExtResource("1_ktyw5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktyw5"]
+texture = ExtResource("2_8khls")
 
 [node name="PlayButton" type="Button" unique_id=1051532312]
-custom_minimum_size = Vector2(350, 65)
+custom_minimum_size = Vector2(280, 85)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -58,9 +26,13 @@ offset_right = 164.0
 offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0.827451, 0.64705884, 1)
+theme_override_colors/font_hover_color = Color(1, 0.95686275, 0.78039217, 1)
+theme_override_fonts/font = ExtResource("1_fh3ug")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_mgpty")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_lf53o")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hvwfg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jysfu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8khls")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ktyw5")
 text = "PLAY"
