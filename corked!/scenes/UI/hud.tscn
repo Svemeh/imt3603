@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bqxsk48bajivs"]
 
+[ext_resource type="Script" uid="uid://cbjcu0njenelv" path="res://src/hud.gd" id="1_c4vmg"]
+
 [node name="Hud" type="Control" unique_id=1628769219]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c4vmg")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2143566406]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 65.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1475557471]
+layout_mode = 2
+
+[node name="QuotaLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=742448045]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quota: "
+
+[node name="MoneyLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1340987343]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "$ "
