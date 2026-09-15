@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bmk1ahsnmdbog"]
+
+[ext_resource type="Script" uid="uid://c2da1jtyn6b4i" path="res://src/main_menu.gd" id="1_i77qe"]
+[ext_resource type="Texture2D" uid="uid://2qpja723bsxk" path="res://Assets/UI/components/vineyard_background.png" id="2_3xe74"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://Assets/UI/components/menu_button.tscn" id="2_nphty"]
+[ext_resource type="Texture2D" uid="uid://c6wvkhxlnoqjw" path="res://Assets/UI/components/corked_logo.png" id="3_3xe74"]
+
+[node name="MainMenu" type="Control" unique_id=1570372517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i77qe")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1771487146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3xe74")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MenuContainter" type="VBoxContainer" parent="." unique_id=1288109184]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -244.5
+offset_right = 175.0
+offset_bottom = 244.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Logo" type="TextureRect" parent="MenuContainter" unique_id=338301182]
+custom_minimum_size = Vector2(500, 190)
+layout_mode = 2
+texture = ExtResource("3_3xe74")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MenuContainter" unique_id=1070009617]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayButton" parent="MenuContainter/ButtonsContainer" unique_id=1051532312 instance=ExtResource("2_nphty")]
+layout_mode = 2
+
+[node name="SettingsButton" parent="MenuContainter/ButtonsContainer" unique_id=52599684 instance=ExtResource("2_nphty")]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="CreditsButton" parent="MenuContainter/ButtonsContainer" unique_id=683412708 instance=ExtResource("2_nphty")]
+layout_mode = 2
+text = "CREDITS"
+
+[node name="QuitButton" parent="MenuContainter/ButtonsContainer" unique_id=860992108 instance=ExtResource("2_nphty")]
+layout_mode = 2
+text = "QUIT"
+
+[connection signal="pressed" from="MenuContainter/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuContainter/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuContainter/ButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuContainter/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]

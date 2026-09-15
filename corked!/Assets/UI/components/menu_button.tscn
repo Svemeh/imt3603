@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c3n3516jdc57l"]
+
+[ext_resource type="FontFile" uid="uid://ggso6nfce7a3" path="res://Assets/UI/components/PatrickHand-Regular.ttf" id="1_fh3ug"]
+[ext_resource type="Texture2D" uid="uid://bx8oi3r263mqc" path="res://Assets/UI/components/wood_button_normal.png" id="1_ktyw5"]
+[ext_resource type="Texture2D" uid="uid://dy2yeehfgvvg2" path="res://Assets/UI/components/wood_button_hover.png" id="2_8khls"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jysfu"]
+texture = ExtResource("1_ktyw5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8khls"]
+texture = ExtResource("1_ktyw5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktyw5"]
+texture = ExtResource("2_8khls")
+
+[node name="PlayButton" type="Button" unique_id=1051532312]
+custom_minimum_size = Vector2(280, 85)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -46.5
+offset_right = 164.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0.827451, 0.64705884, 1)
+theme_override_colors/font_hover_color = Color(1, 0.95686275, 0.78039217, 1)
+theme_override_fonts/font = ExtResource("1_fh3ug")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_jysfu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8khls")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ktyw5")
+text = "PLAY"

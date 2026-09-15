@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Corked!"
-run/main_scene="uid://bepr0l4ydcf10"
+run/main_scene="uid://bmk1ahsnmdbog"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://temp/icon.svg"
 
@@ -26,7 +26,7 @@ project/assembly_name="Corked!"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/meshy-godot-plugin/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

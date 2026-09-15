@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://cilq6vapx3113"]
+
+[ext_resource type="Script" uid="uid://b4o3yaq85xjlp" path="res://src/settings_menu.gd" id="1_wd0gg"]
+[ext_resource type="Texture2D" uid="uid://2qpja723bsxk" path="res://Assets/UI/components/vineyard_background.png" id="2_aw7p3"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://Assets/UI/components/menu_button.tscn" id="2_b0j6n"]
+[ext_resource type="Texture2D" uid="uid://bcf0yxfaiferx" path="res://Assets/UI/components/settings_panel.png" id="3_t0e0l"]
+[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://Assets/UI/components/PatrickHand-Regular.ttf" id="4_cq1tb"]
+[ext_resource type="Texture2D" uid="uid://c074ripdp1u4i" path="res://Assets/UI/components/volume_icon.png" id="5_ra22d"]
+[ext_resource type="Texture2D" uid="uid://c6wvkhxlnoqjw" path="res://Assets/UI/components/corked_logo.png" id="5_t0e0l"]
+[ext_resource type="Texture2D" uid="uid://d3qequd0trha1" path="res://Assets/UI/components/fullscreen_icon.png" id="6_myyqy"]
+
+[node name="SettingsMenu" type="Control" unique_id=773412079]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wd0gg")
+
+[node name="Background" type="TextureRect" parent="." unique_id=998790435]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aw7p3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="SettingsPanel" type="TextureRect" parent="." unique_id=1502673275]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_t0e0l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsContainer" type="VBoxContainer" parent="." unique_id=643609074]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="SettingsContainer" unique_id=854452885]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_fonts/font = ExtResource("4_cq1tb")
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="VolumeContainer" type="HBoxContainer" parent="SettingsContainer" unique_id=1444433277]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VolumeIcon" type="TextureRect" parent="SettingsContainer/VolumeContainer" unique_id=701948475]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("5_ra22d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VolumeLabel" type="Label" parent="SettingsContainer/VolumeContainer" unique_id=1690560392]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_cq1tb")
+theme_override_font_sizes/font_size = 22
+text = "MASTER VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsContainer/VolumeContainer" unique_id=1213420145]
+custom_minimum_size = Vector2(160, 30)
+layout_mode = 2
+value = 100.0
+
+[node name="VolumeValueLabel" type="Label" parent="SettingsContainer/VolumeContainer" unique_id=1935200658]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_cq1tb")
+theme_override_font_sizes/font_size = 22
+text = "100%"
+horizontal_alignment = 1
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="SettingsContainer" unique_id=816206957]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="FullscreenIcon" type="TextureRect" parent="SettingsContainer/FullscreenContainer" unique_id=510565479]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_myyqy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FullscreenLabel" type="Label" parent="SettingsContainer/FullscreenContainer" unique_id=250164235]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_cq1tb")
+theme_override_font_sizes/font_size = 22
+text = "FULLSCREEN"
+
+[node name="FullscreenToggle" type="CheckButton" parent="SettingsContainer/FullscreenContainer" unique_id=221506924]
+custom_minimum_size = Vector2(68, 30)
+layout_mode = 2
+
+[node name="BackButton" parent="SettingsContainer" unique_id=1051532312 instance=ExtResource("2_b0j6n")]
+layout_mode = 2
+text = "BACK"
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1686042452]
+custom_minimum_size = Vector2(350, 130)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.0
+offset_top = 27.0
+offset_right = 179.0
+offset_bottom = 157.0
+grow_horizontal = 2
+texture = ExtResource("5_t0e0l")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="value_changed" from="SettingsContainer/VolumeContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="SettingsContainer/FullscreenContainer/FullscreenToggle" to="." method="_on_fullscreen_toggle_toggled"]
+[connection signal="pressed" from="SettingsContainer/BackButton" to="." method="_on_back_button_pressed"]

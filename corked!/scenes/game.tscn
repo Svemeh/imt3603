@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bjh1eywqlwr3r" path="res://src/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://citi8vkh1rf21" path="res://scenes/vineyard.tscn" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bepr0l4ydcf10" path="res://scenes/player.tscn" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/UI/hud.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://Assets/UI/hud.tscn" id="3_iywne"]
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
