@@ -15,6 +15,9 @@ const IDLE_ANIMATION := "Meshy_AI_Animation_Idle_3_withSkin/Idle_3"
 const WALK_ANIMATION := "Meshy_AI_Farmer_Tan_Rigged_biped_Animation_Walking_withSkin/Armature|walking_man|baselayer"
 const RUN_ANIMATION := "Meshy_AI_Animation_Running_withSkin/Running"
 
+## item currently held
+var held_item: Node3D = null
+
 func _ready() -> void:
 	animation_player.play(IDLE_ANIMATION)
 
@@ -124,3 +127,7 @@ func try_interact() -> void:
 	var target := _get_target()
 	if target:
 		target.interact(self)
+
+## Returns reference to held item. If no item is currently held it returns 'null'
+func is_holding() -> bool:
+	return held_item != null
