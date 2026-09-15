@@ -131,3 +131,7 @@ func try_interact() -> void:
 ## Returns reference to held item. If no item is currently held it returns 'null'
 func is_holding() -> bool:
 	return held_item != null
+
+func recieve_item(item: Item) -> void:
+	held_item = item
+	add_child(item)

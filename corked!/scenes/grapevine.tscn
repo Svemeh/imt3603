@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bf4afr7b4q3nn"]
+
+[ext_resource type="Script" uid="uid://dv3jwjtchedk1" path="res://src/grapevine.gd" id="1_kcfbs"]
+
+[node name="Grapevine" type="Node3D" unique_id=288381731]
+script = ExtResource("1_kcfbs")
+
+[node name="Timer" type="Timer" parent="." unique_id=1996272969]
+wait_time = 10.0
