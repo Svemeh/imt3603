@@ -14,9 +14,6 @@ build/
 # Godot-specific ignores
 *.translation
 
-# Imported files (Godot regenerates these)
-*.import
-
 # OS
 .DS_Store
 Thumbs.db
