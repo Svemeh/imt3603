@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://ggso6nfce7a3" path="res://scenes/UI/components/PatrickHand-Regular.ttf" id="4_cq1tb"]
 [ext_resource type="Texture2D" uid="uid://cdokiy658yg2u" path="res://scenes/UI/components/volume_icon.png" id="5_ra22d"]
 [ext_resource type="Texture2D" uid="uid://b4oxoiapx3r5f" path="res://scenes/UI/components/corked_logo.png" id="5_t0e0l"]
+[ext_resource type="Texture2D" uid="uid://bc77yo25e2hsf" path="res://scenes/UI/components/fullscreen_icon.png" id="6_myyqy"]
 
 [node name="SettingsMenu" type="Control" unique_id=773412079]
 layout_mode = 3
@@ -81,7 +82,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="VolumeLabel" type="Label" parent="SettingsContainer/VolumeContainer" unique_id=1690560392]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_cq1tb")
 theme_override_font_sizes/font_size = 22
@@ -102,16 +103,24 @@ horizontal_alignment = 1
 
 [node name="FullscreenContainer" type="HBoxContainer" parent="SettingsContainer" unique_id=816206957]
 layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="FullscreenIcon" type="TextureRect" parent="SettingsContainer/FullscreenContainer" unique_id=510565479]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_myyqy")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="FullscreenLabel" type="Label" parent="SettingsContainer/FullscreenContainer" unique_id=250164235]
-custom_minimum_size = Vector2(145, 0)
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_cq1tb")
 theme_override_font_sizes/font_size = 22
 text = "FULLSCREEN"
 
 [node name="FullscreenToggle" type="CheckButton" parent="SettingsContainer/FullscreenContainer" unique_id=221506924]
-custom_minimum_size = Vector2(55, 26)
+custom_minimum_size = Vector2(68, 30)
 layout_mode = 2
 
 [node name="BackButton" parent="SettingsContainer" unique_id=1051532312 instance=ExtResource("2_b0j6n")]
