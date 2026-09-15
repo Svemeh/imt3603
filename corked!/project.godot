@@ -13,7 +13,6 @@ config_version=5
 config/name="Corked!"
 run/main_scene="uid://bmk1ahsnmdbog"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://temp/icon.svg"
 
 [display]
 
