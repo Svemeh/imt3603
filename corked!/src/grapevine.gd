@@ -1,5 +1,4 @@
 # grapevine.gd
-
 class_name GrapeVine
 extends Interactable
 
