@@ -28,5 +28,3 @@ func setup(p_amount: int) -> void:
 
 func get_display_name() -> String:
 	return "%s x%d" % [display_name, amount]
-
-## 
