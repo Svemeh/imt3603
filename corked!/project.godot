@@ -26,7 +26,7 @@ project/assembly_name="Corked!"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/meshy-godot-plugin/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
