@@ -4,3 +4,6 @@
 
 [node name="Grapevine" type="Node3D" unique_id=288381731]
 script = ExtResource("1_kcfbs")
+
+[node name="Timer" type="Timer" parent="." unique_id=1996272969]
+wait_time = 10.0
