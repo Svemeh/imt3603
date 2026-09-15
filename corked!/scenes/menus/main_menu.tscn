@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bmk1ahsnmdbog"]
 
-[ext_resource type="Script" uid="uid://c2da1jtyn6b4i" path="res://scenes/UI/menus/main_menu.gd" id="1_i77qe"]
-[ext_resource type="Texture2D" uid="uid://cchye6xstvs4f" path="res://scenes/UI/components/vineyard_background.png" id="2_3xe74"]
-[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://scenes/UI/components/menu_button.tscn" id="2_nphty"]
-[ext_resource type="Texture2D" uid="uid://b4oxoiapx3r5f" path="res://scenes/UI/components/corked_logo.png" id="3_3xe74"]
+[ext_resource type="Script" uid="uid://c2da1jtyn6b4i" path="res://src/main_menu.gd" id="1_i77qe"]
+[ext_resource type="Texture2D" uid="uid://cchye6xstvs4f" path="res://Assets/UI/components/vineyard_background.png" id="2_3xe74"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://Assets/UI/components/menu_button.tscn" id="2_nphty"]
+[ext_resource type="Texture2D" uid="uid://b4oxoiapx3r5f" path="res://Assets/UI/components/corked_logo.png" id="3_3xe74"]
 
 [node name="MainMenu" type="Control" unique_id=1570372517]
 layout_mode = 3
