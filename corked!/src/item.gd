@@ -1,5 +1,5 @@
 class_name Item
-extends Node3D
+extends RigidBody3D
 
 ## Shown in UI/debug prompts, e.g "Grapes"
 @export var display_name: String = "item"
