@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://bjgprajpn3pq2"]
 
 [ext_resource type="Script" uid="uid://vfqbtdtd3r7h" path="res://src/grape.gd" id="1_8daar"]
+[ext_resource type="PackedScene" uid="uid://walgpmufw5w0" path="res://temp/grapes_-_low_poly.glb" id="2_0gvam"]
 
-[node name="Grape" type="Node3D" unique_id=2076990720]
+[sub_resource type="BoxShape3D" id="BoxShape3D_akdr4"]
+size = Vector3(0.70129395, 0.57666016, 0.5234375)
+
+[node name="Grape" type="RigidBody3D" unique_id=1336629603]
+collision_layer = 8
+gravity_scale = 0.0
+freeze = true
 script = ExtResource("1_8daar")
+
+[node name="temp_model_delete_later" parent="." unique_id=1359525066 instance=ExtResource("2_0gvam")]
+transform = Transform3D(0.058794793, 0, 0, 0, 0.039690536, 0, 0, 0, 0.07562978, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=228673073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009375393, 0.21166992, -0.035904765)
+shape = SubResource("BoxShape3D_akdr4")
