@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://3kao7ltmkaxr"]
+
+[ext_resource type="Script" uid="uid://cpujh076kdb8o" path="res://src/barrel.gd" id="1_q36op"]
+
+[node name="Barrel" type="Node3D" unique_id=2084614386]
+script = ExtResource("1_q36op")
