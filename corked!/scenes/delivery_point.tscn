@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dxhxl5ttjsu11"]
+
+[ext_resource type="PackedScene" uid="uid://blaqtkd7qbo34" path="res://scenes/deliveryman.tscn" id="1_nfesq"]
+[ext_resource type="PackedScene" uid="uid://dfcfgoxjkica0" path="res://scenes/delivery_zone.tscn" id="2_b4rl6"]
+
+[node name="DeliveryPoint" type="Node3D" unique_id=796269573]
+
+[node name="Deliveryman" parent="." unique_id=1621832877 node_paths=PackedStringArray("delivery_zone") instance=ExtResource("1_nfesq")]
+delivery_zone = NodePath("../DeliveryZone")
+
+[node name="DeliveryZone" parent="." unique_id=1947463298 instance=ExtResource("2_b4rl6")]
