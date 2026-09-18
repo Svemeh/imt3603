@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://drdld7tsbkjnp"]
+
+[ext_resource type="Texture2D" uid="uid://2qpja723bsxk" path="res://Assets/UI/components/vineyard_background.png" id="1_dpfhl"]
+[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://Assets/UI/components/PatrickHand-Regular.ttf" id="2_ullma"]
+[ext_resource type="PackedScene" uid="uid://1emdtobltgm2" path="res://Assets/UI/components/player_slot.tscn" id="3_7pt4q"]
+
+[node name="LobbyMenu" type="Control" unique_id=2100078995]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1729723409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dpfhl")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="." unique_id=1219844033]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.5
+offset_right = 60.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_ullma")
+theme_override_font_sizes/font_size = 40
+text = "MULTIPLATER LOBBY"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1403549003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 80.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="PlayerSlot1" parent="HBoxContainer" unique_id=533061094 instance=ExtResource("3_7pt4q")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerSlot2" parent="HBoxContainer" unique_id=196775811 instance=ExtResource("3_7pt4q")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerLabel" parent="HBoxContainer/PlayerSlot2" index="2" unique_id=1281949171]
+text = "PLAYER 2"
+
+[node name="PlayerSlot3" parent="HBoxContainer" unique_id=2120201044 instance=ExtResource("3_7pt4q")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerLabel" parent="HBoxContainer/PlayerSlot3" index="2" unique_id=1281949171]
+text = "PLAYER 3"
+
+[node name="PlayerSlot4" parent="HBoxContainer" unique_id=1871407805 instance=ExtResource("3_7pt4q")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerLabel" parent="HBoxContainer/PlayerSlot4" index="2" unique_id=1281949171]
+text = "PLAYER 4"
+
+[editable path="HBoxContainer/PlayerSlot1"]
+[editable path="HBoxContainer/PlayerSlot2"]
+[editable path="HBoxContainer/PlayerSlot3"]
+[editable path="HBoxContainer/PlayerSlot4"]
