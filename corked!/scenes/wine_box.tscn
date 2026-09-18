@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://m5udotpvpqfs"]
+
+[ext_resource type="Script" uid="uid://dkhahqyh2bhu" path="res://src/wine_box.gd" id="1_jp33x"]
+
+[node name="WineBox" type="Node3D" unique_id=1255428863]
+script = ExtResource("1_jp33x")

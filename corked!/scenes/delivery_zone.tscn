@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfcfgoxjkica0"]
+
+[ext_resource type="Script" uid="uid://bke3bjniys1wk" path="res://src/delivery_zone.gd" id="1_lr5rh"]
+
+[node name="DeliveryZone" type="Node3D" unique_id=1947463298]
+script = ExtResource("1_lr5rh")
