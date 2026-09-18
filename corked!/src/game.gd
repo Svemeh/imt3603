@@ -9,19 +9,24 @@ var quota: int = 0
 func _ready() -> void:
 	hud.update_money(money)
 	hud.update_quota(quota)
+	round_timer.time_updated.connect(_on_round_timer_time_updated)
 	round_timer.round_ended.connect(_on_round_timer_round_ended)
 	round_timer.start_round()
 
 ## Increments money up or down by x and refreshes the HUD.
-func increment_money(x: int) -> void:
-	money += x
+func increment_money(amount: int) -> void:
+	money += amount
 	hud.update_money(money)
 
 ## Increments quota by x (e.g. from a valid delivery) and refreshes the HUD.
-func increment_quota(x: int) -> void:
-	quota += x
+func increment_quota(amount: int) -> void:
+	quota += amount
 	hud.update_quota(quota)
+
+## Forwards the timer's remaining time to the HUD's progress bar.
+func _on_round_timer_time_updated(time_left: float) -> void:
+	hud.update_timer(time_left, round_timer.round_duration)
 
 ## Called when a round's timer hits zero. Ends the game.
 func _on_round_timer_round_ended() -> void:
-	get_tree().change_scene_to_file("res://scenes/UI/menus/game_over.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
