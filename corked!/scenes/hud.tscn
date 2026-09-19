@@ -28,3 +28,14 @@ text = "Quota: "
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "$ "
+
+[node name="TimerBar" type="ProgressBar" parent="." unique_id=1813536167]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 50.0
+show_percentage = false

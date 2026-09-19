@@ -14,16 +14,6 @@ transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49
 
 [node name="Hud" parent="." unique_id=1628769219 instance=ExtResource("3_iywne")]
 
-[node name="TimerBar" type="ProgressBar" parent="Hud" unique_id=1955284652]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = 20.0
-offset_right = 150.0
-offset_bottom = 50.0
-
 [node name="Player" parent="." unique_id=356390014 instance=ExtResource("2_lbhrr")]
 
 [node name="Vineyard" parent="." unique_id=1223427269 instance=ExtResource("1_lnu2h")]
