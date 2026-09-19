@@ -2,6 +2,7 @@ extends Control
 
 @onready var money_label = $MarginContainer/VBoxContainer/MoneyLabel
 @onready var quota_label = $MarginContainer/VBoxContainer/QuotaLabel
+@onready var timer_bar: ProgressBar = $TimerBar
 
 # Ha to funksjoner - update_money(), update_quota(int: money). Disse har et 
 # tall: starter på null ( 0 ) og oppdateres etter en quota er oppfylt eller en 
@@ -16,3 +17,9 @@ func update_money(amount: int) -> void:
 ## updating the quota label.
 func update_quota(amount: int):
 	quota_label.text = "Quota " + str(amount)
+
+## Updates the round timer progress bar. time_left and round_duration are both
+## in seconds; the bar fills from empty to full as time elapses.
+func update_timer(time_left: float, round_duration: float) -> void:
+	timer_bar.max_value = round_duration
+	timer_bar.value = round_duration - time_left
