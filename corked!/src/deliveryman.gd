@@ -11,7 +11,8 @@ func finish_delivery(delivered_items: Array[WineBox]) -> void:
 		return
 	
 	# not sure if this should be here or in game.gd but:
-	# TODO: check if we hit quota
+	# TODO: stop round timer
+	# TODO: check if we hit quota: handle not hitting quota = loss?
 	# TODO: add money earned
 	# TODO: start next phase, aka upgradeing phase
 	
