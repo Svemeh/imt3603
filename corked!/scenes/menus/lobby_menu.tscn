@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://drdld7tsbkjnp"]
 
+[ext_resource type="Script" uid="uid://bbufu6h0wj057" path="res://src/lobby_menu.gd" id="1_7pt4q"]
 [ext_resource type="Texture2D" uid="uid://ct4gvq1qrpld0" path="res://Assets/UI/components/lobby_background.png" id="1_ullma"]
 [ext_resource type="Texture2D" uid="uid://drlmk8na3xuoa" path="res://Assets/UI/components/MultiplayerLobby.png" id="2_ullma"]
 [ext_resource type="PackedScene" uid="uid://1emdtobltgm2" path="res://Assets/UI/components/player_slot.tscn" id="3_7pt4q"]
@@ -16,6 +17,7 @@ offset_right = 2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7pt4q")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1729723409]
 layout_mode = 1
@@ -139,13 +141,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -282.0
-offset_top = -93.0
-offset_right = -2.0
-offset_bottom = 0.0
+offset_left = -280.0
+offset_top = -96.0
+offset_right = 0.0
+offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "START GAME"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]
 
 [editable path="CenterContainer/HBoxContainer/PlayerSlot1"]
 [editable path="CenterContainer/HBoxContainer/PlayerSlot2"]
