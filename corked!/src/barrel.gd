@@ -14,6 +14,7 @@ func _ready() -> void:
 ## should check max_capacity (or the current juice amount)
 func add_juice(amount: int) -> void:
 	juice_amount += amount
+	print("Barrel juice: ", juice_amount, "/", MAX_CAPACITY)
 
 func get_display_name() -> String:
 	return "%s (%d/%d)" % [display_name, juice_amount, MAX_CAPACITY]

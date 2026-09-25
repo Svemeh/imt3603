@@ -34,7 +34,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	elif event.is_action_pressed("interact2"):
 		if is_holding():
-			drop_item()
+			if not try_give_item():
+				drop_item()
 		else:
 			try_pickup()
 
@@ -181,6 +182,8 @@ func recieve_item(item: Item) -> bool:
 		return false
 	
 	held_item = item
+	item.freeze = true
+	add_collision_exception_with(item)
 	_items_in_range.erase(item)
 	
 	if item.get_parent() == null:
@@ -208,4 +211,24 @@ func drop_item() -> void:
 	var world_pos := hand_marker.global_position
 	
 	item.reparent(get_tree().current_scene)
+	item.freeze = false
+	remove_collision_exception_with(item)
 	item.global_position = world_pos
+
+## Gives the held item to the nearest interactable that accepts it
+func try_give_item() -> bool:
+	print("in range: ", _in_range)
+	print("holding: ", held_item, " is Grape: ", held_item is Grape)
+	var best: Interactable = null
+	var best_dist := INF
+	for i in _in_range:
+		if not i.can_accept_item(held_item):
+			continue
+		var d := global_position.distance_to(i.global_position)
+		if d < best_dist:
+			best_dist = d
+			best = i
+	if best == null:
+		return false
+	best.accept_item(self)
+	return true
