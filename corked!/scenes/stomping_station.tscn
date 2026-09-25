@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b6hkmvrjfcamk"]
+
+[ext_resource type="Script" uid="uid://i21bfx4cw1xv" path="res://src/stomping_station.gd" id="1_tpiyq"]
+
+[node name="StompingStation" type="Node3D" unique_id=83662106]
+script = ExtResource("1_tpiyq")

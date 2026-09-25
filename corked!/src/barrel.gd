@@ -10,9 +10,6 @@ var juice_amount: int = 0
 func _ready() -> void:
 	display_name = "Barrel"
 
-func current_juice_amount() -> int:
-	return juice_amount
-
 ## Adds amount of units of grape juice. Does not clamp, stomping station
 ## should check max_capacity (or the current juice amount)
 func add_juice(amount: int) -> void:
