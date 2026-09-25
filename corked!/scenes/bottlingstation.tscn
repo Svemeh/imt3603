@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bvhe18jajy76h"]
+
+[ext_resource type="Script" uid="uid://o573u3y734nf" path="res://src/bottlingstation.gd" id="1_4ospr"]
+
+[node name="Bottlingstation" type="Node3D" unique_id=678339049]
+script = ExtResource("1_4ospr")
