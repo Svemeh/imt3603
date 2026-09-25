@@ -156,7 +156,8 @@ func is_holding() -> bool:
 	return held_item != null
 
 ## Picks up the nearest loose item on the ground. Does nothing when hands
-## are full or nothing is in range.
+## are full or nothing is in range. Skips items that are locked in place
+## (can_pick_up == false), e.g. a barrel still fermenting in a station.
 func try_pickup() -> void:
 	if held_item != null:
 		return
@@ -164,6 +165,8 @@ func try_pickup() -> void:
 	var best: Item = null
 	var best_dist := INF
 	for i in _items_in_range:
+		if not i.can_pick_up:  # NEW
+			continue           # NEW
 		var d := global_position.distance_to(i.global_position)
 		if d < best_dist:
 			best_dist = d

@@ -6,3 +6,6 @@ extends RigidBody3D
 
 func get_display_name() -> String:
 	return display_name
+
+## False while the item is locked in place (e.g. a fermenting barrel)
+var can_pick_up: bool = true

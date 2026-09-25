@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cew2akjslgdes"]
+
+[sub_resource type="GDScript" id="GDScript_mv5f0"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="FermentationStation" type="Node2D" unique_id=479181345]
+script = SubResource("GDScript_mv5f0")

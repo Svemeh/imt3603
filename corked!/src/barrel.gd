@@ -7,6 +7,9 @@ extends Item
 ## Grape juice units currently stored- 1 press/stomped grape = 1 unit
 var juice_amount: int = 0
 
+## True once the barrel holds finished wine instead of juice
+var is_wine: bool = false 
+
 func _ready() -> void:
 	display_name = "Barrel"
 
@@ -16,4 +19,5 @@ func add_juice(amount: int) -> void:
 	juice_amount += amount
 
 func get_display_name() -> String:
-	return "%s (%d/%d)" % [display_name, juice_amount, MAX_CAPACITY]
+	var name_text := "Wine barrel" if is_wine else display_name
+	return "%s (%d/%d)" % [name_text, juice_amount, MAX_CAPACITY]
