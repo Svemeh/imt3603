@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://chvampk6c0s4s"]
 
-[ext_resource type="Script" uid="uid://dvjwe21kype1j" path="res://src/credits_menu.gd" id="1_avg4p"]
-[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://Assets/UI/components/menu_button.tscn" id="2_hcix8"]
-[ext_resource type="Texture2D" uid="uid://2qpja723bsxk" path="res://Assets/UI/components/vineyard_background.png" id="2_wasyk"]
-[ext_resource type="Texture2D" uid="uid://bcf0yxfaiferx" path="res://Assets/UI/components/settings_panel.png" id="3_8ughu"]
-[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://Assets/UI/components/PatrickHand-Regular.ttf" id="4_8ughu"]
-[ext_resource type="Texture2D" uid="uid://c6wvkhxlnoqjw" path="res://Assets/UI/components/corked_logo.png" id="5_x1up7"]
+[ext_resource type="Script" uid="uid://dvjwe21kype1j" path="res://src/menus/credits_menu.gd" id="1_avg4p"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://assets/ui/menu_button.tscn" id="2_hcix8"]
+[ext_resource type="Texture2D" uid="uid://2qpja723bsxk" path="res://assets/ui/vineyard_background.png" id="2_wasyk"]
+[ext_resource type="Texture2D" uid="uid://bcf0yxfaiferx" path="res://assets/ui/settings_panel.png" id="3_8ughu"]
+[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="4_8ughu"]
+[ext_resource type="Texture2D" uid="uid://c6wvkhxlnoqjw" path="res://assets/ui/corked_logo.png" id="5_x1up7"]
 
 [node name="CreditsMenu" type="Control" unique_id=591379799]
 layout_mode = 3

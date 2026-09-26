@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://57pj4qwcl35c"]
-
-[ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/round_timer.gd" id="1_qqito"]
-
-[node name="RoundTimer" type="Node" unique_id=441334818]
-script = ExtResource("1_qqito")

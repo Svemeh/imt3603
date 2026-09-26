@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://drdld7tsbkjnp"]
 
-[ext_resource type="Script" uid="uid://bbufu6h0wj057" path="res://src/lobby_menu.gd" id="1_7pt4q"]
-[ext_resource type="Texture2D" uid="uid://ct4gvq1qrpld0" path="res://Assets/UI/components/lobby_background.png" id="1_ullma"]
-[ext_resource type="Texture2D" uid="uid://drlmk8na3xuoa" path="res://Assets/UI/components/MultiplayerLobby.png" id="2_ullma"]
-[ext_resource type="PackedScene" uid="uid://1emdtobltgm2" path="res://Assets/UI/components/player_slot.tscn" id="3_7pt4q"]
-[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://Assets/UI/components/menu_button.tscn" id="4_7pt4q"]
+[ext_resource type="Script" uid="uid://bbufu6h0wj057" path="res://src/menus/lobby_menu.gd" id="1_7pt4q"]
+[ext_resource type="Texture2D" uid="uid://ct4gvq1qrpld0" path="res://assets/ui/lobby_background.png" id="1_ullma"]
+[ext_resource type="Texture2D" uid="uid://drlmk8na3xuoa" path="res://assets/ui/MultiplayerLobby.png" id="2_ullma"]
+[ext_resource type="PackedScene" uid="uid://1emdtobltgm2" path="res://assets/ui/player_slot.tscn" id="3_7pt4q"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://assets/ui/menu_button.tscn" id="4_7pt4q"]
 
 [node name="LobbyMenu" type="Control" unique_id=2100078995]
 layout_mode = 3
