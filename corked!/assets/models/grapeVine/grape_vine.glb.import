@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dyf7dh7kwlxx8"
-path="res://.godot/imported/grape_vine.glb-b5b65ee007f76192848d33ddc6ebf322.scn"
+path="res://.godot/imported/grape_vine.glb-b0c8a92a931749997c4bd37b55f6c2fd.scn"
 
 [deps]
 
-source_file="res://assets/models/grape/grape_vine.glb"
-dest_files=["res://.godot/imported/grape_vine.glb-b5b65ee007f76192848d33ddc6ebf322.scn"]
+source_file="res://assets/models/grapeVine/grape_vine.glb"
+dest_files=["res://.godot/imported/grape_vine.glb-b0c8a92a931749997c4bd37b55f6c2fd.scn"]
 
 [params]
 
