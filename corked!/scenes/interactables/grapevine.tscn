@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dv3jwjtchedk1" path="res://src/interactables/grapevine.gd" id="1_kcfbs"]
 
-[node name="Grapevine" type="Node3D" unique_id=288381731]
+[node name="Grapevine" type="StaticBody3D" unique_id=601012990]
 script = ExtResource("1_kcfbs")
+metadata/_custom_type_script = "uid://d0hyj5o0ntn61"
 
 [node name="Timer" type="Timer" parent="." unique_id=1996272969]
 wait_time = 10.0

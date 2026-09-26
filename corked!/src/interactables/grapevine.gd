@@ -5,7 +5,7 @@ extends Interactable
 ## A harvestable vine. Interacting with it creates one Grape item and hands it
 ## straight to the player. Each vine gives one grape.
 
-const GRAPE_SCENE: PackedScene = preload("res://scenes/grape.tscn")
+const GRAPE_SCENE: PackedScene = preload("res://scenes/items/grape.tscn")
 @onready var timer = $Timer
 
 ## How many grapes a single harvest from this vine yields
