@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://37rmmgh3j1t0"
-path.s3tc="res://.godot/imported/empty_bottle_0.jpg-9aedbd5c6370f946e37cc167b52d7a8c.s3tc.ctex"
+uid="uid://2b6kn76yks0r"
+path.s3tc="res://.godot/imported/fermentation_station_0.jpg-2a60817ca0582770a67fbe2a14ba630f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "afc742037b9c56cfd09fc03f257c5ed0"
+"md5": "786ad085221c58585ba759c7d0d1ff44"
 }
 
 [deps]
 
-source_file="res://models/emptyBottle/empty_bottle_0.jpg"
-dest_files=["res://.godot/imported/empty_bottle_0.jpg-9aedbd5c6370f946e37cc167b52d7a8c.s3tc.ctex"]
+source_file="res://assets/models/fermentationStation/fermentation_station_0.jpg"
+dest_files=["res://.godot/imported/fermentation_station_0.jpg-2a60817ca0582770a67fbe2a14ba630f.s3tc.ctex"]
 
 [params]
 

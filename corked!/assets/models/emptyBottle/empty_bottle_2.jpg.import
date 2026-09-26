@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba2d356a8oln8"
-path.s3tc="res://.godot/imported/bottlingStation_0.jpg-cd9334a6abcbb2252d36e70a783afa4a.s3tc.ctex"
+uid="uid://bxjf2y2vvqk3a"
+path.s3tc="res://.godot/imported/empty_bottle_2.jpg-155a2e725d6222ccd8b6a663fd4e1c9d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9f0aa85fd84bca39165c86c44e59f6b4"
+"md5": "b37f1c449522e5487b12d8b67daad56c"
 }
 
 [deps]
 
-source_file="res://models/bottlingStation/bottlingStation_0.jpg"
-dest_files=["res://.godot/imported/bottlingStation_0.jpg-cd9334a6abcbb2252d36e70a783afa4a.s3tc.ctex"]
+source_file="res://assets/models/emptyBottle/empty_bottle_2.jpg"
+dest_files=["res://.godot/imported/empty_bottle_2.jpg-155a2e725d6222ccd8b6a663fd4e1c9d.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://models/emptyBottle/empty_bottle_2.jpg"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

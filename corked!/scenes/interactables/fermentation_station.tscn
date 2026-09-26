@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://cew2akjslgdes"]
 
-[sub_resource type="GDScript" id="GDScript_mv5f0"]
-script/source = "extends Node2D
+[ext_resource type="Script" uid="uid://bo5vpjjje4ccp" path="res://src/interactables/fermentation_station.gd" id="1_ferm"]
+[ext_resource type="PackedScene" uid="uid://mtcml5jxjogf" path="res://assets/models/fermentationStation/fermentation_station.glb" id="2_ferm"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ferm"]
+size = Vector3(4, 2.2, 3.5)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+[node name="FermentationStation" type="StaticBody3D" unique_id=479181345]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_ferm")
 
+[node name="Model" parent="." instance=ExtResource("2_ferm")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0.02)
+shape = SubResource("BoxShape3D_ferm")
 
-[node name="FermentationStation" type="Node2D" unique_id=479181345]
-script = SubResource("GDScript_mv5f0")
+[node name="PourMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, -1.12, -1)
+
+[node name="BarrelMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, -0.6, 1)
+
+[node name="FermentTimer" type="Timer" parent="."]
