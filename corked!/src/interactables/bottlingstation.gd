@@ -166,7 +166,7 @@ func _on_bottle_arrived(bottle: Node3D, target_crate: WineBox) -> void:
 
 
 ## Moves the bottle along an arc from the conveyor end to its crate slot.
-## t gous from 0 to 1 over hop_time
+## t goes from 0 to 1 over hop_time
 func _hop_bottle(t: float, bottle: Node3D, from: Vector3, to: Vector3) -> void:
 	bottle.global_position = from.lerp(to, t) + Vector3.UP * sin(t * PI) * hop_height
 

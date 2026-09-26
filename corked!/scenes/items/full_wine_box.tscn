@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c5nrxiaxiy3sl"]
+
+[ext_resource type="PackedScene" uid="uid://b145ykmnalmo" path="res://assets/models/wineCrateWithWine/winecrate_withwine.glb" id="1_kwfab"]
+
+[node name="FullWineBox" type="Node3D" unique_id=735876761]
+
+[node name="winecrate_withwine" parent="." unique_id=380110787 instance=ExtResource("1_kwfab")]

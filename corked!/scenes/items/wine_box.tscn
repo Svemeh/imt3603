@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkhahqyh2bhu" path="res://src/items/wine_box.gd" id="1_jp33x"]
 [ext_resource type="PackedScene" uid="uid://dtx83s36hgfjq" path="res://assets/models/WineCrate/wine_crate.glb" id="2_7wuki"]
+[ext_resource type="PackedScene" uid="uid://c5nrxiaxiy3sl" path="res://scenes/items/full_wine_box.tscn" id="3_uxydl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
 size = Vector3(1.3234863, 1.3830566, 1.3235397)
@@ -12,8 +13,25 @@ gravity_scale = 0.0
 freeze = true
 script = ExtResource("1_jp33x")
 
-[node name="wine_crate" parent="." unique_id=2070446941 instance=ExtResource("2_7wuki")]
+[node name="EmptyVisual" parent="." unique_id=2070446941 instance=ExtResource("2_7wuki")]
+
+[node name="FullVisual" parent="." unique_id=735876761 instance=ExtResource("3_uxydl")]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2133387884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005004883, 0.029907227, 0.009906769)
 shape = SubResource("BoxShape3D_l0bqs")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1313274640]
+
+[node name="Marker3D" type="Marker3D" parent="Node3D" unique_id=1612518450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18907833, 0, -0.14927268)
+
+[node name="Marker3D2" type="Marker3D" parent="Node3D" unique_id=405924323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20898199, 0, -0.16917574)
+
+[node name="Marker3D3" type="Marker3D" parent="Node3D" unique_id=1778753892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17912674, 0, 0.15922427)
+
+[node name="Marker3D4" type="Marker3D" parent="Node3D" unique_id=1513080568]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.2189331, 0, 0.16917562)

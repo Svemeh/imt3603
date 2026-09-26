@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/interactables/stomping_station.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://06igqmhwgbxb" path="res://scenes/interactables/bottlingstation.tscn" id="9_0tnpc"]
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=299118941]
-transform = Transform3D(1, 0, 0, 0, 0.6679625, 0.744195, 0, -0.744195, 0.6679625, -1.664118, 7.489826, 5.510537)
+transform = Transform3D(1, 0, 0, 0, 0.6679625, 0.744195, 0, -0.744195, 0.6679625, 7.6357136, 12.500021, 13.838365)
 
 [node name="Hud" parent="." unique_id=1628769219 instance=ExtResource("3_iywne")]
 
@@ -46,3 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.426157, 0, -3.253932)
 transform = Transform3D(1, 0, 0, 0, 0.018048212, 0.99983716, 0, -0.99983716, 0.018048212, -3.4429789, 16.350994, 3.0953827)
 light_energy = 50.0
 spot_range = 31.882313
+
+[node name="Bottlingstation" parent="." unique_id=572116914 instance=ExtResource("9_0tnpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.303175, 0.7154064, -0.19367027)

@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47521353, 0, -0.5525742)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2930231, 0, -0.7625523)
 
 [node name="CapPoint" type="Marker3D" parent="BottlePath" unique_id=525099979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0502086, 0, 0.26523545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0502086, 0, -0.4229214)
 
 [node name="ConveyorEnd" type="Marker3D" parent="BottlePath" unique_id=568852650]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0339565, 0, 2.823508)
