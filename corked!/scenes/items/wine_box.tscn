@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://m5udotpvpqfs"]
 
 [ext_resource type="Script" uid="uid://dkhahqyh2bhu" path="res://src/items/wine_box.gd" id="1_jp33x"]
+[ext_resource type="PackedScene" uid="uid://dtx83s36hgfjq" path="res://assets/models/WineCrate/wine_crate.glb" id="2_7wuki"]
 
-[node name="WineBox" type="Node3D" unique_id=1255428863]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
+size = Vector3(1.3234863, 1.3830566, 1.3235397)
+
+[node name="WineBox" type="RigidBody3D" unique_id=962775047]
+collision_layer = 128
+gravity_scale = 0.0
+freeze = true
 script = ExtResource("1_jp33x")
+
+[node name="wine_crate" parent="." unique_id=2070446941 instance=ExtResource("2_7wuki")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2133387884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005004883, 0.029907227, 0.009906769)
+shape = SubResource("BoxShape3D_l0bqs")

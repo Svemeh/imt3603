@@ -8,7 +8,7 @@ extends Item
 var juice_amount: int = 0
 
 ## True once the barrel holds finished wine instead of juice
-var is_wine: bool = false 
+var is_wine: bool = true 
 
 func _ready() -> void:
 	display_name = "Barrel"
