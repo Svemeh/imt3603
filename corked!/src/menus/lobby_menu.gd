@@ -1,28 +1,38 @@
 extends Control
 
+@onready var player_slots: Array = [
+	$CenterContainer/HBoxContainer/PlayerSlot1,
+	$CenterContainer/HBoxContainer/PlayerSlot2,
+	$CenterContainer/HBoxContainer/PlayerSlot3,
+	$CenterContainer/HBoxContainer/PlayerSlot4
+]
 
-# @onready var player_slots: Array = [
-#	$CenterContainer/HBoxContainer/PlayerSlot1,
-#	$CenterContainer/HBoxContainer/PlayerSlot2,
-#	$CenterContainer/HBoxContainer/PlayerSlot3,
-#	$CenterContainer/HBoxContainer/PlayerSlot4
-#]
+func _ready() -> void:
+	PlayerManager.clear()
+	for i in player_slots.size():
+		player_slots[i].get_node("PlayerPlaque/PlayerLabel").text = "PLAYER %d" % (i + 1)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_echo():
+		return
 
-#func _unhandled_input(event: InputEvent) -> void:
-#	if event.is_action_pressed("ui_accept"):
-#		join_next_player()
+	var device: int = PlayerManager.KEYBOARD if (event is InputEventKey or event is InputEventMouseButton) else event.device
 
-
-#func join_next_player() -> void:
-#	for slot in player_slots:
-#		if not slot.joined:
-#			slot.set_joined(true)
-#			return
+	if event.is_action_pressed("interact"):
+		var i := PlayerManager.join(device)
+		if i != -1:
+			player_slots[i].set_joined(true)
+			get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("interact2"):
+		var i := PlayerManager.leave(device)
+		if i != -1:
+			player_slots[i].set_joined(false)
+			get_viewport().set_input_as_handled()
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
-
 func _on_start_game_button_pressed() -> void:
+	if PlayerManager.player_count() == 0:
+		return
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

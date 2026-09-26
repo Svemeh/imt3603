@@ -22,6 +22,11 @@ const RUN_ANIMATION := "Meshy_AI_Animation_Running_withSkin/Running"
 ## item currently held
 var held_item: Item = null
 
+var player_index := 0
+
+func act(action: String) -> String:
+	return "%s_%d" % [action, player_index]
+
 func _ready() -> void:
 	animation_player.play(IDLE_ANIMATION)
 
@@ -29,10 +34,10 @@ func _ready() -> void:
 ## "interact2" is the hands button: drop what is held, otherwise pick up
 ## the nearest loose item on the ground.
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed(act("interact")):
 		try_interact()
 	
-	elif event.is_action_pressed("interact2"):
+	elif event.is_action_pressed(act("interact2")):
 		if is_holding():
 			if not try_give_item():
 				drop_item()
@@ -41,16 +46,16 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	var input := Input.get_vector(
-		"left",
-		"right",
-		"up",
-		"down"
+		act("left"),
+		act("right"),
+		act("up"),
+		act("down")
 	)
 	
 	var direction := Vector3(input.x, 0.0, input.y).normalized()
 	
 	var is_moving := direction != Vector3.ZERO
-	var is_running := is_moving and Input.is_action_pressed("run")
+	var is_running := is_moving and Input.is_action_pressed(act("run"))
 	
 	# ANIMATIONS
 	if is_running:
@@ -220,8 +225,6 @@ func drop_item() -> void:
 
 ## Gives the held item to the nearest interactable that accepts it
 func try_give_item() -> bool:
-	print("in range: ", _in_range)
-	print("holding: ", held_item, " is Grape: ", held_item is Grape)
 	var best: Interactable = null
 	var best_dist := INF
 	for i in _in_range:

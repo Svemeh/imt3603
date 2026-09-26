@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bjh1eywqlwr3r" path="res://src/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://citi8vkh1rf21" path="res://scenes/vineyard.tscn" id="1_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://bepr0l4ydcf10" path="res://scenes/player.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/ui/hud.tscn" id="3_iywne"]
 [ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/ui/round_timer.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bf4afr7b4q3nn" path="res://scenes/interactables/grapevine.tscn" id="6_0tnpc"]
@@ -18,8 +17,6 @@ script = ExtResource("1_lbhrr")
 transform = Transform3D(1, 0, 0, 0, 0.48392218, 0.87511104, 0, -0.87511104, 0.48392218, -1.664118, 14.93939, 9.780459)
 
 [node name="Hud" parent="." unique_id=1628769219 instance=ExtResource("3_iywne")]
-
-[node name="Player" parent="." unique_id=356390014 instance=ExtResource("2_lbhrr")]
 
 [node name="Vineyard" parent="." unique_id=1223427269 instance=ExtResource("1_lnu2h")]
 
@@ -45,3 +42,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.12, -3)
 transform = Transform3D(1, 0, 0, 0, 0.018048212, 0.99983716, 0, -0.99983716, 0.018048212, -1.9988929, 18.671791, 3.1372757)
 light_energy = 50.0
 spot_range = 31.882313
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=1320673849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0802565, 0, 1.523896)
+
+[node name="Spawn" type="Marker3D" parent="SpawnPoints" unique_id=698894476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Spawn2" type="Marker3D" parent="SpawnPoints" unique_id=958923252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Spawn3" type="Marker3D" parent="SpawnPoints" unique_id=272314216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Spawn4" type="Marker3D" parent="SpawnPoints" unique_id=1804165664]
