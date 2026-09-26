@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://1emdtobltgm2"]
+
+[ext_resource type="PackedScene" uid="uid://nhfywh5mdf1x" path="res://scenes/ui/player_preview.tscn" id="1_gvmm8"]
+[ext_resource type="Script" uid="uid://c0no4rddr60he" path="res://src/menus/player_slot.gd" id="1_kebm6"]
+[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="1_oiysc"]
+[ext_resource type="Texture2D" uid="uid://ctaqkhchfnlcy" path="res://assets/ui/player_plaque.png" id="3_erj7i"]
+[ext_resource type="Texture2D" uid="uid://c20ds1ad4ii2b" path="res://assets/ui/Barrell.png" id="4_erj7i"]
+[ext_resource type="Texture2D" uid="uid://cvd3xt86ccs6l" path="res://assets/ui/Join_Plaque.png" id="6_81nbd"]
+[ext_resource type="Texture2D" uid="uid://bgpa64bcod5px" path="res://assets/ui/AIcon.png" id="7_bxnff"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgpty"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PlayerSlot" type="Control" unique_id=533061094]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -902.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kebm6")
+
+[node name="Panel" type="Panel" parent="." unique_id=2072034442]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgpty")
+
+[node name="CharacterArea" type="SubViewportContainer" parent="." unique_id=1667883967]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -195.0
+offset_right = 163.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterViewport" type="SubViewport" parent="CharacterArea" unique_id=1119446827]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(288, 512)
+render_target_update_mode = 4
+
+[node name="CharacterPreview" type="Node3D" parent="CharacterArea/CharacterViewport" unique_id=1515021372]
+
+[node name="FarmerYellow" parent="CharacterArea/CharacterViewport/CharacterPreview" unique_id=1568777814 instance=ExtResource("1_gvmm8")]
+
+[node name="Camera3D" type="Camera3D" parent="CharacterArea/CharacterViewport/CharacterPreview" unique_id=1438782838]
+transform = Transform3D(1, 0, 0, 0, 0.98480767, 0.17364816, 0, -0.17364816, 0.98480767, 0, 1.1, 3.2)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CharacterArea/CharacterViewport/CharacterPreview" unique_id=103165005]
+
+[node name="PlayerPlaque" type="TextureRect" parent="." unique_id=348540888]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 250.0
+offset_bottom = 200.0
+texture = ExtResource("3_erj7i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlayerLabel" type="Label" parent="PlayerPlaque" unique_id=1281949171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_oiysc")
+theme_override_font_sizes/font_size = 26
+text = "PLAYER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoinLabel" type="Label" parent="." unique_id=1647658974]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -225.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_oiysc")
+theme_override_font_sizes/font_size = 22
+text = "PRESS A TO JOIN"
+horizontal_alignment = 1
+
+[node name="Barrel" type="TextureRect" parent="." unique_id=961258159]
+z_index = -1
+layout_mode = 0
+offset_left = 25.0
+offset_top = 315.0
+offset_right = 235.0
+offset_bottom = 493.0
+texture = ExtResource("4_erj7i")
+expand_mode = 1
+
+[node name="JoinPlaque" type="TextureRect" parent="." unique_id=277209232]
+z_index = 3
+layout_mode = 0
+offset_left = 31.0
+offset_top = 218.0
+offset_right = 221.0
+offset_bottom = 368.0
+texture = ExtResource("6_81nbd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="JoinContent" type="HBoxContainer" parent="JoinPlaque" unique_id=463208374]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PressLabel" type="Label" parent="JoinPlaque/JoinContent" unique_id=1911969622]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oiysc")
+text = "PRESS"
+
+[node name="AIcon" type="TextureRect" parent="JoinPlaque/JoinContent" unique_id=309635853]
+custom_minimum_size = Vector2(20, -15)
+layout_mode = 2
+texture = ExtResource("7_bxnff")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="JoinLabel" type="Label" parent="JoinPlaque/JoinContent" unique_id=262347077]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oiysc")
+text = "TO JOIN"

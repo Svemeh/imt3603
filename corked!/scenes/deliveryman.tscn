@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://blaqtkd7qbo34"]
-
-[ext_resource type="Script" uid="uid://d2sgl8s6ayrxv" path="res://src/deliveryman.gd" id="1_7q55s"]
-
-[node name="Deliveryman" type="Node3D" unique_id=1621832877]
-script = ExtResource("1_7q55s")

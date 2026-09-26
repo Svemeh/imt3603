@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://bjh1eywqlwr3r" path="res://src/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://citi8vkh1rf21" path="res://scenes/vineyard.tscn" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bepr0l4ydcf10" path="res://scenes/player.tscn" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/hud.tscn" id="3_iywne"]
-[ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/round_timer.gd" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/stomping_station.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/grape.tscn" id="7_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/barrel.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/ui/hud.tscn" id="3_iywne"]
+[ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/ui/round_timer.gd" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/interactables/stomping_station.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")

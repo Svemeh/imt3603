@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bepr0l4ydcf10"]
 
 [ext_resource type="Script" uid="uid://dws5hk0ecbclo" path="res://src/player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://ddyh3g84qm3wk" path="res://models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Farmer_Tan_Rigged_biped_Character_output.glb" id="2_qhqgy"]
-[ext_resource type="AnimationLibrary" uid="uid://bu4co4jnm71rs" path="res://models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Animation_Running_withSkin.glb" id="3_dqkch"]
-[ext_resource type="AnimationLibrary" uid="uid://4rqq3hgm1ad6" path="res://models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Farmer_Tan_Rigged_biped_Animation_Walking_withSkin.glb" id="3_qhqgy"]
-[ext_resource type="AnimationLibrary" uid="uid://7306pcxvbhrv" path="res://models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Animation_Idle_3_withSkin.glb" id="3_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://ddyh3g84qm3wk" path="res://assets/models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Farmer_Tan_Rigged_biped_Character_output.glb" id="2_qhqgy"]
+[ext_resource type="AnimationLibrary" uid="uid://bu4co4jnm71rs" path="res://assets/models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Animation_Running_withSkin.glb" id="3_dqkch"]
+[ext_resource type="AnimationLibrary" uid="uid://4rqq3hgm1ad6" path="res://assets/models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Farmer_Tan_Rigged_biped_Animation_Walking_withSkin.glb" id="3_qhqgy"]
+[ext_resource type="AnimationLibrary" uid="uid://7306pcxvbhrv" path="res://assets/models/players/Farmer Tan Rigged/Meshy_AI_Farmer_Tan_Rigged_biped/Meshy_AI_Animation_Idle_3_withSkin.glb" id="3_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wo4y"]
 
