@@ -13,3 +13,9 @@ func interact(_player: Player) -> void:
 ## returns prompt string
 func get_prompt() -> String:
 	return "Interact"
+
+func can_accept_item(_item: Item) -> bool:
+	return false
+
+func accept_item(_player: Player) -> void:
+	pass

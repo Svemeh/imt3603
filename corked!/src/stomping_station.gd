@@ -4,55 +4,74 @@ extends Interactable
 ## How many times the player must interact to finish stomping
 @export var stomps_required: int = 4
 
-## Grape currently in press, if any
-var _grape_in_press: Grape = null
+## Where a docked barrel sits
+@onready var barrel_marker: Marker3D = $barrelMarker
+
+## Grapes handed to this station, stomped one at a time
+var _grapes: Array[Grape] = []
 
 ## Barrel currently docked at this station, if any
 var barrel: Barrel = null
 
-## How many stomps on grapes so far
+## How many stomps on the current grape so far
 var _stomp_progress: int = 0
 
-## Connect this stations won item-detection Area3D body_exited signal
-## to this function. Handles a grape/barrel being picked back up before
-## its done, e.g. someone grabs barrel mid stomp
-func _on_item_zone_body_exited(body: Node3D) -> void:
-	if body == _grape_in_press:
-		_grape_in_press = null
-		_stomp_progress = 0
-	elif body == barrel:
+## Clears the barrel if the player picked it back up
+func _check_barrel() -> void:
+	if barrel and barrel.get_parent() != barrel_marker:
 		barrel = null
+		_stomp_progress = 0
+
+func can_accept_item(item: Item) -> bool:
+	_check_barrel()
+	if item is Grape:
+		return true
+	return item is Barrel and barrel == null
+
+func accept_item(player: Player) -> void:
+	var item := player.transfer_item()
+	player.remove_collision_exception_with(item)
+
+	if item is Barrel:
+		barrel = item
+		item.reparent(barrel_marker)
+		item.position = Vector3.ZERO
+		item.rotation = Vector3.ZERO
+		item.freeze = true
+		return
+
+	item.reparent(self)
+	item.visible = false
+	item.process_mode = Node.PROCESS_MODE_DISABLED
+	_grapes.append(item)
 
 func can_interact(_player: Player) -> bool:
-	if _grape_in_press == null or barrel == null:
+	_check_barrel()
+	if _grapes.is_empty() or barrel == null:
 		return false
 	return barrel.juice_amount < barrel.MAX_CAPACITY
 
 func interact(player: Player) -> void:
 	if not can_interact(player):
 		return
-	
+
 	_stomp_progress += 1
 	if _stomp_progress < stomps_required:
 		return
-	
+
+	var grape: Grape = _grapes.pop_front()
 	var remaining_capacity = barrel.MAX_CAPACITY - barrel.juice_amount
-	
-	var juice_to_add = _grape_in_press.amount
-	if juice_to_add > remaining_capacity:
-		juice_to_add = remaining_capacity
-	barrel.add_juice(juice_to_add)
-	
-	_grape_in_press.queue_free()
-	_grape_in_press = null
+	barrel.add_juice(min(grape.amount, remaining_capacity))
+
+	grape.queue_free()
 	_stomp_progress = 0
 
-
 func get_prompt() -> String:
-	if _grape_in_press == null:
+	_check_barrel()
+	if _grapes.is_empty():
 		return "Put a grape in the press"
 	if barrel == null:
 		return "Place a barrel here"
 	if barrel.juice_amount >= barrel.MAX_CAPACITY:
 		return "Barrel is full"
-	return "Stomp (%d/%d)" % [_stomp_progress, stomps_required]
+	return "Stomp (%d/%d) - %d grapes" % [_stomp_progress, stomps_required, _grapes.size()]

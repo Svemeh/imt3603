@@ -8,7 +8,7 @@ signal time_updated(time_left: float)
 signal round_ended
 
 ## Length of a round, in seconds (360 = 6min).
-@export var round_duration: float = 20.0
+@export var round_duration: float = 360
 
 var time_left: float = 0.0
 var is_running: bool = false
