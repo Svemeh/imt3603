@@ -14,6 +14,10 @@ config/name="Corked!"
 run/main_scene="uid://bmk1ahsnmdbog"
 config/features=PackedStringArray("4.7", "Mobile")
 
+[autoload]
+
+PlayerManager="*uid://b3ycfhy6nsboy"
+
 [display]
 
 window/stretch/mode="canvas_items"

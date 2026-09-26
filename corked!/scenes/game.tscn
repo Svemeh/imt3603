@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bjh1eywqlwr3r" path="res://src/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://citi8vkh1rf21" path="res://scenes/vineyard.tscn" id="1_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://bepr0l4ydcf10" path="res://scenes/player.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/ui/hud.tscn" id="3_iywne"]
 [ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/ui/round_timer.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bf4afr7b4q3nn" path="res://scenes/interactables/grapevine.tscn" id="6_0tnpc"]
@@ -19,8 +18,6 @@ script = ExtResource("1_lbhrr")
 transform = Transform3D(1, 0, 0, 0, 0.6679625, 0.744195, 0, -0.744195, 0.6679625, 7.6357136, 12.500021, 13.838365)
 
 [node name="Hud" parent="." unique_id=1628769219 instance=ExtResource("3_iywne")]
-
-[node name="Player" parent="." unique_id=356390014 instance=ExtResource("2_lbhrr")]
 
 [node name="Vineyard" parent="." unique_id=1223427269 instance=ExtResource("1_lnu2h")]
 

@@ -3,6 +3,8 @@ extends Node
 @onready var hud = $Hud
 @onready var round_timer: RoundTimer = $RoundTimer
 
+const PLAYER_SCENE := preload("res://scenes/player.tscn")
+
 var money: int = 0
 var quota: int = 0
 
@@ -12,6 +14,16 @@ func _ready() -> void:
 	round_timer.time_updated.connect(_on_round_timer_time_updated)
 	round_timer.round_ended.connect(_on_round_timer_round_ended)
 	round_timer.start_round()
+
+	# add the players
+	for i in PlayerManager.MAX_PLAYERS:
+		var device = PlayerManager.slots[i]
+		if device == null:
+			continue
+		var p := PLAYER_SCENE.instantiate()
+		p.player_index = i
+		add_child(p)
+		p.global_position = $SpawnPoints.get_child(i).global_position
 
 ## Increments money up or down by x and refreshes the HUD.
 func increment_money(amount: int) -> void:
