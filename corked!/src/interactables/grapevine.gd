@@ -18,6 +18,7 @@ var has_grape: bool = true
 ## Timer is found as a gd Timer node right under the grapevine node
 func _on_my_timer_timeout():
 	has_grape = true
+	toggleGrapeVisibility() # This whole functions must be reworked when we have change the model
 
 ## Can only be harvested if vine has grape and player hands are free
 func can_interact(player: Player) -> bool:
@@ -33,8 +34,18 @@ func interact(player: Player) -> void:
 	
 	# Bush can not be harvested again before the timer ends
 	has_grape = false
+	toggleGrapeVisibility() # This whole functions must be reworked when we have change the model
 	timer.start()
 	
 
 func get_prompt() -> String:
 	return "Harvest"
+
+## This whole functions must be reworked when we have change the model
+func toggleGrapeVisibility() -> void: 
+	$Vine_station_3_plants/Plant_1/Harvest_Plant1_Cluster1.visible = has_grape
+	$Vine_station_3_plants/Plant_1/Harvest_Plant1_Cluster2.visible = has_grape
+	$Vine_station_3_plants/Plant_2/Harvest_Plant2_Cluster1.visible = has_grape
+	$Vine_station_3_plants/Plant_2/Harvest_Plant2_Cluster2.visible = has_grape
+	$Vine_station_3_plants/Plant_3/Harvest_Plant3_Cluster1.visible = has_grape
+	$Vine_station_3_plants/Plant_3/Harvest_Plant3_Cluster2.visible = has_grape
