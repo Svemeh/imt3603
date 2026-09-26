@@ -8,14 +8,12 @@ extends Item
 ## Bottles currently in the crate
 var bottles: int = 0
 
-@onready var _empty_visual: Node3D = get_node_or_null("EmptyVisual")
-@onready var _full_visual: Node3D = get_node_or_null("FullVisual")
-var _slots: Array[Node] = []
+@onready var _empty_visual: Node3D = $EmptyVisual
+@onready var _full_visual: Node3D = $FullVisual
+@onready var _slots: Array[Node] = $BottleSlots.get_children()
 
 func _ready() -> void:
 	display_name = "Wine Crate"
-	if has_node("BottleSlots"):
-		_slots = $BottleSlots.get_children()
 	_update_visuals()
 
 func is_full() -> bool:
@@ -43,12 +41,9 @@ func add_bottle(bottle: Node3D) -> void:
 	_update_visuals()
 
 func _update_visuals() -> void:
-	if _full_visual == null:
-		return
 	var full := is_full()
 	_full_visual.visible = full
-	if _empty_visual:
-		_empty_visual.visible = not full
+	_empty_visual.visible = not full
 	for slot in _slots:
 		slot.visible = not full
 

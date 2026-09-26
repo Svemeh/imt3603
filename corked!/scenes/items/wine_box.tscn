@@ -8,7 +8,8 @@
 size = Vector3(1.3234863, 1.3830566, 1.3235397)
 
 [node name="WineBox" type="RigidBody3D" unique_id=962775047]
-collision_layer = 128
+collision_layer = 9
+collision_mask = 0
 gravity_scale = 0.0
 freeze = true
 script = ExtResource("1_jp33x")
@@ -22,16 +23,16 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005004883, 0.029907227, 0.009906769)
 shape = SubResource("BoxShape3D_l0bqs")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1313274640]
+[node name="BottleSlots" type="Node3D" parent="." unique_id=1313274640]
 
-[node name="Marker3D" type="Marker3D" parent="Node3D" unique_id=1612518450]
+[node name="Marker3D" type="Marker3D" parent="BottleSlots" unique_id=1612518450]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18907833, 0, -0.14927268)
 
-[node name="Marker3D2" type="Marker3D" parent="Node3D" unique_id=405924323]
+[node name="Marker3D2" type="Marker3D" parent="BottleSlots" unique_id=405924323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20898199, 0, -0.16917574)
 
-[node name="Marker3D3" type="Marker3D" parent="Node3D" unique_id=1778753892]
+[node name="Marker3D3" type="Marker3D" parent="BottleSlots" unique_id=1778753892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17912674, 0, 0.15922427)
 
-[node name="Marker3D4" type="Marker3D" parent="Node3D" unique_id=1513080568]
+[node name="Marker3D4" type="Marker3D" parent="BottleSlots" unique_id=1513080568]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.2189331, 0, 0.16917562)
