@@ -10,13 +10,11 @@ var juice_amount: int = 0
 ## True once the barrel holds finished wine instead of juice
 var is_wine: bool = false
 
-
 # LIQUID VISUAL
 @export var empty_liquid_y: float = -0.35
 @export var full_liquid_y: float = 0.279
 
 @onready var liquid: MeshInstance3D = $Liquid
-
 
 func _ready() -> void:
 	display_name = "Barrel"
