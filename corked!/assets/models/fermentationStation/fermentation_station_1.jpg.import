@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5bg32pgccwys"
-path.s3tc="res://.godot/imported/fermentation_station_2.jpg-80155853d57a2511faf1051ceee58ba9.s3tc.ctex"
+uid="uid://cn2uesqjjmdkr"
+path.s3tc="res://.godot/imported/fermentation_station_1.jpg-78aa23f63a795e26ce3427c605cb76f1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "370b2279ee12233dd06c88d23d2bb7e3"
+"md5": "8fe5f978e219ab9ca3b688576c9d9fbc"
 }
 
 [deps]
 
-source_file="res://models/fermentationStation/fermentation_station_2.jpg"
-dest_files=["res://.godot/imported/fermentation_station_2.jpg-80155853d57a2511faf1051ceee58ba9.s3tc.ctex"]
+source_file="res://assets/models/fermentationStation/fermentation_station_1.jpg"
+dest_files=["res://.godot/imported/fermentation_station_1.jpg-78aa23f63a795e26ce3427c605cb76f1.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://models/fermentationStation/fermentation_station_2.jpg"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b5ad4i3da37af"
-path="res://.godot/imported/empty_bottle.glb-9f0aa76ed2bf49e41a679de49742eb43.scn"
+uid="uid://cc5afrffukisj"
+path="res://.godot/imported/bottlingStation.glb-0fdc13d0dd0855018994fba355ec30e9.scn"
 
 [deps]
 
-source_file="res://models/emptyBottle/empty_bottle.glb"
-dest_files=["res://.godot/imported/empty_bottle.glb-9f0aa76ed2bf49e41a679de49742eb43.scn"]
+source_file="res://assets/models/bottlingStation/bottlingStation.glb"
+dest_files=["res://.godot/imported/bottlingStation.glb-0fdc13d0dd0855018994fba355ec30e9.scn"]
 
 [params]
 

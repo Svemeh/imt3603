@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://mtcml5jxjogf"
-path="res://.godot/imported/fermentation_station.glb-f4b373408fdf35e2c82ad78c66b73f38.scn"
+path="res://.godot/imported/fermentation_station.glb-5aa9b3be0a9410aa513735178d51e037.scn"
 
 [deps]
 
-source_file="res://models/fermentationStation/fermentation_station.glb"
-dest_files=["res://.godot/imported/fermentation_station.glb-f4b373408fdf35e2c82ad78c66b73f38.scn"]
+source_file="res://assets/models/fermentationStation/fermentation_station.glb"
+dest_files=["res://.godot/imported/fermentation_station.glb-5aa9b3be0a9410aa513735178d51e037.scn"]
 
 [params]
 
