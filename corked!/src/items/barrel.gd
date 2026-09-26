@@ -25,7 +25,7 @@ func _ready() -> void:
 ## Adds amount of units of grape juice. Does not clamp, stomping station
 ## should check max_capacity (or the current juice amount)
 func add_juice(amount: int) -> void:
-	juice_amount = min(juice_amount + amount, MAX_CAPACITY)
+	juice_amount += amount
 
 	update_liquid_visual()
 
