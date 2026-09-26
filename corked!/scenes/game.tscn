@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://06igqmhwgbxb" path="res://scenes/interactables/bottlingstation.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://cew2akjslgdes" path="res://scenes/interactables/fermentation_station.tscn" id="9_ferm"]
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
@@ -39,12 +40,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.136524, 0, -1.249383)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.426157, 0.56402254, -3.253932)
 
 [node name="FermentationStation" parent="." unique_id=690214489 instance=ExtResource("9_ferm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.12, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.847372, 1.12, -3)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1873519540]
-transform = Transform3D(1, 0, 0, 0, 0.018048212, 0.99983716, 0, -0.99983716, 0.018048212, -1.9988929, 18.671791, 3.1372757)
-light_energy = 50.0
-spot_range = 31.882313
+transform = Transform3D(1, 0, 0, 0, 0.6081707, 0.79380625, 0, -0.79380625, 0.6081707, -1.9988929, 23.366634, 21.237452)
+light_color = Color(0.99607843, 0.99215686, 0.83137256, 1)
+light_energy = 25.0
+spot_range = 77.18366
+spot_angle = 50.311455
 
 [node name="Bottlingstation" parent="." unique_id=572116914 instance=ExtResource("9_0tnpc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.303175, 0.7154064, -0.19367027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.00436, 0.7154064, -1.4523487)
