@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c7t6sjfrf8fnl"]
+
+[ext_resource type="PackedScene" uid="uid://b5ad4i3da37af" path="res://assets/models/emptyBottle/empty_bottle.glb" id="1_b3c1s"]
+
+[node name="WineBottle" type="Node3D" unique_id=881762694]
+
+[node name="empty_bottle" parent="." unique_id=16902987 instance=ExtResource("1_b3c1s")]
