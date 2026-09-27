@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://models/map/stations/lantern_post.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_post"]
+size = Vector3(0.4, 2.25, 0.4)
+
+[node name="LanternPost" type="Node3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="Collision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+position = Vector3(0, 1.125, 0)
+shape = SubResource("BoxShape3D_post")

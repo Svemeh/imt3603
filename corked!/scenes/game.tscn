@@ -20,3 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49
 
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
+
+[node name="Vineyard2" parent="." unique_id=185069403 instance=ExtResource("1_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0261307, 0, 2.5610466)
