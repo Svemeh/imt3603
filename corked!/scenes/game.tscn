@@ -24,8 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 0.6679625, 0.744195, 0, -0.744195, 0.6679625
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [node name="Grapevine" parent="." unique_id=601012990 instance=ExtResource("6_0tnpc")]
 transform = Transform3D(-0.05794334, 0, 0.99831986, 0, 1, 0, -0.99831986, 0, -0.05794334, -7.8010087, 0, 2.6862078)
 
@@ -64,11 +62,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
 [node name="Marker3D4" type="Marker3D" parent="SpawnPoints" unique_id=187951953]
-=======
-[node name="Vineyard2" parent="." unique_id=185069403 instance=ExtResource("1_lnu2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0261307, 0, 2.5610466)
->>>>>>> c686a34 (feat: started making the map)
-=======
-[node name="Vineyard2" parent="." unique_id=185069403 instance=ExtResource("1_lnu2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0261307, 0, 2.5610466)
->>>>>>> 2a446c2a018f3494496db1ed6a953f535696cb41
