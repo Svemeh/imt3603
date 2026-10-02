@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" path="res://scenes/placeables/wall_post.tscn" id="5_post"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/grape_vine.tscn" id="6_vine"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/grass_tuft_full.tscn" id="7_tuft"]
-[ext_resource type="PackedScene" uid="uid://gvqrhq32lykl" path="res://models/map/placeables/grass_mix.glb" id="8_4ekhs"]
 [ext_resource type="PackedScene" uid="uid://06igqmhwgbxb" path="res://scenes/interactables/bottlingstation.tscn" id="9_7blmr"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/ground_cobble.tscn" id="9_cobble"]
 [ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/interactables/stomping_station.tscn" id="10_t75ul"]
@@ -28,15 +27,11 @@ environment = SubResource("Environment_vineyard")
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=2105773388]
 transform = Transform3D(0.81915206, 0.46984634, -0.32898995, 0, 0.57357645, 0.81915206, 0.57357645, -0.6710101, 0.46984634, 0, 0, 0)
 light_color = Color(1, 0.84, 0.62, 1)
-light_energy = 0.9
+light_energy = 0.5
+light_indirect_energy = 0.8
+light_volumetric_fog_energy = 2.516
 shadow_enabled = true
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=228176054]
-transform = Transform3D(1, 3.6188685e-09, -2.9305005e-09, 0, 0.6293202, 0.7771461, 4.656613e-09, -0.7771461, 0.6293202, 8.32, 52.323, 48)
-projection = 1
-current = true
-size = 21.385
-near = 0.001
+shadow_bias = 1.331
 
 [node name="GroundTiles" type="Node3D" parent="." unique_id=368656832]
 
@@ -526,44 +521,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 4.5)
 
 [node name="PlayerSpawns" type="Node3D" parent="." unique_id=805524003]
 
-[node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=1522562158]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 4.5)
+[node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=427827261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
 
-[node name="Player2" type="Marker3D" parent="PlayerSpawns" unique_id=66226921]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 4.5)
+[node name="Player2" type="Marker3D" parent="PlayerSpawns" unique_id=261488443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 11)
 
-[node name="Player3" type="Marker3D" parent="PlayerSpawns" unique_id=1251625364]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 4.5)
+[node name="Player3" type="Marker3D" parent="PlayerSpawns" unique_id=1356237568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 14)
 
-[node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=2025711353]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
-
-[node name="Player5" type="Marker3D" parent="PlayerSpawns" unique_id=850522554]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 16.484287)
-
-[node name="Player6" type="Marker3D" parent="PlayerSpawns" unique_id=433586043]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 16.484287)
-
-[node name="Player7" type="Marker3D" parent="PlayerSpawns" unique_id=1367448993]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 16.484287)
-
-[node name="ground_mixed2" parent="." unique_id=727050294 instance=ExtResource("8_4ekhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3499765, 0, 4.4995594)
-
-[node name="ground_mixed7" parent="." unique_id=902779778 instance=ExtResource("8_4ekhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5193205, 0, 4.4995594)
-
-[node name="ground_mixed3" parent="." unique_id=1915802902 instance=ExtResource("8_4ekhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3502994, 0, 1.4996562)
-
-[node name="ground_mixed4" parent="." unique_id=669593365 instance=ExtResource("8_4ekhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5236673, 0, 1.4996562)
-
-[node name="ground_mixed5" parent="." unique_id=857077668 instance=ExtResource("8_4ekhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4999127, 0, -1.5071051)
-
-[node name="ground_mixed6" parent="." unique_id=557851717 instance=ExtResource("8_4ekhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3501673, 0, -1.5071051)
+[node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=1622586493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
 
 [node name="Bottlingstation" parent="." unique_id=389281476 instance=ExtResource("9_7blmr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.405085, 2.1090333, -2.555153)
