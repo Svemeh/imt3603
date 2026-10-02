@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" path="res://scenes/placeables/ground_dirt.tscn" id="1_dirt"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/ground_grass.tscn" id="2_grass"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/wall_straight.tscn" id="3_wall"]
-[ext_resource type="PackedScene" path="res://scenes/placeables/wall_window.tscn" id="4_window"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/wall_post.tscn" id="5_post"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/grape_vine.tscn" id="6_vine"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/grass_tuft_full.tscn" id="7_tuft"]
 [ext_resource type="PackedScene" uid="uid://gvqrhq32lykl" path="res://models/map/placeables/grass_mix.glb" id="8_4ekhs"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/ground_cobble.tscn" id="9_cobble"]
 
 [sub_resource type="Environment" id="Environment_vineyard"]
 background_mode = 1
@@ -25,340 +25,468 @@ environment = SubResource("Environment_vineyard")
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=2105773388]
 transform = Transform3D(0.81915206, 0.46984634, -0.32898995, 0, 0.57357645, 0.81915206, 0.57357645, -0.6710101, 0.46984634, 0, 0, 0)
 light_color = Color(1, 0.84, 0.62, 1)
-light_energy = 1.4
+light_energy = 0.9
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=228176054]
-transform = Transform3D(1, 0, 0, 0, 0.60181504, 0.79863554, 0, -0.79863554, 0.60181504, 0, 16, 12)
+transform = Transform3D(1, 0, 0, 0, 0.60181504, 0.79863554, 0, -0.79863554, 0.60181504, 7.481037, 48.651142, 43.62347)
 projection = 1
 current = true
 size = 16.0
 
 [node name="GroundTiles" type="Node3D" parent="." unique_id=368656832]
 
-[node name="Dirt_0_0" parent="GroundTiles" unique_id=1888843531 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3918605, 0, -4.5)
+[node name="Dirt_0_0" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -4.5)
 
-[node name="Dirt_1_0" parent="GroundTiles" unique_id=878288317 instance=ExtResource("1_dirt")]
+[node name="Dirt_1_0" parent="GroundTiles" instance=ExtResource("1_dirt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -4.5)
 
-[node name="Dirt_2_0" parent="GroundTiles" unique_id=1791642990 instance=ExtResource("1_dirt")]
+[node name="Dirt_2_0" parent="GroundTiles" instance=ExtResource("1_dirt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -4.5)
 
-[node name="Dirt_3_0" parent="GroundTiles" unique_id=1199406856 instance=ExtResource("1_dirt")]
+[node name="Cobble_3_0" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -4.5)
 
-[node name="Dirt_4_0" parent="GroundTiles" unique_id=1294479660 instance=ExtResource("1_dirt")]
+[node name="Cobble_4_0" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -4.5)
 
-[node name="Dirt_5_0" parent="GroundTiles" unique_id=114885923 instance=ExtResource("1_dirt")]
+[node name="Cobble_5_0" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -4.5)
 
-[node name="Dirt_1_1" parent="GroundTiles" unique_id=370429228 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9275658, 0.0067026615, -1.5)
+[node name="Cobble_6_0" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -4.5)
 
-[node name="Dirt_3_1" parent="GroundTiles" unique_id=896755450 instance=ExtResource("1_dirt")]
+[node name="Cobble_7_0" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -4.5)
+
+[node name="Cobble_8_0" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, -4.5)
+
+[node name="Grass_9_0" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, -4.5)
+
+[node name="Dirt_0_1" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -1.5)
+
+[node name="Dirt_1_1" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -1.5)
+
+[node name="Dirt_2_1" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1.5)
+
+[node name="Cobble_3_1" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1.5)
 
-[node name="Dirt_4_1" parent="GroundTiles" unique_id=1172265766 instance=ExtResource("1_dirt")]
+[node name="Cobble_4_1" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -1.5)
 
-[node name="Dirt_5_1" parent="GroundTiles" unique_id=554122208 instance=ExtResource("1_dirt")]
+[node name="Cobble_5_1" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -1.5)
 
-[node name="Dirt_3_2" parent="GroundTiles" unique_id=437324974 instance=ExtResource("1_dirt")]
+[node name="Cobble_6_1" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -1.5)
+
+[node name="Cobble_7_1" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -1.5)
+
+[node name="Cobble_8_1" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, -1.5)
+
+[node name="Grass_9_1" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, -1.5)
+
+[node name="Dirt_0_2" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 1.5)
+
+[node name="Dirt_1_2" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 1.5)
+
+[node name="Dirt_2_2" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1.5)
+
+[node name="Cobble_3_2" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
 
-[node name="Dirt_1_2" parent="GroundTiles" unique_id=1167073368 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.937062, 0, 1.5)
-
-[node name="Dirt_4_2" parent="GroundTiles" unique_id=1485637035 instance=ExtResource("1_dirt")]
+[node name="Cobble_4_2" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 1.5)
 
-[node name="Dirt_5_2" parent="GroundTiles" unique_id=1111900197 instance=ExtResource("1_dirt")]
+[node name="Cobble_5_2" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 1.5)
 
-[node name="Dirt_3_3" parent="GroundTiles" unique_id=635016861 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7.555832)
+[node name="Cobble_6_2" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 1.5)
 
-[node name="Grass_4_3" parent="GroundTiles" unique_id=971752719 instance=ExtResource("2_grass")]
+[node name="Cobble_7_2" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 1.5)
+
+[node name="Cobble_8_2" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 1.5)
+
+[node name="Grass_9_2" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 1.5)
+
+[node name="Dirt_0_3" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 4.5)
+
+[node name="Dirt_1_3" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 4.5)
+
+[node name="Dirt_2_3" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 4.5)
+
+[node name="Cobble_3_3" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
+
+[node name="Cobble_4_3" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 4.5)
 
-[node name="Grass_4_3" parent="GroundTiles/Grass_4_3" unique_id=736999430 instance=ExtResource("2_grass")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0072293, 0.0015487671, -0.019233227)
-
-[node name="Dirt_0_4" parent="GroundTiles" unique_id=2101319804 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.504959, 0, 1.5)
-
-[node name="Dirt_1_3" parent="GroundTiles" unique_id=1279418571 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.504959, 0, 1.5)
-
-[node name="Dirt_2_4" parent="GroundTiles" unique_id=745121603 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.50496, 0, 1.5)
-
-[node name="Dirt_4_3" parent="GroundTiles" unique_id=1045375123 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.50496, 0, 1.5)
-
-[node name="Dirt_5_4" parent="GroundTiles" unique_id=921771392 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.50496, 0, 1.5)
-
-[node name="Dirt_5_5" parent="GroundTiles" unique_id=386440165 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.505262, 0, 1.5)
-
-[node name="Dirt_0_5" parent="GroundTiles" unique_id=1385666790 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.504959, 0, 4.5)
-
-[node name="Grass_1_4" parent="GroundTiles" unique_id=1287425931 instance=ExtResource("2_grass")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.504959, 0, 4.5)
-
-[node name="Dirt_2_5" parent="GroundTiles" unique_id=1836801505 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.50496, 0, 4.5)
-
-[node name="Grass_4_4" parent="GroundTiles" unique_id=885774969 instance=ExtResource("2_grass")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.50496, 0, 4.5)
-
-[node name="Grass_4_3" parent="GroundTiles/Grass_4_4" unique_id=1144308685 instance=ExtResource("2_grass")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0072293, 0.0015487671, -0.019233227)
-
-[node name="Dirt_0_6" parent="GroundTiles" unique_id=1281699379 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3517346, 0, 7.484288)
-
-[node name="Dirt_1_4" parent="GroundTiles" unique_id=299495341 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 7.484288)
-
-[node name="Dirt_2_6" parent="GroundTiles" unique_id=1246022201 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 7.484288)
-
-[node name="Dirt_3_4" parent="GroundTiles" unique_id=1865433679 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7.484288)
-
-[node name="Dirt_4_4" parent="GroundTiles" unique_id=200339110 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 7.484288)
-
-[node name="Dirt_5_6" parent="GroundTiles" unique_id=1175200769 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 7.484288)
-
-[node name="Dirt_0_7" parent="GroundTiles" unique_id=923407741 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.356948, 0, 10.484288)
-
-[node name="Dirt_1_5" parent="GroundTiles" unique_id=545431521 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 10.484288)
-
-[node name="Dirt_2_7" parent="GroundTiles" unique_id=642896765 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 10.484288)
-
-[node name="Dirt_3_5" parent="GroundTiles" unique_id=1393463493 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 10.484288)
-
-[node name="Dirt_4_5" parent="GroundTiles" unique_id=1761144688 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 10.484288)
-
-[node name="Dirt_5_7" parent="GroundTiles" unique_id=988199618 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 10.484288)
-
-[node name="Dirt_3_6" parent="GroundTiles" unique_id=1490083759 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 13.484288)
-
-[node name="Dirt_1_6" parent="GroundTiles" unique_id=910104616 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.931048, 0, 4.49039)
-
-[node name="Dirt_2_8" parent="GroundTiles" unique_id=1591267901 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 13.484288)
-
-[node name="Dirt_4_6" parent="GroundTiles" unique_id=1167215264 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 13.484288)
-
-[node name="Dirt_5_8" parent="GroundTiles" unique_id=1472228331 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 13.484288)
-
-[node name="Dirt_0_8" parent="GroundTiles" unique_id=1527245866 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.504959, 0, 13.484288)
-
-[node name="Dirt_1_7" parent="GroundTiles" unique_id=114596047 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.504959, 0, 13.484288)
-
-[node name="Dirt_2_9" parent="GroundTiles" unique_id=1224378676 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.50496, 0, 13.484288)
-
-[node name="Dirt_4_7" parent="GroundTiles" unique_id=1715720692 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.50496, 0, 13.484288)
-
-[node name="Dirt_5_9" parent="GroundTiles" unique_id=1460729798 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.50496, 0, 13.484288)
-
-[node name="Dirt_5_10" parent="GroundTiles" unique_id=68346607 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.505262, 0, 13.484288)
-
-[node name="Dirt_0_9" parent="GroundTiles" unique_id=1279528616 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.504959, 0, 16.484287)
-
-[node name="Grass_1_5" parent="GroundTiles" unique_id=485874539 instance=ExtResource("2_grass")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.504959, 0, 16.484287)
-
-[node name="Dirt_2_10" parent="GroundTiles" unique_id=131274898 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.50496, 0, 16.484287)
-
-[node name="Grass_4_5" parent="GroundTiles" unique_id=1168870549 instance=ExtResource("2_grass")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.50496, 0, 16.484287)
-
-[node name="Grass_4_3" parent="GroundTiles/Grass_4_5" unique_id=1959298370 instance=ExtResource("2_grass")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0072293, 0.0015487671, -0.019233227)
-
-[node name="Dirt_5_3" parent="GroundTiles" unique_id=781218376 instance=ExtResource("1_dirt")]
+[node name="Cobble_5_3" parent="GroundTiles" instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 4.5)
 
-[node name="Dirt_3_2" parent="GroundTiles/Dirt_5_3" unique_id=410001 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.999859, 0, -8.960324)
+[node name="Cobble_6_3" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 4.5)
 
-[node name="Dirt_0_2" parent="GroundTiles/Dirt_5_3" unique_id=1606282646 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9998589, 0, -8.960324)
+[node name="Cobble_7_3" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 4.5)
 
-[node name="Dirt_1_2" parent="GroundTiles/Dirt_5_3" unique_id=358712651 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.999859, 0, -8.960324)
+[node name="Cobble_8_3" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 4.5)
 
-[node name="Dirt_2_2" parent="GroundTiles/Dirt_5_3" unique_id=351449797 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.999859, 0, -8.960324)
+[node name="Grass_9_3" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 4.5)
 
-[node name="Dirt_4_2" parent="GroundTiles/Dirt_5_3" unique_id=1188230913 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.999859, 0, -8.960324)
+[node name="Grass_0_4" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 7.5)
 
-[node name="Dirt_5_2" parent="GroundTiles/Dirt_5_3" unique_id=1513559779 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.999859, 0, -8.960324)
+[node name="Dirt_1_4" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 7.5)
 
-[node name="Dirt_0_3" parent="GroundTiles/Dirt_5_3" unique_id=1756176953 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9998589, 0, -5.9603243)
+[node name="Dirt_2_4" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 7.5)
 
-[node name="Dirt_2_3" parent="GroundTiles/Dirt_5_3" unique_id=1043723422 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961437, 0, -5.9603243)
+[node name="Cobble_3_4" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7.5)
 
-[node name="Dirt_2_4" parent="GroundTiles/Dirt_5_3" unique_id=1777269742 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9851007, 0, -5.9603243)
+[node name="Cobble_4_4" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 7.5)
 
-[node name="Dirt_3_3" parent="GroundTiles/Dirt_5_3" unique_id=604162481 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.951286, 0, -5.963298)
+[node name="Cobble_5_4" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 7.5)
 
-[node name="Dirt_5_3" parent="GroundTiles/Dirt_5_3" unique_id=1592270725 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.947664, 0, -5.9603243)
+[node name="Cobble_6_4" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 7.5)
 
-[node name="Dirt_5_4" parent="GroundTiles/Dirt_5_3" unique_id=1536112243 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.950401, 0, -5.9603243)
+[node name="Cobble_7_4" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 7.5)
 
-[node name="Dirt_3_4" parent="GroundTiles/Dirt_5_3" unique_id=1264125159 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.999859, 0, 3.023964)
+[node name="Cobble_8_4" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 7.5)
 
-[node name="Dirt_0_4" parent="GroundTiles/Dirt_5_3" unique_id=353181163 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9998589, 0, 3.023964)
+[node name="Grass_9_4" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 7.5)
 
-[node name="Dirt_1_3" parent="GroundTiles/Dirt_5_3" unique_id=1433679811 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.999859, 0, 3.023964)
+[node name="Grass_0_5" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 10.5)
 
-[node name="Dirt_2_5" parent="GroundTiles/Dirt_5_3" unique_id=2010135545 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.999859, 0, 3.023964)
+[node name="Dirt_1_5" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 10.5)
 
-[node name="Dirt_4_3" parent="GroundTiles/Dirt_5_3" unique_id=676669379 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.999859, 0, 3.023964)
+[node name="Dirt_2_5" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 10.5)
 
-[node name="Dirt_5_5" parent="GroundTiles/Dirt_5_3" unique_id=650087145 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.999859, 0, 3.023964)
+[node name="Cobble_3_5" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 10.5)
 
-[node name="Dirt_0_5" parent="GroundTiles/Dirt_5_3" unique_id=237575139 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9998589, 0, 6.023964)
+[node name="Cobble_4_5" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 10.5)
 
-[node name="Dirt_2_6" parent="GroundTiles/Dirt_5_3" unique_id=930593068 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961437, 0, 6.023964)
+[node name="Cobble_5_5" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 10.5)
 
-[node name="Dirt_2_7" parent="GroundTiles/Dirt_5_3" unique_id=1372544343 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9851007, 0, 6.023964)
+[node name="Cobble_6_5" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 10.5)
 
-[node name="Dirt_3_5" parent="GroundTiles/Dirt_5_3" unique_id=1211456097 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.951286, 0, 6.0209904)
+[node name="Cobble_7_5" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 10.5)
 
-[node name="Dirt_5_6" parent="GroundTiles/Dirt_5_3" unique_id=454203953 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.947664, 0, 6.023964)
+[node name="Cobble_8_5" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 10.5)
 
-[node name="Dirt_5_7" parent="GroundTiles/Dirt_5_3" unique_id=2018708083 instance=ExtResource("1_dirt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.950401, 0, 6.023964)
+[node name="Grass_9_5" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 10.5)
 
+[node name="Grass_0_6" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 13.5)
+
+[node name="Dirt_1_6" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 13.5)
+
+[node name="Dirt_2_6" parent="GroundTiles" instance=ExtResource("1_dirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 13.5)
+
+[node name="Cobble_3_6" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 13.5)
+
+[node name="Cobble_4_6" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 13.5)
+
+[node name="Cobble_5_6" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 13.5)
+
+[node name="Cobble_6_6" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 13.5)
+
+[node name="Cobble_7_6" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 13.5)
+
+[node name="Cobble_8_6" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 13.5)
+
+[node name="Grass_9_6" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 13.5)
+
+[node name="Grass_0_7" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 16.5)
+
+[node name="Grass_1_7" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 16.5)
+
+[node name="Grass_2_7" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 16.5)
+
+[node name="Cobble_3_7" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 16.5)
+
+[node name="Cobble_4_7" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 16.5)
+
+[node name="Cobble_5_7" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 16.5)
+
+[node name="Cobble_6_7" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 16.5)
+
+[node name="Cobble_7_7" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 16.5)
+
+[node name="Cobble_8_7" parent="GroundTiles" instance=ExtResource("9_cobble")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 16.5)
+
+[node name="Grass_9_7" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 16.5)
+
+[node name="Grass_0_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 19.5)
+
+[node name="Grass_1_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 19.5)
+
+[node name="Grass_2_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 19.5)
+
+[node name="Grass_3_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 19.5)
+
+[node name="Grass_4_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 19.5)
+
+[node name="Grass_5_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 19.5)
+
+[node name="Grass_6_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 19.5)
+
+[node name="Grass_7_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 19.5)
+
+[node name="Grass_8_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 19.5)
+
+[node name="Grass_9_8" parent="GroundTiles" instance=ExtResource("2_grass")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 19.5)
 [node name="Walls" type="Node3D" parent="." unique_id=358893584]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.549426, 0, 0)
 
-[node name="ExampleStraightWall" parent="Walls" unique_id=338824590 instance=ExtResource("3_wall")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -3)
+[node name="Wall_0" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -6)
 
-[node name="ExampleStraightWall2" parent="Walls" unique_id=174088370 instance=ExtResource("3_wall")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2856145, 0, -1.1960421)
+[node name="Wall_1" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -6)
 
-[node name="ExampleConnectorPost" parent="Walls" unique_id=1482552261 instance=ExtResource("5_post")]
+[node name="Wall_2" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -6)
+
+[node name="Wall_3" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -6)
+
+[node name="Wall_4" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -6)
+
+[node name="Wall_5" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, -6)
+
+[node name="Wall_6" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, -4.5)
+
+[node name="Wall_7" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, -1.5)
+
+[node name="Wall_8" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 1.5)
+
+[node name="Wall_9" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 4.5)
+
+[node name="Wall_10" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 7.5)
+
+[node name="Wall_11" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 10.5)
+
+[node name="Wall_12" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 13.5)
+
+[node name="Wall_13" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 18, 0, 16.5)
+
+[node name="Wall_16" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 18)
+
+[node name="Wall_17" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 18)
+
+[node name="Wall_18" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 18)
+
+[node name="Wall_19" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 18)
+
+[node name="Wall_20" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 16.5)
+
+[node name="Wall_22" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 10.5)
+
+[node name="Wall_23" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 7.5)
+
+[node name="Wall_24" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 4.5)
+
+[node name="Wall_25" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 1.5)
+
+[node name="Wall_26" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, -1.5)
+
+[node name="Wall_27" parent="Walls" instance=ExtResource("3_wall")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, -4.5)
+
+[node name="Post_0" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Post_1" parent="Walls" instance=ExtResource("5_post")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="ExampleConnectorPost2" parent="Walls" unique_id=55025458 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3067474, 0, -3)
+[node name="Post_2" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="ExampleStraightWall6" parent="Walls" unique_id=1524236415 instance=ExtResource("3_wall")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1261244, 0, -3)
+[node name="Post_3" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="ExampleConnectorPost6" parent="Walls" unique_id=1745664678 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.319377, 0, -3)
+[node name="Post_4" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
-[node name="ExampleStraightWall7" parent="Walls" unique_id=812884143 instance=ExtResource("3_wall")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.722499, 0, -3)
+[node name="Post_5" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 
-[node name="ExampleConnectorPost7" parent="Walls" unique_id=1097008913 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9157515, 0, -3)
+[node name="Post_6" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
-[node name="ExampleStraightWall8" parent="Walls" unique_id=1903129873 instance=ExtResource("3_wall")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.27163, 0, -3)
+[node name="Post_7" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 
-[node name="ExampleConnectorPost8" parent="Walls" unique_id=105240203 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.464883, 0, -3)
+[node name="Post_8" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
 
-[node name="ExampleStraightWall9" parent="Walls" unique_id=1727367749 instance=ExtResource("3_wall")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.850783, 0, -3)
+[node name="Post_9" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
 
-[node name="ExampleConnectorPost9" parent="Walls" unique_id=619556477 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.044036, 0, -3)
+[node name="Post_10" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 18)
 
-[node name="ExampleStraightWall3" parent="Walls" unique_id=30293565 instance=ExtResource("3_wall")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2856145, 0, 2.1310375)
+[node name="Post_11" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
 
-[node name="ExampleConnectorPost3" parent="Walls" unique_id=1135321845 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3067474, 0, 0.32707953)
+[node name="Post_12" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18)
 
-[node name="ExampleStraightWall4" parent="Walls" unique_id=451897398 instance=ExtResource("3_wall")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2856145, 0, 5.6965365)
+[node name="Post_13" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -6)
 
-[node name="ExampleConnectorPost4" parent="Walls" unique_id=531623684 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3067474, 0, 3.8925786)
+[node name="Post_14" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 18)
 
-[node name="ExampleStraightWall5" parent="Walls" unique_id=1018441279 instance=ExtResource("3_wall")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2856145, 0, 9.023616)
+[node name="Post_15" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
 
-[node name="ExampleConnectorPost5" parent="Walls" unique_id=1124001139 instance=ExtResource("5_post")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3067474, 0, 7.219658)
+[node name="Post_16" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18)
 
-[node name="ExampleWindowWall" parent="Walls" unique_id=938106487 instance=ExtResource("4_window")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -3)
+[node name="Post_17" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -6)
 
+[node name="Post_18" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -6)
+
+[node name="Post_19" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -3)
+
+[node name="Post_20" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="Post_21" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 3)
+
+[node name="Post_22" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 6)
+
+[node name="Post_23" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 9)
+
+[node name="Post_24" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 12)
+
+[node name="Post_25" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 15)
+
+[node name="Post_26" parent="Walls" instance=ExtResource("5_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 18)
 [node name="Vineyard" type="Node3D" parent="." unique_id=448250542]
 
-[node name="ExampleVineRow" parent="Vineyard" unique_id=1133485903 instance=ExtResource("6_vine")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.316362, 0.011544228, -1.4677826)
+[node name="VineRow_0_0" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, -4.5)
 
-[node name="ExampleVineRow4" parent="Vineyard/ExampleVineRow" unique_id=1887203855 instance=ExtResource("6_vine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7984858, 0, 0)
+[node name="VineRow_0_1" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, -1.5)
 
-[node name="ExampleVineRow3" parent="Vineyard/ExampleVineRow" unique_id=399440239 instance=ExtResource("6_vine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9138906, 0, 0)
+[node name="VineRow_0_2" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, 1.5)
 
-[node name="ExampleVineRow7" parent="Vineyard" unique_id=990612042 instance=ExtResource("6_vine")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.6452904, 0.011544228, 4.3307033)
+[node name="VineRow_0_3" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, 4.5)
 
-[node name="ExampleVineRow6" parent="Vineyard/ExampleVineRow7" unique_id=2031766862 instance=ExtResource("6_vine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8845954, 0, 1.1920929e-07)
+[node name="VineRow_2_0" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.5, 0, -4.5)
 
-[node name="ExampleVineRow5" parent="Vineyard/ExampleVineRow7" unique_id=841023406 instance=ExtResource("6_vine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7984858, 0, 4.7683716e-07)
+[node name="VineRow_2_1" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.5, 0, -1.5)
 
+[node name="VineRow_2_2" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.5, 0, 1.5)
+
+[node name="VineRow_2_3" parent="Vineyard" instance=ExtResource("6_vine")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.5, 0, 4.5)
 [node name="Stations" type="Node3D" parent="." unique_id=1889123873]
 
 [node name="StompStationPlaceholder" type="Marker3D" parent="Stations" unique_id=176134863]
@@ -391,7 +519,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 13.484288)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 4.5)
 
 [node name="PlayerSpawns" type="Node3D" parent="." unique_id=805524003]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.453505, 0, -2.8745794)
 
 [node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=1522562158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 4.5)
