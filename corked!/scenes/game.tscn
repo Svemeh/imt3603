@@ -7,16 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://bf4afr7b4q3nn" path="res://scenes/interactables/grapevine.tscn" id="6_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
+[ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=299118941]
-transform = Transform3D(1, 0, 0, 0, 0.6679625, 0.744195, 0, -0.744195, 0.6679625, 7.6357136, 12.500021, 13.838365)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660254, 0, -0.8660254, 0.5, 6, 34.641014, 26)
+projection = 1
+current = true
+size = 26.29
+far = 100.0
+script = ExtResource("9_camera")
 
 [node name="Hud" parent="." unique_id=1628769219 instance=ExtResource("3_iywne")]
 
 [node name="Map" parent="." unique_id=660336757 instance=ExtResource("2_map")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023970604, 9.536743e-07, -0.0015077591)
 
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
