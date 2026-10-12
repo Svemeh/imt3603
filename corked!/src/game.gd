@@ -23,7 +23,9 @@ func _ready() -> void:
 		var p := PLAYER_SCENE.instantiate()
 		p.player_index = i
 		add_child(p)
-		p.global_position = $SpawnPoints.get_child(i).global_position
+		var spawns := $Map/PlayerSpawns.get_children()
+		if i < spawns.size():
+			p.global_position = (spawns[i] as Node3D).global_position
 
 ## Increments money up or down by x and refreshes the HUD.
 func increment_money(amount: int) -> void:
