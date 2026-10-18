@@ -13,10 +13,9 @@ extends Control
 func update_money(amount: int) -> void:
 	money_label.text = "Money: " + str(amount)
 
-## Updates the  quota based on requirements. It takes "amount" as an int, while
-## updating the quota label.
-func update_quota(amount: int):
-	quota_label.text = "Quota " + str(amount)
+## Shows bottles loaded in the truck against the days quota, f.eks "Quota: 4/8"
+func update_quota(loaded: int, target: int) -> void:
+	quota_label.text = "Quota %d/%d" % [loaded, target]
 
 ## Updates the round timer progress bar. time_left and round_duration are both
 ## in seconds; the bar fills from empty to full as time elapses.
