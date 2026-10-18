@@ -4,10 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://cc5afrffukisj" path="res://assets/models/bottlingStation/bottlingStation.glb" id="2_y025j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
-size = Vector3(8.318295, 3.6307678, 3.8172321)
+size = Vector3(8.318295, 3.6307678, 2.4857645)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q62xx"]
 size = Vector3(2.6704235, 2.5512695, 3.26799)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lr00t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmvbg"]
+size = Vector3(4.868286, 1, 1.4995117)
 
 [node name="Bottlingstation" type="StaticBody3D" unique_id=389281476]
 collision_layer = 5
@@ -18,15 +23,23 @@ script = ExtResource("1_4ospr")
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.030907154, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1431669764]
-transform = Transform3D(0.9878491, -0.15541577, 0, 0.15541577, 0.9878491, 0, 0, 0, 1, -0.00625629, -0.3054906, -1.3812399)
+transform = Transform3D(0.9878491, -0.15541577, 0, 0.15541577, 0.9878491, 0, 0, 0, 1, -0.00625629, -0.3054906, -0.7155061)
 shape = SubResource("BoxShape3D_l0bqs")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1381923678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7589083, -0.77563477, 1.6335068)
 shape = SubResource("BoxShape3D_q62xx")
 
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=724355648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2276263, 0, -2.3860996)
+shape = SubResource("BoxShape3D_lr00t")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1845046259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07232666, 0, -2.5399857)
+shape = SubResource("BoxShape3D_rmvbg")
+
 [node name="BarrelMarker" type="Marker3D" parent="." unique_id=218526929]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.249135, 0, -2.563943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.238483, 0, -2.563943)
 
 [node name="CrateMarker" type="Marker3D" parent="." unique_id=2054267747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.006003, -1.5736363, 3.9160717)
