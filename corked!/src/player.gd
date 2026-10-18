@@ -165,6 +165,16 @@ func is_holding() -> bool:
 ## are full or nothing is in range. Skips items that are locked in place
 ## (can_pick_up == false), e.g. a barrel still fermenting in a station.
 func try_pickup() -> void:
+	print("--- K pressed ---")
+	print("tracked items: ", _items_in_range.map(func(i): return "%s (can_pick_up=%s)" % [i.name, i.can_pick_up]))
+	print("overlapping:   ", $InteractArea.get_overlapping_bodies().map(func(b): return b.name))
+	for b in get_tree().current_scene.find_children("*", "Barrel", true, false):
+		var shape := b.get_node_or_null("CollisionShape3D") as CollisionShape3D
+		print("BARREL %s | parent=%s | dist=%.2f | layer=%d | freeze=%s | shape=%s disabled=%s" % [
+			b.name, b.get_parent().name,
+			global_position.distance_to(b.global_position),
+			b.collision_layer, b.freeze,
+			shape != null, shape.disabled if shape else "-"])
 	if held_item != null:
 		return
 	
