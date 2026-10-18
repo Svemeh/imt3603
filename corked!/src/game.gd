@@ -64,16 +64,15 @@ func _on_delivery_sent(bottles: int) -> void:
 	_day_over = true
 	round_timer.stop_round()
 	
+	await deliveryman.drive_off_finished
 	var won := bottles >= quota_target
 	if won:
 		increment_money(bottles * money_per_bottle)
 		print("Day won! %d/%d bottles" % [bottles, quota_target])
+		# TODO: on a win, go to the upgrade phase
 	else:
 		print("Day lost, truck sent with %d/%d bottles" % [bottles, quota_target])
-	
-	# TODO: on a win, go to the upgrade phase instead of the end screen
-	await deliveryman.drive_off_finished
-	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
+		get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
 
 ## Forwards the timer's remaining time to the HUD's progress bar.
 func _on_round_timer_time_updated(time_left: float) -> void:
