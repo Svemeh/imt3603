@@ -4,7 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://mtcml5jxjogf" path="res://assets/models/fermentationStation/fermentation_station.glb" id="2_ferm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ferm"]
-size = Vector3(4, 2.2, 3.5)
+size = Vector3(1.45, 2.2, 1.47)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_valve"]
+size = Vector3(0.75, 2.2, 0.7)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_main"]
+height = 2.2
+radius = 0.85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fence"]
+size = Vector3(1.6, 2.2, 3.12)
 
 [node name="FermentationStation" type="StaticBody3D" unique_id=479181345]
 collision_layer = 5
@@ -14,9 +24,21 @@ script = ExtResource("1_ferm")
 [node name="Model" parent="." instance=ExtResource("2_ferm")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0.02)
+[node name="HopperShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.275, -0.01, -0.985)
 shape = SubResource("BoxShape3D_ferm")
+
+[node name="ValveShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.925, -0.01, 0.1)
+shape = SubResource("BoxShape3D_valve")
+
+[node name="MainBarrelShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, -0.6)
+shape = SubResource("CylinderShape3D_main")
+
+[node name="FenceShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.01, 0.16)
+shape = SubResource("BoxShape3D_fence")
 
 [node name="PourMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, -1.12, -1)
