@@ -174,7 +174,7 @@ func try_pickup() -> void:
 			b.name, b.get_parent().name,
 			global_position.distance_to(b.global_position),
 			b.collision_layer, b.freeze,
-			shape != null, shape.disabled if shape else "-"])
+			shape != null, str(shape.disabled) if shape else "-"])
 	if held_item != null:
 		return
 	
