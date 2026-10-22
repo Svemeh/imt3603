@@ -80,7 +80,6 @@ func _check_barrel() -> void:
 	barrel_marker):
 		barrel = null
 
-
 ## ------------------- Docking the Barrel -----------------------------
 
 ## Only takes barrels that hold finished wine, and only one at a time
@@ -114,6 +113,8 @@ func can_interact(_player: Player) -> bool:
 func interact(player: Player) -> void:
 	if not can_interact(player):
 		return
+	
+	_busy = true
 	
 	_busy = true
 	barrel.juice_amount -= 1
