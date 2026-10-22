@@ -80,16 +80,6 @@ func _check_barrel() -> void:
 	barrel_marker):
 		barrel = null
 
-## True when a docked barrel has no wine left
-func _has_empty_barrel() -> bool:
-	return barrel != null and (not barrel.is_wine or barrel.juice_amount <= 0)
-
-## Gives the empty barrel back to the player so it can be used again
-func _return_barrel(player: Player) -> void:
-	var empty := barrel
-	barrel = null
-	player.recieve_item(empty)
-
 ## ------------------- Docking the Barrel -----------------------------
 
 ## Only takes barrels that hold finished wine, and only one at a time
@@ -113,11 +103,8 @@ func accept_item(player: Player) -> void:
 
 ## ------------------------- Bottling ---------------------------
 
-func can_interact(player: Player) -> bool:
+func can_interact(_player: Player) -> bool:
 	_check_barrel()
-	# empty barrel docked: let an empty handed player take it back
-	if _has_empty_barrel() and not player.is_holding():
-		return true
 	if _busy or barrel == null or crate == null or not is_instance_valid(crate):
 		return false
 	return barrel.is_wine and barrel.juice_amount > 0 and not crate.is_full()
@@ -125,10 +112,6 @@ func can_interact(player: Player) -> bool:
 
 func interact(player: Player) -> void:
 	if not can_interact(player):
-		return
-	
-	if _has_empty_barrel():
-		_return_barrel(player)
 		return
 	
 	_busy = true

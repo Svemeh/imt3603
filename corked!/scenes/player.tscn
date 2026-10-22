@@ -17,7 +17,7 @@ script = ExtResource("1_g2els")
 
 [node name="FarmerYellow" parent="VisualRoot" unique_id=1407477971 instance=ExtResource("2_qhqgy")]
 
-[node name="Skeleton3D" parent="VisualRoot/FarmerYellow/Armature" parent_id_path=PackedInt32Array(1407477971, 1773982886) index="0" unique_id=1024770707]
+[node name="Skeleton3D" parent="VisualRoot/FarmerYellow/Armature" parent_id_path=PackedInt32Array(1407477971, 2106238567) index="0" unique_id=54872647]
 bones/0/position = Vector3(-0.8875929, 59.310207, 4.4148993)
 bones/0/rotation = Quaternion(0.7600202, 0.48767504, -0.0018421153, 0.42957985)
 bones/1/rotation = Quaternion(0.49794352, -0.16927798, 0.30521035, 0.7938791)
@@ -44,7 +44,7 @@ bones/20/rotation = Quaternion(0.17117491, -0.011709961, -0.0061623943, 0.985151
 bones/21/rotation = Quaternion(0.1702675, 0.0062336912, -0.0076468023, 0.9853486)
 bones/22/rotation = Quaternion(-0.14135417, -0.0016953923, -0.009981029, 0.9899073)
 
-[node name="AnimationPlayer" parent="VisualRoot/FarmerYellow" index="1" unique_id=1003866995]
+[node name="AnimationPlayer" parent="VisualRoot/FarmerYellow" index="1" unique_id=731785397]
 libraries/Meshy_AI_Animation_Idle_3_withSkin = ExtResource("3_qlg0r")
 libraries/Meshy_AI_Animation_Running_withSkin = ExtResource("3_dqkch")
 libraries/Meshy_AI_Farmer_Tan_Rigged_biped_Animation_Walking_withSkin = ExtResource("3_qhqgy")
@@ -61,7 +61,7 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1842864310]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2918936, 0.47556913)
+transform = Transform3D(1, 0, 0, 0, 3.7761362, 0, 0, 0, 1, 0, 1.1038651, 0.47556913)
 shape = SubResource("SphereShape3D_akdr4")
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_area_entered"]
