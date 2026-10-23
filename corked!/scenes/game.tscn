@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
 
+[ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
+[ext_resource type="Script" path="res://src/ui/station_window_manager.gd" id="11_preview"]
+
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
 
@@ -36,3 +39,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.426157, 0.56402254, -3.253
 
 [node name="DeliveryPoint" parent="." unique_id=1503778649 instance=ExtResource("8_0tnpc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.42846, 0, 2.4183807)
+
+[node name="MinigameWindowPreview" parent="Map/StompingStation" instance=ExtResource("10_window")]
+visible = false
+position = Vector3(0, 5.08, 0)
+
+[node name="MinigameWindowPreview" parent="Map/FermentationStation" instance=ExtResource("10_window")]
+visible = false
+position = Vector3(1.8, 3.0, 0)
+
+[node name="RepairPopupAnchor" type="Marker3D" parent="Map/Bottlingstation"]
+
+[node name="MinigameWindowPreview" parent="Map/Bottlingstation/RepairPopupAnchor" instance=ExtResource("10_window")]
+visible = false
+position = Vector3(0, 3.4, -1.0)
+panel_size = Vector2i(260, 180)
+pixel_size = 0.014
+
+[node name="StationWindowManager" type="Node" parent="."]
+script = ExtResource("11_preview")
+window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowPreview"), NodePath("../Map/FermentationStation/MinigameWindowPreview"), NodePath("../Map/Bottlingstation/RepairPopupAnchor/MinigameWindowPreview")])
+
+[editable path="Map"]
