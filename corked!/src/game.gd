@@ -7,6 +7,13 @@ extends Node
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 
+const PLAYER_VARIANTS := [
+	Player.PlayerVariant.YELLOW,
+	Player.PlayerVariant.PURPLE,
+	Player.PlayerVariant.GREEN,
+	Player.PlayerVariant.BLUE
+]
+
 var money: int = 0
 
 ## Bottles the truck must carry when iit's sent for the day to succeed. GDD
@@ -25,6 +32,7 @@ var loaded_bottles: int = 0
 ## count as both a loss and a win
 var _day_over: bool = false
 
+
 func _ready() -> void:
 	hud.update_money(money)
 	hud.update_quota(loaded_bottles, quota_target)
@@ -37,24 +45,39 @@ func _ready() -> void:
 	# add the players
 	for i in PlayerManager.MAX_PLAYERS:
 		var device = PlayerManager.slots[i]
+
 		if device == null:
 			continue
+
 		var p := PLAYER_SCENE.instantiate()
+
 		p.player_index = i
+		p.player_variant = PLAYER_VARIANTS[i]
+
+		# Variant must be assigned BEFORE add_child()
 		add_child(p)
 		var spawns := $Map/PlayerSpawns.get_children()
 		if i < spawns.size():
 			p.global_position = (spawns[i] as Node3D).global_position
 
-## Increments money up or down by x and refreshes the HUD.
+
+## Increment money up or down by x and refreshes the HUD.
 func increment_money(amount: int) -> void:
 	money += amount
 	hud.update_money(money)
+
+
+## Increments quota by x (e.g. from a valid delivery) and refreshes the HUD.
+func increment_quota(amount: int) -> void:
+	quota += amount
+	hud.update_quota(quota)
+
 
 ## A crate was loaded into the truck, refreshes the quota on the HUD
 func _on_delivery_zone_contents_changed(bottles: int) -> void:
 	loaded_bottles = bottles
 	hud.update_quota(loaded_bottles, quota_target)
+
 
 ## A player sent the truck. Quota met = yey you won my boy!
 ## not met/short = day lost you suck my boy!
@@ -79,6 +102,7 @@ func _on_delivery_sent(bottles: int) -> void:
 		GameStats.last_day_quota = quota_target
 		GameStats.loss_reason = "The truck left short on bottles"
 		get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
+
 
 ## Forwards the timer's remaining time to the HUD's progress bar.
 func _on_round_timer_time_updated(time_left: float) -> void:
