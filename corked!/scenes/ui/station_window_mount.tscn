@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3]
+[ext_resource type="PackedScene" path="res://scenes/ui/station_window.tscn" id="1_panel"]
+[ext_resource type="Script" path="res://src/ui/station_window_mount.gd" id="2_script"]
+[sub_resource type="ViewportTexture" id="Texture"]
+resource_local_to_scene = true
+viewport_path = NodePath("Viewport")
+[sub_resource type="World2D" id="World"]
+resource_local_to_scene = true
+[node name="StationWindowMount" type="Node3D"]
+position = Vector3(0, 5, 0)
+script = ExtResource("2_script")
+[node name="Viewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+world_2d = SubResource("World")
+size = Vector2i(452, 312)
+render_target_update_mode = 4
+[node name="StationWindow" parent="Viewport" instance=ExtResource("1_panel")]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 436.0
+offset_bottom = 296.0
+[node name="PanelVisual" type="Sprite3D" parent="."]
+texture_filter = 2
+pixel_size = 0.016
+billboard = 1
+shaded = false
+double_sided = true
+no_depth_test = true
+texture = SubResource("Texture")

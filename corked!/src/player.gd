@@ -2,6 +2,10 @@
 class_name Player
 extends CharacterBody3D
 
+## Emitted after the normal station action. The popup manager listens to this
+## so keyboard and controller interactions both open the matching window.
+signal station_interacted(station: Interactable)
+
 @export var walk_speed: float = 4.0
 @export var run_speed: float = 7.0
 
@@ -156,6 +160,8 @@ func try_interact() -> void:
 	var target := _get_target()
 	if target:
 		target.interact(self)
+		# Update the popup after the action, so it sees the new machine state.
+		station_interacted.emit(target)
 
 ## True when the player is carrying something
 func is_holding() -> bool:
