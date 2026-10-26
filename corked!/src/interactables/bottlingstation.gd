@@ -42,7 +42,7 @@ const WINE_BOTTLE_SCENE: PackedScene = preload("res://scenes/items/full_wine_bot
 ## Seconds the bottle stops under the capper while it gets decorated
 @export var cap_time: float = 0.4
 ## Chance (0-1) the machine breaks after a bottle, right after a repair
-@export var base_break_chance: float = 1.0
+@export var base_break_chance: float = 0.05
 ## How much the chance grows with every bottle that doesn't break it
 @export var break_chance_step: float = 0.05
 ## Hammer hits needed to fix the machine
