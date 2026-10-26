@@ -25,8 +25,8 @@ enum PlayerVariant {
 @onready var green_model: Node3D = $VisualRoot/FarmerGreen
 @onready var blue_model: Node3D = $VisualRoot/FarmerBlue
 
+## Where held items sit. Add a Marker3D child named HandMarker to player.tscn
 @onready var hand_marker: Marker3D = $HandMarker
-
 
 var animation_player: AnimationPlayer
 
@@ -92,6 +92,8 @@ func setup_player_variant() -> void:
 			run_animation = "Running"
 
 
+## "interact" drives stations that stay put (vines, presses, barrels).
+## "interact2" is the hands button: drop what is held, otherwise pick up
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(act("interact")):
 		try_interact()
@@ -173,7 +175,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
+## Appends new interactable or loose item to the matching in range array
 func _on_area_entered(body: Node3D) -> void:
 	if body is Interactable:
 		_in_range.append(body)
@@ -181,7 +183,7 @@ func _on_area_entered(body: Node3D) -> void:
 	elif body is Item:
 		_items_in_range.append(body)
 
-
+## Removes the node from whichever in range array holds it
 func _on_area_exited(body: Node3D) -> void:
 	if body is Interactable:
 		_in_range.erase(body)
@@ -189,7 +191,7 @@ func _on_area_exited(body: Node3D) -> void:
 	elif body is Item:
 		_items_in_range.erase(body)
 
-
+## Finds nearest target
 func _get_target() -> Interactable:
 	var best: Interactable = null
 	var best_dist := INF
@@ -206,18 +208,19 @@ func _get_target() -> Interactable:
 
 	return best
 
-
+## attempts to interact with closest interactable
 func try_interact() -> void:
 	var target := _get_target()
 
 	if target:
 		target.interact(self)
 
-
+## True when the player is carrying something
 func is_holding() -> bool:
 	return held_item != null
 
-
+## Picks up the nearest loose item on the ground. Does nothing when hands
+## are full or nothing is in range. Skips items that are locked in place
 func try_pickup() -> void:
 	if held_item != null:
 		return
@@ -238,7 +241,7 @@ func try_pickup() -> void:
 	if best:
 		recieve_item(best)
 
-
+## Takes an item into the player's hands. Returns false if hands are full
 func recieve_item(item: Item) -> bool:
 	if held_item != null:
 		return false
@@ -260,13 +263,14 @@ func recieve_item(item: Item) -> bool:
 
 	return true
 
-
+## Hands over the held item without placing it anywhere. The caller becomes
+## responsible for reparenting it. Used by Interactables.
 func transfer_item() -> Item:
 	var item := held_item
 	held_item = null
 	return item
 
-
+## Drops the held item on the ground where the hands are
 func drop_item() -> void:
 	if held_item == null:
 		return
@@ -282,7 +286,7 @@ func drop_item() -> void:
 
 	item.global_position = world_pos
 
-
+## Gives the held item to the nearest interactable that accepts it
 func try_give_item() -> bool:
 	var best: Interactable = null
 	var best_dist := INF
