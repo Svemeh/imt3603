@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://r813enoq0ixf"]
+
+[ext_resource type="PackedScene" uid="uid://bf4afr7b4q3nn" path="res://scenes/interactables/grapevine.tscn" id="1_d1lxj"]
+[ext_resource type="PackedScene" uid="uid://cn1jk2x5jrskn" path="res://models/map/placeables/grape_vine.glb" id="1_model"]
+
+[node name="GrapeVine" type="Node3D" unique_id=1681241504]
+
+[node name="Grapevine" parent="." unique_id=601012990 instance=ExtResource("1_d1lxj")]
+
+[node name="Visual" parent="." unique_id=2086656957 instance=ExtResource("1_model")]

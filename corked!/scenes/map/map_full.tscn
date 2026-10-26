@@ -1,0 +1,387 @@
+[gd_scene format=3 uid="uid://b24ky1w22yvfy"]
+
+[ext_resource type="PackedScene" path="res://scenes/placeables/ground_grass.tscn" id="1_grass_tile"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/wall_straight.tscn" id="2_wall"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/wall_window.tscn" id="3_window"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/wall_post.tscn" id="4_post"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/grape_vine.tscn" id="5_vine"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/grass_tuft_small.tscn" id="6_tuft_small"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/grass_tuft_full.tscn" id="7_tuft_full"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/grass_tuft_tall.tscn" id="8_tuft_tall"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/stomp_vat.tscn" id="9_stomp"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/fermentation_tanks.tscn" id="10_ferment"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/bottling_line.tscn" id="11_bottle"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/delivery_truck.tscn" id="12_truck"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/grape_crate.tscn" id="13_crate"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/wine_barrel.tscn" id="14_barrel"]
+[ext_resource type="Texture2D" uid="uid://5mbywj26jpo" path="res://models/map/placeables/ground_dirt_Ground - sunlit ochre earth_albedo.png" id="15_earth"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/wood_fence.tscn" id="16_fence"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/olive_tree.tscn" id="17_tree"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/stone_well.tscn" id="18_well"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/lantern_post.tscn" id="19_lantern"]
+
+[sub_resource type="Environment" id="WarmEnvironment"]
+background_mode = 1
+background_color = Color(0.59, 0.73, 0.82, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.89, 0.72, 1)
+ambient_light_energy = 0.38
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="EarthMaterial"]
+albedo_color = Color(0.6, 0.55, 0.48, 1)
+albedo_texture = ExtResource("15_earth")
+uv1_scale = Vector3(14, 8, 1)
+
+[sub_resource type="PlaneMesh" id="EarthPlane"]
+material = SubResource("EarthMaterial")
+size = Vector2(42, 24)
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(42, 0.2, 24)
+
+[sub_resource type="StandardMaterial3D" id="StoneFloorMaterial"]
+albedo_color = Color(0.43, 0.39, 0.32, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="WineryFloorMesh"]
+material = SubResource("StoneFloorMaterial")
+size = Vector3(12, 0.06, 10)
+
+[sub_resource type="StandardMaterial3D" id="PathMaterial"]
+albedo_color = Color(0.43, 0.34, 0.23, 1)
+
+[sub_resource type="BoxMesh" id="PathMesh"]
+material = SubResource("PathMaterial")
+size = Vector3(29, 0.035, 2.25)
+
+[sub_resource type="StandardMaterial3D" id="SignWoodMaterial"]
+albedo_color = Color(0.26, 0.13, 0.06, 1)
+roughness = 0.83
+
+[sub_resource type="BoxMesh" id="SignBoardMesh"]
+material = SubResource("SignWoodMaterial")
+size = Vector3(3.5, 0.55, 0.12)
+
+[node name="CorkedVineyardMap" type="Node3D" unique_id=599753901]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1870103348]
+environment = SubResource("WarmEnvironment")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1409493015]
+transform = Transform3D(0.79863554, 0.49297798, -0.3451869, 0, 0.57357645, 0.81915206, 0.601815, -0.65420395, 0.45807853, 0, 0, 0)
+light_color = Color(1, 0.86, 0.67, 1)
+light_energy = 0.82
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=833382541]
+transform = Transform3D(1, 0, 0, 0, 0.60181504, 0.79863554, 0, -0.79863554, 0.60181504, 0, 31, 23)
+projection = 1
+current = true
+size = 26.0
+
+[node name="Ground" type="Node3D" parent="." unique_id=349954094]
+
+[node name="DirtSurface" type="MeshInstance3D" parent="Ground" unique_id=1115590869]
+mesh = SubResource("EarthPlane")
+
+[node name="WalkableGround" type="StaticBody3D" parent="Ground" unique_id=1959811454]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/WalkableGround" unique_id=2085112261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("GroundShape")
+
+[node name="WineryStoneFloor" type="MeshInstance3D" parent="Ground" unique_id=1846219848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.045, -3)
+mesh = SubResource("WineryFloorMesh")
+
+[node name="WorkPath" type="MeshInstance3D" parent="Ground" unique_id=779852078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.025, 5.6)
+mesh = SubResource("PathMesh")
+
+[node name="GrassPatchWest1" parent="Ground" unique_id=66939823 instance=ExtResource("1_grass_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.015, 7.5)
+
+[node name="GrassPatchWest2" parent="Ground" unique_id=1867524424 instance=ExtResource("1_grass_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.015, 7.5)
+
+[node name="GrassPatchWest3" parent="Ground" unique_id=1937437417 instance=ExtResource("1_grass_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.015, 7.5)
+
+[node name="GrassPatchWest4" parent="Ground" unique_id=1599716061 instance=ExtResource("1_grass_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.015, -7.5)
+
+[node name="GrassPatchEast1" parent="Ground" unique_id=1072043911 instance=ExtResource("1_grass_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.015, 7.5)
+
+[node name="GrassPatchEast2" parent="Ground" unique_id=1068855533 instance=ExtResource("1_grass_tile")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.015, 7.5)
+
+[node name="Harvest_01" type="Node3D" parent="." unique_id=1360365889]
+
+[node name="VineRowA_1" parent="Harvest_01" unique_id=1726193839 instance=ExtResource("5_vine")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17, 0, -4.5)
+
+[node name="VineRowA_2" parent="Harvest_01" unique_id=787431739 instance=ExtResource("5_vine")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17, 0, -1.45)
+
+[node name="VineRowA_3" parent="Harvest_01" unique_id=652130434 instance=ExtResource("5_vine")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17, 0, 1.6)
+
+[node name="VineRowB_1" parent="Harvest_01" unique_id=1129309468 instance=ExtResource("5_vine")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.3, 0, -4.5)
+
+[node name="VineRowB_2" parent="Harvest_01" unique_id=350959944 instance=ExtResource("5_vine")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.3, 0, -1.45)
+
+[node name="VineRowB_3" parent="Harvest_01" unique_id=1420110231 instance=ExtResource("5_vine")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.3, 0, 1.6)
+
+[node name="HarvestCrateA" parent="Harvest_01" unique_id=1005399070 instance=ExtResource("13_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 0, -2.6)
+
+[node name="HarvestCrateB" parent="Harvest_01" unique_id=459467605 instance=ExtResource("13_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0, 1.1)
+
+[node name="Stomp_02" type="Node3D" parent="." unique_id=344159804]
+
+[node name="StompVat" parent="Stomp_02" unique_id=731749762 instance=ExtResource("9_stomp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 1.2)
+
+[node name="IncomingGrapes" parent="Stomp_02" unique_id=974764199 instance=ExtResource("13_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 0, 3.2)
+
+[node name="CrateBesideVat" parent="Stomp_02" unique_id=1784864163 instance=ExtResource("13_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, 2.7)
+
+[node name="BarrelBesideVat" parent="Stomp_02" unique_id=250138718 instance=ExtResource("14_barrel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -0.2)
+
+[node name="WineryWalls" type="Node3D" parent="." unique_id=1376164201]
+
+[node name="BackWallLeft" parent="WineryWalls" unique_id=1685166745 instance=ExtResource("2_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="BackWallMiddleLeft" parent="WineryWalls" unique_id=247092490 instance=ExtResource("3_window")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
+
+[node name="BackWallMiddleRight" parent="WineryWalls" unique_id=227216847 instance=ExtResource("2_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8)
+
+[node name="BackWallRight" parent="WineryWalls" unique_id=1278788444 instance=ExtResource("3_window")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -8)
+
+[node name="WestWallBack" parent="WineryWalls" unique_id=378295450 instance=ExtResource("2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 0, -6.5)
+
+[node name="WestWallMiddle" parent="WineryWalls" unique_id=1993605004 instance=ExtResource("2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 0, -3.5)
+
+[node name="WestWallFront" parent="WineryWalls" unique_id=255498629 instance=ExtResource("2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 0, -0.5)
+
+[node name="EastWallBack" parent="WineryWalls" unique_id=1223899206 instance=ExtResource("2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.5, 0, -6.5)
+
+[node name="EastWallMiddle" parent="WineryWalls" unique_id=867814144 instance=ExtResource("2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.5, 0, -3.5)
+
+[node name="EastWallFront" parent="WineryWalls" unique_id=1537332436 instance=ExtResource("2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.5, 0, -0.5)
+
+[node name="FrontWallLeft" parent="WineryWalls" unique_id=1924357241 instance=ExtResource("2_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="FrontWallRight" parent="WineryWalls" unique_id=359626352 instance=ExtResource("2_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+
+[node name="BackPost1" parent="WineryWalls" unique_id=951410434 instance=ExtResource("4_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -8)
+
+[node name="BackPost2" parent="WineryWalls" unique_id=1682468398 instance=ExtResource("4_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -8)
+
+[node name="BackPost3" parent="WineryWalls" unique_id=468505644 instance=ExtResource("4_post")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -8)
+
+[node name="RoomDivider" parent="WineryWalls" unique_id=1209167122 instance=ExtResource("2_wall")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.5, 0, -5)
+
+[node name="Fermentation_03" type="Node3D" parent="." unique_id=1665699586]
+
+[node name="Tanks" parent="Fermentation_03" unique_id=2063261207 instance=ExtResource("10_ferment")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -4.5)
+
+[node name="BarrelA" parent="Fermentation_03" unique_id=1046195007 instance=ExtResource("14_barrel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, -1.3)
+
+[node name="BarrelB" parent="Fermentation_03" unique_id=2079659051 instance=ExtResource("14_barrel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, -1.3)
+
+[node name="Bottling_04" type="Node3D" parent="." unique_id=1272919382]
+
+[node name="BottlingWorkbench" parent="Bottling_04" unique_id=1353475539 instance=ExtResource("11_bottle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 0, -4.3)
+
+[node name="FinishedCrate" parent="Bottling_04" unique_id=892925928 instance=ExtResource("13_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0, -1.1)
+
+[node name="BarrelByLine" parent="Bottling_04" unique_id=1032131466 instance=ExtResource("14_barrel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 0, -1.2)
+
+[node name="Delivery_05" type="Node3D" parent="." unique_id=994452581]
+
+[node name="DeliveryTruck" parent="Delivery_05" unique_id=1802468401 instance=ExtResource("12_truck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6, 0, -2)
+
+[node name="LoadingCrate1" parent="Delivery_05" unique_id=392015903 instance=ExtResource("13_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 0.4)
+
+[node name="LoadingCrate2" parent="Delivery_05" unique_id=2001134853 instance=ExtResource("13_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 0.4)
+
+[node name="LoadingBarrel" parent="Delivery_05" unique_id=1293032285 instance=ExtResource("14_barrel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2, 0, 2.2)
+
+[node name="StationSigns" type="Node3D" parent="." unique_id=2073482120]
+
+[node name="HarvestBoard" type="MeshInstance3D" parent="StationSigns" unique_id=618039351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2, 2.5, -8.5)
+mesh = SubResource("SignBoardMesh")
+
+[node name="Text" type="Label3D" parent="StationSigns/HarvestBoard" unique_id=503389748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.075)
+pixel_size = 0.006
+billboard = 1
+modulate = Color(1, 0.92, 0.75, 1)
+text = "1  HARVEST"
+font_size = 90
+
+[node name="FermentBoard" type="MeshInstance3D" parent="StationSigns" unique_id=1034763149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 2.8, -7.4)
+mesh = SubResource("SignBoardMesh")
+
+[node name="Text" type="Label3D" parent="StationSigns/FermentBoard" unique_id=324138047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.075)
+pixel_size = 0.006
+billboard = 1
+modulate = Color(1, 0.92, 0.75, 1)
+text = "3  FERMENT"
+font_size = 90
+
+[node name="BottlingBoard" type="MeshInstance3D" parent="StationSigns" unique_id=644277480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 2.8, -7.4)
+mesh = SubResource("SignBoardMesh")
+
+[node name="Text" type="Label3D" parent="StationSigns/BottlingBoard" unique_id=752419930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.075)
+pixel_size = 0.006
+billboard = 1
+modulate = Color(1, 0.92, 0.75, 1)
+text = "4  BOTTLE"
+font_size = 90
+
+[node name="DeliveryBoard" type="MeshInstance3D" parent="StationSigns" unique_id=408194889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6, 3.1, -6)
+mesh = SubResource("SignBoardMesh")
+
+[node name="Text" type="Label3D" parent="StationSigns/DeliveryBoard" unique_id=248566659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.075)
+pixel_size = 0.006
+billboard = 1
+modulate = Color(1, 0.92, 0.75, 1)
+text = "5  DELIVER"
+font_size = 90
+
+[node name="GardenDetails" type="Node3D" parent="." unique_id=397046572]
+
+[node name="Grass1" parent="GardenDetails" unique_id=1742190251 instance=ExtResource("7_tuft_full")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 6)
+
+[node name="Grass2" parent="GardenDetails" unique_id=486701893 instance=ExtResource("6_tuft_small")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -7)
+
+[node name="Grass3" parent="GardenDetails" unique_id=911498204 instance=ExtResource("8_tuft_tall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 0, -5.5)
+
+[node name="Grass4" parent="GardenDetails" unique_id=72681588 instance=ExtResource("7_tuft_full")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 0, 6.9)
+
+[node name="Grass5" parent="GardenDetails" unique_id=1075122863 instance=ExtResource("7_tuft_full")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 7.4)
+
+[node name="Grass6" parent="GardenDetails" unique_id=1506917324 instance=ExtResource("8_tuft_tall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 0, 6.4)
+
+[node name="Grass7" parent="GardenDetails" unique_id=98261944 instance=ExtResource("6_tuft_small")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1, 0, -7.3)
+
+[node name="HarvestBackFence1" parent="GardenDetails" unique_id=942039460 instance=ExtResource("16_fence")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 0, -9.3)
+
+[node name="HarvestBackFence2" parent="GardenDetails" unique_id=2039193308 instance=ExtResource("16_fence")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, -9.3)
+
+[node name="HarvestBackFence3" parent="GardenDetails" unique_id=2034027677 instance=ExtResource("16_fence")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, -9.3)
+
+[node name="HarvestFrontFence1" parent="GardenDetails" unique_id=1988010953 instance=ExtResource("16_fence")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 0, 9.3)
+
+[node name="HarvestFrontFence2" parent="GardenDetails" unique_id=1827883635 instance=ExtResource("16_fence")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 9.3)
+
+[node name="OliveTreeNorth" parent="GardenDetails" unique_id=475172739 instance=ExtResource("17_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, -8.7)
+
+[node name="OliveTreeSouth" parent="GardenDetails" unique_id=1046484922 instance=ExtResource("17_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3, 0, 8)
+
+[node name="OliveTreeDelivery" parent="GardenDetails" unique_id=1145618430 instance=ExtResource("17_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2, 0, 8.2)
+
+[node name="HarvestWell" parent="GardenDetails" unique_id=609722919 instance=ExtResource("18_well")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 0, -6.3)
+
+[node name="LanternHarvest" parent="GardenDetails" unique_id=1364725175 instance=ExtResource("19_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 6.4)
+
+[node name="LanternStomp" parent="GardenDetails" unique_id=791122060 instance=ExtResource("19_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 5.2)
+
+[node name="LanternWinery" parent="GardenDetails" unique_id=9770346 instance=ExtResource("19_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 4.8)
+
+[node name="LanternDelivery" parent="GardenDetails" unique_id=2084883095 instance=ExtResource("19_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 3.4)
+
+[node name="StationMarkers" type="Node3D" parent="." unique_id=130909030]
+
+[node name="Harvest" type="Marker3D" parent="StationMarkers" unique_id=2141634219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="Stomp" type="Marker3D" parent="StationMarkers" unique_id=633159532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 1.2)
+
+[node name="Fermentation" type="Marker3D" parent="StationMarkers" unique_id=1587500281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -4.5)
+
+[node name="Bottling" type="Marker3D" parent="StationMarkers" unique_id=1381264691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4, 0, -4.3)
+
+[node name="Delivery" type="Marker3D" parent="StationMarkers" unique_id=511551182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6, 0, -2)
+
+[node name="PlayerSpawns" type="Node3D" parent="." unique_id=2028955916]
+
+[node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=209580507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
+
+[node name="Player2" type="Marker3D" parent="PlayerSpawns" unique_id=1653336479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7)
+
+[node name="Player3" type="Marker3D" parent="PlayerSpawns" unique_id=472428279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+
+[node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=27405217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)

@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://blaqtkd7qbo34"]
 
 [ext_resource type="Script" uid="uid://d2sgl8s6ayrxv" path="res://src/interactables/deliveryman.gd" id="1_7q55s"]
+[ext_resource type="PackedScene" uid="uid://tplthxv7l76w" path="res://assets/models/deliveryGuy/delivery_guy.glb" id="2_n3o0a"]
 
-[node name="Deliveryman" type="Node3D" unique_id=1621832877]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
+size = Vector3(0.86767197, 2.0902557, 0.35073853)
+
+[node name="Deliveryman" type="StaticBody3D" unique_id=48046071]
+collision_layer = 5
+collision_mask = 0
 script = ExtResource("1_7q55s")
+
+[node name="delivery_guy" parent="." unique_id=1867229595 instance=ExtResource("2_n3o0a")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.007183373, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1324088438]
+transform = Transform3D(-0.5285731, 0, -0.8488879, 0, 1, 0, 0.8488879, 0, -0.5285731, 0.09627601, 0.0090408325, -0.021478865)
+shape = SubResource("BoxShape3D_l0bqs")

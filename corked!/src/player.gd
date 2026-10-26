@@ -10,6 +10,9 @@ enum PlayerVariant {
 	BLUE
 }
 
+## Emitted after the normal station action. The popup manager listens to this
+## so keyboard and controller interactions both open the matching window.
+signal station_interacted(station: Interactable)
 
 @export var walk_speed: float = 4.0
 @export var run_speed: float = 7.0
@@ -214,6 +217,8 @@ func try_interact() -> void:
 
 	if target:
 		target.interact(self)
+		# Update the popup after the action, so it sees the new machine state.
+		station_interacted.emit(target)
 
 ## True when the player is carrying something
 func is_holding() -> bool:
@@ -222,6 +227,16 @@ func is_holding() -> bool:
 ## Picks up the nearest loose item on the ground. Does nothing when hands
 ## are full or nothing is in range. Skips items that are locked in place
 func try_pickup() -> void:
+	print("--- K pressed ---")
+	print("tracked items: ", _items_in_range.map(func(i): return "%s (can_pick_up=%s)" % [i.name, i.can_pick_up]))
+	print("overlapping:   ", $InteractArea.get_overlapping_bodies().map(func(b): return b.name))
+	for b in get_tree().current_scene.find_children("*", "Barrel", true, false):
+		var shape := b.get_node_or_null("CollisionShape3D") as CollisionShape3D
+		print("BARREL %s | parent=%s | dist=%.2f | layer=%d | freeze=%s | shape=%s disabled=%s" % [
+			b.name, b.get_parent().name,
+			global_position.distance_to(b.global_position),
+			b.collision_layer, b.freeze,
+			shape != null, str(shape.disabled) if shape else "-"])
 	if held_item != null:
 		return
 

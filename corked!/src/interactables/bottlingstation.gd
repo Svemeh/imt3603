@@ -80,7 +80,6 @@ func _check_barrel() -> void:
 	barrel_marker):
 		barrel = null
 
-
 ## ------------------- Docking the Barrel -----------------------------
 
 ## Only takes barrels that hold finished wine, and only one at a time
@@ -114,6 +113,8 @@ func can_interact(_player: Player) -> bool:
 func interact(player: Player) -> void:
 	if not can_interact(player):
 		return
+	
+	_busy = true
 	
 	_busy = true
 	barrel.juice_amount -= 1
@@ -189,3 +190,11 @@ func get_prompt() -> String:
 	if not barrel.is_wine or barrel.juice_amount <= 0:
 		return "Barrel empty - take it back"
 	return "Bottle wine (%d/%d)" % [crate.bottles, crate.capacity]
+
+
+## Tells the popup manager whether this machine needs its window to stay open
+## even when a player walks away to fetch the hammer. For now, _busy covers
+## the existing bottle-filling/travel sequence and clears when the bottle arrives.
+## Include paused-for-repair/jammed states here when that minigame is added.
+func is_running() -> bool:
+	return _busy

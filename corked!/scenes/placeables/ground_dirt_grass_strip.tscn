@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/placeables/ground_dirt_1.tscn" id="1_dirt"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/grass_strip.tscn" id="2_grass"]
+
+[node name="GroundDirtGrassStrip" instance=ExtResource("1_dirt")]
+
+[node name="GrassStrip" parent="." instance=ExtResource("2_grass")]

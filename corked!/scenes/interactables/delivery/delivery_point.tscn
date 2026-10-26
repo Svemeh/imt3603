@@ -1,11 +1,39 @@
 [gd_scene format=3 uid="uid://dxhxl5ttjsu11"]
 
+[ext_resource type="PackedScene" uid="uid://du12iq77u15gr" path="res://assets/models/DeliveryTruckOpenBackdoor/Delivery_truck_doors.glb" id="1_msp1t"]
 [ext_resource type="PackedScene" uid="uid://blaqtkd7qbo34" path="res://scenes/interactables/delivery/deliveryman.tscn" id="1_nfesq"]
 [ext_resource type="PackedScene" uid="uid://dfcfgoxjkica0" path="res://scenes/interactables/delivery/delivery_zone.tscn" id="2_b4rl6"]
+[ext_resource type="PackedScene" uid="uid://c2bbx3cul4ot7" path="res://assets/models/DeliveryTruck/delivery_truck.glb" id="2_wojmw"]
 
-[node name="DeliveryPoint" type="Node3D" unique_id=796269573]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
+size = Vector3(7.4016113, 5.1796875, 3.6943665)
 
-[node name="Deliveryman" parent="." unique_id=1621832877 node_paths=PackedStringArray("delivery_zone") instance=ExtResource("1_nfesq")]
-delivery_zone = NodePath("../DeliveryZone")
+[node name="DeliveryPoint" type="Node3D" unique_id=1503778649]
+
+[node name="TruckOpen" parent="." unique_id=959204498 instance=ExtResource("1_msp1t")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 1.73, 0)
+
+[node name="TruckClosed" parent="." unique_id=3815118 instance=ExtResource("2_wojmw")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 1.73, 0)
+visible = false
+
+[node name="TruckBody" type="StaticBody3D" parent="." unique_id=350525524]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TruckBody" unique_id=149240602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026782036, 1.5267305, -0.017990112)
+shape = SubResource("BoxShape3D_l0bqs")
 
 [node name="DeliveryZone" parent="." unique_id=1947463298 instance=ExtResource("2_b4rl6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
+
+[node name="Deliveryman" parent="." unique_id=1621832877 node_paths=PackedStringArray("delivery_zone", "truck", "open_model", "closed_model", "truck_door") instance=ExtResource("1_nfesq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.0129912, 2.527381)
+delivery_zone = NodePath("../DeliveryZone")
+truck = NodePath("..")
+open_model = NodePath("../TruckOpen")
+closed_model = NodePath("../TruckClosed")
+truck_door = NodePath("../TruckDoor")
+
+[node name="TruckDoor" type="Marker3D" parent="." unique_id=192272563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1634383, 0, 1.0158079)
