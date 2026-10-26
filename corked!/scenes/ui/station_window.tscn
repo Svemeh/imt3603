@@ -1,5 +1,20 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://k33gere145x5"]
+
+[sub_resource type="SystemFont" id="Font"]
+font_names = PackedStringArray("Arial", "Helvetica")
+font_weight = 700
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme"]
+default_font = SubResource("Font")
+default_font_size = 24
+Label/colors/font_color = Color(0.93, 0.94, 0.96, 1)
+
 [sub_resource type="StyleBoxFlat" id="Frame"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 bg_color = Color(0.095, 0.105, 0.135, 1)
 border_width_left = 5
 border_width_top = 5
@@ -8,53 +23,48 @@ border_width_bottom = 5
 border_color = Color(0.39, 0.42, 0.49, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
-corner_radius_bottom_left = 10
 corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 shadow_color = Color(0.025, 0.03, 0.045, 0.8)
 shadow_size = 4
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxFlat" id="Header"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
 bg_color = Color(0.14, 0.15, 0.19, 1)
 border_width_bottom = 3
 border_color = Color(0.27, 0.29, 0.35, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
-content_margin_left = 12.0
-content_margin_right = 12.0
-content_margin_top = 8.0
-content_margin_bottom = 8.0
+
 [sub_resource type="StyleBoxFlat" id="Body"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
 bg_color = Color(0.115, 0.125, 0.15, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.23, 0.25, 0.30, 1)
+border_color = Color(0.23, 0.25, 0.3, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
-corner_radius_bottom_left = 5
 corner_radius_bottom_right = 5
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
-[sub_resource type="SystemFont" id="Font"]
-font_names = PackedStringArray("Arial", "Helvetica")
-font_weight = 700
-[sub_resource type="Theme" id="Theme"]
-default_font = SubResource("Font")
-default_font_size = 24
-Label/colors/font_color = Color(0.93, 0.94, 0.96, 1)
-[node name="StationWindow" type="Control"]
+corner_radius_bottom_left = 5
+
+[node name="StationWindow" type="Control" unique_id=83461286]
 custom_minimum_size = Vector2(260, 180)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 420.0
 offset_bottom = 280.0
 mouse_filter = 2
 theme = SubResource("Theme")
-[node name="Frame" type="PanelContainer" parent="."]
+
+[node name="Frame" type="PanelContainer" parent="." unique_id=687386846]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,27 +73,32 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("Frame")
-[node name="Layout" type="VBoxContainer" parent="Frame"]
+
+[node name="Layout" type="VBoxContainer" parent="Frame" unique_id=1240290360]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 6
-[node name="Header" type="PanelContainer" parent="Frame/Layout"]
+
+[node name="Header" type="PanelContainer" parent="Frame/Layout" unique_id=1385114535]
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("Header")
-[node name="Title" type="Label" parent="Frame/Layout/Header"]
+
+[node name="Title" type="Label" parent="Frame/Layout/Header" unique_id=2038610830]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 text = "MINIGAME TITLE"
 clip_text = true
-theme_override_font_sizes/font_size = 22
-[node name="ContentSlot" type="PanelContainer" parent="Frame/Layout"]
+
+[node name="ContentSlot" type="PanelContainer" parent="Frame/Layout" unique_id=2110756929]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("Body")
-[node name="Placeholder" type="Label" parent="Frame/Layout/ContentSlot"]
+
+[node name="Placeholder" type="Label" parent="Frame/Layout/ContentSlot" unique_id=1697081205]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.47, 0.50, 0.57, 1)
+theme_override_colors/font_color = Color(0.47, 0.5, 0.57, 1)
 theme_override_font_sizes/font_size = 18
 text = "MINIGAME CONTENT"
 horizontal_alignment = 1

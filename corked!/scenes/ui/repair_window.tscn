@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cfq4k3ntxjj8k"]
+
+[ext_resource type="PackedScene" uid="uid://k33gere145x5" path="res://scenes/ui/station_window.tscn" id="1_bgo4p"]
+[ext_resource type="Script" uid="uid://du6joasghri62" path="res://src/ui/repair_window.gd" id="2_w7h17"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bqs"]
+bg_color = Color(0.6, 0, 0, 1)
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+
+[node name="StationWindow" unique_id=259133169 instance=ExtResource("1_bgo4p")]
+script = ExtResource("2_w7h17")
+
+[node name="Title" parent="Frame/Layout/Header" parent_id_path=PackedInt32Array(1385114535) index="0" unique_id=2038610830]
+text = "FIX THE MACHINE"
+
+[node name="Placeholder" parent="Frame/Layout/ContentSlot" parent_id_path=PackedInt32Array(2110756929) index="0" unique_id=1697081205]
+visible = false
+
+[node name="RepairContent" type="VBoxContainer" parent="Frame/Layout/ContentSlot" parent_id_path=PackedInt32Array(2110756929) index="1" unique_id=1209310106]
+layout_mode = 2
+alignment = 1
+
+[node name="Ball" type="Panel" parent="Frame/Layout/ContentSlot/RepairContent" index="0" unique_id=958938347]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0bqs")
+
+[node name="StatusLabel" type="Label" parent="Frame/Layout/ContentSlot/RepairContent" index="1" unique_id=498260709]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hit it with the hammer!"
+horizontal_alignment = 1

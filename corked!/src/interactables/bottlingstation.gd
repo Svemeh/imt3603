@@ -76,6 +76,7 @@ func _ready() -> void:
 	## To start the break chance
 	_break_chance = base_break_chance
 	_spawn_crate()
+	_connect_repair_popup()
 
 
 ## Spawns a new empty crate as soon as the full one has been carried away
@@ -222,6 +223,24 @@ func _hit() -> void:
 		print("Bottling station fixed!")
 
 
+## Used by station window manager to keep the repair popup visible while the
+## machine is broken, so players can leave to get the hammer
+func is_running() -> bool:
+	return is_broken
+
+
+## Connects the repair signals to the ball in the popup above the station
+## The popup is placed in the map scene, so its looked up by the path
+func _connect_repair_popup() -> void:
+	var mount := get_node_or_null("RepairPopupAnchor/MinigameWindowPreview")
+	if mount == null or not mount.window.has_method("set_progress"):
+		return
+	var popup = mount.window
+	broke.connect(popup.set_progress.bind(0.0))
+	repair_progress.connect(popup.set_progress)
+	fixed.connect(popup.set_progress.bind(1.0))
+
+
 ## Moves the bottle along an arc from the conveyor end to its crate slot.
 ## t goes from 0 to 1 over hop_time
 func _hop_bottle(t: float, bottle: Node3D, from: Vector3, to: Vector3) -> void:
@@ -254,5 +273,5 @@ func get_prompt() -> String:
 ## even when a player walks away to fetch the hammer. For now, _busy covers
 ## the existing bottle-filling/travel sequence and clears when the bottle arrives.
 ## Include paused-for-repair/jammed states here when that minigame is added.
-func is_running() -> bool:
-	return _busy
+# func is_running() -> bool:
+# 	return _busy
