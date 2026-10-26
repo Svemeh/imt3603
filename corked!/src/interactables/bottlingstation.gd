@@ -105,19 +105,12 @@ func _check_barrel() -> void:
 ## Only takes barrels that hold finished wine, and only one at a time
 func can_accept_item(item: Item) -> bool:
 	_check_barrel()
-	# a hammer counts as "accepted" only when theres something to fix
-	if item is Hammer:
-		return is_broken
 	var held := item as Barrel
 	return (held != null and barrel == null and held.is_wine and
 			held.juice_amount > 0)
 
 
 func accept_item(player: Player) -> void:
-	# hitting with the hammer: the player keeps it
-	if player.held_item is Hammer:
-		_hit()
-		return
 	
 	var item := player.transfer_item()
 	player.remove_collision_exception_with(item)
@@ -131,9 +124,14 @@ func accept_item(player: Player) -> void:
 
 ## ------------------------- Bottling ---------------------------
 
-func can_interact(_player: Player) -> bool:
+func can_interact(player: Player) -> bool:
 	_check_barrel()
-	if is_broken or _busy or barrel == null or crate == null or not is_instance_valid(crate):
+	if is_broken:
+		return player.held_item is Hammer
+	# Holding a hammer: J is for hitting and cant bottle while hammer held
+	if player.held_item is Hammer:
+		return false
+	if _busy or barrel == null or crate == null or not is_instance_valid(crate):
 		return false
 	return barrel.is_wine and barrel.juice_amount > 0 and not crate.is_full()
 
@@ -142,7 +140,10 @@ func interact(player: Player) -> void:
 	if not can_interact(player):
 		return
 	
-	_busy = true
+	# Broken machine, J with hammer is hit
+	if is_broken:
+		_hit()
+		return
 	
 	_busy = true
 	barrel.juice_amount -= 1
