@@ -1,7 +1,5 @@
 extends Control
 
-@export var test_show_all_players: bool = true
-
 @onready var player_slots: Array = [
 	$CenterContainer/HBoxContainer/PlayerSlot1,
 	$CenterContainer/HBoxContainer/PlayerSlot2,
@@ -16,22 +14,11 @@ func _ready() -> void:
 	for i in range(player_slots.size()):
 		var slot = player_slots[i]
 
-		# Slot 1 = Yellow
-		# Slot 2 = Purple
-		# Slot 3 = Green
-		# Slot 4 = Blue
 		slot.player_number = i + 1
-
 		slot.get_node("PlayerPlaque/PlayerLabel").text = "PLAYER %d" % (i + 1)
 
-		# Refresh character because player_number was just assigned
 		slot.setup_character_preview()
-
-	# Temporary visual test:
-	# Shows all four players without needing four controllers.
-	if test_show_all_players:
-		for slot in player_slots:
-			slot.set_joined(true)
+		slot.set_joined(false)
 
 
 func _unhandled_input(event: InputEvent) -> void:

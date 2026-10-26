@@ -9,6 +9,7 @@
 [ext_resource type="Animation" uid="uid://brppub3g7ovdg" path="res://assets/models/animations/Idle_3.res" id="3_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://dkc2e4wiv8epk" path="res://assets/models/players/othermodels/Meshy_AI_Farmer_Green_Colorway_All_Animations.glb" id="7_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://bkonfo6ppd20l" path="res://assets/models/players/othermodels/Meshy_AI_Farmer_Purple_Colorwa_All_Animations.glb" id="8_d2wvv"]
+[ext_resource type="PackedScene" uid="uid://di30q4ackyawu" path="res://assets/models/players/othermodels/Meshy_AI_Farmer_Tan_Colorway_All_Animations.glb" id="10_y4r1p"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
 _data = {
@@ -16,6 +17,11 @@ _data = {
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d2wvv"]
+_data = {
+&"Idle_3": ExtResource("3_ur7pv")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3v2ag"]
 _data = {
 &"Idle_3": ExtResource("3_ur7pv")
 }
@@ -31,6 +37,7 @@ player_variant = 1
 [node name="VisualRoot" type="Node3D" parent="." unique_id=1240563848]
 
 [node name="FarmerBlue" parent="VisualRoot" unique_id=182751305 instance=ExtResource("2_ur7pv")]
+visible = false
 
 [node name="Skeleton3D" parent="VisualRoot/FarmerBlue/target_character" parent_id_path=PackedInt32Array(182751305, 760737857) index="0" unique_id=591446516]
 bones/0/position = Vector3(0.013011815, 0.56529224, -0.00044011883)
@@ -63,9 +70,10 @@ bones/31/rotation = Quaternion(-0.016450824, 0.34217146, -0.0115559045, 0.939422
 [node name="AnimationPlayer" parent="VisualRoot/FarmerBlue" index="1" unique_id=756161014]
 libraries/shared = SubResource("AnimationLibrary_y4r1p")
 
-[node name="FarmerYellow" parent="VisualRoot" unique_id=1407477971 instance=ExtResource("2_qhqgy")]
+[node name="FarmerTan1" parent="VisualRoot" unique_id=1407477971 instance=ExtResource("2_qhqgy")]
+visible = false
 
-[node name="Skeleton3D" parent="VisualRoot/FarmerYellow/Armature" parent_id_path=PackedInt32Array(1407477971, 509107105) index="0" unique_id=621755559]
+[node name="Skeleton3D" parent="VisualRoot/FarmerTan1/Armature" parent_id_path=PackedInt32Array(1407477971, 509107105) index="0" unique_id=621755559]
 bones/0/position = Vector3(-0.8875929, 59.310207, 4.4148993)
 bones/0/rotation = Quaternion(0.7600202, 0.48767504, -0.0018421153, 0.42957985)
 bones/1/rotation = Quaternion(0.49794352, -0.16927798, 0.30521035, 0.7938791)
@@ -93,12 +101,13 @@ bones/19/rotation = Quaternion(0.08292112, -0.44237676, 0.10405523, 0.8869044)
 bones/20/rotation = Quaternion(0.17117491, -0.011709961, -0.0061623943, 0.9851518)
 bones/21/rotation = Quaternion(0.1702675, 0.0062336912, -0.0076468023, 0.9853486)
 
-[node name="AnimationPlayer" parent="VisualRoot/FarmerYellow" index="1" unique_id=349760371]
+[node name="AnimationPlayer" parent="VisualRoot/FarmerTan1" index="1" unique_id=349760371]
 libraries/Meshy_AI_Animation_Idle_3_withSkin = ExtResource("3_qlg0r")
 libraries/Meshy_AI_Animation_Running_withSkin = ExtResource("3_dqkch")
 libraries/Meshy_AI_Farmer_Tan_Rigged_biped_Animation_Walking_withSkin = ExtResource("3_qhqgy")
 
 [node name="FarmerGreen" parent="VisualRoot" unique_id=1258633286 instance=ExtResource("7_y4r1p")]
+visible = false
 
 [node name="Skeleton3D" parent="VisualRoot/FarmerGreen/target_character" parent_id_path=PackedInt32Array(1258633286, 41431288) index="0" unique_id=1345900382]
 bones/0/position = Vector3(0.011166285, 0.5716682, -0.015508152)
@@ -129,6 +138,7 @@ bones/30/rotation = Quaternion(0.02217792, -0.73915017, 0.24347535, 0.6276026)
 bones/31/rotation = Quaternion(-0.0060905814, 0.30235738, -0.0079511795, 0.95314205)
 
 [node name="FarmerPurple" parent="VisualRoot" unique_id=162376143 instance=ExtResource("8_d2wvv")]
+visible = false
 
 [node name="Skeleton3D" parent="VisualRoot/FarmerPurple/target_character" parent_id_path=PackedInt32Array(162376143, 1174526561) index="0" unique_id=109150596]
 bones/0/position = Vector3(0.01301353, 0.56526846, -0.00043103658)
@@ -162,6 +172,39 @@ bones/31/rotation = Quaternion(-0.017091416, 0.3110124, -0.011137136, 0.95018697
 [node name="AnimationPlayer" parent="VisualRoot/FarmerPurple" index="1" unique_id=1473896892]
 libraries/shared = SubResource("AnimationLibrary_d2wvv")
 
+[node name="FarmerYellow" parent="VisualRoot" unique_id=2021555696 instance=ExtResource("10_y4r1p")]
+
+[node name="Skeleton3D" parent="VisualRoot/FarmerYellow/target_character" parent_id_path=PackedInt32Array(2021555696, 1686298552) index="0" unique_id=665351658]
+bones/0/position = Vector3(0.010407333, 0.6272372, -0.0022483766)
+bones/0/rotation = Quaternion(-0.0037428846, 0.014985303, -0.008793448, 0.99984205)
+bones/1/rotation = Quaternion(0.16173868, -0.007920323, 0.008161027, 0.9867681)
+bones/2/rotation = Quaternion(-0.06608673, 0.013512488, 0.12054813, 0.9904132)
+bones/3/rotation = Quaternion(-0.27064052, -0.0012283752, -0.25119737, 0.9293288)
+bones/4/rotation = Quaternion(0.25336334, -0.0035070307, 0.15384422, 0.9550532)
+bones/5/rotation = Quaternion(-0.079337694, 0.045108654, -0.014929001, 0.9957148)
+bones/8/rotation = Quaternion(-0.37330833, -0.33279485, -0.5758898, 0.6467143)
+bones/9/rotation = Quaternion(-0.25849405, 0.6942867, -0.42708504, 0.51840645)
+bones/10/rotation = Quaternion(0.090467036, 0.0016674536, -0.03323675, 0.99534327)
+bones/11/rotation = Quaternion(-0.2008266, 0.07106682, -0.47514802, 0.8537286)
+bones/15/rotation = Quaternion(0.44933295, -0.06320071, -0.7098365, -0.53873724)
+bones/16/rotation = Quaternion(-0.032197185, -0.69743747, 0.47880548, 0.53224975)
+bones/17/rotation = Quaternion(0.20103413, -0.0016131405, 0.0036679232, 0.97957605)
+bones/18/rotation = Quaternion(-0.12400952, -0.06380793, 0.45694682, 0.878493)
+bones/20/rotation = Quaternion(-0.06651582, 0.86973196, 0.08497812, -0.48158145)
+bones/22/rotation = Quaternion(0.9684378, 0.07355311, 0.09633181, 0.21780401)
+bones/23/rotation = Quaternion(0.48526368, -0.0562286, 0.15876347, 0.8579929)
+bones/24/rotation = Quaternion(-0.42402124, 0.24115358, -0.17577448, 0.85507566)
+bones/25/rotation = Quaternion(0.031016933, 0.7195588, -0.40814242, 0.560975)
+bones/26/rotation = Quaternion(-0.015604532, -0.35497496, 0.011205098, 0.9346785)
+bones/27/rotation = Quaternion(0.9892623, 0.01115562, -0.10319937, 0.10288695)
+bones/28/rotation = Quaternion(0.21027735, 0.0499267, -0.02475426, 0.9760522)
+bones/29/rotation = Quaternion(-0.48491094, -0.23608959, 0.21948254, 0.81298876)
+bones/30/rotation = Quaternion(0.031246606, -0.72636056, 0.3821754, 0.57040876)
+bones/31/rotation = Quaternion(-0.016837284, 0.31087926, -0.010809294, 0.9502389)
+
+[node name="AnimationPlayer" parent="VisualRoot/FarmerYellow" index="1" unique_id=1845118121]
+libraries/shared = SubResource("AnimationLibrary_3v2ag")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1799293663]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88789123, 0)
 shape = SubResource("CapsuleShape3D_3wo4y")
@@ -181,6 +224,7 @@ shape = SubResource("SphereShape3D_akdr4")
 [connection signal="body_exited" from="InteractArea" to="." method="_on_area_exited"]
 
 [editable path="VisualRoot/FarmerBlue"]
-[editable path="VisualRoot/FarmerYellow"]
+[editable path="VisualRoot/FarmerTan1"]
 [editable path="VisualRoot/FarmerGreen"]
 [editable path="VisualRoot/FarmerPurple"]
+[editable path="VisualRoot/FarmerYellow"]

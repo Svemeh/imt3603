@@ -5,6 +5,13 @@ extends Node
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 
+const PLAYER_VARIANTS := [
+	Player.PlayerVariant.YELLOW,
+	Player.PlayerVariant.PURPLE,
+	Player.PlayerVariant.GREEN,
+	Player.PlayerVariant.BLUE
+]
+
 var money: int = 0
 var quota: int = 0
 
@@ -18,25 +25,22 @@ func _ready() -> void:
 
 	round_timer.start_round()
 
-	# ---------------------------------------------------------
-	# TEST ONE PLAYER VARIANT AT A TIME
-	# Uncomment ONE of these:
-	# ---------------------------------------------------------
+	for i in PlayerManager.MAX_PLAYERS:
+		var device = PlayerManager.slots[i]
 
-	# var test_variant = Player.PlayerVariant.YELLOW
-	# var test_variant = Player.PlayerVariant.PURPLE
-	# var test_variant = Player.PlayerVariant.GREEN
-	var test_variant = Player.PlayerVariant.BLUE
+		if device == null:
+			continue
 
-	# Spawn one test player
-	var p := PLAYER_SCENE.instantiate()
+		var p := PLAYER_SCENE.instantiate()
 
-	p.player_index = 0
-	p.player_variant = test_variant
+		p.player_index = i
+		p.player_variant = PLAYER_VARIANTS[i]
 
-	add_child(p)
+		# IMPORTANT:
+		# Variant must be assigned BEFORE add_child()
+		add_child(p)
 
-	p.global_position = $SpawnPoints.get_child(0).global_position
+		p.global_position = $SpawnPoints.get_child(i).global_position
 
 
 func increment_money(amount: int) -> void:

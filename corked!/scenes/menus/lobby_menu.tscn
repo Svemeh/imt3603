@@ -652,12 +652,11 @@ z_index = 0
 [node name="PlayerSlot2" parent="CenterContainer/HBoxContainer" unique_id=196775811 instance=ExtResource("3_7pt4q")]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-player_number = 2
 
 [node name="CharacterArea" parent="CenterContainer/HBoxContainer/PlayerSlot2" index="1" unique_id=1667883967]
 z_index = 1
 
-[node name="FarmerYellow" parent="CenterContainer/HBoxContainer/PlayerSlot2/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(196775811, 1515021372) index="0" unique_id=1568777814]
+[node name="FarmerYellow" parent="CenterContainer/HBoxContainer/PlayerSlot2/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(196775811, 1515021372) index="2" unique_id=2021555696]
 visible = false
 
 [node name="FarmerPurple" parent="CenterContainer/HBoxContainer/PlayerSlot2/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(196775811, 1515021372) index="3" unique_id=162376143 instance=ExtResource("5_2pi4t")]
@@ -706,12 +705,11 @@ z_index = 0
 [node name="PlayerSlot3" parent="CenterContainer/HBoxContainer" unique_id=2120201044 instance=ExtResource("3_7pt4q")]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-player_number = 3
 
 [node name="CharacterArea" parent="CenterContainer/HBoxContainer/PlayerSlot3" index="1" unique_id=1667883967]
 z_index = 1
 
-[node name="FarmerYellow" parent="CenterContainer/HBoxContainer/PlayerSlot3/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(2120201044, 1515021372) index="0" unique_id=1568777814]
+[node name="FarmerYellow" parent="CenterContainer/HBoxContainer/PlayerSlot3/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(2120201044, 1515021372) index="2" unique_id=2021555696]
 visible = false
 
 [node name="FarmerGreen" parent="CenterContainer/HBoxContainer/PlayerSlot3/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(2120201044, 1515021372) index="3" unique_id=2094185383 instance=ExtResource("7_1e1h3")]
@@ -759,12 +757,11 @@ z_index = 0
 [node name="PlayerSlot4" parent="CenterContainer/HBoxContainer" unique_id=1871407805 instance=ExtResource("3_7pt4q")]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-player_number = 4
 
 [node name="CharacterArea" parent="CenterContainer/HBoxContainer/PlayerSlot4" index="1" unique_id=1667883967]
 z_index = 1
 
-[node name="FarmerYellow" parent="CenterContainer/HBoxContainer/PlayerSlot4/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(1871407805, 1515021372) index="0" unique_id=1568777814]
+[node name="FarmerYellow" parent="CenterContainer/HBoxContainer/PlayerSlot4/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(1871407805, 1515021372) index="2" unique_id=2021555696]
 visible = false
 
 [node name="FarmerBlue" parent="CenterContainer/HBoxContainer/PlayerSlot4/CharacterArea/CharacterViewport/CharacterPreview" parent_id_path=PackedInt32Array(1871407805, 1515021372) index="3" unique_id=182751305 instance=ExtResource("8_wfujq")]

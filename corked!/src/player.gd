@@ -63,9 +63,9 @@ func setup_player_variant() -> void:
 			yellow_model.visible = true
 			animation_player = yellow_model.get_node("AnimationPlayer")
 
-			idle_animation = "Meshy_AI_Animation_Idle_3_withSkin/Idle_3"
-			walk_animation = "Meshy_AI_Farmer_Tan_Rigged_biped_Animation_Walking_withSkin/Armature|walking_man|baselayer"
-			run_animation = "Meshy_AI_Animation_Running_withSkin/Running"
+			idle_animation = "shared/Idle_3"
+			walk_animation = "Walking"
+			run_animation = "Running"
 
 		PlayerVariant.PURPLE:
 			purple_model.visible = true
