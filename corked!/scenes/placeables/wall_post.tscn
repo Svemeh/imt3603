@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://dlksbctdnm3ly"]
 
-[ext_resource type="PackedScene" path="res://models/map/placeables/wall_post.glb" id="1_model"]
+[ext_resource type="PackedScene" uid="uid://cyp8a6ywvdmk4" path="res://models/map/placeables/wall_post.glb" id="1_model"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvuet"]
+albedo_color = Color(0.5019608, 0.3137255, 0.18039216, 1)
+roughness = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_post"]
 size = Vector3(0.66, 2.5, 0.66)
 
-[node name="WallPost" type="Node3D"]
+[node name="WallPost" type="Node3D" unique_id=816025876]
 
-[node name="Visual" parent="." instance=ExtResource("1_model")]
+[node name="Visual" parent="." unique_id=455123495 instance=ExtResource("1_model")]
 
-[node name="Collision" type="StaticBody3D" parent="."]
+[node name="Oak_beam" parent="Visual/wall_post" parent_id_path=PackedInt32Array(455123495, 1993103742) index="0" unique_id=685750584]
+surface_material_override/0 = SubResource("StandardMaterial3D_kvuet")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+[node name="Collision" type="StaticBody3D" parent="." unique_id=2021645667]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=648120868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_post")
+
+[editable path="Visual"]
