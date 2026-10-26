@@ -68,10 +68,16 @@ func _on_delivery_sent(bottles: int) -> void:
 	var won := bottles >= quota_target
 	if won:
 		increment_money(bottles * money_per_bottle)
+		GameStats.bottles_sold += bottles
+		GameStats.money_earned += bottles * money_per_bottle
+		GameStats.days_survived += 1
 		print("Day won! %d/%d bottles" % [bottles, quota_target])
 		# TODO: on a win, go to the upgrade phase
 	else:
 		print("Day lost, truck sent with %d/%d bottles" % [bottles, quota_target])
+		GameStats.last_day_bottles = bottles
+		GameStats.last_day_quota = quota_target
+		GameStats.loss_reason = "The truck left short on bottles"
 		get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
 
 ## Forwards the timer's remaining time to the HUD's progress bar.
@@ -84,4 +90,7 @@ func _on_round_timer_round_ended() -> void:
 		return
 	_day_over = true
 	print("Day lost, time ran out")
+	GameStats.last_day_bottles = loaded_bottles
+	GameStats.last_day_quota = quota_target
+	GameStats.loss_reason = "Time ran out"
 	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
