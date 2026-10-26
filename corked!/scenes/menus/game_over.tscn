@@ -1,9 +1,124 @@
 [gd_scene format=3 uid="uid://dxfq3ugqo36t2"]
 
-[node name="GameOver" type="Control" unique_id=1461531060]
+[ext_resource type="Script" path="res://src/menus/game_over.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://2qpja723bsxk" path="res://assets/ui/vineyard_background.png" id="2_bg"]
+[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="3_font"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://assets/ui/menu_button.tscn" id="4_button"]
+
+[node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 120
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="ReasonLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 0.827451, 0.64705884, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 38
+text = "Time ran out"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BottlesLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 32
+text = "Bottles sold: 0"
+horizontal_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 32
+text = "Money earned: 0"
+horizontal_alignment = 1
+
+[node name="DaysLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 32
+text = "Days survived: 0"
+horizontal_alignment = 1
+
+[node name="LastTruckLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94509804, 0.8156863, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 32
+text = "Last truck: 0/8 bottles"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="NewGameButton" parent="CenterContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("4_button")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NEW GAME"
+
+[node name="MainMenuButton" parent="CenterContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("4_button")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MAIN MENU"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
