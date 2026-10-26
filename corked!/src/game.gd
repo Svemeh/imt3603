@@ -25,6 +25,7 @@ func _ready() -> void:
 
 	round_timer.start_round()
 
+	# add the players
 	for i in PlayerManager.MAX_PLAYERS:
 		var device = PlayerManager.slots[i]
 
@@ -36,26 +37,29 @@ func _ready() -> void:
 		p.player_index = i
 		p.player_variant = PLAYER_VARIANTS[i]
 
-		# IMPORTANT:
 		# Variant must be assigned BEFORE add_child()
 		add_child(p)
 
 		p.global_position = $SpawnPoints.get_child(i).global_position
 
 
+## Increment money up or down by x and refreshes the HUD.
 func increment_money(amount: int) -> void:
 	money += amount
 	hud.update_money(money)
 
 
+## Increments quota by x (e.g. from a valid delivery) and refreshes the HUD.
 func increment_quota(amount: int) -> void:
 	quota += amount
 	hud.update_quota(quota)
 
 
+## Forwards the timer's remaining time to the HUD's progress bar.
 func _on_round_timer_time_updated(time_left: float) -> void:
 	hud.update_timer(time_left, round_timer.round_duration)
 
 
+## Called when a round's timer hits zero. Ends the game.
 func _on_round_timer_round_ended() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
