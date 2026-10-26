@@ -1,11 +1,9 @@
-extends RigidBody3D
+# hammer.gd
+class_name Hammer
+extends Item
 
+## Used to fix the bottling station when it breakss down.
+## Must be held when hitting the station to fix it.
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	display_name = "Hammer"
