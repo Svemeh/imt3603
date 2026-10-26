@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b15g3qrgibm3i"]
+
+[ext_resource type="Script" uid="uid://b1a5bxxfy81jo" path="res://src/items/hammer.gd" id="1_rtj8t"]
+[ext_resource type="PackedScene" uid="uid://muflyo1kkbjt" path="res://assets/models/hammer/hammer.glb" id="2_rtj8t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_akdr4"]
+size = Vector3(0.70129395, 0.57666016, 0.5234375)
+
+[node name="Hammer" type="RigidBody3D" unique_id=1336629603]
+collision_layer = 8
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_rtj8t")
+
+[node name="hammer" parent="." unique_id=1031825163 instance=ExtResource("2_rtj8t")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=228673073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009375393, 0.21166992, -0.035904765)
+shape = SubResource("BoxShape3D_akdr4")
