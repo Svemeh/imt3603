@@ -3,13 +3,18 @@
 [ext_resource type="Script" uid="uid://b1a5bxxfy81jo" path="res://src/items/hammer.gd" id="1_rtj8t"]
 [ext_resource type="PackedScene" uid="uid://muflyo1kkbjt" path="res://assets/models/hammer/hammer.glb" id="2_rtj8t"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6bivr"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_akdr4"]
 size = Vector3(0.70129395, 0.57666016, 0.5234375)
 
 [node name="Hammer" type="RigidBody3D" unique_id=1336629603]
 collision_layer = 8
-gravity_scale = 0.0
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_6bivr")
 freeze = true
+linear_damp = 3.0
+angular_damp = 3.0
 script = ExtResource("1_rtj8t")
 
 [node name="hammer" parent="." unique_id=1031825163 instance=ExtResource("2_rtj8t")]
