@@ -2,6 +2,12 @@
 class_name BottlingStation
 extends Interactable
 
+## Emitted when the machine breaks down
+signal broke
+## Emitted on every hammer hit, ratio goes 0.0 -> 1.0
+signal repair_progress(ratio: float)
+## Emitted when the machine is fixed
+signal fixed
 
 ## Gameplay Flow:
 ## 1. Player hands over WINE barrel (interact2, same as stomping station
@@ -35,7 +41,12 @@ const WINE_BOTTLE_SCENE: PackedScene = preload("res://scenes/items/full_wine_bot
 @export var hop_height: float = 0.5
 ## Seconds the bottle stops under the capper while it gets decorated
 @export var cap_time: float = 0.4
-
+## Chance (0-1) the machine breaks after a bottle, right after a repair
+@export var base_break_chance: float = 0.05
+## How much the chance grows with every bottle that doesn't break it
+@export var break_chance_step: float = 0.05
+## Hammer hits needed to fix the machine
+@export var hits_to_fix: int = 4
 
 
 ## Where the docked barrel sits
@@ -53,10 +64,19 @@ var barrel: Barrel = null
 var crate: WineBox = null
 ## True while a bottle is moving down the line
 var _busy: bool = false
+## True while the machine is broken and need the hammer
+var is_broken: bool = false
+## Current chance of breaking after the next bottle
+var _break_chance: float = 0.0
+## Hammer hits so far on the current breakdown
+var _hits: int = 0
 
 
 func _ready() -> void:
+	## To start the break chance
+	_break_chance = base_break_chance
 	_spawn_crate()
+	_connect_repair_popup()
 
 
 ## Spawns a new empty crate as soon as the full one has been carried away
@@ -91,6 +111,7 @@ func can_accept_item(item: Item) -> bool:
 
 
 func accept_item(player: Player) -> void:
+	
 	var item := player.transfer_item()
 	player.remove_collision_exception_with(item)
 	
@@ -103,8 +124,13 @@ func accept_item(player: Player) -> void:
 
 ## ------------------------- Bottling ---------------------------
 
-func can_interact(_player: Player) -> bool:
+func can_interact(player: Player) -> bool:
 	_check_barrel()
+	if is_broken:
+		return player.held_item is Hammer
+	# Holding a hammer: J is for hitting and cant bottle while hammer held
+	if player.held_item is Hammer:
+		return false
 	if _busy or barrel == null or crate == null or not is_instance_valid(crate):
 		return false
 	return barrel.is_wine and barrel.juice_amount > 0 and not crate.is_full()
@@ -114,7 +140,10 @@ func interact(player: Player) -> void:
 	if not can_interact(player):
 		return
 	
-	_busy = true
+	# Broken machine, J with hammer is hit
+	if is_broken:
+		_hit()
+		return
 	
 	_busy = true
 	barrel.juice_amount -= 1
@@ -164,6 +193,53 @@ func _on_bottle_arrived(bottle: Node3D, target_crate: WineBox) -> void:
 			target_crate.can_pick_up = true
 	else:
 		bottle.queue_free()
+	_roll_breakdown()
+
+## After each bottle: maybe machine break, otherwise make break after next bottle
+## more likely
+func _roll_breakdown() -> void:
+	if randf() < _break_chance:
+		_break()
+	else:
+		_break_chance = minf(_break_chance + break_chance_step, 1.0)
+
+
+## Stops the machine until someone fixes it with the hammer
+func _break() -> void:
+	is_broken = true
+	_hits = 0
+	_break_chance = base_break_chance
+	broke.emit()
+	print("Bottling station broke down!")
+
+
+## One hammer hit. Enough hits and the machine works again
+func _hit() -> void:
+	_hits += 1
+	repair_progress.emit(float(_hits) / hits_to_fix)
+	print("Hit %d/%d" % [_hits, hits_to_fix])
+	if _hits >= hits_to_fix:
+		is_broken = false
+		fixed.emit()
+		print("Bottling station fixed!")
+
+
+## Used by station window manager to keep the repair popup visible while the
+## machine is broken, so players can leave to get the hammer
+func is_running() -> bool:
+	return is_broken
+
+
+## Connects the repair signals to the ball in the popup above the station
+## The popup is placed in the map scene, so its looked up by the path
+func _connect_repair_popup() -> void:
+	var mount := get_node_or_null("RepairPopupAnchor/MinigameWindowPreview")
+	if mount == null or not mount.window.has_method("set_progress"):
+		return
+	var popup = mount.window
+	broke.connect(popup.set_progress.bind(0.0))
+	repair_progress.connect(popup.set_progress)
+	fixed.connect(popup.set_progress.bind(1.0))
 
 
 ## Moves the bottle along an arc from the conveyor end to its crate slot.
@@ -181,6 +257,8 @@ func _finished_bottle(bottle: Node3D) -> void:
 
 func get_prompt() -> String:
 	_check_barrel()
+	if is_broken:
+		return "Broken! Hit it with the hammer (%d/%d)" % [_hits, hits_to_fix]
 	if crate and is_instance_valid(crate) and crate.is_full():
 		return "Crate full - pick it up"
 	if _busy:
@@ -196,5 +274,5 @@ func get_prompt() -> String:
 ## even when a player walks away to fetch the hammer. For now, _busy covers
 ## the existing bottle-filling/travel sequence and clears when the bottle arrives.
 ## Include paused-for-repair/jammed states here when that minigame is added.
-func is_running() -> bool:
-	return _busy
+# func is_running() -> bool:
+# 	return _busy
