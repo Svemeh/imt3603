@@ -19,7 +19,7 @@ var money: int = 0
 ## Bottles the truck must carry when iit's sent for the day to succeed. GDD
 ## section 1.3 says 6-10 per round, creates hold 4 bottles, so 8 = 2 crates. This
 ## is temp, because we need to figure out how the new round system will work
-@export var quota_target: int = 8
+@export var quota: int = 8
 ## moneey earned per delivered bottle, only paid out on the successful day. We also
 ## need to figure out how this will work, since what if youre able to send some but
 ## not all? Should the game just end and full restart?
@@ -35,7 +35,7 @@ var _day_over: bool = false
 
 func _ready() -> void:
 	hud.update_money(money)
-	hud.update_quota(loaded_bottles, quota_target)
+	hud.update_quota(loaded_bottles, quota)
 	round_timer.time_updated.connect(_on_round_timer_time_updated)
 	round_timer.round_ended.connect(_on_round_timer_round_ended)
 	delivery_zone.contents_changed.connect(_on_delivery_zone_contents_changed)
@@ -76,7 +76,7 @@ func increment_quota(amount: int) -> void:
 ## A crate was loaded into the truck, refreshes the quota on the HUD
 func _on_delivery_zone_contents_changed(bottles: int) -> void:
 	loaded_bottles = bottles
-	hud.update_quota(loaded_bottles, quota_target)
+	hud.update_quota(loaded_bottles, quota)
 
 
 ## A player sent the truck. Quota met = yey you won my boy!
@@ -88,18 +88,18 @@ func _on_delivery_sent(bottles: int) -> void:
 	round_timer.stop_round()
 	
 	await deliveryman.drive_off_finished
-	var won := bottles >= quota_target
+	var won := bottles >= quota
 	if won:
 		increment_money(bottles * money_per_bottle)
 		GameStats.bottles_sold += bottles
 		GameStats.money_earned += bottles * money_per_bottle
 		GameStats.days_survived += 1
-		print("Day won! %d/%d bottles" % [bottles, quota_target])
+		print("Day won! %d/%d bottles" % [bottles, quota])
 		# TODO: on a win, go to the upgrade phase
 	else:
-		print("Day lost, truck sent with %d/%d bottles" % [bottles, quota_target])
+		print("Day lost, truck sent with %d/%d bottles" % [bottles, quota])
 		GameStats.last_day_bottles = bottles
-		GameStats.last_day_quota = quota_target
+		GameStats.last_day_quota = quota
 		GameStats.loss_reason = "The truck left short on bottles"
 		get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
 
@@ -115,6 +115,6 @@ func _on_round_timer_round_ended() -> void:
 	_day_over = true
 	print("Day lost, time ran out")
 	GameStats.last_day_bottles = loaded_bottles
-	GameStats.last_day_quota = quota_target
+	GameStats.last_day_quota = quota
 	GameStats.loss_reason = "Time ran out"
 	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
