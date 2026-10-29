@@ -178,6 +178,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	if is_running:
+		_knock_items_from_collided_players()
+
+## Makes every player this player sprinted into drop what they are holding
+func _knock_items_from_collided_players() -> void:
+	for i in get_slide_collision_count():
+		var other := get_slide_collision(i).get_collider() as Player
+
+		if other and other != self and other.is_holding():
+			other.drop_item()
+
 ## Appends new interactable or loose item to the matching in range array
 func _on_area_entered(body: Node3D) -> void:
 	if body is Interactable:
