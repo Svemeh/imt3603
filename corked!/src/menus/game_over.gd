@@ -42,6 +42,7 @@ func _move_focus(from: Control, side: Side) -> void:
 ## Same players, fresh run
 func _on_new_game_button_pressed() -> void:
 	GameStats.reset()
+	FermentationSettings.reset()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_main_menu_button_pressed() -> void:

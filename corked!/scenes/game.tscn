@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
+[ext_resource type="PackedScene" path="res://scenes/ui/fermentation_window.tscn" id="12_ferm_window"]
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
@@ -58,6 +59,9 @@ visible = false
 [node name="MinigameWindowPreview" parent="Map/FermentationStation" parent_id_path=PackedInt32Array(660336757, 479181345) index="8" unique_id=127791653 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 3, 0)
 visible = false
+window_scene = ExtResource("12_ferm_window")
+panel_size = Vector2i(300, 220)
+pixel_size = 0.028
 
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
