@@ -148,6 +148,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.000001, 0, 0)
 [node name="Post_39" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="96" unique_id=935120246]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.000001, 0, -3)
 
+[node name="StompStationPlaceholder2" parent="Map/Stations" parent_id_path=PackedInt32Array(660336757, 1889123873) index="4" unique_id=1676803408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.271047, 0, 13.484288)
+
+[node name="Player1" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="0" unique_id=427827261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+
+[node name="Player2" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="1" unique_id=261488443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 6)
+
+[node name="Player3" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="2" unique_id=1356237568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 12)
+
+[node name="Player4" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="3" unique_id=1622586493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 12)
+
 [node name="Bottlingstation" parent="Map" index="8" unique_id=389281476]
 transform = Transform3D(0.0035323482, 0.012274726, 0.9999183, -0.0003158459, 0.9999246, -0.01227369, -0.99999356, -0.0002724652, 0.0035359596, -11.4468775, 2.1090333, 14.128593)
 
