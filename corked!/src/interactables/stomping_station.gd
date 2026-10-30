@@ -12,7 +12,7 @@ signal stomped
 signal grape_finished
 
 
-## How much one stomp fills the mash bar (0-1)
+## Stomps needed to turn one grape into juice
 @export var stomps_required: int = 10
 ## Stomps lost per decay tick ("damage")
 @export var decay_per_tick: float = 0.1
@@ -146,7 +146,7 @@ func _connect_stomp_popup() -> void:
 	var popup = mount.window
 	mash_changed.connect(popup.set_mash)
 	juice_changed.connect(popup.set_juice)
-	stomped.connect(popup.set_juice)
+	stomped.connect(popup.stomp)
 	grape_finished.connect(popup.finish_grape)
 
 func get_prompt() -> String:
