@@ -13,6 +13,20 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
 
+[sub_resource type="Environment" id="Environment_dinhu"]
+background_mode = 1
+background_color = Color(0.48, 0.65, 0.82, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.77254903, 0.8352941, 0.9098039, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.3
+tonemap_mode = 2
+glow_intensity = 0.15
+glow_hdr_threshold = 1.5
+adjustment_enabled = true
+adjustment_contrast = 1.05
+adjustment_saturation = 1.2
+
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
 
@@ -32,30 +46,50 @@ script = ExtResource("9_camera")
 [node name="Map" parent="." unique_id=660336757 instance=ExtResource("2_map")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10574436, -0.04289317, 0.16842103)
 
+[node name="WorldEnvironment" parent="Map" index="0" unique_id=65212279]
+environment = SubResource("Environment_dinhu")
+
+[node name="Sun" parent="Map" index="1" unique_id=2105773388]
+light_color = Color(1, 0.8392157, 0.627451, 1)
+
+[node name="StompStationPlaceholder2" parent="Map/Stations" parent_id_path=PackedInt32Array(660336757, 1889123873) index="4" unique_id=1676803408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.271047, 0, 13.484288)
+
+[node name="Player1" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="0" unique_id=427827261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+
+[node name="Player2" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="1" unique_id=261488443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 6)
+
+[node name="Player3" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="2" unique_id=1356237568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 12)
+
+[node name="Player4" parent="Map/PlayerSpawns" parent_id_path=PackedInt32Array(660336757, 805524003) index="3" unique_id=1622586493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 12)
+
 [node name="Bottlingstation" parent="Map" index="8" unique_id=389281476]
-fill_time = null
-travel_time = null
-hop_time = null
-hop_height = null
-cap_time = null
-base_break_chance = null
-break_chance_step = null
-hits_to_fix = null
+transform = Transform3D(0.0035323482, 0.012274726, 0.9999183, -0.0003158459, 0.9999246, -0.01227369, -0.99999356, -0.0002724652, 0.0035359596, -11.4468775, 2.1090333, 14.128593)
 
-[node name="RepairPopupAnchor" type="Marker3D" parent="Map/Bottlingstation" index="8" unique_id=171462171]
+[node name="RepairPopupAnchor" type="Marker3D" parent="Map/Bottlingstation" index="8" unique_id=101252348]
 
-[node name="MinigameWindowPreview" parent="Map/Bottlingstation/RepairPopupAnchor" unique_id=721379191 instance=ExtResource("10_window")]
+[node name="MinigameWindowPreview" parent="Map/Bottlingstation/RepairPopupAnchor" unique_id=806873315 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, -1)
 visible = false
 window_scene = ExtResource("7_dinhu")
 panel_size = Vector2i(260, 180)
 pixel_size = 0.014
 
-[node name="MinigameWindowPreview" parent="Map/StompingStation" parent_id_path=PackedInt32Array(660336757, 1482266665) index="5" unique_id=333488992 instance=ExtResource("10_window")]
+[node name="StompingStation" parent="Map" index="9" unique_id=1482266665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2679505, 1.273, -2.7)
+
+[node name="MinigameWindowPreview" parent="Map/StompingStation" index="5" unique_id=1732488779 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.08, 0)
 visible = false
 
-[node name="MinigameWindowPreview" parent="Map/FermentationStation" parent_id_path=PackedInt32Array(660336757, 479181345) index="8" unique_id=127791653 instance=ExtResource("10_window")]
+[node name="FermentationStation" parent="Map" index="10" unique_id=479181345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.91815, 1.1199981, -3.5005941)
+
+[node name="MinigameWindowPreview" parent="Map/FermentationStation" index="8" unique_id=1876284186 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 3, 0)
 visible = false
 
@@ -71,7 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.426157, 0.56402254, -3.253
 [node name="DeliveryPoint" parent="." unique_id=1503778649 instance=ExtResource("8_0tnpc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.42846, 0, 2.4183807)
 
-[node name="StationWindowManager" type="Node" parent="." unique_id=1068431770]
+[node name="StationWindowManager" type="Node" parent="." unique_id=1594995780]
 script = ExtResource("11_preview")
 window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowPreview"), NodePath("../Map/FermentationStation/MinigameWindowPreview"), NodePath("../Map/Bottlingstation/RepairPopupAnchor/MinigameWindowPreview")])
 
