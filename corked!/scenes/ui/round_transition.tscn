@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dn72h8xswah4y" path="res://src/ui/round_transition.gd" id="1_script"]
 [ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="2_font"]
 [ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://assets/ui/menu_button.tscn" id="3_button"]
-[ext_resource type="Texture2D" uid="uid://g84ujgbcdmbf" path="res://assets/ui/icons/lucide/layout-grid.svg" id="icon_layout-grid"]
-[ext_resource type="Texture2D" uid="uid://s2s88ypdf846" path="res://assets/ui/icons/lucide/power.svg" id="icon_power"]
-[ext_resource type="Texture2D" uid="uid://c11sfwihc8sxt" path="res://assets/ui/icons/lucide/search.svg" id="icon_search"]
-[ext_resource type="Texture2D" uid="uid://db3kqxa0s3xrk" path="res://assets/ui/icons/lucide/volume-2.svg" id="icon_volume-2"]
-[ext_resource type="Texture2D" uid="uid://dkeju3s5jjs00" path="res://assets/ui/icons/lucide/wifi.svg" id="icon_wifi"]
+[ext_resource type="Texture2D" path="res://assets/ui/icons/launcher.png" id="icon_layout-grid"]
+[ext_resource type="Texture2D" path="res://assets/ui/icons/power.png" id="icon_power"]
+[ext_resource type="Texture2D" path="res://assets/ui/icons/search.png" id="icon_search"]
+[ext_resource type="Texture2D" path="res://assets/ui/icons/volume.png" id="icon_volume-2"]
+[ext_resource type="Texture2D" path="res://assets/ui/icons/wifi.png" id="icon_wifi"]
 
 [sub_resource type="Gradient" id="OfficeWallGradient"]
 colors = PackedColorArray(0.30, 0.32, 0.27, 1, 0.15, 0.18, 0.16, 1)

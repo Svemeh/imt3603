@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkeju3s5jjs00"
-path="res://.godot/imported/wifi.svg-65645bf107de42881e41f668a685344d.ctex"
+uid="uid://cat1lmpvr6yom"
+path="res://.godot/imported/launcher.png-72170376bd2d76a5df66b254af499c7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/icons/lucide/wifi.svg"
-dest_files=["res://.godot/imported/wifi.svg-65645bf107de42881e41f668a685344d.ctex"]
+source_file="res://assets/ui/icons/launcher.png"
+dest_files=["res://.godot/imported/launcher.png-72170376bd2d76a5df66b254af499c7b.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
