@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bda68lpvkblwb"]
+
+[ext_resource type="PackedScene" uid="uid://bsc7vj0spwn1d" path="res://assets/models/shelf/shelf.glb" id="1_0guap"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
+size = Vector3(1.9504395, 1.3657227, 0.69958496)
+
+[node name="HammerShelf" type="StaticBody3D" unique_id=1530165772]
+collision_layer = 5
+collision_mask = 0
+
+[node name="shelf" parent="." unique_id=1747159989 instance=ExtResource("1_0guap")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=706024028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009537458, 0.017333984, 0.007507324)
+shape = SubResource("BoxShape3D_l0bqs")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=730001745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12548977, 0)
