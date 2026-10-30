@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bdcbw4f3huqul"]
 
 [ext_resource type="Script" uid="uid://bjh1eywqlwr3r" path="res://src/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b15g3qrgibm3i" path="res://scenes/items/hammer.tscn" id="2_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dmnjf7ha6auug" path="res://scenes/map/map_starter.tscn" id="2_map"]
 [ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/ui/hud.tscn" id="3_iywne"]
 [ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/ui/round_timer.gd" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://cfq4k3ntxjj8k" path="res://scenes/ui/repair_window.tscn" id="7_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
@@ -27,6 +29,9 @@ adjustment_saturation = 1.2
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
+
+[node name="Hammer" parent="." unique_id=1336629603 instance=ExtResource("2_kvpfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.721413, 0, 10.410351)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=299118941]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660254, 0, -0.8660254, 0.5, 9, 10, 10)
@@ -70,6 +75,7 @@ transform = Transform3D(0.0035323482, 0.012274726, 0.9999183, -0.0003158459, 0.9
 [node name="MinigameWindowPreview" parent="Map/Bottlingstation/RepairPopupAnchor" unique_id=806873315 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, -1)
 visible = false
+window_scene = ExtResource("7_dinhu")
 panel_size = Vector2i(260, 180)
 pixel_size = 0.014
 
@@ -90,7 +96,7 @@ visible = false
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
 
-[node name="Grape" parent="." unique_id=1336629603 instance=ExtResource("7_u5sy4")]
+[node name="Grape" parent="." unique_id=1325750546 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.136524, 0, -1.249383)
 
 [node name="Barrel" parent="." unique_id=2084614386 instance=ExtResource("8_gee14")]

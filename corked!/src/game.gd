@@ -7,12 +7,19 @@ extends Node
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 
+const PLAYER_VARIANTS := [
+	Player.PlayerVariant.YELLOW,
+	Player.PlayerVariant.PURPLE,
+	Player.PlayerVariant.GREEN,
+	Player.PlayerVariant.BLUE
+]
+
 var money: int = 0
 
 ## Bottles the truck must carry when iit's sent for the day to succeed. GDD
 ## section 1.3 says 6-10 per round, creates hold 4 bottles, so 8 = 2 crates. This
 ## is temp, because we need to figure out how the new round system will work
-@export var quota_target: int = 8
+@export var quota: int = 8
 ## moneey earned per delivered bottle, only paid out on the successful day. We also
 ## need to figure out how this will work, since what if youre able to send some but
 ## not all? Should the game just end and full restart?
@@ -25,9 +32,10 @@ var loaded_bottles: int = 0
 ## count as both a loss and a win
 var _day_over: bool = false
 
+
 func _ready() -> void:
 	hud.update_money(money)
-	hud.update_quota(loaded_bottles, quota_target)
+	hud.update_quota(loaded_bottles, quota)
 	round_timer.time_updated.connect(_on_round_timer_time_updated)
 	round_timer.round_ended.connect(_on_round_timer_round_ended)
 	delivery_zone.contents_changed.connect(_on_delivery_zone_contents_changed)
@@ -37,24 +45,39 @@ func _ready() -> void:
 	# add the players
 	for i in PlayerManager.MAX_PLAYERS:
 		var device = PlayerManager.slots[i]
+
 		if device == null:
 			continue
+
 		var p := PLAYER_SCENE.instantiate()
+
 		p.player_index = i
+		p.player_variant = PLAYER_VARIANTS[i]
+
+		# Variant must be assigned BEFORE add_child()
 		add_child(p)
 		var spawns := $Map/PlayerSpawns.get_children()
 		if i < spawns.size():
 			p.global_position = (spawns[i] as Node3D).global_position
 
-## Increments money up or down by x and refreshes the HUD.
+
+## Increment money up or down by x and refreshes the HUD.
 func increment_money(amount: int) -> void:
 	money += amount
 	hud.update_money(money)
 
+
+## Increments quota by x (e.g. from a valid delivery) and refreshes the HUD.
+func increment_quota(amount: int) -> void:
+	quota += amount
+	hud.update_quota(quota)
+
+
 ## A crate was loaded into the truck, refreshes the quota on the HUD
 func _on_delivery_zone_contents_changed(bottles: int) -> void:
 	loaded_bottles = bottles
-	hud.update_quota(loaded_bottles, quota_target)
+	hud.update_quota(loaded_bottles, quota)
+
 
 ## A player sent the truck. Quota met = yey you won my boy!
 ## not met/short = day lost you suck my boy!
@@ -65,14 +88,21 @@ func _on_delivery_sent(bottles: int) -> void:
 	round_timer.stop_round()
 	
 	await deliveryman.drive_off_finished
-	var won := bottles >= quota_target
+	var won := bottles >= quota
 	if won:
 		increment_money(bottles * money_per_bottle)
-		print("Day won! %d/%d bottles" % [bottles, quota_target])
+		GameStats.bottles_sold += bottles
+		GameStats.money_earned += bottles * money_per_bottle
+		GameStats.days_survived += 1
+		print("Day won! %d/%d bottles" % [bottles, quota])
 		# TODO: on a win, go to the upgrade phase
 	else:
-		print("Day lost, truck sent with %d/%d bottles" % [bottles, quota_target])
+		print("Day lost, truck sent with %d/%d bottles" % [bottles, quota])
+		GameStats.last_day_bottles = bottles
+		GameStats.last_day_quota = quota
+		GameStats.loss_reason = "The truck left short on bottles"
 		get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
+
 
 ## Forwards the timer's remaining time to the HUD's progress bar.
 func _on_round_timer_time_updated(time_left: float) -> void:
@@ -84,4 +114,7 @@ func _on_round_timer_round_ended() -> void:
 		return
 	_day_over = true
 	print("Day lost, time ran out")
+	GameStats.last_day_bottles = loaded_bottles
+	GameStats.last_day_quota = quota
+	GameStats.loss_reason = "Time ran out"
 	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
