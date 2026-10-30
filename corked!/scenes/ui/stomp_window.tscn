@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d24puy8kfgx7n"]
 
 [ext_resource type="PackedScene" uid="uid://k33gere145x5" path="res://scenes/ui/station_window.tscn" id="1_hoy26"]
+[ext_resource type="Script" uid="uid://5y5rmxkaxlu0" path="res://src/ui/stomp_window.gd" id="2_fw317"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hoy26"]
 bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
@@ -15,6 +16,7 @@ bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
 bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
 
 [node name="StationWindow" unique_id=83461286 instance=ExtResource("1_hoy26")]
+script = ExtResource("2_fw317")
 
 [node name="Title" parent="Frame/Layout/Header" parent_id_path=PackedInt32Array(1385114535) index="0" unique_id=2038610830]
 text = "STOMP GRAPES"
