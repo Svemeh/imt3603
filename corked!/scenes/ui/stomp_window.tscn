@@ -9,9 +9,6 @@ bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss8ts"]
 bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mwcf"]
-bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu7p5"]
 bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
 
@@ -58,25 +55,30 @@ vertical_alignment = 2
 
 [node name="Meters" type="VBoxContainer" parent="Frame/Layout/ContentSlot/StompContent" index="2" unique_id=1307302035]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="MASH" type="Label" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="0" unique_id=58630212]
 layout_mode = 2
+text = "MASH"
 
 [node name="MashBar" type="ProgressBar" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="1" unique_id=1832301896]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_5mwcf")
 max_value = 1.0
 step = 0.1
 show_percentage = false
 
 [node name="JUICE" type="Label" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="2" unique_id=787011665]
 layout_mode = 2
+text = "JUICE"
 
 [node name="JuiceBar" type="ProgressBar" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="3" unique_id=624955460]
-custom_minimum_size = Vector2(50, 70)
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
+size_flags_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_mu7p5")
 max_value = 1.0
 step = 0.1
-fill_mode = 3
 show_percentage = false
