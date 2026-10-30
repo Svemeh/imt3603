@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://k33gere145x5" path="res://scenes/ui/station_window.tscn" id="1_base"]
+[ext_resource type="Script" path="res://src/ui/fermentation_window.gd" id="2_script"]
+
+[node name="StationWindow" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
