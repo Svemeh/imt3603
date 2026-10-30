@@ -1,8 +1,23 @@
+# stomping_station.gd
 class_name StompingStation
 extends Interactable
 
-## How many times the player must interact to finish stomping
-@export var stomps_required: int = 4
+## Mash progress on the current grape changed, 0.0 -> 1.0
+signal mash_changed(ratio: float)
+## Barrel fill level changed, 0.0 -> 1.0
+signal juice_changed(ratio: float)
+## A player stomped once (for the left/right feet in the window)
+signal stomped
+## A grape was fully stomped (resets the bar in the window)
+signal grape_finished
+
+
+## How much one stomp fills the mash bar (0-1)
+@export var stomps_required: int = 10
+## Stomps lost per decay tick ("damage")
+@export var decay_per_tick: float = 0.1
+## Seconds between decay ticks
+@export var decay_interval: float = 0.1
 
 ## Grape fill visual
 @export var max_grape_capacity: int = 4
@@ -20,10 +35,24 @@ var _grapes: Array[Grape] = []
 var barrel: Barrel = null
 
 ## How many stomps on the current grape so far
-var _stomp_progress: int = 0
+var _mash: float = 0.0
+## Time since the last decay tick
+var _tick_time: float = 0.0
 
 func _ready() -> void:
 	update_grape_visual()
+	_connect_stomp_popup()
+
+## Loses decay_per_tick stomps every decay_interval seconds
+func _process(delta: float) -> void:
+	if _mash <= 0.0:
+		_tick_time = 0.0
+		return
+	_tick_time += delta
+	while _tick_time >= decay_interval:
+		_tick_time -= decay_interval
+		_mash = maxf(_mash - decay_per_tick, 0.0)
+	mash_changed.emit(_mash / stomps_required)
 
 func update_grape_visual() -> void:
 	var grape_count: int = _grapes.size()
@@ -46,7 +75,9 @@ func update_grape_visual() -> void:
 func _check_barrel() -> void:
 	if barrel and barrel.get_parent() != barrel_marker:
 		barrel = null
-		_stomp_progress = 0
+		_mash = 0.0
+		mash_changed.emit(0.0)
+		_emit_juice()
 
 func can_accept_item(item: Item) -> bool:
 	_check_barrel()
@@ -64,6 +95,7 @@ func accept_item(player: Player) -> void:
 		item.position = Vector3.ZERO
 		item.rotation = Vector3.ZERO
 		item.freeze = true
+		_emit_juice()
 		return
 
 	item.reparent(self)
@@ -81,18 +113,41 @@ func can_interact(_player: Player) -> bool:
 func interact(player: Player) -> void:
 	if not can_interact(player):
 		return
-
-	_stomp_progress += 1
-	if _stomp_progress < stomps_required:
+	
+	# every press is one stomp
+	_mash = minf(_mash + 1.0, stomps_required)
+	stomped.emit()
+	mash_changed.emit(_mash / stomps_required)
+	if _mash < stomps_required:
 		return
-
+	
+	# 10 stomps reached, this grape becomes juice
 	var grape: Grape = _grapes.pop_front()
 	var remaining_capacity = barrel.MAX_CAPACITY - barrel.juice_amount
 	barrel.add_juice(min(grape.amount, remaining_capacity))
 
 	grape.queue_free()
-	_stomp_progress = 0
+	_mash = 0.0
+	grape_finished.emit()
+	_emit_juice()
 	update_grape_visual()
+
+## Tells the window how full the docked barrel is
+func _emit_juice() -> void:
+	var ratio := 0.0
+	if barrel:
+		ratio = float(barrel.juice_amount) / barrel.MAX_CAPACITY
+	juice_changed.emit(ratio)
+
+func _connect_stomp_popup() -> void:
+	var mount := get_node_or_null("MinigameWindowPreview")
+	if mount == null or not mount.window.has_method("set_mash"):
+		return
+	var popup = mount.window
+	mash_changed.connect(popup.set_mash)
+	juice_changed.connect(popup.set_juice)
+	stomped.connect(popup.set_juice)
+	grape_finished.connect(popup.finish_grape)
 
 func get_prompt() -> String:
 	_check_barrel()
@@ -102,4 +157,4 @@ func get_prompt() -> String:
 		return "Place a barrel here"
 	if barrel.juice_amount >= barrel.MAX_CAPACITY:
 		return "Barrel is full"
-	return "Stomp (%d/%d) - %d grapes" % [_stomp_progress, stomps_required, _grapes.size()]
+	return "Stomp (%d/%d) - %d grapes" % [_mash, stomps_required, _grapes.size()]
