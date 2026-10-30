@@ -1,0 +1,1006 @@
+[gd_scene format=3 uid="uid://ddcq2jts273pb"]
+
+[ext_resource type="Script" uid="uid://dn72h8xswah4y" path="res://src/ui/round_transition.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="2_font"]
+[ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://assets/ui/menu_button.tscn" id="3_button"]
+[ext_resource type="Texture2D" uid="uid://g84ujgbcdmbf" path="res://assets/ui/icons/lucide/layout-grid.svg" id="icon_layout-grid"]
+[ext_resource type="Texture2D" uid="uid://s2s88ypdf846" path="res://assets/ui/icons/lucide/power.svg" id="icon_power"]
+[ext_resource type="Texture2D" uid="uid://c11sfwihc8sxt" path="res://assets/ui/icons/lucide/search.svg" id="icon_search"]
+[ext_resource type="Texture2D" uid="uid://db3kqxa0s3xrk" path="res://assets/ui/icons/lucide/volume-2.svg" id="icon_volume-2"]
+[ext_resource type="Texture2D" uid="uid://dkeju3s5jjs00" path="res://assets/ui/icons/lucide/wifi.svg" id="icon_wifi"]
+
+[sub_resource type="Gradient" id="OfficeWallGradient"]
+colors = PackedColorArray(0.30, 0.32, 0.27, 1, 0.15, 0.18, 0.16, 1)
+
+[sub_resource type="GradientTexture2D" id="OfficeWallTexture"]
+gradient = SubResource("OfficeWallGradient")
+fill_from = Vector2(0, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="Focus"]
+
+[sub_resource type="Theme" id="Theme"]
+default_font = ExtResource("2_font")
+default_font_size = 28
+Button/styles/focus = SubResource("Focus")
+Label/colors/font_color = Color(1, 0.945, 0.816, 1)
+
+[sub_resource type="StyleBoxFlat" id="Card"]
+content_margin_left = 28.0
+content_margin_top = 28.0
+content_margin_right = 28.0
+content_margin_bottom = 28.0
+bg_color = Color(0.1, 0.065, 0.035, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.37, 0.18, 0.85)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="Shadow"]
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="Bezel"]
+bg_color = Color(0.055, 0.065, 0.075, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.32, 0.34, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="Inset"]
+bg_color = Color(0.015, 0.025, 0.03, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1, 0.13, 0.14, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Gradient" id="DisplayGradient"]
+colors = PackedColorArray(0.2, 0.76, 0.93, 1, 0.78, 0.94, 0.98, 1)
+
+[sub_resource type="GradientTexture2D" id="Display"]
+gradient = SubResource("DisplayGradient")
+fill_to = Vector2(0.3, 1)
+
+[sub_resource type="SystemFont" id="DesktopFont"]
+font_names = PackedStringArray("Arial", "Helvetica")
+font_weight = 700
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="Keyboard"]
+bg_color = Color(0.08, 0.1, 0.11, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26, 0.29, 0.3, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="Key"]
+bg_color = Color(0.19, 0.22, 0.23, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="RoundTransition" type="CanvasLayer" unique_id=1686254147]
+process_mode = 3
+layer = 100
+script = ExtResource("1_script")
+
+[node name="Overlay" type="Control" parent="." unique_id=293017496]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+
+[node name="Dim" type="ColorRect" parent="Overlay" unique_id=1503009633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.025, 0.015, 0.005, 0.58)
+
+[node name="Summary" type="MarginContainer" parent="Overlay" unique_id=2063574012]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="Center" type="CenterContainer" parent="Overlay/Summary" unique_id=407936114]
+layout_mode = 2
+
+[node name="Card" type="PanelContainer" parent="Overlay/Summary/Center" unique_id=946109065]
+custom_minimum_size = Vector2(620, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Layout" type="VBoxContainer" parent="Overlay/Summary/Center/Card" unique_id=1877774311]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RoundLabel" type="Label" parent="Overlay/Summary/Center/Card/Layout" unique_id=423393937]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.73, 0.51, 1)
+theme_override_font_sizes/font_size = 22
+text = "ROUND 1 COMPLETE"
+horizontal_alignment = 1
+
+[node name="Heading" type="Label" parent="Overlay/Summary/Center/Card/Layout" unique_id=359807325]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.025, 0.015, 0.005, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 70
+text = "ROUND COMPLETE"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Overlay/Summary/Center/Card/Layout" unique_id=527416313]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "The truck is away. A good day in the vineyard!"
+horizontal_alignment = 1
+
+[node name="BottlesRow" type="HBoxContainer" parent="Overlay/Summary/Center/Card/Layout" unique_id=1450252814]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="BottlesLabel" type="Label" parent="Overlay/Summary/Center/Card/Layout/BottlesRow" unique_id=760637438]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Bottles delivered"
+
+[node name="BottlesValue" type="Label" parent="Overlay/Summary/Center/Card/Layout/BottlesRow" unique_id=2073867705]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "8"
+
+[node name="EarnedRow" type="HBoxContainer" parent="Overlay/Summary/Center/Card/Layout" unique_id=1536044945]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="EarnedLabel" type="Label" parent="Overlay/Summary/Center/Card/Layout/EarnedRow" unique_id=676782929]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Money made this round"
+
+[node name="EarnedValue" type="Label" parent="Overlay/Summary/Center/Card/Layout/EarnedRow" unique_id=1442364443]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "$80"
+
+[node name="BalanceRow" type="HBoxContainer" parent="Overlay/Summary/Center/Card/Layout" unique_id=184820797]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="BalanceLabel" type="Label" parent="Overlay/Summary/Center/Card/Layout/BalanceRow" unique_id=955883219]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Total money"
+
+[node name="BalanceValue" type="Label" parent="Overlay/Summary/Center/Card/Layout/BalanceRow" unique_id=1761909300]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "$80"
+
+[node name="ContinueButton" parent="Overlay/Summary/Center/Card/Layout" unique_id=563322274 instance=ExtResource("3_button")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(340, 90)
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="Computer" type="Control" parent="Overlay" unique_id=1980864880]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OfficeWall" type="TextureRect" parent="Overlay/Computer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("OfficeWallTexture")
+expand_mode = 1
+
+[node name="OfficeWallTrim" type="ColorRect" parent="Overlay/Computer"]
+layout_mode = 1
+anchor_top = 0.78
+anchor_right = 1.0
+anchor_bottom = 0.78
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.13, 0.105, 0.075, 1)
+
+[node name="DeskExtension" type="ColorRect" parent="Overlay/Computer"]
+layout_mode = 1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.24, 0.17, 0.11, 1)
+
+[node name="Design" type="Control" parent="Overlay/Computer" unique_id=1469236353]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+
+[node name="Desk" type="Polygon2D" parent="Overlay/Computer/Design" unique_id=481407049]
+color = Color(0.24, 0.17, 0.11, 1)
+polygon = PackedVector2Array(0, 550, 1152, 550, 1152, 648, 0, 648)
+
+[node name="DeskEdge" type="ColorRect" parent="Overlay/Computer/Design" unique_id=1266750409]
+layout_mode = 0
+offset_top = 550.0
+offset_right = 1152.0
+offset_bottom = 553.0
+mouse_filter = 2
+color = Color(0.39, 0.29, 0.18, 1)
+
+[node name="WoodGrain0" type="ColorRect" parent="Overlay/Computer/Design" unique_id=1077817314]
+layout_mode = 0
+offset_top = 529.0
+offset_right = 1152.0
+offset_bottom = 530.0
+mouse_filter = 2
+color = Color(0.32, 0.23, 0.15, 0.45)
+
+[node name="WoodGrain1" type="ColorRect" parent="Overlay/Computer/Design" unique_id=1959974508]
+layout_mode = 0
+offset_top = 553.0
+offset_right = 1152.0
+offset_bottom = 554.0
+mouse_filter = 2
+color = Color(0.32, 0.23, 0.15, 0.45)
+
+[node name="WoodGrain2" type="ColorRect" parent="Overlay/Computer/Design" unique_id=1808194964]
+layout_mode = 0
+offset_top = 577.0
+offset_right = 1152.0
+offset_bottom = 578.0
+mouse_filter = 2
+color = Color(0.32, 0.23, 0.15, 0.45)
+
+[node name="WoodGrain3" type="ColorRect" parent="Overlay/Computer/Design" unique_id=925254416]
+layout_mode = 0
+offset_top = 601.0
+offset_right = 1152.0
+offset_bottom = 602.0
+mouse_filter = 2
+color = Color(0.32, 0.23, 0.15, 0.45)
+
+[node name="WoodGrain4" type="ColorRect" parent="Overlay/Computer/Design" unique_id=806834403]
+layout_mode = 0
+offset_top = 625.0
+offset_right = 1152.0
+offset_bottom = 626.0
+mouse_filter = 2
+color = Color(0.32, 0.23, 0.15, 0.45)
+
+[node name="MonitorShadow" type="Panel" parent="Overlay/Computer/Design" unique_id=195320395]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 22.0
+offset_right = 1122.0
+offset_bottom = 544.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Shadow")
+
+[node name="Stand" type="Polygon2D" parent="Overlay/Computer/Design" unique_id=612978299]
+color = Color(0.075, 0.09, 0.1, 1)
+polygon = PackedVector2Array(540, 510, 612, 510, 635, 558, 517, 558)
+
+[node name="StandHighlight" type="Polygon2D" parent="Overlay/Computer/Design" unique_id=348509172]
+color = Color(0.16, 0.19, 0.2, 1)
+polygon = PackedVector2Array(540, 510, 552, 510, 535, 553, 517, 558)
+
+[node name="Foot" type="Polygon2D" parent="Overlay/Computer/Design" unique_id=2042125395]
+color = Color(0.12, 0.145, 0.15, 1)
+polygon = PackedVector2Array(472, 554, 680, 554, 724, 570, 428, 570)
+
+[node name="FootEdge" type="Polygon2D" parent="Overlay/Computer/Design" unique_id=1906760642]
+color = Color(0.045, 0.06, 0.065, 1)
+polygon = PackedVector2Array(428, 570, 724, 570, 724, 575, 428, 575)
+
+[node name="Monitor" type="Panel" parent="Overlay/Computer/Design" unique_id=1258551330]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 12.0
+offset_right = 1116.0
+offset_bottom = 530.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Bezel")
+
+[node name="TopBevel" type="ColorRect" parent="Overlay/Computer/Design" unique_id=1516014452]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 15.0
+offset_right = 1100.0
+offset_bottom = 17.0
+mouse_filter = 2
+color = Color(0.4, 0.45, 0.46, 0.65)
+
+[node name="ScreenInset" type="Panel" parent="Overlay/Computer/Design" unique_id=218347037]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 28.0
+offset_right = 1100.0
+offset_bottom = 486.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Inset")
+
+[node name="BlankScreen" type="TextureRect" parent="Overlay/Computer/Design" unique_id=474188204]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 33.0
+offset_right = 1095.0
+offset_bottom = 481.0
+mouse_filter = 2
+texture = SubResource("Display")
+expand_mode = 1
+
+[node name="DesktopBar" type="ColorRect" parent="Overlay/Computer/Design" unique_id=1157586826]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 440.0
+offset_right = 1095.0
+offset_bottom = 481.0
+mouse_filter = 2
+color = Color(0.035, 0.12, 0.21, 1)
+
+[node name="DesktopBarHighlight" type="ColorRect" parent="Overlay/Computer/Design" unique_id=1345627855]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 440.0
+offset_right = 1095.0
+offset_bottom = 441.0
+mouse_filter = 2
+color = Color(0.3, 0.63, 0.77, 0.7)
+
+[node name="DesktopTime" type="Label" parent="Overlay/Computer/Design" unique_id=1256233261]
+layout_mode = 0
+offset_left = 993.0
+offset_top = 441.0
+offset_right = 1082.0
+offset_bottom = 465.0
+theme_override_colors/font_color = Color(0.95, 0.98, 1, 1)
+theme_override_fonts/font = SubResource("DesktopFont")
+theme_override_font_sizes/font_size = 20
+text = "17:00"
+horizontal_alignment = 2
+
+[node name="DesktopDay" type="Label" parent="Overlay/Computer/Design" unique_id=681344776]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 993.0
+offset_top = 464.0
+offset_right = 1082.0
+offset_bottom = 478.0
+theme_override_colors/font_color = Color(0.76, 0.86, 0.93, 1)
+theme_override_fonts/font = SubResource("DesktopFont")
+theme_override_font_sizes/font_size = 12
+text = "DAY 1"
+horizontal_alignment = 2
+
+[node name="ScreenTopReflection" type="ColorRect" parent="Overlay/Computer/Design" unique_id=129826946]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 34.0
+offset_right = 1094.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.75, 0.9, 0.94, 0.12)
+
+[node name="Brand" type="Label" parent="Overlay/Computer/Design" unique_id=12460509]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 491.0
+offset_right = 660.0
+offset_bottom = 519.0
+theme_override_colors/font_color = Color(0.48, 0.53, 0.55, 1)
+theme_override_font_sizes/font_size = 18
+text = "C O R K E D !"
+horizontal_alignment = 1
+
+[node name="PowerLED" type="ColorRect" parent="Overlay/Computer/Design" unique_id=274394215]
+layout_mode = 0
+offset_left = 1059.0
+offset_top = 506.0
+offset_right = 1064.0
+offset_bottom = 509.0
+mouse_filter = 2
+color = Color(0.35, 0.88, 0.62, 1)
+
+[node name="KeyboardShadow" type="Panel" parent="Overlay/Computer/Design" unique_id=1280894394]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 582.0
+offset_right = 805.0
+offset_bottom = 644.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Shadow")
+
+[node name="Keyboard" type="Panel" parent="Overlay/Computer/Design" unique_id=1683224857]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 573.0
+offset_right = 800.0
+offset_bottom = 633.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Keyboard")
+
+[node name="Key0_0" type="Panel" parent="Overlay/Computer/Design" unique_id=1198597892]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 579.0
+offset_right = 316.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_1" type="Panel" parent="Overlay/Computer/Design" unique_id=2045055787]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 579.0
+offset_right = 347.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_2" type="Panel" parent="Overlay/Computer/Design" unique_id=380862928]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 579.0
+offset_right = 378.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_3" type="Panel" parent="Overlay/Computer/Design" unique_id=277213265]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 579.0
+offset_right = 409.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_4" type="Panel" parent="Overlay/Computer/Design" unique_id=1896854731]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 579.0
+offset_right = 440.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_5" type="Panel" parent="Overlay/Computer/Design" unique_id=1196238559]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 579.0
+offset_right = 471.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_6" type="Panel" parent="Overlay/Computer/Design" unique_id=1256091783]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 579.0
+offset_right = 502.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_7" type="Panel" parent="Overlay/Computer/Design" unique_id=643168429]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 579.0
+offset_right = 533.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_8" type="Panel" parent="Overlay/Computer/Design" unique_id=1270218596]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 579.0
+offset_right = 564.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_9" type="Panel" parent="Overlay/Computer/Design" unique_id=896238322]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 579.0
+offset_right = 595.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_10" type="Panel" parent="Overlay/Computer/Design" unique_id=1086670476]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 579.0
+offset_right = 626.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_11" type="Panel" parent="Overlay/Computer/Design" unique_id=2124499311]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 579.0
+offset_right = 657.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_12" type="Panel" parent="Overlay/Computer/Design" unique_id=333377070]
+layout_mode = 0
+offset_left = 662.0
+offset_top = 579.0
+offset_right = 688.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_13" type="Panel" parent="Overlay/Computer/Design" unique_id=37815898]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 579.0
+offset_right = 719.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_14" type="Panel" parent="Overlay/Computer/Design" unique_id=1064411674]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 579.0
+offset_right = 750.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key0_15" type="Panel" parent="Overlay/Computer/Design" unique_id=1462174112]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 579.0
+offset_right = 781.0
+offset_bottom = 588.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_0" type="Panel" parent="Overlay/Computer/Design" unique_id=1135772515]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 591.0
+offset_right = 316.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_1" type="Panel" parent="Overlay/Computer/Design" unique_id=732419895]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 591.0
+offset_right = 347.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_2" type="Panel" parent="Overlay/Computer/Design" unique_id=1317701560]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 591.0
+offset_right = 378.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_3" type="Panel" parent="Overlay/Computer/Design" unique_id=902345973]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 591.0
+offset_right = 409.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_4" type="Panel" parent="Overlay/Computer/Design" unique_id=1897877455]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 591.0
+offset_right = 440.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_5" type="Panel" parent="Overlay/Computer/Design" unique_id=2115522870]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 591.0
+offset_right = 471.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_6" type="Panel" parent="Overlay/Computer/Design" unique_id=2123601418]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 591.0
+offset_right = 502.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_7" type="Panel" parent="Overlay/Computer/Design" unique_id=1380044977]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 591.0
+offset_right = 533.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_8" type="Panel" parent="Overlay/Computer/Design" unique_id=967215804]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 591.0
+offset_right = 564.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_9" type="Panel" parent="Overlay/Computer/Design" unique_id=1316874258]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 591.0
+offset_right = 595.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_10" type="Panel" parent="Overlay/Computer/Design" unique_id=1657385714]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 591.0
+offset_right = 626.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_11" type="Panel" parent="Overlay/Computer/Design" unique_id=1171909403]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 591.0
+offset_right = 657.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_12" type="Panel" parent="Overlay/Computer/Design" unique_id=1574900170]
+layout_mode = 0
+offset_left = 662.0
+offset_top = 591.0
+offset_right = 688.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_13" type="Panel" parent="Overlay/Computer/Design" unique_id=679959778]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 591.0
+offset_right = 719.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_14" type="Panel" parent="Overlay/Computer/Design" unique_id=1002786088]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 591.0
+offset_right = 750.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key1_15" type="Panel" parent="Overlay/Computer/Design" unique_id=532536972]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 591.0
+offset_right = 781.0
+offset_bottom = 600.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_0" type="Panel" parent="Overlay/Computer/Design" unique_id=1950368038]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 603.0
+offset_right = 316.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_1" type="Panel" parent="Overlay/Computer/Design" unique_id=352317192]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 603.0
+offset_right = 347.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_2" type="Panel" parent="Overlay/Computer/Design" unique_id=319286171]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 603.0
+offset_right = 378.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_3" type="Panel" parent="Overlay/Computer/Design" unique_id=1955421622]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 603.0
+offset_right = 409.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_4" type="Panel" parent="Overlay/Computer/Design" unique_id=1675630032]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 603.0
+offset_right = 440.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_5" type="Panel" parent="Overlay/Computer/Design" unique_id=122355113]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 603.0
+offset_right = 471.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_6" type="Panel" parent="Overlay/Computer/Design" unique_id=1857483677]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 603.0
+offset_right = 502.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_7" type="Panel" parent="Overlay/Computer/Design" unique_id=257321696]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 603.0
+offset_right = 533.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_8" type="Panel" parent="Overlay/Computer/Design" unique_id=1127796488]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 603.0
+offset_right = 564.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_9" type="Panel" parent="Overlay/Computer/Design" unique_id=1403651941]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 603.0
+offset_right = 595.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_10" type="Panel" parent="Overlay/Computer/Design" unique_id=1243432921]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 603.0
+offset_right = 626.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_11" type="Panel" parent="Overlay/Computer/Design" unique_id=1959834517]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 603.0
+offset_right = 657.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_12" type="Panel" parent="Overlay/Computer/Design" unique_id=323993894]
+layout_mode = 0
+offset_left = 662.0
+offset_top = 603.0
+offset_right = 688.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_13" type="Panel" parent="Overlay/Computer/Design" unique_id=1806813285]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 603.0
+offset_right = 719.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_14" type="Panel" parent="Overlay/Computer/Design" unique_id=1785704860]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 603.0
+offset_right = 750.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Key2_15" type="Panel" parent="Overlay/Computer/Design" unique_id=963092368]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 603.0
+offset_right = 781.0
+offset_bottom = 612.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Spacebar" type="Panel" parent="Overlay/Computer/Design" unique_id=459102396]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 617.0
+offset_right = 615.0
+offset_bottom = 625.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Key")
+
+[node name="Mouse" type="Panel" parent="Overlay/Computer/Design" unique_id=352600445]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 580.0
+offset_right = 854.0
+offset_bottom = 625.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Keyboard")
+
+[node name="MouseWheel" type="ColorRect" parent="Overlay/Computer/Design" unique_id=402626781]
+layout_mode = 0
+offset_left = 838.0
+offset_top = 587.0
+offset_right = 841.0
+offset_bottom = 597.0
+mouse_filter = 2
+color = Color(0.35, 0.39, 0.4, 1)
+
+[node name="SkipButton" parent="Overlay/Computer/Design" unique_id=1062626887 instance=ExtResource("3_button")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 892.0
+offset_top = 555.0
+offset_right = 1130.0
+offset_bottom = 635.0
+text = "SKIP"
+
+[node name="LauncherIcon" type="TextureRect" parent="Overlay/Computer/Design" unique_id=1782667307]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 448.0
+offset_right = 94.0
+offset_bottom = 472.0
+mouse_filter = 2
+texture = ExtResource("icon_layout-grid")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SearchIcon" type="TextureRect" parent="Overlay/Computer/Design" unique_id=1086714560]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 448.0
+offset_right = 128.0
+offset_bottom = 472.0
+mouse_filter = 2
+texture = ExtResource("icon_search")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WifiIcon" type="TextureRect" parent="Overlay/Computer/Design" unique_id=1939153537]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 448.0
+offset_right = 1024.0
+offset_bottom = 472.0
+mouse_filter = 2
+texture = ExtResource("icon_wifi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VolumeIcon" type="TextureRect" parent="Overlay/Computer/Design" unique_id=863018912]
+layout_mode = 0
+offset_left = 970.0
+offset_top = 448.0
+offset_right = 994.0
+offset_bottom = 472.0
+mouse_filter = 2
+texture = ExtResource("icon_volume-2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PowerIcon" type="TextureRect" parent="Overlay/Computer/Design" unique_id=1678449739]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 494.0
+offset_right = 1087.0
+offset_bottom = 516.0
+mouse_filter = 2
+texture = ExtResource("icon_power")
+expand_mode = 1
+stretch_mode = 5

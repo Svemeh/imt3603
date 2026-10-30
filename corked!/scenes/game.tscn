@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
 
+[ext_resource type="PackedScene" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
+
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
 
@@ -74,5 +76,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.4
 [node name="StationWindowManager" type="Node" parent="." unique_id=1068431770]
 script = ExtResource("11_preview")
 window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowPreview"), NodePath("../Map/FermentationStation/MinigameWindowPreview"), NodePath("../Map/Bottlingstation/RepairPopupAnchor/MinigameWindowPreview")])
+
+[node name="RoundTransition" parent="." instance=ExtResource("12_round_transition")]
 
 [editable path="Map"]
