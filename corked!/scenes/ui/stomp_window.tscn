@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://d24puy8kfgx7n"]
+
+[ext_resource type="PackedScene" uid="uid://k33gere145x5" path="res://scenes/ui/station_window.tscn" id="1_hoy26"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hoy26"]
+bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss8ts"]
+bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mwcf"]
+bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu7p5"]
+bg_color = Color(0.36216107, 0.016499607, 0.40710434, 1)
+
+[node name="StationWindow" unique_id=83461286 instance=ExtResource("1_hoy26")]
+
+[node name="Title" parent="Frame/Layout/Header" parent_id_path=PackedInt32Array(1385114535) index="0" unique_id=2038610830]
+text = "STOMP GRAPES"
+
+[node name="Placeholder" parent="Frame/Layout/ContentSlot" parent_id_path=PackedInt32Array(2110756929) index="0" unique_id=1697081205]
+visible = false
+
+[node name="StompContent" type="HBoxContainer" parent="Frame/Layout/ContentSlot" parent_id_path=PackedInt32Array(2110756929) index="1" unique_id=383909305]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LeftFoot" type="Panel" parent="Frame/Layout/ContentSlot/StompContent" index="0" unique_id=1104031916]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="Label L" type="Label" parent="Frame/Layout/ContentSlot/StompContent/LeftFoot" index="0" unique_id=2122524275]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 28.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hoy26")
+text = "L"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RightFoot" type="Panel" parent="Frame/Layout/ContentSlot/StompContent" index="1" unique_id=33924276]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="Label R" type="Label" parent="Frame/Layout/ContentSlot/StompContent/RightFoot" index="0" unique_id=653729804]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 28.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ss8ts")
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Meters" type="VBoxContainer" parent="Frame/Layout/ContentSlot/StompContent" index="2" unique_id=1307302035]
+layout_mode = 2
+
+[node name="MASH" type="Label" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="0" unique_id=58630212]
+layout_mode = 2
+
+[node name="MashBar" type="ProgressBar" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="1" unique_id=1832301896]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_5mwcf")
+max_value = 1.0
+step = 0.1
+show_percentage = false
+
+[node name="JUICE" type="Label" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="2" unique_id=787011665]
+layout_mode = 2
+
+[node name="JuiceBar" type="ProgressBar" parent="Frame/Layout/ContentSlot/StompContent/Meters" index="3" unique_id=624955460]
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_mu7p5")
+max_value = 1.0
+step = 0.1
+fill_mode = 3
+show_percentage = false
