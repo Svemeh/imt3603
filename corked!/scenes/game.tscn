@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://bjh1eywqlwr3r" path="res://src/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dmnjf7ha6auug" path="res://scenes/map/map_starter.tscn" id="2_map"]
 [ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/ui/hud.tscn" id="3_iywne"]
-[ext_resource type="PackedScene" path="res://scenes/placeables/wall_straight.tscn" id="5_dinhu"]
 [ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/ui/round_timer.gd" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://dlksbctdnm3ly" path="res://scenes/placeables/wall_post.tscn" id="6_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
@@ -48,105 +46,6 @@ environment = SubResource("Environment_dinhu")
 
 [node name="Sun" parent="Map" index="1" unique_id=2105773388]
 light_color = Color(1, 0.8392157, 0.627451, 1)
-
-[node name="Wall_6" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="34" unique_id=960100981 instance=ExtResource("5_dinhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.527855, 0, 9.006082)
-
-[node name="Wall_20" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="35" unique_id=1258875431 instance=ExtResource("5_dinhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.527855, 0, 21.006083)
-
-[node name="Wall_47" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="36" unique_id=908171256 instance=ExtResource("5_dinhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.527855, 0, 21.006083)
-
-[node name="Wall_48" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="37" unique_id=261976501 instance=ExtResource("5_dinhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.527855, 0, 21.006083)
-
-[node name="Wall_7" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="38" unique_id=1105341811 instance=ExtResource("5_dinhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.527855, 0, 9.006065)
-
-[node name="Wall_9" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="39" unique_id=817632581 instance=ExtResource("5_dinhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.527855, 0, 9.006065)
-
-[node name="Wall_39" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="40" unique_id=1676385741 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -15.027855, 0, 13.447096)
-
-[node name="Wall_45" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="41" unique_id=1064609297 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -15.027855, 0, 16.447096)
-
-[node name="Wall_46" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="42" unique_id=208502866 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -15.027855, 0, 19.447096)
-
-[node name="Wall_49" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="43" unique_id=1268707887 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -6.027855, 0, 19.447096)
-
-[node name="Wall_50" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="44" unique_id=1917726196 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -6.027855, 0, 16.447096)
-
-[node name="Wall_52" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="45" unique_id=827386899 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -6.027855, 0, 10.447096)
-
-[node name="Wall_51" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="46" unique_id=739541206 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -6.027855, 0, 16.447096)
-
-[node name="Wall_41" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="47" unique_id=1208836871 instance=ExtResource("5_dinhu")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -15.027855, 0, 10.447096)
-
-[node name="Wall_33" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="48" unique_id=2121516843]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 9.000001, 0, 1.5)
-
-[node name="Wall_34" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="49" unique_id=180887544]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 9.000001, 0, -1.5)
-
-[node name="Wall_35" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="50" unique_id=600484933]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 9.000001, 0, -4.5)
-
-[node name="Post_19" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="66" unique_id=1847889175 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 15)
-
-[node name="Post_41" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="67" unique_id=404063456 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 18)
-
-[node name="Post_42" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="68" unique_id=1319579288 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 21)
-
-[node name="Post_43" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="69" unique_id=2039226381 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 21)
-
-[node name="Post_44" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="70" unique_id=103401355 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 21)
-
-[node name="Post_45" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="71" unique_id=938693468 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 21)
-
-[node name="Post_46" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="72" unique_id=1619882742 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 18)
-
-[node name="Post_47" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="73" unique_id=1609509337 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15)
-
-[node name="Post_48" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="74" unique_id=1978009418 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 12)
-
-[node name="Post_49" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="75" unique_id=1723646985 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 9)
-
-[node name="Post_50" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="76" unique_id=1346122443 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 9)
-
-[node name="Post_51" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="77" unique_id=598420182 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 9)
-
-[node name="Post_52" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="78" unique_id=1596876670 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 9)
-
-[node name="Post_40" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="79" unique_id=923900775 instance=ExtResource("6_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
-
-[node name="Post_33" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="95" unique_id=1676491500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.000001, 0, 0)
-
-[node name="Post_39" parent="Map/Walls" parent_id_path=PackedInt32Array(660336757, 358893584) index="96" unique_id=935120246]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.000001, 0, -3)
 
 [node name="StompStationPlaceholder2" parent="Map/Stations" parent_id_path=PackedInt32Array(660336757, 1889123873) index="4" unique_id=1676803408]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.271047, 0, 13.484288)
