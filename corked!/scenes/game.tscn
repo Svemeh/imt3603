@@ -57,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 3, 0)
 visible = false
 
 [node name="HammerShelf" parent="Map" unique_id=1530165772 instance=ExtResource("7_kvuet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.436187, 0.6760309, 9.276979)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9.27643)
 
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
