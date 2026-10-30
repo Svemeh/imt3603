@@ -38,7 +38,7 @@ adjustment_saturation = 1.14
 size = Vector3(12.378906, 5.055664, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qof4i"]
-size = Vector3(0.8674927, 6.626172, 4.2360077)
+size = Vector3(0.8674927, 6.7168093, 4.2360077)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f2b2k"]
 size = Vector3(1.772583, 3.4902344, 0.35754395)
@@ -51,6 +51,9 @@ size = Vector3(1.5088501, 3.5249023, 0.3873291)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43wry"]
 size = Vector3(2.175415, 1.9916992, 2.2617188)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tk8bu"]
+size = Vector3(1, 4.9656982, 13.036133)
 
 [node name="MapStarter" type="Node3D" unique_id=1047644649]
 
@@ -1156,11 +1159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20676136, 2.027832, 6)
 shape = SubResource("BoxShape3D_8fo7a")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=337132620]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.02896, 2.2092667, -3.0676537)
-shape = SubResource("BoxShape3D_qof4i")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=1953417437]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.981759, 2.3450472, 0.053937912)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.02896, 2.2092667, -3.0531216)
 shape = SubResource("BoxShape3D_qof4i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=1177864138]
@@ -1215,3 +1214,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.100001, 0.114390075, -4.031
 
 [node name="Corked - Warm Italian Winery Props11" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=1835020948 instance=ExtResource("18_8uklw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.067678, 0.114390075, -5.1000013)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=1375675106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.970092, 1.9828491, 0.12300682)
+shape = SubResource("BoxShape3D_tk8bu")
