@@ -66,10 +66,16 @@ func _process(_delta: float) -> void:
 
 ## Shows a window while at least one nearby player has interacted with it.
 ## Bottling also stays visible while running, allowing players to leave for
-## the hammer. Stomping and fermentation only use the player selection.
+## the hammer. Fermentation is visible exactly while its tank has juice, so
+## the pressure can be watched from afar and the game resumed on return.
 func _refresh_windows() -> void:
  for station in _windows:
   if is_instance_valid(_windows[station]):
-   # Running state takes priority over distance, but Enabled still hides all.
-   var machine_running: bool = station is BottlingStation and station.is_running()
-   _windows[station].visible = enabled and (machine_running or _active_by_player.values().has(station))
+   var show_window: bool
+   if station is FermentationStation:
+    show_window = station.is_running()
+   else:
+    # Running state takes priority over distance, but Enabled still hides all.
+    var machine_running: bool = station is BottlingStation and station.is_running()
+    show_window = machine_running or _active_by_player.values().has(station)
+   _windows[station].visible = enabled and show_window

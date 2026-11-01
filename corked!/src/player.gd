@@ -287,7 +287,7 @@ func transfer_item() -> Item:
 
 ## Drops the held item on the ground where the hands are
 func drop_item() -> void:
-	if held_item == null:
+	if held_item == null or not held_item.can_drop:
 		return
 
 	var item := transfer_item()

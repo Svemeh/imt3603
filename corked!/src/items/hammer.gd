@@ -7,3 +7,4 @@ extends Item
 
 func _ready() -> void:
 	display_name = "Hammer"
+	can_drop = false
