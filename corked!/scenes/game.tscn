@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" path="res://scenes/items/broom.tscn" id="13_broom"]
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
@@ -107,6 +108,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.136524, 0, -1.249383)
 
 [node name="Barrel" parent="." unique_id=2084614386 instance=ExtResource("8_gee14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.426157, 0.56402254, -3.253932)
+
+[node name="Broom" parent="." instance=ExtResource("13_broom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.7, 10.5)
 
 [node name="DeliveryPoint" parent="." unique_id=1503778649 instance=ExtResource("8_0tnpc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.42846, 0, 2.4183807)
