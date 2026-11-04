@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmp85alb0owq" path="res://assets/models/stompingStation/stompingMachine_0.jpg" id="2_u2uaa"]
 [ext_resource type="Texture2D" uid="uid://dgsjoxryulj2j" path="res://assets/models/stompingStation/stompingMachine_1.jpg" id="3_hhhoh"]
 [ext_resource type="Texture2D" uid="uid://b41d04vno234k" path="res://assets/models/stompingStation/stompingMachine_2.jpg" id="4_skgf3"]
+[ext_resource type="AudioStream" uid="uid://coqlw75dpnr7e" path="res://assets/audio/StompSound.wav" id="5_34rv3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rim2"]
 resource_name = "material_0"
@@ -1848,6 +1849,10 @@ mesh = SubResource("ArrayMesh_hpwuv")
 
 [node name="Harvest_Plant1_Cluster1_Stem" type="MeshInstance3D" parent="GrapeFill/Harvest_Plant1_Cluster7" unique_id=1870357969]
 mesh = SubResource("ArrayMesh_b2841")
+
+[node name="StompSound" type="AudioStreamPlayer" parent="." unique_id=2115891034]
+stream = ExtResource("5_34rv3")
+max_polyphony = 3
 
 [connection signal="body_entered" from="itemZone" to="." method="_on_item_zone_body_entered"]
 [connection signal="body_exited" from="itemZone" to="." method="_on_item_zone_body_exited"]

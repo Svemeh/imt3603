@@ -27,6 +27,8 @@ signal grape_finished
 
 ## Where a docked barrel sits
 @onready var barrel_marker: Marker3D = $barrelMarker
+## Wet squish played on every stomp
+@onready var stomp_sound: AudioStreamPlayer = $StompSound
 
 ## Grapes handed to this station, stomped one at a time
 var _grapes: Array[Grape] = []
@@ -117,6 +119,7 @@ func interact(player: Player) -> void:
 	# every press is one stomp
 	_mash = minf(_mash + 1.0, stomps_required)
 	stomped.emit()
+	_play_stomp_sound()
 	mash_changed.emit(_mash / stomps_required)
 	if _mash < stomps_required:
 		return
@@ -148,6 +151,10 @@ func _connect_stomp_popup() -> void:
 	juice_changed.connect(popup.set_juice)
 	stomped.connect(popup.stomp)
 	grape_finished.connect(popup.finish_grape)
+
+func _play_stomp_sound() -> void:
+	stomp_sound.pitch_scale = randf_range(0.9, 1.1)
+	stomp_sound.play()
 
 func get_prompt() -> String:
 	_check_barrel()
