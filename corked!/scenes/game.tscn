@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
 [ext_resource type="PackedScene" path="res://scenes/ui/fermentation_window.tscn" id="12_ferm_window"]
 
+[ext_resource type="PackedScene" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
+
 [sub_resource type="Environment" id="Environment_dinhu"]
 background_mode = 1
 background_color = Color(0.48, 0.65, 0.82, 1)
@@ -114,5 +116,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.4
 [node name="StationWindowManager" type="Node" parent="." unique_id=1594995780]
 script = ExtResource("11_preview")
 window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowPreview"), NodePath("../Map/FermentationStation/MinigameWindowPreview"), NodePath("../Map/Bottlingstation/RepairPopupAnchor/MinigameWindowPreview")])
+
+[node name="RoundTransition" parent="." instance=ExtResource("12_round_transition")]
 
 [editable path="Map"]

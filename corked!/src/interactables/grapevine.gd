@@ -43,9 +43,9 @@ func get_prompt() -> String:
 
 ## This whole functions must be reworked when we have change the model
 func toggleGrapeVisibility() -> void: 
-	$Vine_station_3_plants/Plant_1/Harvest_Plant1_Cluster1.visible = has_grape
-	$Vine_station_3_plants/Plant_1/Harvest_Plant1_Cluster2.visible = has_grape
-	$Vine_station_3_plants/Plant_2/Harvest_Plant2_Cluster1.visible = has_grape
-	$Vine_station_3_plants/Plant_2/Harvest_Plant2_Cluster2.visible = has_grape
-	$Vine_station_3_plants/Plant_3/Harvest_Plant3_Cluster1.visible = has_grape
-	$Vine_station_3_plants/Plant_3/Harvest_Plant3_Cluster2.visible = has_grape
+	$GrapeVineModel/Vine_station_3_plants/Plant_1/Harvest_Plant1_Cluster1.visible = has_grape
+	$GrapeVineModel/Vine_station_3_plants/Plant_1/Harvest_Plant1_Cluster2.visible = has_grape
+	$GrapeVineModel/Vine_station_3_plants/Plant_2/Harvest_Plant2_Cluster1.visible = has_grape
+	$GrapeVineModel/Vine_station_3_plants/Plant_2/Harvest_Plant2_Cluster2.visible = has_grape
+	$GrapeVineModel/Vine_station_3_plants/Plant_3/Harvest_Plant3_Cluster1.visible = has_grape
+	$GrapeVineModel/Vine_station_3_plants/Plant_3/Harvest_Plant3_Cluster2.visible = has_grape
