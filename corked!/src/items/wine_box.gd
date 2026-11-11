@@ -14,6 +14,7 @@ var bottles: int = 0
 
 func _ready() -> void:
 	display_name = "Wine Crate"
+	can_drop = false # Only the crate table and the open truck take crates
 	_update_visuals()
 
 func is_full() -> bool:
