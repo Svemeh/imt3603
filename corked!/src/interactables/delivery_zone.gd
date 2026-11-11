@@ -78,7 +78,7 @@ func lock() -> void:
 ## Only accepts full crates, and only while the truck is still parked
 func can_accept_item(item: Item) -> bool:
 	var box := item as WineBox
-	return not _locked and box != null and box.is_full()
+	return not _locked and box != null and box.bottles > 0
 
 func accept_item(player: Player) -> void:
 	if not can_accept_item(player.held_item):

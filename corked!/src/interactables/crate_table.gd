@@ -37,7 +37,7 @@ func _free_spot() -> int:
 ## Only full crates, and only while there's room
 func can_accept_item(item: Item) -> bool:
 	var box := item as WineBox
-	return box != null and box.is_full() and _free_spot() != -1
+	return box != null and box.bottles > 0 and _free_spot() != -1
 
 func accept_item(player: Player) -> void:
 	if not can_accept_item(player.held_item):
@@ -64,4 +64,4 @@ func can_interact(_player: Player) -> bool:
 func get_prompt() -> String:
 	_check_spots()
 	var used := _spots.size() - _spots.count(null)
-	return "Put a full crate here (%d/%d)" % [used, _spots.size()]
+	return "Put a crate here (%d/%d)" % [used, _spots.size()]

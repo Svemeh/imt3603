@@ -146,6 +146,8 @@ func interact(player: Player) -> void:
 		return
 	
 	_busy = true
+	# nobody can take crate when bottle is on its way into crate
+	crate.can_pick_up = false
 	barrel.juice_amount -= 1
 	if barrel.juice_amount <= 0:
 		# empty barrel turn back to normal barrel for next batch
@@ -189,8 +191,8 @@ func _on_bottle_arrived(bottle: Node3D, target_crate: WineBox) -> void:
 	_busy = false
 	if is_instance_valid(target_crate):
 		target_crate.add_bottle(bottle)
-		if target_crate.is_full():
-			target_crate.can_pick_up = true
+		# was: only when target_crate.is_full()
+		target_crate.can_pick_up = true
 	else:
 		bottle.queue_free()
 	_roll_breakdown()
@@ -268,11 +270,3 @@ func get_prompt() -> String:
 	if not barrel.is_wine or barrel.juice_amount <= 0:
 		return "Barrel empty - take it back"
 	return "Bottle wine (%d/%d)" % [crate.bottles, crate.capacity]
-
-
-## Tells the popup manager whether this machine needs its window to stay open
-## even when a player walks away to fetch the hammer. For now, _busy covers
-## the existing bottle-filling/travel sequence and clears when the bottle arrives.
-## Include paused-for-repair/jammed states here when that minigame is added.
-# func is_running() -> bool:
-# 	return _busy
