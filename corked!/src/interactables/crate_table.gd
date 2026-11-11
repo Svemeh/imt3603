@@ -7,9 +7,9 @@ extends Interactable
 ## up again with interact2 to carry them to the truck once it opens
 
 ## How many crates fit side by side across the table (Z value)
-@export var crates_across: int = 4
+@export var crates_across: int = 1
 ## How many rows fit from the front to the back of the table (X value)
-@export var crates_deep: int = 2
+@export var crates_deep: int = 4
 ## Distance between crate centres: x = rows, z = across
 @export var crate_spacing: Vector3 = Vector3(1.1, 0.0, 1.1)
 
@@ -46,17 +46,18 @@ func accept_item(player: Player) -> void:
 	var box := player.transfer_item() as WineBox
 	player.remove_collision_exception_with(box)
 	box.reparent(self)
-	box.position = _spot_position(index)
+	box.global_position = _spot_global_position(index)
 	box.rotation = Vector3.ZERO
 	box.freeze = true
 	_spots[index] = box
 
 ## Where spot number index is: across first, then row by row
-func _spot_position(index: int) -> Vector3:
+func _spot_global_position(index: int) -> Vector3:
 	var across := index % crates_across
 	@warning_ignore("integer_division")
 	var row := index / crates_across
-	return _anchor.position + Vector3(row * crate_spacing.x, 0.0, across * crate_spacing.z)
+	var offset := Vector3(row * crate_spacing.x, 0.0, across * crate_spacing.z)
+	return _anchor.global_position + _anchor.global_transform.basis.orthonormalized() * offset
 
 func can_interact(_player: Player) -> bool:
 	return false
