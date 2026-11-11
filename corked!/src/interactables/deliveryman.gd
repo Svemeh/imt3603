@@ -32,7 +32,7 @@ var _sent: bool = false
 ## DELIVERY MAN FUNCTIONS
 
 func _ready() -> void:
-	_set_doors_open(true)
+	_set_doors_open(false)
 
 ## Sends the driver off with everything on the pad.
 func finish_delivery() -> void:
@@ -82,6 +82,13 @@ func _set_doors_open(open: bool) -> void:
 	if closed_model: 
 		closed_model.visible = not open
 
+## The driver is back from his smoke break: open the doors and the loading spot
+func open_for_loading() -> void:
+	if _sent:
+		return
+	delivery_zone.open()
+	_set_doors_open(true)
+
 ## The driver dissapears, aka gets in the truck: I just hide him for now
 func _hide_driver() -> void:
 	visible = false
@@ -101,4 +108,6 @@ func interact(player: Player) -> void:
 func get_prompt() -> String:
 	if _sent:
 		return "On the way!"
+	if not delivery_zone.is_open():
+		return "Driver is on smoke break"
 	return "Send truck and bottles (%d bottles)" % delivery_zone.bottle_count()
