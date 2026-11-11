@@ -11,11 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
+[ext_resource type="PackedScene" uid="uid://c36bn0dnihi8c" path="res://scenes/interactables/crate_table.tscn" id="10_ca42v"]
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
 [ext_resource type="PackedScene" path="res://scenes/ui/fermentation_window.tscn" id="12_ferm_window"]
-
-[ext_resource type="PackedScene" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
+[ext_resource type="PackedScene" uid="uid://ddcq2jts273pb" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
 
 [sub_resource type="Environment" id="Environment_dinhu"]
 background_mode = 1
@@ -101,6 +101,9 @@ pixel_size = 0.028
 [node name="HammerShelf" parent="Map" unique_id=1530165772 instance=ExtResource("7_kvuet")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9.27643)
 
+[node name="CrateTable" parent="." unique_id=1786547588 instance=ExtResource("10_ca42v")]
+transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 16.941584, 0.5908952, 8.882295)
+
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
 
@@ -117,6 +120,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.4
 script = ExtResource("11_preview")
 window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowPreview"), NodePath("../Map/FermentationStation/MinigameWindowPreview"), NodePath("../Map/Bottlingstation/RepairPopupAnchor/MinigameWindowPreview")])
 
-[node name="RoundTransition" parent="." instance=ExtResource("12_round_transition")]
+[node name="RoundTransition" parent="." unique_id=770447169 instance=ExtResource("12_round_transition")]
 
 [editable path="Map"]
