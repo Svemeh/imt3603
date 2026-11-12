@@ -103,6 +103,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9
 
 [node name="BarrelStack" parent="Map" unique_id=1108354708 instance=ExtResource("10_ir15t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
+
 [node name="Bottling Station Hut - Modular Study" parent="Map" index="12" unique_id=634437062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
 
@@ -111,9 +112,6 @@ script = ExtResource("5_iywne")
 
 [node name="Grape" parent="." unique_id=1325750546 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.136524, 0, -1.249383)
-
-[node name="Barrel" parent="." unique_id=2084614386 instance=ExtResource("8_gee14")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.426157, 0.56402254, -3.253932)
 
 [node name="Broom" parent="." unique_id=1316347425 instance=ExtResource("13_broom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3400927, 0.7, 0.5686097)
@@ -125,6 +123,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.4
 script = ExtResource("11_preview")
 window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowPreview"), NodePath("../Map/FermentationStation/MinigameWindowPreview"), NodePath("../Map/Bottlingstation/RepairPopupAnchor/MinigameWindowPreview")])
 
-[node name="RoundTransition" parent="." unique_id=8199014 instance=ExtResource("12_round_transition")]
+[node name="RoundTransition" parent="." unique_id=1920663775 instance=ExtResource("12_round_transition")]
 
 [editable path="Map"]
