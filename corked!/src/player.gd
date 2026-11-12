@@ -241,19 +241,40 @@ func try_pickup() -> void:
 		return
 
 	var best: Item = null
+	var best_stack: BarrelStack = null
 	var best_dist := INF
 
-	for i in _items_in_range:
-		if not i.can_pick_up:
+	# Find the closest normal pickup.
+	for item in _items_in_range:
+		if not is_instance_valid(item) or not item.can_pick_up:
 			continue
 
-		var d := global_position.distance_to(i.global_position)
+		var distance := global_position.distance_to(item.global_position)
 
-		if d < best_dist:
-			best_dist = d
-			best = i
+		if distance < best_dist:
+			best_dist = distance
+			best = item
 
-	if best:
+	# Check whether a barrel stack is closer.
+	for target in _in_range:
+		if not is_instance_valid(target):
+			continue
+
+		var stack := target as BarrelStack
+
+		if stack == null or not stack.has_barrels():
+			continue
+
+		var distance := global_position.distance_to(stack.global_position)
+
+		if distance < best_dist:
+			best_dist = distance
+			best_stack = stack
+
+	# Take from the closest available source.
+	if best_stack != null:
+		best_stack.take_barrel(self)
+	elif best != null:
 		recieve_item(best)
 		return
 

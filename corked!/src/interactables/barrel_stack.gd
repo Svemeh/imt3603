@@ -20,10 +20,6 @@ func _ready() -> void:
 func has_barrels() -> bool:
 	return remaining > 0
 
-# Taking uses interact2, see Player.try_pickup().
-func can_interact(_player: Player) -> bool:
-	return false
-
 func take_barrel(player: Player) -> bool:
 	if not has_barrels() or player.is_holding():
 		return false
@@ -53,6 +49,10 @@ func accept_item(player: Player) -> void:
 func _update_visuals() -> void:
 	for index in _visuals.size():
 		_visuals[index].visible = index < remaining
+
+# Taking barrels uses interact2, handled in Player.try_pickup().
+func can_interact(_player: Player) -> bool:
+	return false
 
 func get_prompt() -> String:
 	return "Take an empty barrel (%d left)" % remaining
