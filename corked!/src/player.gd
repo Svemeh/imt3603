@@ -1,4 +1,3 @@
-# player.gd
 class_name Player
 extends CharacterBody3D
 
@@ -242,41 +241,25 @@ func try_pickup() -> void:
 		return
 
 	var best: Item = null
-	var best_stack: BarrelStack = null
 	var best_dist := INF
 
-	# Find the closest normal pickup.
-	for item in _items_in_range:
-		if not is_instance_valid(item) or not item.can_pick_up:
+	for i in _items_in_range:
+		if not i.can_pick_up:
 			continue
 
-		var distance := global_position.distance_to(item.global_position)
+		var d := global_position.distance_to(i.global_position)
 
-		if distance < best_dist:
-			best_dist = distance
-			best = item
+		if d < best_dist:
+			best_dist = d
+			best = i
 
-	# Check whether a barrel stack is closer.
-	for target in _in_range:
-		if not is_instance_valid(target):
-			continue
-
-		var stack := target as BarrelStack
-
-		if stack == null or not stack.has_barrels():
-			continue
-
-		var distance := global_position.distance_to(stack.global_position)
-
-		if distance < best_dist:
-			best_dist = distance
-			best_stack = stack
-
-	# Take from the closest available source.
-	if best_stack != null:
-		best_stack.take_barrel(self)
-	elif best != null:
+	if best:
 		recieve_item(best)
+		return
+
+	for i in _in_range:
+		if i is BarrelStack and i.take_barrel(self):
+			return
 
 ## Takes an item into the player's hands. Returns false if hands are full
 func recieve_item(item: Item) -> bool:
