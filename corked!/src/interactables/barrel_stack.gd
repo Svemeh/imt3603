@@ -13,7 +13,6 @@ const BARREL_SCENE: PackedScene = preload("res://scenes/items/barrel.tscn")
 	$Visuals/TopLeft,
 	$Visuals/TopRight,
 ]
-@onready var _collision: CollisionShape3D = $CollisionShape3D
 
 func _ready() -> void:
 	_update_visuals()
@@ -37,10 +36,19 @@ func take_barrel(player: Player) -> bool:
 	_update_visuals()
 	return true
 
+func can_accept_item(item: Item) -> bool:
+	return item is Barrel and remaining < _visuals.size()
+
+func accept_item(player: Player) -> void:
+	var barrel := player.transfer_item()
+	barrel.queue_free()
+
+	remaining += 1
+	_update_visuals()
+
 func _update_visuals() -> void:
 	for index in _visuals.size():
 		_visuals[index].visible = index < remaining
-	_collision.set_deferred("disabled", remaining == 0)
 
 # Taking barrels uses interact2, handled in Player.try_pickup().
 func can_interact(_player: Player) -> bool:

@@ -1,4 +1,3 @@
-# player.gd
 class_name Player
 extends CharacterBody3D
 
@@ -277,6 +276,11 @@ func try_pickup() -> void:
 		best_stack.take_barrel(self)
 	elif best != null:
 		recieve_item(best)
+		return
+
+	for i in _in_range:
+		if i is BarrelStack and i.take_barrel(self):
+			return
 
 ## Takes an item into the player's hands. Returns false if hands are full
 func recieve_item(item: Item) -> bool:

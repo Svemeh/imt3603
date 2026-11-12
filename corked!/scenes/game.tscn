@@ -100,6 +100,8 @@ pixel_size = 0.028
 [node name="HammerShelf" parent="Map" unique_id=1530165772 instance=ExtResource("7_kvuet")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9.27643)
 
+[node name="BarrelStack" parent="Map" unique_id=1108354708 instance=ExtResource("10_ir15t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
 [node name="Bottling Station Hut - Modular Study" parent="Map" index="12" unique_id=634437062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
 
