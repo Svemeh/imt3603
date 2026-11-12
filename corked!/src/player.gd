@@ -178,6 +178,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	if is_running:
+		_knock_items_from_collided_players()
+
+## Makes every player this player sprinted into drop what they are holding
+func _knock_items_from_collided_players() -> void:
+	for i in get_slide_collision_count():
+		var other := get_slide_collision(i).get_collider() as Player
+
+		if other and other != self and other.is_holding():
+			other.drop_item()
+
 ## Appends new interactable or loose item to the matching in range array
 func _on_area_entered(body: Node3D) -> void:
 	if body is Interactable:
@@ -227,33 +238,44 @@ func is_holding() -> bool:
 ## Picks up the nearest loose item on the ground. Does nothing when hands
 ## are full or nothing is in range. Skips items that are locked in place
 func try_pickup() -> void:
-	print("--- K pressed ---")
-	print("tracked items: ", _items_in_range.map(func(i): return "%s (can_pick_up=%s)" % [i.name, i.can_pick_up]))
-	print("overlapping:   ", $InteractArea.get_overlapping_bodies().map(func(b): return b.name))
-	for b in get_tree().current_scene.find_children("*", "Barrel", true, false):
-		var shape := b.get_node_or_null("CollisionShape3D") as CollisionShape3D
-		print("BARREL %s | parent=%s | dist=%.2f | layer=%d | freeze=%s | shape=%s disabled=%s" % [
-			b.name, b.get_parent().name,
-			global_position.distance_to(b.global_position),
-			b.collision_layer, b.freeze,
-			shape != null, str(shape.disabled) if shape else "-"])
 	if held_item != null:
 		return
 
 	var best: Item = null
+	var best_stack: BarrelStack = null
 	var best_dist := INF
 
-	for i in _items_in_range:
-		if not i.can_pick_up:
+	# Find the closest normal pickup.
+	for item in _items_in_range:
+		if not is_instance_valid(item) or not item.can_pick_up:
 			continue
 
-		var d := global_position.distance_to(i.global_position)
+		var distance := global_position.distance_to(item.global_position)
 
-		if d < best_dist:
-			best_dist = d
-			best = i
+		if distance < best_dist:
+			best_dist = distance
+			best = item
 
-	if best:
+	# Check whether a barrel stack is closer.
+	for target in _in_range:
+		if not is_instance_valid(target):
+			continue
+
+		var stack := target as BarrelStack
+
+		if stack == null or not stack.has_barrels():
+			continue
+
+		var distance := global_position.distance_to(stack.global_position)
+
+		if distance < best_dist:
+			best_dist = distance
+			best_stack = stack
+
+	# Take from the closest available source.
+	if best_stack != null:
+		best_stack.take_barrel(self)
+	elif best != null:
 		recieve_item(best)
 
 ## Takes an item into the player's hands. Returns false if hands are full
