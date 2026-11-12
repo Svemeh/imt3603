@@ -28,3 +28,7 @@ func setup(p_amount: int) -> void:
 
 func get_display_name() -> String:
 	return "%s x%d" % [display_name, amount]
+
+## Grapes just fall on the floor when knocked out of someone's hands, no spill
+func get_crash_spill_radius() -> float:
+	return 0.0

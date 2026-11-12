@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://src/items/broom.gd" id="1_broom"]
+[ext_resource type="PackedScene" uid="uid://c46enxnxxwrir" path="res://assets/models/broom/broom.glb" id="2_broom"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_broom"]
+size = Vector3(0.8, 1.4, 0.27)
+
+[node name="Broom" type="RigidBody3D"]
+collision_layer = 8
+mass = 1.0
+freeze = true
+linear_damp = 3.0
+angular_damp = 3.0
+script = ExtResource("1_broom")
+
+[node name="broom" parent="." instance=ExtResource("2_broom")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_broom")

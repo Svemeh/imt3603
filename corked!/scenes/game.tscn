@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
 [ext_resource type="PackedScene" path="res://scenes/ui/fermentation_window.tscn" id="12_ferm_window"]
 [ext_resource type="PackedScene" uid="uid://ddcq2jts273pb" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
+[ext_resource type="PackedScene" path="res://scenes/items/broom.tscn" id="13_broom"]
 
 [sub_resource type="Environment" id="Environment_dinhu"]
 background_mode = 1
@@ -102,6 +103,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9
 
 [node name="BarrelStack" parent="Map" unique_id=1108354708 instance=ExtResource("10_ir15t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
+
 [node name="Bottling Station Hut - Modular Study" parent="Map" index="12" unique_id=634437062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
 
@@ -110,6 +112,9 @@ script = ExtResource("5_iywne")
 
 [node name="Grape" parent="." unique_id=1325750546 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.136524, 0, -1.249383)
+
+[node name="Broom" parent="." unique_id=1316347425 instance=ExtResource("13_broom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3400927, 0.7, 0.5686097)
 
 [node name="DeliveryPoint" parent="." unique_id=1503778649 instance=ExtResource("8_0tnpc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.42846, 0, 2.4183807)

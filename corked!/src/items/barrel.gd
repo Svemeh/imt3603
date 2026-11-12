@@ -80,3 +80,13 @@ func update_liquid_visual(instant: bool = false) -> void:
 func get_display_name() -> String:
 	var name_text := "Wine barrel" if is_wine else display_name
 	return "%s (%d/%d)" % [name_text, juice_amount, MAX_CAPACITY]
+
+## A barrel with liquid makes a big spill, an empty one makes none
+func get_crash_spill_radius() -> float:
+	return Spill.BIG_RADIUS if juice_amount > 0 else 0.0
+
+## Loses 2 units when knocked out of someone's hands (empty if it had 1 or 2)
+func on_crashed() -> void:
+	juice_amount = maxi(juice_amount - 2, 0)
+	if juice_amount == 0:
+		is_wine = false
