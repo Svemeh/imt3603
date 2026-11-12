@@ -3,7 +3,7 @@ extends Interactable
 
 const BARREL_SCENE: PackedScene = preload("res://scenes/items/barrel.tscn")
 
-var remaining: int = 5
+@export var remaining: int = 5
 
 # Bottom row first: taking from the end removes both top barrels first.
 @onready var _visuals: Array[Node3D] = [
@@ -25,11 +25,10 @@ func take_barrel(player: Player) -> bool:
 	if not has_barrels() or player.is_holding():
 		return false
 
-	# Use the existing open gameplay barrel, including its liquid and collision.
 	var barrel := BARREL_SCENE.instantiate() as Barrel
 	barrel.freeze = true
 	add_child(barrel)
-	# This spelling matches the existing method in Corked's player.gd.
+
 	if not player.recieve_item(barrel):
 		barrel.queue_free()
 		return false
