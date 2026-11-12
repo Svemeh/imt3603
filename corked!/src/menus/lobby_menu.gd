@@ -30,14 +30,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	) else event.device
 
 	if event.is_action_pressed("interact"):
-		var i := PlayerManager.join(device)
+		var i: int = PlayerManager.join(device)
 
 		if i != -1:
 			player_slots[i].set_joined(true)
 			get_viewport().set_input_as_handled()
 
 	elif event.is_action_pressed("interact2"):
-		var i := PlayerManager.leave(device)
+		var i: int = PlayerManager.leave(device)
 
 		if i != -1:
 			player_slots[i].set_joined(false)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i21bfx4cw1xv" path="res://src/interactables/stomping_station.gd" id="1_tpiyq"]
 [ext_resource type="PackedScene" uid="uid://dru64cnu3p66e" path="res://assets/models/stompingStation/stompingMachine.glb" id="2_h1ehq"]
+[ext_resource type="AudioStream" uid="uid://coqlw75dpnr7e" path="res://assets/audio/StompSound.wav" id="3_k23x7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5sy4"]
 size = Vector3(1.3537598, 1, 0.84851074)
@@ -1798,6 +1799,11 @@ mesh = SubResource("ArrayMesh_hpwuv")
 
 [node name="Harvest_Plant1_Cluster1_Stem" type="MeshInstance3D" parent="GrapeFill/Harvest_Plant1_Cluster7" unique_id=1870357969]
 mesh = SubResource("ArrayMesh_b2841")
+
+[node name="StompSound" type="AudioStreamPlayer" parent="." unique_id=2042573170]
+stream = ExtResource("3_k23x7")
+volume_db = -10.0
+max_polyphony = 3
 
 [connection signal="body_entered" from="itemZone" to="." method="_on_item_zone_body_entered"]
 [connection signal="body_exited" from="itemZone" to="." method="_on_item_zone_body_exited"]

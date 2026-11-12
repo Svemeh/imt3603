@@ -6,10 +6,11 @@
 [ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/ui/round_timer.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cfq4k3ntxjj8k" path="res://scenes/ui/repair_window.tscn" id="7_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bda68lpvkblwb" path="res://scenes/interactables/delivery/hammer_shelf.tscn" id="7_kvuet"]
+[ext_resource type="PackedScene" uid="uid://d24puy8kfgx7n" path="res://scenes/ui/stomp_window.tscn" id="7_trtic"]
 [ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://3kao7ltmkaxr" path="res://scenes/items/barrel.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
+[ext_resource type="PackedScene" uid="uid://cqs6mvv25dha5" path="res://scenes/interactables/barrel_stack.tscn" id="10_ir15t"]
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
 [ext_resource type="PackedScene" path="res://scenes/ui/fermentation_window.tscn" id="12_ferm_window"]
@@ -85,6 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2679505, 1.273, -2.7)
 [node name="MinigameWindowPreview" parent="Map/StompingStation" index="5" unique_id=1732488779 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.08, 0)
 visible = false
+window_scene = ExtResource("7_trtic")
 
 [node name="FermentationStation" parent="Map" index="10" unique_id=479181345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.91815, 1.1199981, -3.5005941)
@@ -98,6 +100,11 @@ pixel_size = 0.028
 
 [node name="HammerShelf" parent="Map" unique_id=1530165772 instance=ExtResource("7_kvuet")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9.27643)
+
+[node name="BarrelStack" parent="Map" unique_id=1108354708 instance=ExtResource("10_ir15t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
+[node name="Bottling Station Hut - Modular Study" parent="Map" index="12" unique_id=634437062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
 
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
