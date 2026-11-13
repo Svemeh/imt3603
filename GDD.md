@@ -3,11 +3,11 @@
 | | |
 |---|---|
 | **Team** | Godly Games |
-| **Members & roles** | @name (design lead) · @name (tech lead) · @name (art lead) · @name (producer) … ( animal roles included here for IMT3603 )|
+| **Members & roles** | Fredrik Hangaard (Bear) · Espen Gamst (Wolf) · Jesper Storm Halvorsen (Rabbit) · Lukas Veidahl (Cat) · Sverre Mæhlum (Owl) · Tobias Larsen (Puppy) |
 | **Engine / platform** | Godot 4.7.2 Stable
 | **Repo** | [imt3603/](https://github.com/Svemeh/imt3603/) |
 | **Doc version** | v0.1 |
-| **Last updated** | 2026-09-11 |
+| **Last updated** | 2026-11-13 |
 
 ## Changelog
 
