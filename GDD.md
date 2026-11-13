@@ -558,11 +558,6 @@ This section is something the team will need to discuss before writing anything 
 
 None at the moment.
 
-## **2.8 Game options, saving, replay**
-
-> What options exist and how do they affect mechanics? Save model (save-anywhere / checkpoints / none — a decision, not an afterthought). Cheats and easter eggs if any
->
-
 ## 2.8 Game options, saving, replay
 
 > What options exist and how do they affect mechanics? Save model (save-anywhere / checkpoints / none — a decision, not
