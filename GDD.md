@@ -622,19 +622,15 @@ None at the moment.
 
 # 7. Controls & Accessibility — owner: Lukas
 
-> Modern GDDs treat accessibility as design-time, not patch-time — it is far cheaper to build in than to retrofit, and
-> in the EU/EEA the **European Accessibility Act** (applicable since June 2025) has pushed accessibility from
-> "nice-to-have" to a compliance question for commercial digital products. State your targets so they get built and
-> tested:
-
-- Full input remapping: **yes/no**; hold-to-toggle alternatives: **yes/no**
-- Colour is never the only information channel; palette checked for colour blindness: **yes/no**
-- Subtitle size and contrast options; speaker names on dialogue: **yes/no**
-- Screen-shake, camera-motion and flash toggles: **yes/no** (photosensitivity — no flashing above 3 Hz)
-- Difficulty options framed as player choice (assist modes), not shame
-- Text size minimum at target resolution: **[N] pt at 1080p**
-- Reference: [Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/) — pick your target tier and say
-  which one.
+- **Full input remapping: no.** The key and button bindings are fixed in `project.godot`, and the settings menu only has volume and fullscreen.
+- **Hold-to-toggle alternatives: no.** The player has to hold the run button to run.
+- **Colour is never the only information channel: no.** The four players are only told apart by the colour of their farmer, and the repair popup only shows progress by changing from red to green.
+- **Palette checked for colour blindness: no.** We have not tested the colours for colour blindness yet.
+- **Subtitle size and contrast options, speaker names on dialogue: no.** The game has no dialogue or voice lines, so there is nothing to subtitle.
+- **Screen-shake, camera-motion and flash toggles: no.** There are no toggles for these. The game has no screen shake and the camera never moves. Nothing flashes above 3 Hz. The fastest effect is the "LOSING" text in the fermentation popup, which pulses about 1.9 times per second.
+- **Difficulty options framed as player choice: no.** The game has one fixed difficulty. A round lasts 360 seconds, the first quota is 8 bottles, and the quota grows by 5 to 10 bottles each day.
+- **Text size minimum at target resolution: about 8 pt at 1080p.** The smallest text is in the stomping and repair popups above the stations, which is about 10 pixels tall. The HUD text is much larger, at about 67 pixels.
+- **Reference:** Game Accessibility Guidelines. Our target tier is **Basic**. The game does not meet it yet.
 
 ---
 
@@ -642,23 +638,19 @@ None at the moment.
 
 ## 8.1 Opponent / enemy AI
 
-> Behaviour per enemy type (state machines, behaviour trees, or utility scoring — draw them). What makes each *readable*
-> to the player? What does it do when it cannot reach the player?
+There is no opponent or enemy AI. Corked! is a co-op game where the players work together against the clock and the quota.
 
 ## 8.2 Friendly / non-combat characters
 
+The game has one non-player character, the delivery driver (`deliveryman.gd`). He stands by the truck until a player interacts with him, which only works when at least one crate is loaded. He then walks in a straight line to the truck door in 2.5 seconds and gets in. The truck drives 30 m away in 2.5 seconds, and that ends the day. He is fully scripted and makes no decisions of his own.
+
 ## 8.3 Support AI
 
-> Pathfinding approach, collision, perception model, spawning rules.
+There is no support AI. The game has no pathfinding, no perception model and no AI spawning rules. The driver moves between two fixed points, and collision uses the standard Godot physics with Jolt.
 
 ## 8.4 Generative AI *at runtime* (if any)
 
-> Different question from sec.12.2. If a language model or generator runs **while the player plays** — dialogue, barks,
-> level generation — this is a system with a latency budget, a failure mode, a cost, and a legal surface. State:
-> local or hosted; the model and version; the per-request latency and token budget; what happens when it is slow, wrong,
-> or offline; the guardrails against offensive or illegal output; and what the player is told. See
-> [genai-and-provenance.md](genai-and-provenance.md).
-
+There is none. No language model or generator runs while the game is played.
 ---
 
 # 9. Art Direction — owner: Jesper
