@@ -1,6 +1,40 @@
 [gd_scene format=3 uid="uid://bqxsk48bajivs"]
 
-[ext_resource type="Script" uid="uid://cbjcu0njenelv" path="res://src/ui/hud.gd" id="1_c4vmg"]
+[ext_resource type="Script" uid="uid://cbjcu0njenelv" path="res://src/ui/hud.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://d0tyknsllrnly" path="res://scenes/ui/hud_assets/coins.png" id="coins"]
+[ext_resource type="Texture2D" uid="uid://84iaq2p5xjhh" path="res://scenes/ui/hud_assets/hourglass.png" id="hourglass"]
+[ext_resource type="Texture2D" uid="uid://buqhaw7cy02s" path="res://scenes/ui/hud_assets/plaque.png" id="plaque"]
+[ext_resource type="Texture2D" uid="uid://gx3pg8quah6m" path="res://scenes/ui/hud_assets/wine_bottle.png" id="wine_bottle"]
+
+[sub_resource type="Theme" id="HudTheme"]
+default_font = ExtResource("2_font")
+default_font_size = 28
+Label/colors/font_color = Color(0.25, 0.1, 0.035, 1)
+
+[sub_resource type="AtlasTexture" id="PlaqueRegion"]
+atlas = ExtResource("plaque")
+region = Rect2(0, 140, 2172, 445)
+filter_clip = true
+
+[sub_resource type="StyleBoxFlat" id="TimerTrack"]
+bg_color = Color(0.18, 0.07, 0.025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.52, 0.3, 0.1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="TimerFill"]
+bg_color = Color(0.61, 0.08, 0.72, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Hud" type="Control" unique_id=1628769219]
 layout_mode = 3
@@ -9,33 +43,179 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c4vmg")
+mouse_filter = 2
+theme = SubResource("HudTheme")
+script = ExtResource("1_script")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2143566406]
+[node name="Design" type="Control" parent="." unique_id=517106292]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="Resources" type="Control" parent="Design" unique_id=140872402]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 228.0
+offset_bottom = 104.0
+mouse_filter = 2
+
+[node name="Quota" type="Control" parent="Design/Resources" unique_id=674186005]
+anchors_preset = 0
+offset_right = 218.0
+offset_bottom = 46.0
+mouse_filter = 2
+
+[node name="Frame" type="TextureRect" parent="Design/Resources/Quota" unique_id=2052388571]
+texture_filter = 2
 layout_mode = 0
-offset_right = 78.0
-offset_bottom = 65.0
+offset_right = 218.0
+offset_bottom = 46.0
+mouse_filter = 2
+texture = SubResource("PlaqueRegion")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1475557471]
-layout_mode = 2
+[node name="Icon" type="TextureRect" parent="Design/Resources/Quota" unique_id=513087487]
+texture_filter = 2
+layout_mode = 0
+offset_left = 13.0
+offset_top = 9.0
+offset_right = 35.0
+offset_bottom = 35.0
+mouse_filter = 2
+texture = ExtResource("wine_bottle")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="QuotaLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=742448045]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Quota: "
+[node name="Title" type="Label" parent="Design/Resources/Quota" unique_id=94558446]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 107.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 27
+text = "Quota:"
+vertical_alignment = 1
 
-[node name="MoneyLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1340987343]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "$ "
+[node name="Value" type="Label" parent="Design/Resources/Quota" unique_id=413660926]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 3.0
+offset_right = 204.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.38, 0.05, 0.39, 1)
+text = "0/8"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
 
-[node name="TimerBar" type="ProgressBar" parent="." unique_id=1813536167]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = 20.0
-offset_right = 150.0
-offset_bottom = 50.0
+[node name="Money" type="Control" parent="Design/Resources" unique_id=1535399536]
+anchors_preset = 0
+offset_top = 48.0
+offset_right = 218.0
+offset_bottom = 94.0
+mouse_filter = 2
+
+[node name="Frame" type="TextureRect" parent="Design/Resources/Money" unique_id=242883277]
+texture_filter = 2
+layout_mode = 0
+offset_right = 218.0
+offset_bottom = 46.0
+mouse_filter = 2
+texture = SubResource("PlaqueRegion")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Design/Resources/Money" unique_id=887323325]
+texture_filter = 2
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 38.0
+offset_bottom = 36.0
+mouse_filter = 2
+texture = ExtResource("coins")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Design/Resources/Money" unique_id=1779028074]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 115.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 27
+text = "Money:"
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Design/Resources/Money" unique_id=1993810223]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 3.0
+offset_right = 204.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.38, 0.05, 0.39, 1)
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+
+[node name="Players" type="HBoxContainer" parent="Design" unique_id=265263979]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 10.0
+offset_right = 282.0
+offset_bottom = 68.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Timer" type="Control" parent="Design" unique_id=705346765]
+anchors_preset = 0
+offset_left = 436.0
+offset_top = 2.0
+offset_right = 716.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Frame" type="TextureRect" parent="Design/Timer" unique_id=1482090809]
+texture_filter = 2
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 38.0
+mouse_filter = 2
+texture = SubResource("PlaqueRegion")
+expand_mode = 1
+
+[node name="Hourglass" type="TextureRect" parent="Design/Timer" unique_id=567599985]
+texture_filter = 2
+layout_mode = 0
+offset_left = 87.0
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 26.0
+mouse_filter = 2
+texture = ExtResource("hourglass")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TimeLabel" type="Label" parent="Design/Timer" unique_id=609965138]
+layout_mode = 0
+offset_left = 111.0
+offset_right = 198.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 23
+text = "06:00"
+vertical_alignment = 1
+
+[node name="TimerBar" type="ProgressBar" parent="Design/Timer" unique_id=1143547220]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 26.0
+offset_right = 258.0
+offset_bottom = 32.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("TimerTrack")
+theme_override_styles/fill = SubResource("TimerFill")
+max_value = 360.0
+value = 360.0
 show_percentage = false
