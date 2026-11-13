@@ -139,11 +139,6 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 > Diagrams over paragraphs for anything spatial or temporal. Pick one term per concept ("stamina" *or* "energy") and use
 > it everywhere. "Etc." is a scope bug, not a word.
 
-# **2. Gameplay & Mechanics — owner: Tobias**
-
-> **Prose rules for every module:** numbers, units, and defaults ("fast" is an opinion; "6 m/s" is a decision — wrong numbers are fine, they are testable; missing numbers are not). One idea per paragraph, decision first, reason second. Diagrams over paragraphs for anything spatial or temporal. Pick one term per concept ("stamina" *or* "energy") and use it everywhere. "Etc." is a scope bug, not a word.
-> 
-
 ## **2.1 Player verbs & controls**
 
 | **Verb** | **Input** | **Timing / numbers** | **Notes** |
