@@ -651,6 +651,7 @@ There is no support AI. The game has no pathfinding, no perception model and no 
 ## 8.4 Generative AI *at runtime* (if any)
 
 There is none. No language model or generator runs while the game is played.
+
 ---
 
 # 9. Art Direction — owner: Jesper
