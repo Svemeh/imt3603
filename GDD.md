@@ -214,7 +214,7 @@ Barrel full (4/4): stomping stops until the barrel is taken away.
         - **Yellow:** fermentation is paused.
         - **Red:** paused and one unit of juice lost every red_loss_time.
     - A needle moves around a circular gauge. pressing J while the nieedle is in a marked zone keeps the pressure in green.
-    - Fermentation takes **[check: X seconds in green]**. When done, the barrel holds wine (**4/4**) and can be picked up. The popup shows “WINE 4/4” and “BARREL”.
+    - Fermentation takes. When done, the barrel holds wine (**4/4**) and can be picked up. The popup shows “WINE 4/4” and “BARREL”.
     - The barrel can be picked up while fermenting (can_pick_up = true).
 - **States:** Empty → Barrel docked → Fermenting (green/yellow/red) → Done (wine) → Empty
 Red → Lost wine depending on how baddly the player did
