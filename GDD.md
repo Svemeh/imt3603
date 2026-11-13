@@ -132,7 +132,7 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 
 ---
 
-# 2. Gameplay & Mechanics — owner: @name
+# 2. Gameplay & Mechanics — owner: Tobias
 
 > **Prose rules for every module:** numbers, units, and defaults ("fast" is an opinion; "6 m/s" is a decision — wrong
 > numbers are fine, they are testable; missing numbers are not). One idea per paragraph, decision first, reason second.
@@ -190,14 +190,14 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 
 ---
 
-# 3. Screen Flow & Game States — owner: @name
+# 3. Screen Flow & Game States — owner: Espen
 
 > A diagram of every screen and state (title, settings, pause, gameplay, game over…), the transitions between them, and
 > one line on each screen's purpose. This diagram is usually the first thing the programmer builds.
 
 ---
 
-# 4. Story, Setting & Characters — owner: @name
+# 4. Story, Setting & Characters — owner: Fredrik
 
 > Skip or minimise if your game is abstract — say so explicitly rather than leaving the section blank.
 
@@ -217,7 +217,7 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 
 ---
 
-# 5. Levels & Content Plan — owner: @name
+# 5. Levels & Content Plan — owner: Sverre
 
 > Per level: synopsis, objectives, how required knowledge is introduced, map sketch, critical path, key encounters.
 > **Count the content**: levels × unique assets × mechanics introduced. This section is where scope hides.
@@ -234,7 +234,7 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 
 ---
 
-# 6. Interface — owner: @name
+# 6. Interface — owner: Espen
 
 ## 6.1 Visual / HUD
 
@@ -250,7 +250,7 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 
 ---
 
-# 7. Controls & Accessibility — owner: @name
+# 7. Controls & Accessibility — owner: Lukas
 
 > Modern GDDs treat accessibility as design-time, not patch-time — it is far cheaper to build in than to retrofit, and
 > in the EU/EEA the **European Accessibility Act** (applicable since June 2025) has pushed accessibility from
@@ -268,7 +268,7 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 
 ---
 
-# 8. Artificial Intelligence — owner: @name
+# 8. Artificial Intelligence — owner: Lukas
 
 ## 8.1 Opponent / enemy AI
 
@@ -291,7 +291,7 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 
 ---
 
-# 9. Art Direction — owner: @name
+# 9. Art Direction — owner: Jesper
 
 > Style, palette, shape language, reference board (link). Key assets and how each is being made — modelled, bought,
 > or generated, **with provenance** (see sec.12.2). Constraints that protect scope: camera distance, texture budget,
