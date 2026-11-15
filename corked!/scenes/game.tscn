@@ -35,7 +35,7 @@ adjustment_saturation = 1.2
 script = ExtResource("1_lbhrr")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=299118941]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660254, 0, -0.8660254, 0.5, 9, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660254, 0, -0.8660254, 0.5, 8.9999485, 10.010176, 9.98819)
 projection = 1
 current = true
 size = 27.211
@@ -98,14 +98,14 @@ window_scene = ExtResource("12_ferm_window")
 panel_size = Vector2i(300, 220)
 pixel_size = 0.028
 
+[node name="Bottling Station Hut - Modular Study" parent="Map" index="12" unique_id=634437062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
+
 [node name="HammerShelf" parent="Map" unique_id=1530165772 instance=ExtResource("7_kvuet")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9.27643)
 
 [node name="BarrelStack" parent="Map" unique_id=1108354708 instance=ExtResource("10_ir15t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
-
-[node name="Bottling Station Hut - Modular Study" parent="Map" index="12" unique_id=634437062]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
 
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
