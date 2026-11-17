@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cqs6mvv25dha5"]
+
+[ext_resource type="Script" uid="uid://ctsjenccni3dw" path="res://src/interactables/barrel_stack.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://0kww3kiukvc" path="res://assets/models/barrelLid/barrel_lid.glb" id="2_model"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_stack"]
+size = Vector3(2.86, 1.76, 1.02)
+
+[node name="BarrelStack" type="StaticBody3D" unique_id=1108354708]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1140717831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88, 0)
+shape = SubResource("BoxShape3D_stack")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=84517269]
+
+[node name="BottomLeft" parent="Visuals" unique_id=1466184831 instance=ExtResource("2_model")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.95, 0.47, 0)
+
+[node name="BottomMiddle" parent="Visuals" unique_id=1625670710 instance=ExtResource("2_model")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.47, 0)
+
+[node name="BottomRight" parent="Visuals" unique_id=664495873 instance=ExtResource("2_model")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.95, 0.47, 0)
+
+[node name="TopLeft" parent="Visuals" unique_id=1312717634 instance=ExtResource("2_model")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.475, 1.29, 0)
+
+[node name="TopRight" parent="Visuals" unique_id=89249463 instance=ExtResource("2_model")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.475, 1.29, 0)

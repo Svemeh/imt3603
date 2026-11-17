@@ -8,8 +8,9 @@ size = Vector3(0.70129395, 0.57666016, 0.5234375)
 
 [node name="Grape" type="RigidBody3D" unique_id=1336629603]
 collision_layer = 8
-gravity_scale = 0.0
 freeze = true
+linear_damp = 3.0
+angular_damp = 3.0
 script = ExtResource("1_8daar")
 
 [node name="temp_model_delete_later" parent="." unique_id=1359525066 instance=ExtResource("2_0gvam")]

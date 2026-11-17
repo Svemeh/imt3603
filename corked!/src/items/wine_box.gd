@@ -50,3 +50,12 @@ func _update_visuals() -> void:
 
 func get_display_name() -> String:
 	return "%s (%d/%d)" % [display_name, bottles, capacity]
+
+## All bottles break: large spill. Empty crate spills nothing
+func get_crash_spill_radius() -> float:
+	return Spill.LARGE_RADIUS if bottles > 0 else 0.0
+
+## Broken bottles, so the crate is gone
+func on_crashed() -> void:
+	if bottles > 0:
+		queue_free()

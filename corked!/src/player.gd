@@ -1,4 +1,3 @@
-# player.gd
 class_name Player
 extends CharacterBody3D
 
@@ -19,6 +18,10 @@ signal station_interacted(station: Interactable)
 @export var acceleration: float = 25.0
 @export var deceleration: float = 45.0
 @export var rotation_speed: float = 10.0
+## Seconds a player lies on the floor after falling
+@export var fall_stun_time: float = 1.0
+## Seconds you still can't run after stepping out of a spill
+@export var spill_no_run_time: float = 2.0
 
 @export var player_variant: PlayerVariant = PlayerVariant.YELLOW
 
@@ -30,6 +33,7 @@ signal station_interacted(station: Interactable)
 
 ## Where held items sit. Add a Marker3D child named HandMarker to player.tscn
 @onready var hand_marker: Marker3D = $HandMarker
+@onready var visual_root: Node3D = $VisualRoot
 
 var animation_player: AnimationPlayer
 
@@ -44,6 +48,15 @@ var player_index := 0
 
 var _in_range: Array[Interactable] = []
 var _items_in_range: Array[Item] = []
+## Spills the player is currently standing in
+var _spills: Array = []
+## Counts down after leaving a spill, no running while above 0
+var _no_run_timer: float = 0.0
+## Counts down while knocked over
+var _stun_timer: float = 0.0
+## Whether the player was running this physics frame
+var _is_running: bool = false
+var _fall_tween: Tween
 
 
 func act(action: String) -> String:
@@ -99,7 +112,10 @@ func setup_player_variant() -> void:
 ## "interact2" is the hands button: drop what is held, otherwise pick up
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(act("interact")):
-		try_interact()
+		if held_item is Broom:
+			(held_item as Broom).sweep(self)
+		else:
+			try_interact()
 
 	elif event.is_action_pressed(act("interact2")):
 		if is_holding():
@@ -110,6 +126,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_update_spill_state(delta)
+
+	if _stun_timer > 0.0:
+		_stun_timer -= delta
+
 	var input := Input.get_vector(
 		act("left"),
 		act("right"),
@@ -117,10 +138,15 @@ func _physics_process(delta: float) -> void:
 		act("down")
 	)
 
+	# Lying on the floor after a fall, no moving
+	if is_stunned():
+		input = Vector2.ZERO
+
 	var direction := Vector3(input.x, 0.0, input.y).normalized()
 
 	var is_moving := direction != Vector3.ZERO
-	var is_running := is_moving and Input.is_action_pressed(act("run"))
+	var is_running := is_moving and Input.is_action_pressed(act("run")) and can_run()
+	_is_running = is_running
 
 	if is_running:
 		if animation_player.current_animation != run_animation:
@@ -181,13 +207,25 @@ func _physics_process(delta: float) -> void:
 	if is_running:
 		_knock_items_from_collided_players()
 
-## Makes every player this player sprinted into drop what they are holding
+## Running into another player knocks both of you over. Both fall and
+## drop what they hold, even if the other player was standing still
 func _knock_items_from_collided_players() -> void:
+	var hit_someone := false
+
 	for i in get_slide_collision_count():
 		var other := get_slide_collision(i).get_collider() as Player
 
-		if other and other != self and other.is_holding():
-			other.drop_item()
+		if other == null or other == self:
+			continue
+
+		hit_someone = true
+
+		# The player who got hit always falls, even with empty hands
+		other.crash()
+
+	# The runner crashes as well
+	if hit_someone:
+		crash()
 
 ## Appends new interactable or loose item to the matching in range array
 func _on_area_entered(body: Node3D) -> void:
@@ -238,34 +276,50 @@ func is_holding() -> bool:
 ## Picks up the nearest loose item on the ground. Does nothing when hands
 ## are full or nothing is in range. Skips items that are locked in place
 func try_pickup() -> void:
-	print("--- K pressed ---")
-	print("tracked items: ", _items_in_range.map(func(i): return "%s (can_pick_up=%s)" % [i.name, i.can_pick_up]))
-	print("overlapping:   ", $InteractArea.get_overlapping_bodies().map(func(b): return b.name))
-	for b in get_tree().current_scene.find_children("*", "Barrel", true, false):
-		var shape := b.get_node_or_null("CollisionShape3D") as CollisionShape3D
-		print("BARREL %s | parent=%s | dist=%.2f | layer=%d | freeze=%s | shape=%s disabled=%s" % [
-			b.name, b.get_parent().name,
-			global_position.distance_to(b.global_position),
-			b.collision_layer, b.freeze,
-			shape != null, str(shape.disabled) if shape else "-"])
 	if held_item != null:
 		return
 
 	var best: Item = null
+	var best_stack: BarrelStack = null
 	var best_dist := INF
 
-	for i in _items_in_range:
-		if not i.can_pick_up:
+	# Find the closest normal pickup.
+	for item in _items_in_range:
+		if not is_instance_valid(item) or not item.can_pick_up:
 			continue
 
-		var d := global_position.distance_to(i.global_position)
+		var distance := global_position.distance_to(item.global_position)
 
-		if d < best_dist:
-			best_dist = d
-			best = i
+		if distance < best_dist:
+			best_dist = distance
+			best = item
 
-	if best:
+	# Check whether a barrel stack is closer.
+	for target in _in_range:
+		if not is_instance_valid(target):
+			continue
+
+		var stack := target as BarrelStack
+
+		if stack == null or not stack.has_barrels():
+			continue
+
+		var distance := global_position.distance_to(stack.global_position)
+
+		if distance < best_dist:
+			best_dist = distance
+			best_stack = stack
+
+	# Take from the closest available source.
+	if best_stack != null:
+		best_stack.take_barrel(self)
+	elif best != null:
 		recieve_item(best)
+		return
+
+	for i in _in_range:
+		if i is BarrelStack and i.take_barrel(self):
+			return
 
 ## Takes an item into the player's hands. Returns false if hands are full
 func recieve_item(item: Item) -> bool:
@@ -276,6 +330,11 @@ func recieve_item(item: Item) -> bool:
 	item.freeze = true
 
 	add_collision_exception_with(item)
+
+	# While held, the item must not block other players (the wine crate is
+	# on the world layer), or it pushes them away instead of a crash
+	item.set_meta("ground_layer", item.collision_layer)
+	item.collision_layer = item.collision_layer & ~1
 
 	_items_in_range.erase(item)
 
@@ -294,6 +353,12 @@ func recieve_item(item: Item) -> bool:
 func transfer_item() -> Item:
 	var item := held_item
 	held_item = null
+
+	# Gives the item back the collision it had before it was picked up
+	if item and item.has_meta("ground_layer"):
+		item.collision_layer = item.get_meta("ground_layer")
+		item.remove_meta("ground_layer")
+
 	return item
 
 ## Drops the held item on the ground where the hands are
@@ -333,3 +398,80 @@ func try_give_item() -> bool:
 	best.accept_item(self)
 
 	return true
+
+## True while knocked over
+func is_stunned() -> bool:
+	return _stun_timer > 0.0
+
+## No running while inside a spill or shortly after leaving one
+func can_run() -> bool:
+	return _spills.is_empty() and _no_run_timer <= 0.0
+
+## Called by a Spill when the player steps into it.
+## Running onto a spill makes you fall.
+func enter_spill(spill: Spill) -> void:
+	if spill in _spills:
+		return
+	_spills.append(spill)
+
+	if _is_running:
+		crash()
+
+## Called by a Spill when the player steps out of it
+func exit_spill(spill: Spill) -> void:
+	_spills.erase(spill)
+	if _spills.is_empty():
+		_no_run_timer = spill_no_run_time
+
+## Removes cleaned spills and counts down the no-run time
+func _update_spill_state(delta: float) -> void:
+	var had_spills := not _spills.is_empty()
+	_spills = _spills.filter(func(s): return is_instance_valid(s))
+
+	if had_spills and _spills.is_empty():
+		_no_run_timer = spill_no_run_time
+	elif _spills.is_empty() and _no_run_timer > 0.0:
+		_no_run_timer -= delta
+
+## Knocks the player over: they drop what they hold, it may spill,
+## and they can't move for a moment. Used when sprinted into or
+## when running onto a spill.
+func crash() -> void:
+	if is_stunned():
+		return
+
+	_stun_timer = fall_stun_time
+	_is_running = false
+	velocity = Vector3.ZERO
+	_play_fall()
+
+	if not is_holding():
+		return
+
+	var item := held_item
+	var spill_radius := item.get_crash_spill_radius()
+	var spill_pos := Vector3(
+		hand_marker.global_position.x,
+		global_position.y,
+		hand_marker.global_position.z
+	)
+
+	drop_item()
+
+	# Item could not be dropped (e.g. the hammer)
+	if held_item == item:
+		return
+
+	if spill_radius > 0.0:
+		Spill.spawn(get_tree().current_scene, spill_pos, spill_radius)
+
+	item.on_crashed()
+
+## Tips the model forward and back up again
+func _play_fall() -> void:
+	if _fall_tween:
+		_fall_tween.kill()
+	_fall_tween = create_tween()
+	_fall_tween.tween_property(visual_root, "rotation:x", deg_to_rad(75.0), 0.15)
+	_fall_tween.tween_interval(maxf(fall_stun_time - 0.4, 0.0))
+	_fall_tween.tween_property(visual_root, "rotation:x", 0.0, 0.25)

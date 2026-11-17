@@ -1,0 +1,89 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://src/ui/player_badge.gd" id="1_script"]
+
+[ext_resource type="FontFile" path="res://assets/ui/PatrickHand-Regular.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="Ring"]
+bg_color = Color(0.16, 0.10, 0.02, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.91, 0.69, 0.14, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_left = 24
+corner_radius_bottom_right = 24
+
+[sub_resource type="StyleBoxFlat" id="Tab"]
+bg_color = Color(0.8, 0.57, 0.05, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.85, 0.4, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[sub_resource type="Shader" id="PortraitClip"]
+code = "shader_type canvas_item;
+void fragment() {
+ vec4 portrait = texture(TEXTURE, UV);
+ portrait.a *= 1.0 - smoothstep(0.47, 0.49, length(UV - vec2(0.5)));
+ COLOR = portrait;
+}"
+
+[sub_resource type="ShaderMaterial" id="ClipMaterial"]
+shader = SubResource("PortraitClip")
+
+[node name="PlayerBadge" type="Control"]
+custom_minimum_size = Vector2(36, 50)
+offset_right = 36.0
+offset_bottom = 49.71
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Ring" type="Panel" parent="."]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 36.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Ring")
+
+[node name="Portrait" type="TextureRect" parent="."]
+offset_left = 2.57
+offset_top = 2.57
+offset_right = 33.43
+offset_bottom = 33.43
+mouse_filter = 2
+material = SubResource("ClipMaterial")
+texture_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Tab" type="Panel" parent="."]
+offset_left = 2.57
+offset_top = 30.86
+offset_right = 33.43
+offset_bottom = 48.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Tab")
+
+[node name="PlayerLabel" type="Label" parent="."]
+offset_left = 2.57
+offset_top = 29.14
+offset_right = 33.43
+offset_bottom = 48.0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(1,1,1,1)
+theme_override_colors/font_outline_color = Color(0,0,0,0.3)
+theme_override_constants/outline_size = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "P1"
