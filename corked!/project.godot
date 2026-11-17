@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "Mobile")
 PlayerManager="*uid://b3ycfhy6nsboy"
 GameStats="*res://src/game_stats.gd"
 FermentationSettings="*res://src/fermentation_settings.gd"
+MenuMusic="*uid://dvm8kb4smnfvo"
 
 [display]
 
