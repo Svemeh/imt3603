@@ -7,6 +7,8 @@ extends Node
 
 ## The overlay survives a round reset while the gameplay children are rebuilt.
 @onready var round_transition = $RoundTransition
+## Background music, kept playing across round resets
+@onready var game_music: AudioStreamPlayer = $GameMusic
 
 ## Run state stays on Game; fresh stations/items must not reset the wallet.
 var round_number: int = 1
@@ -161,7 +163,7 @@ func _start_next_round() -> void:
 	# Preserve runtime round length if it was adjusted for development or balancing.
 	fresh_round.get_node("RoundTimer").round_duration = round_timer.round_duration
 	for child in get_children():
-		if child == round_transition:
+		if child == round_transition or child == game_music:
 			continue
 		# Remove immediately so old node paths and signals cannot affect the next round.
 		remove_child(child)
@@ -172,7 +174,7 @@ func _start_next_round() -> void:
 		if node.owner == fresh_round:
 			node.owner = null
 	for child in fresh_round.get_children():
-		if child.name == "RoundTransition":
+		if child.name == "RoundTransition" or child.name == "GameMusic":
 			continue
 		fresh_round.remove_child(child)
 		add_child(child)
