@@ -43,6 +43,7 @@ var _day_over: bool = false
 
 
 func _ready() -> void:
+	MenuMusic.stop_menu_music()
 	round_transition.next_round_requested.connect(_request_next_round)
 	_prepare_round()
 
