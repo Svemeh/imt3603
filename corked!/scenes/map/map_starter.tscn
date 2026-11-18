@@ -18,21 +18,25 @@
 [ext_resource type="PackedScene" path="res://scenes/placeables/ground_dirt_3.tscn" id="20_dirt3"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/ground_dirt_grass_strip.tscn" id="21_grass_dirt"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/grass_patch.tscn" id="22_grass_strip"]
+[ext_resource type="PackedScene" uid="uid://b6l4q4clv5rja" path="res://scenes/map/estate_dressing.tscn" id="23_estate"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/tuscan_gravel_lane.tscn" id="24_road"]
+[ext_resource type="PackedScene" path="res://scenes/placeables/tuscan_gravel_verge.tscn" id="25_walk"]
 
 [sub_resource type="Environment" id="Environment_vineyard"]
 background_mode = 1
 background_color = Color(0.48, 0.65, 0.82, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.82, 0.88, 1, 1)
+ambient_light_color = Color(0.7, 0.76, 0.84, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.36
+ambient_light_energy = 0.18
 tonemap_mode = 2
+tonemap_exposure = 0.9
 glow_enabled = true
 glow_intensity = 0.15
 glow_hdr_threshold = 1.5
 adjustment_enabled = true
-adjustment_contrast = 1.04
-adjustment_saturation = 1.14
+adjustment_contrast = 1.08
+adjustment_saturation = 1.12
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8fo7a"]
 size = Vector3(12.378906, 5.055664, 1)
@@ -62,12 +66,12 @@ environment = SubResource("Environment_vineyard")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=2105773388]
 transform = Transform3D(0.81915206, 0.46984634, -0.32898995, 0, 0.57357645, 0.81915206, 0.57357645, -0.6710101, 0.46984634, 0, 0, 0)
-light_color = Color(1, 0.86, 0.66, 1)
-light_energy = 1.15
+light_color = Color(1, 0.82, 0.61, 1)
+light_energy = 0.8
 shadow_enabled = true
 shadow_bias = 0.05
 shadow_normal_bias = 1.0
-shadow_blur = 1.5
+shadow_blur = 2.5
 directional_shadow_max_distance = 70.0
 
 [node name="GroundTiles" type="Node3D" parent="." unique_id=368656832]
@@ -443,6 +447,87 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 19.5)
 
 [node name="dirt_12_12" parent="GroundTiles/DirtColumn_12" unique_id=1697491895 instance=ExtResource("20_dirt3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 22.5)
+
+[node name="dirt_12_13" parent="GroundTiles/DirtColumn_12" unique_id=2074920755 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 24)
+
+[node name="dirt_12_15" parent="GroundTiles/DirtColumn_12" unique_id=1015828050 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 24)
+
+[node name="dirt_12_14" parent="GroundTiles/DirtColumn_12" unique_id=412091891 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 24)
+
+[node name="dirt_12_16" parent="GroundTiles/DirtColumn_12" unique_id=1594562138 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 21)
+
+[node name="dirt_12_17" parent="GroundTiles/DirtColumn_12" unique_id=2077602676 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 21)
+
+[node name="dirt_12_18" parent="GroundTiles/DirtColumn_12" unique_id=1984500465 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 18)
+
+[node name="dirt_12_19" parent="GroundTiles/DirtColumn_12" unique_id=75682358 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 18)
+
+[node name="dirt_12_20" parent="GroundTiles/DirtColumn_12" unique_id=306660675 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 15)
+
+[node name="dirt_12_21" parent="GroundTiles/DirtColumn_12" unique_id=216549093 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 15)
+
+[node name="dirt_12_22" parent="GroundTiles/DirtColumn_12" unique_id=1596190149 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 12)
+
+[node name="dirt_12_23" parent="GroundTiles/DirtColumn_12" unique_id=1661685372 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 12)
+
+[node name="dirt_12_24" parent="GroundTiles/DirtColumn_12" unique_id=1151105554 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 9)
+
+[node name="dirt_12_25" parent="GroundTiles/DirtColumn_12" unique_id=2074927097 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 9)
+
+[node name="dirt_12_26" parent="GroundTiles/DirtColumn_12" unique_id=2130455544 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 6)
+
+[node name="dirt_12_27" parent="GroundTiles/DirtColumn_12" unique_id=332924512 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 6)
+
+[node name="dirt_12_28" parent="GroundTiles/DirtColumn_12" unique_id=971668640 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 3)
+
+[node name="dirt_12_29" parent="GroundTiles/DirtColumn_12" unique_id=2127960703 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 3)
+
+[node name="dirt_12_30" parent="GroundTiles/DirtColumn_12" unique_id=374969046 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, 0)
+
+[node name="dirt_12_31" parent="GroundTiles/DirtColumn_12" unique_id=639276951 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, 0)
+
+[node name="dirt_12_32" parent="GroundTiles/DirtColumn_12" unique_id=1155274485 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, -3)
+
+[node name="dirt_12_33" parent="GroundTiles/DirtColumn_12" unique_id=414638935 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, -3)
+
+[node name="dirt_12_34" parent="GroundTiles/DirtColumn_12" unique_id=1716804637 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, -6)
+
+[node name="dirt_12_35" parent="GroundTiles/DirtColumn_12" unique_id=973987767 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, -6)
+
+[node name="dirt_12_36" parent="GroundTiles/DirtColumn_12" unique_id=492875321 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, -9)
+
+[node name="dirt_12_37" parent="GroundTiles/DirtColumn_12" unique_id=1974542916 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, -9)
+
+[node name="dirt_12_38" parent="GroundTiles/DirtColumn_12" unique_id=1319638070 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.300003, 0, -12)
+
+[node name="dirt_12_39" parent="GroundTiles/DirtColumn_12" unique_id=1057626330 instance=ExtResource("20_dirt3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.300003, 0, -12)
 
 [node name="Cobble_3_0" parent="GroundTiles" unique_id=675846027 instance=ExtResource("9_cobble")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -4.5)
@@ -906,233 +991,161 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 17)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 17)
 
 [node name="Bottlingstation" parent="." unique_id=389281476 instance=ExtResource("9_7blmr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.405085, 2.1090333, -2.3458886)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.594915, 2.1090333, 15.0541115)
 
 [node name="StompingStation" parent="." unique_id=1482266665 instance=ExtResource("10_t75ul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 1.273, 3.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.273, -2.7)
 
 [node name="FermentationStation" parent="." unique_id=479181345 instance=ExtResource("11_ngbmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5530708, 1.1199981, -3.6374736)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.653071, 1.1199981, -3.6374736)
 
 [node name="DeliveryApron" type="Node3D" parent="." unique_id=1192806992]
 
-[node name="Cobble_0_0" parent="DeliveryApron" unique_id=1687175390 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_0" parent="DeliveryApron" unique_id=1687175390 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 4.5)
 
-[node name="Cobble_1_0" parent="DeliveryApron" unique_id=101729950 instance=ExtResource("9_cobble")]
+[node name="Cobble_1_0" parent="DeliveryApron" unique_id=101729950 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 4.5)
 
-[node name="Cobble_0_1" parent="DeliveryApron" unique_id=82865060 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_1" parent="DeliveryApron" unique_id=82865060 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 7.5)
 
-[node name="Cobble_1_1" parent="DeliveryApron" unique_id=495823577 instance=ExtResource("9_cobble")]
+[node name="Cobble_1_1" parent="DeliveryApron" unique_id=495823577 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 7.5)
 
-[node name="Cobble_0_2" parent="DeliveryApron" unique_id=1932058394 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_2" parent="DeliveryApron" unique_id=1932058394 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 10.5)
 
-[node name="Cobble_0_43" parent="DeliveryApron" unique_id=1777147775 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_43" parent="DeliveryApron" unique_id=1777147775 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 10.5)
 
-[node name="Cobble_0_3" parent="DeliveryApron" unique_id=1187400116 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_3" parent="DeliveryApron" unique_id=1187400116 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -10.5)
 
-[node name="Cobble_0_4" parent="DeliveryApron" unique_id=298042970 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_4" parent="DeliveryApron" unique_id=298042970 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -7.5)
 
-[node name="Cobble_0_5" parent="DeliveryApron" unique_id=2047333603 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_5" parent="DeliveryApron" unique_id=2047333603 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -4.5)
 
-[node name="Cobble_0_6" parent="DeliveryApron" unique_id=442046138 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_6" parent="DeliveryApron" unique_id=442046138 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -1.5)
 
-[node name="Cobble_0_7" parent="DeliveryApron" unique_id=1653979590 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_7" parent="DeliveryApron" unique_id=1653979590 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 1.5)
 
-[node name="Cobble_0_49" parent="DeliveryApron" unique_id=512852708 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_49" parent="DeliveryApron" unique_id=512852708 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 13.5)
 
-[node name="Cobble_0_50" parent="DeliveryApron" unique_id=382156596 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_50" parent="DeliveryApron" unique_id=382156596 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 16.5)
 
-[node name="Cobble_0_51" parent="DeliveryApron" unique_id=1269809256 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_51" parent="DeliveryApron" unique_id=1269809256 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 19.5)
 
-[node name="Cobble_0_52" parent="DeliveryApron" unique_id=1096703600 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_52" parent="DeliveryApron" unique_id=1096703600 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 22.5)
 
-[node name="Cobble_0_57" parent="DeliveryApron" unique_id=934591338 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_57" parent="DeliveryApron" unique_id=934591338 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 13.5)
 
-[node name="Cobble_0_58" parent="DeliveryApron" unique_id=129562946 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_58" parent="DeliveryApron" unique_id=129562946 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 16.5)
 
-[node name="Cobble_0_59" parent="DeliveryApron" unique_id=756965249 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_59" parent="DeliveryApron" unique_id=756965249 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 19.5)
 
-[node name="Cobble_0_60" parent="DeliveryApron" unique_id=581794760 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_60" parent="DeliveryApron" unique_id=581794760 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 22.5)
 
-[node name="Cobble_0_65" parent="DeliveryApron" unique_id=1312501199 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_65" parent="DeliveryApron" unique_id=1312501199 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 13.5)
 
-[node name="Cobble_0_66" parent="DeliveryApron" unique_id=1293606111 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_66" parent="DeliveryApron" unique_id=1293606111 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 16.5)
 
-[node name="Cobble_0_67" parent="DeliveryApron" unique_id=1407430296 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_67" parent="DeliveryApron" unique_id=1407430296 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 19.5)
 
-[node name="Cobble_0_68" parent="DeliveryApron" unique_id=1276348202 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_68" parent="DeliveryApron" unique_id=1276348202 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 22.5)
 
-[node name="Cobble_0_73" parent="DeliveryApron" unique_id=701762734 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_73" parent="DeliveryApron" unique_id=701762734 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 13.5)
 
-[node name="Cobble_0_74" parent="DeliveryApron" unique_id=2000135209 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_74" parent="DeliveryApron" unique_id=2000135209 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 16.5)
 
-[node name="Cobble_0_75" parent="DeliveryApron" unique_id=341108727 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_75" parent="DeliveryApron" unique_id=341108727 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 19.5)
 
-[node name="Cobble_0_76" parent="DeliveryApron" unique_id=1270506703 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_76" parent="DeliveryApron" unique_id=1270506703 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 22.5)
 
-[node name="Cobble_0_81" parent="DeliveryApron" unique_id=885540855 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 13.5)
-
-[node name="Cobble_0_82" parent="DeliveryApron" unique_id=823716470 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 16.5)
-
-[node name="Cobble_0_83" parent="DeliveryApron" unique_id=736461343 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 19.5)
-
-[node name="Cobble_0_84" parent="DeliveryApron" unique_id=628856244 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 22.5)
-
-[node name="Cobble_0_89" parent="DeliveryApron" unique_id=1029151958 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 13.5)
-
-[node name="Cobble_0_90" parent="DeliveryApron" unique_id=1753104905 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 16.5)
-
-[node name="Cobble_0_91" parent="DeliveryApron" unique_id=236004533 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 19.5)
-
-[node name="Cobble_0_92" parent="DeliveryApron" unique_id=1825466550 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 22.5)
-
-[node name="Cobble_0_8" parent="DeliveryApron" unique_id=1540408924 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_8" parent="DeliveryApron" unique_id=1540408924 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 4.5)
 
-[node name="Cobble_0_9" parent="DeliveryApron" unique_id=1427162619 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_9" parent="DeliveryApron" unique_id=1427162619 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 7.5)
 
-[node name="Cobble_0_10" parent="DeliveryApron" unique_id=1950174636 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_10" parent="DeliveryApron" unique_id=1950174636 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 10.5)
 
-[node name="Cobble_0_11" parent="DeliveryApron" unique_id=1239317207 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_11" parent="DeliveryApron" unique_id=1239317207 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -10.5)
 
-[node name="Cobble_0_12" parent="DeliveryApron" unique_id=899763477 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_12" parent="DeliveryApron" unique_id=899763477 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -7.5)
 
-[node name="Cobble_0_13" parent="DeliveryApron" unique_id=2028790555 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_13" parent="DeliveryApron" unique_id=2028790555 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -4.5)
 
-[node name="Cobble_0_14" parent="DeliveryApron" unique_id=1513247461 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_14" parent="DeliveryApron" unique_id=1513247461 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -1.5)
 
-[node name="Cobble_0_15" parent="DeliveryApron" unique_id=1100214364 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_15" parent="DeliveryApron" unique_id=1100214364 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 1.5)
 
-[node name="Cobble_0_16" parent="DeliveryApron" unique_id=1931312398 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_16" parent="DeliveryApron" unique_id=1931312398 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 4.5)
 
-[node name="Cobble_0_17" parent="DeliveryApron" unique_id=9960619 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_17" parent="DeliveryApron" unique_id=9960619 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 7.5)
 
-[node name="Cobble_0_18" parent="DeliveryApron" unique_id=521442596 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_18" parent="DeliveryApron" unique_id=521442596 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 10.5)
 
-[node name="Cobble_0_19" parent="DeliveryApron" unique_id=1547542566 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_19" parent="DeliveryApron" unique_id=1547542566 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, -10.5)
 
-[node name="Cobble_0_20" parent="DeliveryApron" unique_id=1242241003 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_20" parent="DeliveryApron" unique_id=1242241003 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, -7.5)
 
-[node name="Cobble_0_21" parent="DeliveryApron" unique_id=865366663 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_21" parent="DeliveryApron" unique_id=865366663 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, -4.5)
 
-[node name="Cobble_0_22" parent="DeliveryApron" unique_id=1745008442 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_22" parent="DeliveryApron" unique_id=1745008442 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, -1.5)
 
-[node name="Cobble_0_23" parent="DeliveryApron" unique_id=1957839538 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_23" parent="DeliveryApron" unique_id=1957839538 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, 0, 1.5)
 
-[node name="Cobble_0_24" parent="DeliveryApron" unique_id=113878797 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 4.5)
-
-[node name="Cobble_0_25" parent="DeliveryApron" unique_id=525465395 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 7.5)
-
-[node name="Cobble_0_26" parent="DeliveryApron" unique_id=1478180174 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 10.5)
-
-[node name="Cobble_0_27" parent="DeliveryApron" unique_id=2128660945 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, -10.5)
-
-[node name="Cobble_0_28" parent="DeliveryApron" unique_id=1093240530 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, -7.5)
-
-[node name="Cobble_0_29" parent="DeliveryApron" unique_id=1180880817 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, -4.5)
-
-[node name="Cobble_0_30" parent="DeliveryApron" unique_id=137407278 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, -1.5)
-
-[node name="Cobble_0_31" parent="DeliveryApron" unique_id=1451062736 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, 0, 1.5)
-
-[node name="Cobble_0_32" parent="DeliveryApron" unique_id=1117895614 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 4.5)
-
-[node name="Cobble_0_33" parent="DeliveryApron" unique_id=212333932 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 7.5)
-
-[node name="Cobble_0_34" parent="DeliveryApron" unique_id=1542498935 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 10.5)
-
-[node name="Cobble_0_35" parent="DeliveryApron" unique_id=1046304233 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, -10.5)
-
-[node name="Cobble_0_36" parent="DeliveryApron" unique_id=347249697 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, -7.5)
-
-[node name="Cobble_0_37" parent="DeliveryApron" unique_id=1622421360 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, -4.5)
-
-[node name="Cobble_0_38" parent="DeliveryApron" unique_id=986212356 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, -1.5)
-
-[node name="Cobble_0_39" parent="DeliveryApron" unique_id=1507924114 instance=ExtResource("9_cobble")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 0, 1.5)
-
-[node name="Cobble_0_40" parent="DeliveryApron" unique_id=700409576 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_40" parent="DeliveryApron" unique_id=700409576 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -4.5)
 
-[node name="Cobble_0_41" parent="DeliveryApron" unique_id=1969052629 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_41" parent="DeliveryApron" unique_id=1969052629 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -1.5)
 
-[node name="Cobble_0_42" parent="DeliveryApron" unique_id=1745555904 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_42" parent="DeliveryApron" unique_id=1745555904 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 1.5)
 
-[node name="Cobble_0_46" parent="DeliveryApron" unique_id=1659004662 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_46" parent="DeliveryApron" unique_id=1659004662 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -10.5)
 
-[node name="Cobble_0_47" parent="DeliveryApron" unique_id=1642204292 instance=ExtResource("9_cobble")]
+[node name="Cobble_0_47" parent="DeliveryApron" unique_id=1642204292 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -7.5)
 
-[node name="Cobble_1_2" parent="DeliveryApron" unique_id=1350195319 instance=ExtResource("9_cobble")]
+[node name="Cobble_1_2" parent="DeliveryApron" unique_id=1350195319 instance=ExtResource("24_road")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 10.5)
 
 [node name="TruckParkingSpot" type="Marker3D" parent="DeliveryApron" unique_id=2000425139]
@@ -1218,3 +1231,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.067678, 0.114390075, -5.100
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=1375675106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.970092, 1.9828491, 0.12300682)
 shape = SubResource("BoxShape3D_tk8bu")
+
+[node name="EstateDressing" parent="." unique_id=1999727906 instance=ExtResource("23_estate")]

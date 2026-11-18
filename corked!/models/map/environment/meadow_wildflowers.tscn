@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://models/map/environment/meadow_wildflowers.res" id="1_g551r"]
+
+[node name="MeadowWildflowers" type="MeshInstance3D" unique_id=782897974]
+mesh = ExtResource("1_g551r")

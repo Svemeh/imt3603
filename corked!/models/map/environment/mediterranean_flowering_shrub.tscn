@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://models/map/environment/mediterranean_flowering_shrub.res" id="1_y2p6y"]
+
+[node name="MediterraneanFloweringShrub" type="MeshInstance3D" unique_id=1841192361]
+mesh = ExtResource("1_y2p6y")
