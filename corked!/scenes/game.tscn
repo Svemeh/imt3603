@@ -20,16 +20,17 @@
 [sub_resource type="Environment" id="Environment_dinhu"]
 background_mode = 1
 background_color = Color(0.48, 0.65, 0.82, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.77254903, 0.8352941, 0.9098039, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.7, 0.76, 0.84, 1)
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.3
 tonemap_mode = 2
+tonemap_exposure = 1.2
 glow_intensity = 0.15
 glow_hdr_threshold = 1.5
 adjustment_enabled = true
-adjustment_contrast = 1.05
-adjustment_saturation = 1.2
+adjustment_contrast = 1.2
+adjustment_saturation = 1.3
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
@@ -38,7 +39,7 @@ script = ExtResource("1_lbhrr")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660254, 0, -0.8660254, 0.5, 8.9999485, 10.010176, 9.98819)
 projection = 1
 current = true
-size = 27.211
+size = 26.0
 far = 100.0
 script = ExtResource("9_camera")
 
@@ -51,7 +52,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10574436, -0.04289317, 0.16
 environment = SubResource("Environment_dinhu")
 
 [node name="Sun" parent="Map" index="1" unique_id=2105773388]
-light_color = Color(1, 0.8392157, 0.627451, 1)
+transform = Transform3D(-0.28568834, -0.82230294, 0.49213815, 0, 0.5135412, 0.8580649, -0.9583226, 0.24513914, -0.14671274, 0, 0, 0)
+light_color = Color(1, 0.81960785, 0.6117647, 1)
+light_energy = 0.7
 
 [node name="StompStationPlaceholder2" parent="Map/Stations" parent_id_path=PackedInt32Array(660336757, 1889123873) index="4" unique_id=1676803408]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.271047, 0, 13.484288)

@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://models/map/environment/meadow_grass_tuft.res" id="1_v8acc"]
+
+[node name="MeadowGrassTuft" type="MeshInstance3D" unique_id=1924097575]
+mesh = ExtResource("1_v8acc")
