@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/fermentation_window.tscn" id="12_ferm_window"]
 [ext_resource type="PackedScene" uid="uid://ddcq2jts273pb" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
 [ext_resource type="PackedScene" path="res://scenes/items/broom.tscn" id="13_broom"]
+[ext_resource type="PackedScene" uid="uid://d0f7dn1f8a5sf" path="res://scenes/interactables/automatic_door.tscn" id="90_door"]
+[ext_resource type="PackedScene" uid="uid://d2kd0dters7od" path="res://scenes/interactables/pressure_plate.tscn" id="91_plate"]
 
 [sub_resource type="Environment" id="Environment_dinhu"]
 background_mode = 1
@@ -129,3 +131,10 @@ window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowP
 [node name="RoundTransition" parent="." unique_id=1920663775 instance=ExtResource("12_round_transition")]
 
 [editable path="Map"]
+
+[node name="AutomaticDoor" parent="." unique_id=1730021001 instance=ExtResource("90_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 3)
+
+[node name="PressurePlate" parent="." unique_id=1730021002 node_paths=PackedStringArray("doors") instance=ExtResource("91_plate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 8)
+doors = [NodePath("../AutomaticDoor")]
