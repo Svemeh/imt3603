@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cfq4k3ntxjj8k" path="res://scenes/ui/repair_window.tscn" id="7_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bda68lpvkblwb" path="res://scenes/interactables/delivery/hammer_shelf.tscn" id="7_kvuet"]
 [ext_resource type="PackedScene" uid="uid://d24puy8kfgx7n" path="res://scenes/ui/stomp_window.tscn" id="7_trtic"]
-[ext_resource type="PackedScene" uid="uid://bjgprajpn3pq2" path="res://scenes/items/grape.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
 [ext_resource type="PackedScene" uid="uid://cqs6mvv25dha5" path="res://scenes/interactables/barrel_stack.tscn" id="10_ir15t"]
@@ -115,9 +114,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
 [node name="RoundTimer" type="Node" parent="." unique_id=549847404]
 script = ExtResource("5_iywne")
 
-[node name="Grape" parent="." unique_id=1325750546 instance=ExtResource("7_u5sy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.136524, 0, -1.249383)
-
 [node name="Broom" parent="." unique_id=1316347425 instance=ExtResource("13_broom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3400927, 0.7, 0.5686097)
 
@@ -130,11 +126,11 @@ window_paths = Array[NodePath]([NodePath("../Map/StompingStation/MinigameWindowP
 
 [node name="RoundTransition" parent="." unique_id=1920663775 instance=ExtResource("12_round_transition")]
 
-[editable path="Map"]
-
 [node name="AutomaticDoor" parent="." unique_id=1730021001 instance=ExtResource("90_door")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 3)
 
 [node name="PressurePlate" parent="." unique_id=1730021002 node_paths=PackedStringArray("doors") instance=ExtResource("91_plate")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9181156, 0, 12.385619)
 doors = [NodePath("../AutomaticDoor")]
+
+[editable path="Map"]
