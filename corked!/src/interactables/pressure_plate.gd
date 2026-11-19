@@ -4,16 +4,16 @@ extends Area3D
 
 ## Doors held open while any player stands on the plate
 @export var doors: Array[AutomaticDoor] = []
-## How far the plate sinks when pressed
-@export var press_depth: float = 0.05
 
-@onready var _plate_mesh: Node3D = $MeshInstance3D
+@onready var _unpressed_model: Node3D = $Unpressed
+@onready var _pressed_model: Node3D = $Pressed
 
 var _players_on_plate: Array[Player] = []
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	_update()
 
 func is_pressed() -> bool:
 	return not _players_on_plate.is_empty()
@@ -28,9 +28,11 @@ func _on_body_exited(body: Node3D) -> void:
 		_players_on_plate.erase(body)
 		_update()
 
-## Opens doors while pressed, closes them the moment the last player steps off
+## Swaps the plate model and opens doors while pressed,
+## closes them the moment the last player steps off
 func _update() -> void:
-	_plate_mesh.position.y = -press_depth if is_pressed() else 0.0
+	_unpressed_model.visible = not is_pressed()
+	_pressed_model.visible = is_pressed()
 
 	for door in doors:
 		if is_pressed():
