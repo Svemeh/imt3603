@@ -9,7 +9,7 @@ extends Control
 
 
 func _ready() -> void:
-	MenuMusic.play_menu_music
+	MenuMusic.play_menu_music()
 	PlayerManager.clear()
 
 	for i in range(player_slots.size()):
