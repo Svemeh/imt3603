@@ -27,6 +27,16 @@ var _screen: StringName = &"hidden"
 var _balance: int = 0
 var _choice_root: Control
 var _first_button: Button
+var _grid: Array = []
+var _col: int = 0
+var _row: int = 0
+
+const DIRECTIONS := {
+	"left": Vector2i(-1, 0),
+	"right": Vector2i(1, 0),
+	"up": Vector2i(0, -1),
+	"down": Vector2i(0, 1),
+}
 
 func _ready() -> void:
 	overlay.hide()
@@ -77,8 +87,8 @@ func _show_computer() -> void:
 	_screen = &"computer"
 	await _fade(computer, 1.0)
 	_busy = false
-	if _first_button:
-		_first_button.grab_focus()
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	_focus_cell(0, 0)
 
 ## Disable confirmation before emitting so double presses cannot skip two rounds.
 func _request_next_round() -> void:
@@ -96,6 +106,7 @@ func reveal_next_round() -> void:
 	await _fade(overlay, 0.0)
 	overlay.hide()
 	computer.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if _choice_root:
 		_choice_root.queue_free()
 		_choice_root = null
@@ -107,6 +118,9 @@ func reveal_next_round() -> void:
 func _input(event: InputEvent) -> void:
 	if not overlay.visible:
 		return
+	if _screen == &"computer" and (event is InputEventMouse or _is_direction(event)):
+		get_viewport().set_input_as_handled()
+		return
 	if event.is_action_pressed("interact") or event.is_action_pressed("interact2") or event.is_action_pressed("ui_accept"):
 		get_viewport().set_input_as_handled()
 		if event.is_echo() or _busy:
@@ -114,7 +128,7 @@ func _input(event: InputEvent) -> void:
 		if _screen == &"summary":
 			_show_computer()
 		elif _screen == &"computer":
-			var focused := get_viewport().gui_get_focus_owner() as Button
+			var focused := _current_button()
 			if focused and not focused.disabled:
 				focused.pressed.emit()
 
@@ -157,6 +171,7 @@ func _build_choices() -> void:
 	_choice_root.add_child(row)
 
 	_first_button = null
+	_grid.clear()
 	for modifier in Modifiers.roll_choices():
 		row.add_child(_make_card(modifier))
 
@@ -192,6 +207,10 @@ func _make_card(modifier: Dictionary) -> Control:
 
 	if _first_button == null:
 		_first_button = pick
+	for button in [pick, clean]:
+		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		button.focus_mode = Control.FOCUS_NONE
+	_grid.append([pick, clean])
 	return card
 
 
@@ -235,3 +254,57 @@ func _card_style() -> StyleBoxFlat:
 	style.set_corner_radius_all(14)
 	style.set_content_margin_all(16)
 	return style
+
+
+func _process(_delta: float) -> void:
+	if _screen != &"computer" or _busy or _grid.is_empty():
+		return
+	for action in DIRECTIONS:
+		if Input.is_action_just_pressed(action) or Input.is_action_just_pressed("ui_" + action):
+			var step: Vector2i = DIRECTIONS[action]
+			_focus_cell(_col + step.x, _row + step.y)
+			return
+
+
+func _is_direction(event: InputEvent) -> bool:
+	for action in DIRECTIONS:
+		if event.is_action(action) or event.is_action("ui_" + action):
+			return true
+	return false
+
+
+func _current_button() -> Button:
+	if _grid.is_empty():
+		return null
+	return _grid[_col][_row]
+
+
+func _focus_cell(col: int, row: int) -> void:
+	if _grid.is_empty():
+		return
+	col = clampi(col, 0, _grid.size() - 1)
+	row = clampi(row, 0, 1)
+	var target: Button = _grid[col][row]
+	if target.disabled:
+		row = 0
+		target = _grid[col][0]
+	var previous := _current_button()
+	if previous and previous != target:
+		previous.focus_exited.emit()
+		_set_selected(previous, false)
+	_col = col
+	_row = row
+	target.focus_entered.emit()
+	_set_selected(target, true)
+
+
+func _set_selected(button: Button, selected: bool) -> void:
+	if button.disabled:
+		return
+	button.pivot_offset = button.size * 0.5
+	button.scale = Vector2.ONE * (1.08 if selected else 1.0)
+	button.modulate = Color(1.3, 1.3, 1.15) if selected else Color.WHITE
+
+
+func _exit_tree() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
