@@ -19,6 +19,9 @@ var _highlighted: Control
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_viewport().gui_focus_changed.connect(_on_focus_changed)
+	var no_outline := StyleBoxEmpty.new()
+	for button in get_parent().find_children("*", "BaseButton", true, false):
+		button.add_theme_stylebox_override("focus", no_outline)
 	if first_focus:
 		first_focus.grab_focus.call_deferred()
 
