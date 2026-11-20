@@ -23,6 +23,8 @@ var held_items: Array[WineBox] = []
 
 ## True once the truck has been sent, no more loading after that
 var _locked: bool = false
+## False while the driver is on his smoke break, game.gd opens it
+var _open: bool = false
 
 ## Puts one wine box in the next free spot in the truck and locks it there
 func _handle_delivery(box: WineBox) -> void:
@@ -75,10 +77,17 @@ func bottle_count() -> int:
 func lock() -> void:
 	_locked = true
 
+## The driver is back: crates can be loaded from now on
+func open() -> void:
+	_open = true
+
+func is_open() -> bool:
+	return _open
+
 ## Only accepts full crates, and only while the truck is still parked
 func can_accept_item(item: Item) -> bool:
 	var box := item as WineBox
-	return not _locked and box != null and box.is_full()
+	return _open and not _locked and box != null and box.bottles > 0
 
 func accept_item(player: Player) -> void:
 	if not can_accept_item(player.held_item):
@@ -93,4 +102,6 @@ func can_interact(_player: Player) -> bool:
 	return false
 
 func get_prompt() -> String:
+	if not _open:
+		return "Truck closed - driver is smoking"
 	return "Drop off wine (%d)" % held_items.size()

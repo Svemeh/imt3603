@@ -187,11 +187,18 @@ size = Vector3(3, 1, 0.55)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gjuqv"]
 size = Vector3(6.2, 2, 0.7)
 
+[sub_resource type="CylinderShape3D" id="Hitbox_terracottaro"]
+height = 1.28
+radius = 0.4
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_f2dsr"]
 size = Vector3(0.4, 1.6, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5lhel"]
 size = Vector3(0.4, 1.6, 0.4)
+
+[sub_resource type="CylinderShape3D" id="Hitbox_lavenderbush"]
+height = 0.92
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0hv5"]
 size = Vector3(0.4, 1.6, 0.4)
@@ -205,6 +212,19 @@ size = Vector3(1.2, 1.3, 1.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jmn0y"]
 size = Vector3(1.2, 1.3, 1.2)
 
+[sub_resource type="BoxShape3D" id="Hitbox_wallwineshel"]
+size = Vector3(2.05, 1.91, 0.49)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qof4i"]
+size = Vector3(3.2949219, 2.300476, 1)
+
+[sub_resource type="BoxShape3D" id="Hitbox_woodenwinecr"]
+size = Vector3(1.03, 0.78, 0.78)
+
+[sub_resource type="CylinderShape3D" id="Hitbox_oakwinebarre"]
+height = 1.3
+radius = 0.53
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpsw3"]
 albedo_texture = ExtResource("14_w07dw")
 uv1_scale = Vector3(18, 13, 1)
@@ -213,14 +233,18 @@ uv1_scale = Vector3(18, 13, 1)
 material = SubResource("StandardMaterial3D_dpsw3")
 size = Vector2(54, 39)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_21x32"]
-size = Vector3(54, 0.2, 39)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cj36"]
 size = Vector3(1.85, 1.06, 0.66)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6k8gs"]
 size = Vector3(1.85, 1.06, 0.66)
+
+[sub_resource type="CylinderShape3D" id="Hitbox_geraniumflow"]
+height = 1.11
+radius = 0.42
+
+[sub_resource type="BoxShape3D" id="Hitbox_decorativegr"]
+size = Vector3(1.16, 0.62, 0.76)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o850u"]
 size = Vector3(1.65, 1.2, 1.65)
@@ -842,6 +866,13 @@ shape = SubResource("BoxShape3D_gjuqv")
 [node name="ToolShedRosemary" parent="Planting" unique_id=339854749 instance=ExtResource("8_dpuo4")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -2.1, 0, -3.5)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/ToolShedRosemary" unique_id=789317830]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/ToolShedRosemary/Hitbox" unique_id=690803523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
+
 [node name="DrivewayCypress22_7" parent="Planting" unique_id=413531910 instance=ExtResource("9_vinyy")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 22.7, 0, -6.4)
 
@@ -881,56 +912,182 @@ shape = SubResource("BoxShape3D_5lhel")
 [node name="NorthLavender_00" parent="Planting" unique_id=248692445 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -13.5, 0.02, -8.9)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_00" unique_id=497091625]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_00/Hitbox" unique_id=1207121707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="NorthLavender_01" parent="Planting" unique_id=1675528740 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.84022236, 0, 0.32253113, 0, 0.9, 0, -0.32253113, 0, 0.84022236, -10.5, 0.02, -8.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_01" unique_id=1160106688]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_01/Hitbox" unique_id=151411011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="NorthLavender_02" parent="Planting" unique_id=393788046 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.66883034, 0, 0.60221756, 0, 0.9, 0, -0.60221756, 0, 0.66883034, -7.5, 0.02, -8.9)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_02" unique_id=1847350149]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_02/Hitbox" unique_id=1107537441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="NorthLavender_03" parent="Planting" unique_id=24879352 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.40859145, 0, 0.8019059, 0, 0.9, 0, -0.8019059, 0, 0.40859145, -4.5, 0.02, -8.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_03" unique_id=437974951]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_03/Hitbox" unique_id=434643198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="NorthLavender_04" parent="Planting" unique_id=228270967 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.094075575, 0, 0.8950697, 0, 0.9, 0, -0.8950697, 0, 0.094075575, -1.5, 0.02, -8.9)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_04" unique_id=1332208055]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_04/Hitbox" unique_id=1738842013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="NorthLavender_05" parent="Planting" unique_id=472086875 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.23293713, 0, 0.8693332, 0, 0.9, 0, -0.8693332, 0, -0.23293713, 1.5, 0.02, -8.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_05" unique_id=1542939279]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_05/Hitbox" unique_id=1123125168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="NorthLavender_06" parent="Planting" unique_id=1344154922 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.52900666, 0, 0.72811526, 0, 0.9, 0, -0.72811526, 0, -0.52900666, 4.5, 0.02, -8.9)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_06" unique_id=357483575]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_06/Hitbox" unique_id=157929671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="NorthLavender_07" parent="Planting" unique_id=1678833423 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.7548035, 0, 0.49017513, 0, 0.9, 0, -0.49017513, 0, -0.7548035, 7.5, 0.02, -8.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_07" unique_id=372251355]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_07/Hitbox" unique_id=1186159748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="NorthLavender_08" parent="Planting" unique_id=1388620797 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.8803328, 0, 0.18712044, 0, 0.9, 0, -0.18712044, 0, -0.8803328, 10.5, 0.02, -8.9)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_08" unique_id=405098590]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_08/Hitbox" unique_id=486200156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="NorthLavender_09" parent="Planting" unique_id=693937515 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.88891953, 0, -0.14079092, 0, 0.9, 0, 0.14079092, 0, -0.88891953, 13.5, 0.02, -8.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_09" unique_id=823475996]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_09/Hitbox" unique_id=360296977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="NorthLavender_10" parent="Planting" unique_id=648975894 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.7794228, 0, -0.44999996, 0, 0.9, 0, 0.44999996, 0, -0.7794228, 16.5, 0.02, -8.9)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_10" unique_id=468166758]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_10/Hitbox" unique_id=1641414082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="NorthLavender_11" parent="Planting" unique_id=2098972634 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.56638825, 0, -0.69943136, 0, 0.9, 0, 0.69943136, 0, -0.56638825, 19.5, 0.02, -8.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/NorthLavender_11" unique_id=610513474]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/NorthLavender_11/Hitbox" unique_id=1954651092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="SouthLavender_13_0" parent="Planting" unique_id=417631241 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.60376763, 0, -0.52484727, 0, 0.8, 0, 0.52484727, 0, -0.60376763, 13, 0.02, 18)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/SouthLavender_13_0" unique_id=1578650515]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/SouthLavender_13_0/Hitbox" unique_id=1323355639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="SouthLavender_16_4" parent="Planting" unique_id=183766058 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.12238852, 0, -0.7905828, 0, 0.8, 0, 0.7905828, 0, 0.12238852, 16.4, 0.02, 18)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/SouthLavender_16_4" unique_id=1535282851]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/SouthLavender_16_4/Hitbox" unique_id=1451252287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="SouthLavender_20_0" parent="Planting" unique_id=875810659 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.75175405, 0, -0.27361628, 0, 0.8, 0, 0.27361628, 0, 0.75175405, 20, 0.02, 18)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/SouthLavender_20_0" unique_id=601882698]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/SouthLavender_20_0/Hitbox" unique_id=2050851153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="SouthLavender_23_0" parent="Planting" unique_id=221280662 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.68573385, 0, 0.41203046, 0, 0.8, 0, -0.41203046, 0, 0.68573385, 23, 0.02, 18)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/SouthLavender_23_0" unique_id=1056852717]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/SouthLavender_23_0/Hitbox" unique_id=231078224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="SouthLavender_26_0" parent="Planting" unique_id=943542915 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.11133834, 0, 0.7922145, 0, 0.8, 0, -0.7922145, 0, 0.11133834, 26, 0.02, 18)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/SouthLavender_26_0" unique_id=2059932263]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/SouthLavender_26_0/Hitbox" unique_id=689008795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="SouthLavender_31_2" parent="Planting" unique_id=2047226284 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.7887968, 0, 0.13341528, 0, 0.8, 0, -0.13341528, 0, -0.7887968, 31.2, 0.02, 18)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/SouthLavender_31_2" unique_id=822539445]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/SouthLavender_31_2/Hitbox" unique_id=108684919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="Cypress_00" parent="Planting" unique_id=1647604608 instance=ExtResource("9_vinyy")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 31.25, 0, 9.5)
@@ -975,43 +1132,128 @@ shape = SubResource("BoxShape3D_jmn0y")
 [node name="WallFlowers_04" parent="Planting" unique_id=1350502551 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.5540953, 0, 0.7092096, 0, 0.9, 0, -0.7092096, 0, 0.5540953, -4, 0, 10)
 
-[node name="WallFlowers_05" parent="Planting" unique_id=1898244925 instance=ExtResource("10_24yes")]
-transform = Transform3D(0.3803564, 0, 0.815677, 0, 0.9, 0, -0.815677, 0, 0.3803564, -4, 0, 17.5)
+[node name="Hitbox" type="StaticBody3D" parent="Planting/WallFlowers_04" unique_id=784978615]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/WallFlowers_04/Hitbox" unique_id=2013953429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="WallFlowers_06" parent="Planting" unique_id=668051104 instance=ExtResource("10_24yes")]
 transform = Transform3D(0.18712048, 0, 0.8803328, 0, 0.9, 0, -0.8803328, 0, 0.18712048, 19, 0, -4.5)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/WallFlowers_06" unique_id=822048765]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/WallFlowers_06/Hitbox" unique_id=1543306346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="WallFlowers_07" parent="Planting" unique_id=670379768 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.015707117, 0, 0.89986295, 0, 0.9, 0, -0.89986295, 0, -0.015707117, 19, 0, 13.5)
 
+[node name="Hitbox" type="StaticBody3D" parent="Planting/WallFlowers_07" unique_id=863543735]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/WallFlowers_07/Hitbox" unique_id=1403933876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
+
 [node name="WallFlowers_08" parent="Planting" unique_id=1584777264 instance=ExtResource("10_24yes")]
 transform = Transform3D(-0.21772967, 0, 0.87326616, 0, 0.9, 0, -0.87326616, 0, -0.21772967, 16.5, 0, 15.7)
+
+[node name="Hitbox" type="StaticBody3D" parent="Planting/WallFlowers_08" unique_id=947241986]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Planting/WallFlowers_08/Hitbox" unique_id=966791590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0)
+shape = SubResource("Hitbox_lavenderbush")
 
 [node name="WineryProps" type="Node3D" parent="." unique_id=736811960]
 
 [node name="Rosemary_09" parent="WineryProps" unique_id=1323833743 instance=ExtResource("8_dpuo4")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1, 0, -4.5)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/Rosemary_09" unique_id=788959833]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/Rosemary_09/Hitbox" unique_id=1685373877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
+
 [node name="Rosemary_10" parent="WineryProps" unique_id=1851430362 instance=ExtResource("8_dpuo4")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 10, 0, -4.8)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/Rosemary_10" unique_id=759366278]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/Rosemary_10/Hitbox" unique_id=1789015241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
+
 [node name="Rosemary_11" parent="WineryProps" unique_id=586047017 instance=ExtResource("8_dpuo4")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 16.8, 0, 13.8)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 16.8, 0, 14.226422)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/Rosemary_11" unique_id=460251422]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/Rosemary_11/Hitbox" unique_id=839514053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
 
 [node name="BottleShelf_12" parent="WineryProps" unique_id=251479666 instance=ExtResource("12_hi27m")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 2, 1.5, -5.65)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/BottleShelf_12" unique_id=1391334444]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/BottleShelf_12/Hitbox" unique_id=1302075617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506, 0.245)
+shape = SubResource("Hitbox_wallwineshel")
+
 [node name="BottleShelf_13" parent="WineryProps" unique_id=1012349661 instance=ExtResource("12_hi27m")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 7.3, 1.5, -5.65)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/BottleShelf_13" unique_id=1141276425]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/BottleShelf_13/Hitbox" unique_id=675433707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506, 0.245)
+shape = SubResource("Hitbox_wallwineshel")
 
 [node name="BottleShelf_14" parent="WineryProps" unique_id=1143198400 instance=ExtResource("12_hi27m")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 10.8, 1.5, -5.65)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/BottleShelf_14" unique_id=1046289865]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/BottleShelf_14/Hitbox" unique_id=269111510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506, 0.245)
+shape = SubResource("Hitbox_wallwineshel")
+
 [node name="EastBottleShelf" parent="WineryProps" unique_id=526982317 instance=ExtResource("12_hi27m")]
-transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, 17.62, 1.35, 11)
+transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, 17.62, 1.35, 10.55914)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/EastBottleShelf" unique_id=1838414082]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/EastBottleShelf/Hitbox" unique_id=1989690231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506, 0.245)
+shape = SubResource("Hitbox_wallwineshel")
 
 [node name="BottleCrate_15" parent="WineryProps" unique_id=721719280 instance=ExtResource("13_wssyt")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 16.9, 0, 11)
+transform = Transform3D(-3.934025e-08, 0, -0.9, 0, 0.9, 0, 0.9, 0, -3.934025e-08, 16.9, 0, 12.239927)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WineryProps/BottleCrate_15" unique_id=1186631616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0351563, 1.1385194, 0)
+shape = SubResource("BoxShape3D_qof4i")
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/BottleCrate_15" unique_id=1653846452]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/BottleCrate_15/Hitbox" unique_id=1914393526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39, 0)
+shape = SubResource("Hitbox_woodenwinecr")
 
 [node name="Lantern_16" parent="WineryProps" unique_id=2112240609 instance=ExtResource("2_lixic")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.2, -5.65)
@@ -1068,27 +1310,76 @@ light_energy = 0.65
 omni_range = 2.8
 
 [node name="BottleShelfBarrel" parent="WineryProps" unique_id=327491911 instance=ExtResource("5_oa8hd")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 16.9, 0, 12.25)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 16.9, 0, 13.262676)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/BottleShelfBarrel" unique_id=1126998265]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/BottleShelfBarrel/Hitbox" unique_id=651042186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("Hitbox_oakwinebarre")
 
 [node name="ShelfBarrelRosemary" parent="WineryProps" unique_id=1748463819 instance=ExtResource("8_dpuo4")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 16.9, 1.17, 12.25)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 16.9, 1.17, 13.261064)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryProps/ShelfBarrelRosemary" unique_id=458729071]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryProps/ShelfBarrelRosemary/Hitbox" unique_id=1412695373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
 
 [node name="DeliveryCourtyard" type="Node3D" parent="." unique_id=435601835]
 
 [node name="DeliveryCrates" parent="DeliveryCourtyard" unique_id=1073348903 instance=ExtResource("13_wssyt")]
 transform = Transform3D(0.8314255, 0, 0.17672496, 0, 0.85, 0, -0.17672496, 0, 0.8314255, 31.05, 0, 10.8)
 
+[node name="Hitbox" type="StaticBody3D" parent="DeliveryCourtyard/DeliveryCrates" unique_id=456646286]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="DeliveryCourtyard/DeliveryCrates/Hitbox" unique_id=2055883242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39, 0)
+shape = SubResource("Hitbox_woodenwinecr")
+
 [node name="DeliveryBarrel" parent="DeliveryCourtyard" unique_id=2664277 instance=ExtResource("5_oa8hd")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 31.05, 0, 11.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="DeliveryCourtyard/DeliveryBarrel" unique_id=704826969]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="DeliveryCourtyard/DeliveryBarrel/Hitbox" unique_id=1131986701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("Hitbox_oakwinebarre")
 
 [node name="DeliveryBarrelRosemary" parent="DeliveryCourtyard" unique_id=639683586 instance=ExtResource("8_dpuo4")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 31.05, 1.17, 11.9)
 
+[node name="Hitbox" type="StaticBody3D" parent="DeliveryCourtyard/DeliveryBarrelRosemary" unique_id=696423783]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="DeliveryCourtyard/DeliveryBarrelRosemary/Hitbox" unique_id=2074344428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
+
 [node name="LoadingCornerRosemary" parent="DeliveryCourtyard" unique_id=1600567969 instance=ExtResource("8_dpuo4")]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 21.9, 0, 8.8)
 
+[node name="Hitbox" type="StaticBody3D" parent="DeliveryCourtyard/LoadingCornerRosemary" unique_id=281325323]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="DeliveryCourtyard/LoadingCornerRosemary/Hitbox" unique_id=1996383875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
+
 [node name="LoadingCornerCrate" parent="DeliveryCourtyard" unique_id=1282273445 instance=ExtResource("13_wssyt")]
 transform = Transform3D(0.84172785, 0, -0.118297145, 0, 0.85, 0, 0.118297145, 0, 0.84172785, 21.9, 0, 9.9)
+
+[node name="Hitbox" type="StaticBody3D" parent="DeliveryCourtyard/LoadingCornerCrate" unique_id=317976080]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="DeliveryCourtyard/LoadingCornerCrate/Hitbox" unique_id=1661875468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39, 0)
+shape = SubResource("Hitbox_woodenwinecr")
 
 [node name="GroundExtension" type="Node3D" parent="." unique_id=550512711]
 
@@ -1099,9 +1390,6 @@ mesh = SubResource("PlaneMesh_gstx1")
 [node name="ExtendedFloor" type="StaticBody3D" parent="GroundExtension" unique_id=2067481504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.13, 6)
 collision_mask = 0
-
-[node name="Collision" type="CollisionShape3D" parent="GroundExtension/ExtendedFloor" unique_id=655153180]
-shape = SubResource("BoxShape3D_21x32")
 
 [node name="Driveway_25_5_-13_5" parent="GroundExtension" unique_id=173703171 instance=ExtResource("16_k8t8h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -13.5)
@@ -1169,9 +1457,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 17, 
 [node name="ToolShedRack" parent="WineryDetails" unique_id=142224457 instance=ExtResource("21_vktht")]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -2.15, 1.15, -3.66)
 
-[node name="BottlingTools" parent="WineryDetails" unique_id=1275502161 instance=ExtResource("21_vktht")]
-transform = Transform3D(-3.715468e-08, 0, -0.85, 0, 0.85, 0, 0.85, 0, -3.715468e-08, -4.23, 1.3, 18.2)
-
 [node name="StompRoomIvy" parent="WineryDetails" unique_id=1714478959 instance=ExtResource("22_61pxd")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 3.4, 0, -5.64)
 
@@ -1196,35 +1481,105 @@ transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -12.7, 0, 10.25)
 [node name="WineryFlowers" parent="WineryDetails" unique_id=1058723526 instance=ExtResource("23_w5uob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7, 0, 15.85)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/WineryFlowers" unique_id=911552084]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/WineryFlowers/Hitbox" unique_id=1875808669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
+
 [node name="PackingRoomFlowers" parent="WineryDetails" unique_id=1584142978 instance=ExtResource("23_w5uob")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 8.1, 0, 14.1)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/PackingRoomFlowers" unique_id=1024397243]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/PackingRoomFlowers/Hitbox" unique_id=1530043377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
 
 [node name="StorageDoorFlowers" parent="WineryDetails" unique_id=1435611780 instance=ExtResource("23_w5uob")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 5.3, 0, 18)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/StorageDoorFlowers" unique_id=2127066561]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/StorageDoorFlowers/Hitbox" unique_id=1101638222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
+
 [node name="VineyardFlowers" parent="WineryDetails" unique_id=1848144054 instance=ExtResource("23_w5uob")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -5.6, 0, 3.8)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/VineyardFlowers" unique_id=1113684946]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/VineyardFlowers/Hitbox" unique_id=591392957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
 
 [node name="CourtyardFlowersWest" parent="WineryDetails" unique_id=65746080 instance=ExtResource("23_w5uob")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 22, 0, -2)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/CourtyardFlowersWest" unique_id=1161921163]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/CourtyardFlowersWest/Hitbox" unique_id=581188348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
+
 [node name="CourtyardFlowersEast" parent="WineryDetails" unique_id=2060580834 instance=ExtResource("23_w5uob")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 31.1, 0, -2)
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/CourtyardFlowersEast" unique_id=324668297]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/CourtyardFlowersEast/Hitbox" unique_id=1432726650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
+
 [node name="BarrelStoreFlowers" parent="WineryDetails" unique_id=1388348622 instance=ExtResource("23_w5uob")]
 transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 27, 0, 16.7)
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/BarrelStoreFlowers" unique_id=1059672476]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/BarrelStoreFlowers/Hitbox" unique_id=990958267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
 
 [node name="StompingGrapeCrate" parent="WineryDetails" unique_id=569681201 instance=ExtResource("24_0kxij")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 7.9, 0, -4.8)
 metadata/decorative = true
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/StompingGrapeCrate" unique_id=1268171306]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/StompingGrapeCrate/Hitbox" unique_id=1960880936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, 0)
+shape = SubResource("Hitbox_decorativegr")
+
 [node name="VineyardGrapeCrate" parent="WineryDetails" unique_id=1288257936 instance=ExtResource("24_0kxij")]
 transform = Transform3D(0.8314255, 0, -0.17672496, 0, 0.85, 0, 0.17672496, 0, 0.8314255, -5.9, 0, 2.8)
 metadata/decorative = true
 
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/VineyardGrapeCrate" unique_id=1004500807]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/VineyardGrapeCrate/Hitbox" unique_id=575642738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, 0)
+shape = SubResource("Hitbox_decorativegr")
+
 [node name="BottlingGrapeCrate" parent="WineryDetails" unique_id=526146704 instance=ExtResource("24_0kxij")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -5.8, 0, 18.9)
 metadata/decorative = true
+
+[node name="Hitbox" type="StaticBody3D" parent="WineryDetails/BottlingGrapeCrate" unique_id=1972253045]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WineryDetails/BottlingGrapeCrate/Hitbox" unique_id=632939253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, 0)
+shape = SubResource("Hitbox_decorativegr")
 
 [node name="DeliveryHandcart" parent="WineryDetails" unique_id=482669321 instance=ExtResource("25_oadvc")]
 transform = Transform3D(0.7361216, 0, -0.425, 0, 0.85, 0, 0.425, 0, 0.7361216, 29.95, 0, 8.3)
