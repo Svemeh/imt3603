@@ -1,0 +1,316 @@
+[gd_scene format=3 uid="uid://538uxvfthqnc"]
+
+[ext_resource type="PackedScene" uid="uid://dsflaqnqg2u4q" path="res://models/map/props/wall_wine_shelf.glb" id="1_hfyva"]
+[ext_resource type="PackedScene" uid="uid://c0ildk2dwugfa" path="res://models/map/props/wooden_wine_crate.glb" id="2_lyv0f"]
+[ext_resource type="PackedScene" uid="uid://3iei23f5onpy" path="res://models/map/props/oak_wine_barrel.glb" id="3_i3852"]
+[ext_resource type="PackedScene" uid="uid://c4t4v4d83q1by" path="res://models/map/props/terracotta_rosemary_pot.glb" id="4_3vqtx"]
+[ext_resource type="PackedScene" uid="uid://rcyp428cyusk" path="res://models/map/environment/winery_workbench.glb" id="5_752ig"]
+[ext_resource type="PackedScene" uid="uid://bryymha02ouq" path="res://models/map/environment/geranium_flower_pot.glb" id="6_kqagb"]
+[ext_resource type="PackedScene" uid="uid://dvxceqmix0ki7" path="res://models/map/environment/woven_workmat.glb" id="7_qo1ye"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qt4ec"]
+albedo_color = Color(0.53333336, 0.3137255, 0.13725491, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_rg421"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t73lo"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kfbv3"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cb8a8"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k20t4"]
+size = Vector3(2.1, 1.88, 0.65)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvwc4"]
+size = Vector3(0.99, 1.3, 0.99)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c85ne"]
+size = Vector3(1, 0.6, 0.76)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yxm8g"]
+size = Vector3(1, 0.6, 0.76)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxbli"]
+size = Vector3(1.9, 1.1, 0.76)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bl11x"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_roghm"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g2ae4"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mssq2"]
+material = SubResource("StandardMaterial3D_qt4ec")
+size = Vector3(0.085, 1.85, 0.085)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7j4m0"]
+size = Vector3(2.1, 1.88, 0.65)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a8brx"]
+size = Vector3(0.99, 1.3, 0.99)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4cm8"]
+size = Vector3(1, 0.6, 0.76)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xmimc"]
+size = Vector3(1, 0.6, 0.76)
+
+[sub_resource type="CylinderShape3D" id="Hitbox_terracottaro"]
+height = 1.28
+radius = 0.4
+
+[sub_resource type="BoxShape3D" id="Hitbox_wallwineshel"]
+size = Vector3(2.05, 1.91, 0.49)
+
+[sub_resource type="CylinderShape3D" id="Hitbox_geraniumflow"]
+height = 1.11
+radius = 0.42
+
+[node name="RoomProps" type="Node3D" unique_id=259555584]
+
+[node name="SmallStorageRoom" type="Node3D" parent="." unique_id=1850057468]
+
+[node name="BottleStorageRack" type="Node3D" parent="SmallStorageRoom" unique_id=985150532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 0, 3.65)
+
+[node name="OakUpright" type="MeshInstance3D" parent="SmallStorageRoom/BottleStorageRack" unique_id=1356005268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98, 0.925, 0.05)
+mesh = SubResource("BoxMesh_rg421")
+
+[node name="@MeshInstance3D@2" type="MeshInstance3D" parent="SmallStorageRoom/BottleStorageRack" unique_id=667284982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98, 0.925, 0.46)
+mesh = SubResource("BoxMesh_t73lo")
+
+[node name="@MeshInstance3D@3" type="MeshInstance3D" parent="SmallStorageRoom/BottleStorageRack" unique_id=1196084521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 0.925, 0.05)
+mesh = SubResource("BoxMesh_kfbv3")
+
+[node name="@MeshInstance3D@4" type="MeshInstance3D" parent="SmallStorageRoom/BottleStorageRack" unique_id=1522015152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 0.925, 0.46)
+mesh = SubResource("BoxMesh_cb8a8")
+
+[node name="WineShelves" parent="SmallStorageRoom/BottleStorageRack" unique_id=251479666 instance=ExtResource("1_hfyva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63, 0)
+metadata/decorative = true
+
+[node name="StoredBottleCrate" parent="SmallStorageRoom/BottleStorageRack" unique_id=721719280 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.5, 0, 0.24)
+metadata/decorative = true
+
+[node name="StoredBottleCrate2" parent="SmallStorageRoom/BottleStorageRack" unique_id=570896665 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.42, 0, 0.24)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="SmallStorageRoom/BottleStorageRack" unique_id=1111720946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94, 0.25)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="SmallStorageRoom/BottleStorageRack/SolidFurniture" unique_id=1649090725]
+shape = SubResource("BoxShape3D_k20t4")
+
+[node name="ReserveBarrel" parent="SmallStorageRoom" unique_id=816676066 instance=ExtResource("3_i3852")]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0.95, 0, 4.808181)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="SmallStorageRoom/ReserveBarrel" unique_id=775926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="SmallStorageRoom/ReserveBarrel/SolidFurniture" unique_id=1177369154]
+shape = SubResource("BoxShape3D_rvwc4")
+
+[node name="ReserveBarrel2" parent="SmallStorageRoom" unique_id=2140348814 instance=ExtResource("3_i3852")]
+transform = Transform3D(0.62108856, 0, 0, 0, 0.57968014, 0, 0, 0, 0.78, 6.8932915, 0, 4.074909)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="SmallStorageRoom/ReserveBarrel2" unique_id=1612912656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="SmallStorageRoom/ReserveBarrel2/SolidFurniture" unique_id=2007470174]
+shape = SubResource("BoxShape3D_rvwc4")
+
+[node name="StackedCrateBottom" parent="SmallStorageRoom" unique_id=299158969 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0.95, 0, 5.813246)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="SmallStorageRoom/StackedCrateBottom" unique_id=2045768509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="SmallStorageRoom/StackedCrateBottom/SolidFurniture" unique_id=728069411]
+shape = SubResource("BoxShape3D_c85ne")
+
+[node name="StackedCrateTop" parent="SmallStorageRoom" unique_id=1784454907 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0.95, 0.47, 5.813246)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="SmallStorageRoom/StackedCrateTop" unique_id=96875872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="SmallStorageRoom/StackedCrateTop/SolidFurniture" unique_id=600465348]
+shape = SubResource("BoxShape3D_yxm8g")
+
+[node name="RosemaryCorner" parent="SmallStorageRoom" unique_id=339854749 instance=ExtResource("4_3vqtx")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.2, 0, 8.15)
+metadata/decorative = true
+
+[node name="MainPreparationRoom" type="Node3D" parent="." unique_id=2092944996]
+
+[node name="LabellingWorkbench" parent="MainPreparationRoom" unique_id=1731025741 instance=ExtResource("5_752ig")]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 10.35, 0, 3.95)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="MainPreparationRoom/LabellingWorkbench" unique_id=488229082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="MainPreparationRoom/LabellingWorkbench/SolidFurniture" unique_id=1221860548]
+shape = SubResource("BoxShape3D_uxbli")
+
+[node name="LabellingWallShelf" parent="MainPreparationRoom" unique_id=1684584074 instance=ExtResource("1_hfyva")]
+transform = Transform3D(0.86, 0, 0, 0, 0.86, 0, 0, 0, 0.86, 10.35, 1.7, 3.35)
+metadata/decorative = true
+
+[node name="EastStorageRack" type="Node3D" parent="MainPreparationRoom" unique_id=224416426]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17.45, 0, 5.4811883)
+
+[node name="OakUpright" type="MeshInstance3D" parent="MainPreparationRoom/EastStorageRack" unique_id=1421072509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98, 0.925, 0.05)
+mesh = SubResource("BoxMesh_bl11x")
+
+[node name="@MeshInstance3D@5" type="MeshInstance3D" parent="MainPreparationRoom/EastStorageRack" unique_id=1320046695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98, 0.925, 0.46)
+mesh = SubResource("BoxMesh_roghm")
+
+[node name="@MeshInstance3D@6" type="MeshInstance3D" parent="MainPreparationRoom/EastStorageRack" unique_id=133641346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 0.925, 0.05)
+mesh = SubResource("BoxMesh_g2ae4")
+
+[node name="@MeshInstance3D@7" type="MeshInstance3D" parent="MainPreparationRoom/EastStorageRack" unique_id=248987960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 0.925, 0.46)
+mesh = SubResource("BoxMesh_mssq2")
+
+[node name="WineShelves" parent="MainPreparationRoom/EastStorageRack" unique_id=2007740877 instance=ExtResource("1_hfyva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63, 0)
+metadata/decorative = true
+
+[node name="StoredBottleCrate" parent="MainPreparationRoom/EastStorageRack" unique_id=470168560 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.5, 0, 0.24)
+metadata/decorative = true
+
+[node name="StoredBottleCrate2" parent="MainPreparationRoom/EastStorageRack" unique_id=259083309 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.42, 0, 0.24)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="MainPreparationRoom/EastStorageRack" unique_id=252998846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94, 0.25)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="MainPreparationRoom/EastStorageRack/SolidFurniture" unique_id=743169443]
+shape = SubResource("BoxShape3D_7j4m0")
+
+[node name="ReadyForPackingBarrel" parent="MainPreparationRoom" unique_id=239768423 instance=ExtResource("3_i3852")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 17, 0, 4)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="MainPreparationRoom/ReadyForPackingBarrel" unique_id=764019041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="MainPreparationRoom/ReadyForPackingBarrel/SolidFurniture" unique_id=857142288]
+shape = SubResource("BoxShape3D_a8brx")
+
+[node name="RosemaryOnBarrel" parent="MainPreparationRoom/ReadyForPackingBarrel" unique_id=1947849652 instance=ExtResource("4_3vqtx")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 1.3, 0)
+metadata/decorative = true
+
+[node name="PreparationFlowers" parent="MainPreparationRoom" unique_id=1058723526 instance=ExtResource("6_kqagb")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 16.279312, 0, 3.9980783)
+metadata/decorative = true
+
+[node name="PackingArea" type="Node3D" parent="." unique_id=1938750861]
+
+[node name="PackingIsland" parent="PackingArea" unique_id=1697121753 instance=ExtResource("5_752ig")]
+transform = Transform3D(1.12, 0, 0, 0, 1.12, 0, 0, 0, 1.12, 12.05, 0, 11.1)
+visible = false
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="PackingArea/PackingIsland" unique_id=223251000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+collision_mask = 0
+
+[node name="PackingIslandMat" parent="PackingArea" unique_id=1566828088 instance=ExtResource("7_qo1ye")]
+transform = Transform3D(-1.3444316e-07, 0, -2.8592143, 0, 1.3499999, 0, 3.0757008, 0, -1.2498023e-07, 13.260209, 0.014, 10.186014)
+metadata/decorative = true
+
+[node name="PackingSupplyCrate" parent="PackingArea" unique_id=1969049368 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, 9.85656, 0, 13.545539)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="PackingArea/PackingSupplyCrate" unique_id=196123132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="PackingArea/PackingSupplyCrate/SolidFurniture" unique_id=1051282917]
+shape = SubResource("BoxShape3D_e4cm8")
+
+[node name="PackedBottles" parent="PackingArea" unique_id=453511845 instance=ExtResource("2_lyv0f")]
+transform = Transform3D(0.82, 0, 0, 0, 0.82, 0, 0, 0, 0.82, 9.85656, 0.49, 13.545539)
+metadata/decorative = true
+
+[node name="SolidFurniture" type="StaticBody3D" parent="PackingArea/PackedBottles" unique_id=1231753917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="PackingArea/PackedBottles/SolidFurniture" unique_id=851076469]
+shape = SubResource("BoxShape3D_xmimc")
+
+[node name="PackingFlowers" parent="PackingArea" unique_id=706673486 instance=ExtResource("6_kqagb")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 15.562335, 0, 14.107603)
+metadata/decorative = true
+
+[node name="Hitbox" type="StaticBody3D" parent="SmallStorageRoom/RosemaryCorner" unique_id=883748001]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="SmallStorageRoom/RosemaryCorner/Hitbox" unique_id=1633539354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
+
+[node name="Hitbox" type="StaticBody3D" parent="MainPreparationRoom/LabellingWallShelf" unique_id=564302413]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="MainPreparationRoom/LabellingWallShelf/Hitbox" unique_id=1235458175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506, 0.245)
+shape = SubResource("Hitbox_wallwineshel")
+
+[node name="Hitbox" type="StaticBody3D" parent="MainPreparationRoom/PreparationFlowers" unique_id=921915190]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="MainPreparationRoom/PreparationFlowers/Hitbox" unique_id=281149813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
+
+[node name="Hitbox" type="StaticBody3D" parent="PackingArea/PackingFlowers" unique_id=2053897000]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="PackingArea/PackingFlowers/Hitbox" unique_id=764795198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555, 0)
+shape = SubResource("Hitbox_geraniumflow")
