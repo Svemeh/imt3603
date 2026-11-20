@@ -17,6 +17,7 @@ var hammer: Hammer = null
 
 ## The round starts with the hammer on the shelf
 func _ready() -> void:
+	add_to_group("hammer_shelf")
 	var new_hammer := HAMMER_SCENE.instantiate() as Hammer
 	hammer_marker.add_child(new_hammer)
 	_place(new_hammer)
@@ -25,6 +26,15 @@ func _ready() -> void:
 func _check_hammer() -> void:
 	if hammer and (not is_instance_valid(hammer) or hammer.get_parent() != hammer_marker):
 		hammer = null
+
+## Puts the hammer back on the shelf from wherever it is (used if someone runs into a player
+## with the hammer)
+func return_hammer(item: Hammer) -> void:
+	_check_hammer()
+	if hammer != null or not is_instance_valid(item):
+		return
+	item.reparent(hammer_marker)
+	_place(item)
 
 ## Only takkes the hammer and only when the spot free
 func can_accept_item(item: Item) -> bool:
