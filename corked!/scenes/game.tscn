@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://bdcbw4f3huqul"]
 
-[ext_resource type="PackedScene" uid="uid://cew2akjslgdes" path="res://scenes/interactables/fermentation_station.tscn" id="11_ngbmq"]
-[ext_resource type="PackedScene" uid="uid://06igqmhwgbxb" path="res://scenes/interactables/bottlingstation.tscn" id="9_7blmr"]
-[ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/interactables/stomping_station.tscn" id="10_t75ul"]
-[ext_resource type="PackedScene" uid="uid://r813enoq0ixf" path="res://scenes/placeables/grape_vine.tscn" id="6_vine"]
 [ext_resource type="Script" uid="uid://bjh1eywqlwr3r" path="res://src/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dmnjf7ha6auug" path="res://scenes/map/map_starter.tscn" id="2_map"]
 [ext_resource type="PackedScene" uid="uid://bqxsk48bajivs" path="res://scenes/ui/hud.tscn" id="3_iywne"]
 [ext_resource type="Script" uid="uid://besiig5wa8t84" path="res://src/ui/round_timer.gd" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://r813enoq0ixf" path="res://scenes/placeables/grape_vine.tscn" id="6_vine"]
 [ext_resource type="PackedScene" uid="uid://cfq4k3ntxjj8k" path="res://scenes/ui/repair_window.tscn" id="7_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bda68lpvkblwb" path="res://scenes/interactables/delivery/hammer_shelf.tscn" id="7_kvuet"]
 [ext_resource type="PackedScene" uid="uid://d24puy8kfgx7n" path="res://scenes/ui/stomp_window.tscn" id="7_trtic"]
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://06igqmhwgbxb" path="res://scenes/interactables/bottlingstation.tscn" id="9_7blmr"]
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
 [ext_resource type="PackedScene" uid="uid://cqs6mvv25dha5" path="res://scenes/interactables/barrel_stack.tscn" id="10_ir15t"]
+[ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/interactables/stomping_station.tscn" id="10_t75ul"]
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
+[ext_resource type="PackedScene" uid="uid://cew2akjslgdes" path="res://scenes/interactables/fermentation_station.tscn" id="11_ngbmq"]
 [ext_resource type="Script" uid="uid://b80nq82u8o4t2" path="res://src/ui/station_window_manager.gd" id="11_preview"]
 [ext_resource type="PackedScene" path="res://scenes/ui/fermentation_window.tscn" id="12_ferm_window"]
 [ext_resource type="PackedScene" uid="uid://ddcq2jts273pb" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
@@ -61,28 +61,8 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, 1.5)
 [node name="VineRow_2_3" parent="Vineyard" unique_id=1785472851 instance=ExtResource("6_vine")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, 4.5)
 
-[node name="PlayerSpawns" type="Node3D" parent="." unique_id=805524003]
-
-[node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=427827261]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
-
-[node name="Player2" type="Marker3D" parent="PlayerSpawns" unique_id=261488443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 6)
-
-[node name="Player3" type="Marker3D" parent="PlayerSpawns" unique_id=1356237568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 12)
-
-[node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=1622586493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 12)
-
 [node name="Bottlingstation" parent="." unique_id=389281476 instance=ExtResource("9_7blmr")]
 transform = Transform3D(0.0035323482, 0.012274726, 0.9999183, -0.0003158459, 0.9999246, -0.01227369, -0.99999356, -0.0002724652, 0.0035359596, -11.4468775, 2.1090333, 14.128593)
-
-[node name="StompingStation" parent="." unique_id=1482266665 instance=ExtResource("10_t75ul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2679505, 1.273, -2.7)
-
-[node name="FermentationStation" parent="." unique_id=479181345 instance=ExtResource("11_ngbmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.91815, 1.1199981, -3.5005941)
 
 [node name="RepairPopupAnchor" type="Marker3D" parent="Bottlingstation" unique_id=101252348]
 
@@ -93,10 +73,16 @@ window_scene = ExtResource("7_dinhu")
 panel_size = Vector2i(260, 180)
 pixel_size = 0.014
 
+[node name="StompingStation" parent="." unique_id=1482266665 instance=ExtResource("10_t75ul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2679505, 1.273, -2.7)
+
 [node name="MinigameWindowPreview" parent="StompingStation" unique_id=1732488779 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.08, 0)
 visible = false
 window_scene = ExtResource("7_trtic")
+
+[node name="FermentationStation" parent="." unique_id=479181345 instance=ExtResource("11_ngbmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.91815, 1.1199981, -3.5005941)
 
 [node name="MinigameWindowPreview" parent="FermentationStation" unique_id=1876284186 instance=ExtResource("10_window")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 3, 0)
