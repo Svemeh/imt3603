@@ -107,7 +107,7 @@ func _spawn_debug_crates() -> void:
 	for i in debug_full_crates:
 		var crate := WINE_BOX_SCENE.instantiate() as WineBox
 		add_child(crate)
-		crate.global_position = debug_crate_origin + Vector3((i % 2) * 1.0, 0, (i / 2) * 1.0)
+		crate.global_position = debug_crate_origin + Vector3((i % 2) * 1.0, 0, floorf(i / 2.0))
 		crate.bottles = crate.capacity
 		crate._update_visuals()
 

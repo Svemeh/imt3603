@@ -26,6 +26,7 @@
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
+debug_mode = true
 delivery_opens_at = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=299118941]
