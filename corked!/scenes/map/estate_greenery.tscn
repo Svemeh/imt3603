@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bj1hn4lx0lfp2"]
 
 [ext_resource type="Shader" uid="uid://31vexabj6rwb" path="res://models/map/environment/meadow_ground.gdshader" id="1_r83a3"]
-[ext_resource type="ArrayMesh" path="res://models/map/environment/meadow_grass_tuft.res" id="2_277ng"]
-[ext_resource type="ArrayMesh" path="res://models/map/environment/meadow_wildflowers.res" id="3_3r2ro"]
-[ext_resource type="ArrayMesh" path="res://models/map/environment/mediterranean_flowering_shrub.res" id="4_rht2h"]
-[ext_resource type="ArrayMesh" path="res://models/map/environment/mediterranean_leafy_shrub.res" id="5_0ibbe"]
+[ext_resource type="ArrayMesh" uid="uid://l3tmhirk8it0" path="res://models/map/environment/meadow_grass_tuft.res" id="2_277ng"]
+[ext_resource type="ArrayMesh" uid="uid://bqq68pmaj3r4c" path="res://models/map/environment/meadow_wildflowers.res" id="3_3r2ro"]
+[ext_resource type="ArrayMesh" uid="uid://be1r2v4686ga" path="res://models/map/environment/mediterranean_flowering_shrub.res" id="4_rht2h"]
+[ext_resource type="ArrayMesh" uid="uid://b466qrinhfkli" path="res://models/map/environment/mediterranean_leafy_shrub.res" id="5_0ibbe"]
 [ext_resource type="PackedScene" uid="uid://bt62m2bn25pdn" path="res://models/map/environment/olive_tree_detail.glb" id="6_dkckh"]
 [ext_resource type="Script" uid="uid://urpw0isglq36" path="res://src/editor_safe_multimesh.gd" id="99_reload_safe"]
 
@@ -372,6 +372,10 @@ instance_count = 4
 mesh = ExtResource("3_3r2ro")
 buffer = PackedFloat32Array(0.6956529, 0, 0.70722216, -0.2257397, 0, 0.99201626, 0, 0.008, -0.70722216, 0, 0.6956529, -0.36339235, -0.34795415, 0, 0.79096293, -0.49282548, 0, 0.8641148, 0, 0.008, -0.79096293, 0, -0.34795415, -0.6075206, 0.8624038, 0, -0.6079042, -0.4572221, 0, 1.0551246, 0, 0.008, 0.6079042, 0, 0.8624038, -0.53579026, 0.588825, 0, -0.8096211, -0.5211387, 0, 1.0011, 0, 0.008, 0.8096211, 0, 0.588825, -0.49575955)
 script = ExtResource("99_reload_safe")
+
+[sub_resource type="CylinderShape3D" id="Hitbox_shrub"]
+height = 0.7
+radius = 0.55
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6rrj6"]
 material = SubResource("ShaderMaterial_18d5w")
@@ -1855,10 +1859,6 @@ mesh = ExtResource("3_3r2ro")
 buffer = PackedFloat32Array(-0.280406, 0, 0.8242978, 0.34113795, 0, 0.8706862, 0, 0.008, -0.8242978, 0, -0.280406, 0.4431277, -1.028666, 0, 0.26708546, 0.37684372, 0, 1.062774, 0, 0.008, -0.26708546, 0, -1.028666, 0.32647648)
 script = ExtResource("99_reload_safe")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_nf8wa"]
-material = SubResource("ShaderMaterial_18d5w")
-size = Vector2(1.35, 2.8)
-
 [sub_resource type="MultiMesh" id="MultiMesh_afj01"]
 transform_format = 1
 use_colors = true
@@ -2320,6 +2320,13 @@ multimesh = SubResource("MultiMesh_3fqy3")
 transform = Transform3D(-0.46147648, 0, 0.5844799, 0, 0.802097, 0, -0.5844799, 0, -0.46147648, -15.65, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_20" unique_id=2013534573]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_20/Hitbox" unique_id=1790436443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_021" type="Node3D" parent="BoundaryBeds" unique_id=1687801975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.028, -8.55)
 
@@ -2338,6 +2345,13 @@ multimesh = SubResource("MultiMesh_sdelh")
 [node name="LeafyShrub_22" type="MeshInstance3D" parent="BoundaryBeds" unique_id=1214487114]
 transform = Transform3D(-0.04494491, 0, -0.855482, 0, 0.9101118, 0, 0.855482, 0, -0.04494491, -13.65, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_22" unique_id=229821649]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_22/Hitbox" unique_id=1247730582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_023" type="Node3D" parent="BoundaryBeds" unique_id=2144734507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.0294, -8.55)
@@ -2358,6 +2372,13 @@ multimesh = SubResource("MultiMesh_ke3jg")
 transform = Transform3D(0.62158525, 0, -0.5961943, 0, 0.7842754, 0, 0.5961943, 0, 0.62158525, -11.65, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_24" unique_id=564219214]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_24/Hitbox" unique_id=317527343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_025" type="Node3D" parent="BoundaryBeds" unique_id=2098864916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.0308, -8.55)
 
@@ -2376,6 +2397,13 @@ multimesh = SubResource("MultiMesh_dolrr")
 [node name="LeafyShrub_26" type="MeshInstance3D" parent="BoundaryBeds" unique_id=1650126844]
 transform = Transform3D(-0.43140435, 0, 0.7525537, 0, 0.86502963, 0, -0.7525537, 0, -0.43140435, -9.65, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_26" unique_id=1009404752]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_26/Hitbox" unique_id=118505611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_027" type="Node3D" parent="BoundaryBeds" unique_id=1173749724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.0322, -8.55)
@@ -2396,6 +2424,13 @@ multimesh = SubResource("MultiMesh_0g2lt")
 transform = Transform3D(-0.37471762, 0, 0.64052224, 0, 0.7492904, 0, -0.64052224, 0, -0.37471762, -7.65, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_28" unique_id=1697451943]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_28/Hitbox" unique_id=150415007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_029" type="Node3D" parent="BoundaryBeds" unique_id=425777811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.0287, -8.55)
 
@@ -2414,6 +2449,13 @@ multimesh = SubResource("MultiMesh_nogv3")
 [node name="LeafyShrub_30" type="MeshInstance3D" parent="BoundaryBeds" unique_id=706551395]
 transform = Transform3D(0.9163121, 0, -0.22014551, 0, 0.93856007, 0, 0.22014551, 0, 0.9163121, -5.65, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_30" unique_id=1683470915]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_30/Hitbox" unique_id=1292035939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_031" type="Node3D" parent="BoundaryBeds" unique_id=1514728350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.0301, -8.55)
@@ -2434,6 +2476,13 @@ multimesh = SubResource("MultiMesh_p26aq")
 transform = Transform3D(-0.7645183, 0, 0.5627151, 0, 0.9713607, 0, -0.5627151, 0, -0.7645183, -3.65, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_32" unique_id=1021497405]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_32/Hitbox" unique_id=1382032433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_033" type="Node3D" parent="BoundaryBeds" unique_id=1372802011]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.0315, -8.55)
 
@@ -2452,6 +2501,13 @@ multimesh = SubResource("MultiMesh_vuyy3")
 [node name="LeafyShrub_34" type="MeshInstance3D" parent="BoundaryBeds" unique_id=93971622]
 transform = Transform3D(0.5523285, 0, -0.5857695, 0, 0.8175486, 0, 0.5857695, 0, 0.5523285, -1.65, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_34" unique_id=1529107442]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_34/Hitbox" unique_id=1339858999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_035" type="Node3D" parent="BoundaryBeds" unique_id=276199132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028, -8.55)
@@ -2472,6 +2528,13 @@ multimesh = SubResource("MultiMesh_opsya")
 transform = Transform3D(0.7720548, 0, -0.46526736, 0, 0.9762372, 0, 0.46526736, 0, 0.7720548, 0.35, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_36" unique_id=540219475]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_36/Hitbox" unique_id=1803500646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_037" type="Node3D" parent="BoundaryBeds" unique_id=1157880518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.0294, -8.55)
 
@@ -2490,6 +2553,13 @@ multimesh = SubResource("MultiMesh_75742")
 [node name="LeafyShrub_38" type="MeshInstance3D" parent="BoundaryBeds" unique_id=2029636946]
 transform = Transform3D(0.54982966, 0, 0.60551184, 0, 0.804315, 0, -0.60551184, 0, 0.54982966, 2.35, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_38" unique_id=2137795334]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_38/Hitbox" unique_id=642219824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_039" type="Node3D" parent="BoundaryBeds" unique_id=209410373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.0308, -8.55)
@@ -2510,6 +2580,13 @@ multimesh = SubResource("MultiMesh_ug6ww")
 transform = Transform3D(0.63602036, 0, -0.1653511, 0, 0.63076633, 0, 0.1653511, 0, 0.63602036, 4.35, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_40" unique_id=1609135609]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_40/Hitbox" unique_id=1853574084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_041" type="Node3D" parent="BoundaryBeds" unique_id=1202994689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.0322, -8.55)
 
@@ -2528,6 +2605,13 @@ multimesh = SubResource("MultiMesh_1qqo7")
 [node name="LeafyShrub_42" type="MeshInstance3D" parent="BoundaryBeds" unique_id=923471928]
 transform = Transform3D(0.7021738, 0, 0.5346205, 0, 0.8254733, 0, -0.5346205, 0, 0.7021738, 6.35, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_42" unique_id=1019152387]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_42/Hitbox" unique_id=1144607703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_043" type="Node3D" parent="BoundaryBeds" unique_id=1715023879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.0287, -8.55)
@@ -2548,6 +2632,13 @@ multimesh = SubResource("MultiMesh_vh73g")
 transform = Transform3D(-0.5953963, 0, -0.47726288, 0, 0.79427975, 0, 0.47726288, 0, -0.5953963, 8.35, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_44" unique_id=566516527]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_44/Hitbox" unique_id=2086990781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_045" type="Node3D" parent="BoundaryBeds" unique_id=1268181653]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.0301, -8.55)
 
@@ -2566,6 +2657,13 @@ multimesh = SubResource("MultiMesh_jf3al")
 [node name="LeafyShrub_46" type="MeshInstance3D" parent="BoundaryBeds" unique_id=403112149]
 transform = Transform3D(0.7652274, 0, -0.014846137, 0, 0.6522887, 0, 0.014846137, 0, 0.7652274, 10.35, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_46" unique_id=1007782531]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_46/Hitbox" unique_id=855742421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_047" type="Node3D" parent="BoundaryBeds" unique_id=2111112009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.0315, -8.55)
@@ -2586,6 +2684,13 @@ multimesh = SubResource("MultiMesh_r4s6v")
 transform = Transform3D(0.43156594, 0, 0.7349947, 0, 0.8525024, 0, -0.7349947, 0, 0.43156594, 12.35, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_48" unique_id=624571929]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_48/Hitbox" unique_id=448764764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_049" type="Node3D" parent="BoundaryBeds" unique_id=2070949202]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.028, -8.55)
 
@@ -2604,6 +2709,13 @@ multimesh = SubResource("MultiMesh_2103p")
 [node name="LeafyShrub_50" type="MeshInstance3D" parent="BoundaryBeds" unique_id=1016535951]
 transform = Transform3D(-0.6629892, 0, -0.11612858, 0, 0.6890864, 0, 0.11612858, 0, -0.6629892, 14.35, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_50" unique_id=1823773162]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_50/Hitbox" unique_id=1871741503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_051" type="Node3D" parent="BoundaryBeds" unique_id=1479214980]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.0294, -8.55)
@@ -2624,6 +2736,13 @@ multimesh = SubResource("MultiMesh_yd3ds")
 transform = Transform3D(-0.84568745, 0, -0.22467302, 0, 0.80337447, 0, 0.22467302, 0, -0.84568745, 16.35, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_52" unique_id=1883452058]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_52/Hitbox" unique_id=1006921468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_053" type="Node3D" parent="BoundaryBeds" unique_id=865463787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.0308, -8.55)
 
@@ -2642,6 +2761,13 @@ multimesh = SubResource("MultiMesh_xlht5")
 [node name="LeafyShrub_54" type="MeshInstance3D" parent="BoundaryBeds" unique_id=972386150]
 transform = Transform3D(-0.06966387, 0, 0.73729634, 0, 0.7366845, 0, -0.73729634, 0, -0.06966387, 18.35, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_54" unique_id=1824283884]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_54/Hitbox" unique_id=1175147589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="NorthMeadow_055" type="Node3D" parent="BoundaryBeds" unique_id=69346788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.0322, -8.55)
@@ -2662,6 +2788,13 @@ multimesh = SubResource("MultiMesh_phrmj")
 transform = Transform3D(-0.25832742, 0, 0.91031224, 0, 0.98958874, 0, -0.91031224, 0, -0.25832742, 20.35, 0.03, -8.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_56" unique_id=116219183]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_56/Hitbox" unique_id=1184384075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="NorthMeadow_057" type="Node3D" parent="BoundaryBeds" unique_id=1065907654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0.0287, -8.55)
 
@@ -2681,6 +2814,13 @@ multimesh = SubResource("MultiMesh_5ucul")
 transform = Transform3D(0.44125298, 0, -0.77557355, 0, 0.78632027, 0, 0.77557355, 0, 0.44125298, 22.35, 0.03, -8.5)
 mesh = ExtResource("5_0ibbe")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_58" unique_id=2105347628]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_58/Hitbox" unique_id=913838943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="WestMeadow_059" type="Node3D" parent="BoundaryBeds" unique_id=1069244612]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.0301, -5)
 
@@ -2699,6 +2839,13 @@ multimesh = SubResource("MultiMesh_slccv")
 [node name="FloweringShrub_60" type="MeshInstance3D" parent="BoundaryBeds" unique_id=1232133520]
 transform = Transform3D(-0.18852293, 0, 0.7774697, 0, 0.7186719, 0, -0.7774697, 0, -0.18852293, -17.1, 0.03, -5)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_60" unique_id=1469309108]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_60/Hitbox" unique_id=339170173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="WestMeadow_061" type="Node3D" parent="BoundaryBeds" unique_id=238139820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.0315, -3)
@@ -2733,6 +2880,13 @@ multimesh = SubResource("MultiMesh_rxk7k")
 [node name="FloweringShrub_63" type="MeshInstance3D" parent="BoundaryBeds" unique_id=988406692]
 transform = Transform3D(0.7137272, 0, 0.3613772, 0, 0.7920798, 0, -0.3613772, 0, 0.7137272, -17.1, 0.03, -1)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_63" unique_id=1955592858]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_63/Hitbox" unique_id=1140413042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="WestMeadow_064" type="Node3D" parent="BoundaryBeds" unique_id=1555158317]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.0287, 1)
@@ -2843,6 +2997,13 @@ multimesh = SubResource("MultiMesh_osvpe")
 transform = Transform3D(0.7999271, 0, 0.010799715, 0, 0.8792631, 0, -0.010799715, 0, 0.7999271, 31.65, 0.03, -4)
 mesh = ExtResource("5_0ibbe")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_71" unique_id=1819936793]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_71/Hitbox" unique_id=1414537448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="RoadsideMeadow_072" type="Node3D" parent="BoundaryBeds" unique_id=323946336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8, 0.0294, -2)
 
@@ -2877,6 +3038,13 @@ multimesh = SubResource("MultiMesh_5wb57")
 transform = Transform3D(0.008485314, 0, 0.799955, 0, 0.8699733, 0, -0.799955, 0, 0.008485314, 31.65, 0.03, 0)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_74" unique_id=578050081]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_74/Hitbox" unique_id=1100701255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="RoadsideMeadow_075" type="Node3D" parent="BoundaryBeds" unique_id=1085116481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8, 0.0315, 2)
 
@@ -2910,6 +3078,13 @@ multimesh = SubResource("MultiMesh_k37s4")
 [node name="LeafyShrub_77" type="MeshInstance3D" parent="BoundaryBeds" unique_id=977289488]
 transform = Transform3D(0.642842, 0, 0.47618708, 0, 0.848238, 0, -0.47618708, 0, 0.642842, 31.65, 0.03, 4)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_77" unique_id=903130980]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_77/Hitbox" unique_id=1514156837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="RoadsideMeadow_078" type="Node3D" parent="BoundaryBeds" unique_id=1004562916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8, 0.0287, 6)
@@ -2975,6 +3150,13 @@ multimesh = SubResource("MultiMesh_tomty")
 transform = Transform3D(-0.799354, 0, 0.032142118, 0, 0.6850735, 0, -0.032142118, 0, -0.799354, 31.65, 0.03, 12)
 mesh = ExtResource("5_0ibbe")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/LeafyShrub_82" unique_id=737013947]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/LeafyShrub_82/Hitbox" unique_id=335939245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="RoadsideMeadow_083" type="Node3D" parent="BoundaryBeds" unique_id=177480683]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8, 0.0322, 14)
 
@@ -3024,6 +3206,13 @@ multimesh = SubResource("MultiMesh_nr0fo")
 transform = Transform3D(-0.31429076, 0, -0.8433394, 0, 0.815243, 0, 0.8433394, 0, -0.31429076, 12.5, 0.03, 18.05)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_86" unique_id=1242741209]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_86/Hitbox" unique_id=1273241595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="SouthMeadow_087" type="Node3D" parent="BoundaryBeds" unique_id=48529374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.0301, 18.15)
 
@@ -3057,6 +3246,13 @@ multimesh = SubResource("MultiMesh_pwn25")
 [node name="FloweringShrub_89" type="MeshInstance3D" parent="BoundaryBeds" unique_id=1840920920]
 transform = Transform3D(0.8973266, 0, -0.06931837, 0, 0.9608382, 0, 0.06931837, 0, 0.8973266, 17.5, 0.03, 18.05)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_89" unique_id=1589223416]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_89/Hitbox" unique_id=425850717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="SouthMeadow_090" type="Node3D" parent="BoundaryBeds" unique_id=767955144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.0322, 18.15)
@@ -3092,6 +3288,13 @@ multimesh = SubResource("MultiMesh_dew7n")
 transform = Transform3D(-0.30628875, 0, -0.8462784, 0, 0.8270435, 0, 0.8462784, 0, -0.30628875, 22.5, 0.03, 18.05)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_92" unique_id=1951568502]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_92/Hitbox" unique_id=152917946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="SouthMeadow_093" type="Node3D" parent="BoundaryBeds" unique_id=717312605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.0294, 18.15)
 
@@ -3110,6 +3313,13 @@ multimesh = SubResource("MultiMesh_no547")
 [node name="FloweringShrub_94" type="MeshInstance3D" parent="BoundaryBeds" unique_id=905558637]
 transform = Transform3D(-0.7157326, 0, -0.54564345, 0, 0.9575553, 0, 0.54564345, 0, -0.7157326, 25, 0.03, 18.05)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="BoundaryBeds/FloweringShrub_94" unique_id=154553663]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="BoundaryBeds/FloweringShrub_94/Hitbox" unique_id=2040541052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="SouthMeadow_095" type="Node3D" parent="BoundaryBeds" unique_id=1374142491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0.0308, 18.15)
@@ -3162,6 +3372,13 @@ multimesh = SubResource("MultiMesh_xonh2")
 transform = Transform3D(0.66686964, 0, -0.44191048, 0, 0.8121459, 0, 0.44191048, 0, 0.66686964, -0.7, 0.03, -4.3)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_98" unique_id=2056289934]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_98/Hitbox" unique_id=2001550913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="WestWineryGrass_099" type="Node3D" parent="WallFootPlanting" unique_id=1696482842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.0287, -1.8)
 
@@ -3195,6 +3412,13 @@ multimesh = SubResource("MultiMesh_doya7")
 [node name="FloweringShrub_101" type="MeshInstance3D" parent="WallFootPlanting" unique_id=1858755209]
 transform = Transform3D(-0.79740447, 0, 0.0643902, 0, 0.7448822, 0, -0.0643902, 0, -0.79740447, -0.7, 0.03, 1)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_101" unique_id=1939237511]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_101/Hitbox" unique_id=491389587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="WestWineryGrass_102" type="Node3D" parent="WallFootPlanting" unique_id=658102162]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.0308, 3.5)
@@ -3279,6 +3503,13 @@ multimesh = SubResource("MultiMesh_cycou")
 transform = Transform3D(0.5341356, 0, 0.5955663, 0, 0.7541887, 0, -0.5955663, 0, 0.5341356, 18.65, 0.03, -4.5)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_108" unique_id=1098940562]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_108/Hitbox" unique_id=376905588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="EastWineryGrass_109" type="Node3D" parent="WallFootPlanting" unique_id=688199579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0.0308, -2)
 
@@ -3316,6 +3547,13 @@ multimesh = SubResource("MultiMesh_u1x1l")
 [node name="FloweringShrub_111" type="MeshInstance3D" parent="WallFootPlanting" unique_id=111875107]
 transform = Transform3D(-0.6186565, 0, 0.50721216, 0, 0.6882313, 0, -0.50721216, 0, -0.6186565, 18.65, 0.03, 0.5)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_111" unique_id=545876286]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_111/Hitbox" unique_id=579442716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="EastWineryGrass_112" type="Node3D" parent="WallFootPlanting" unique_id=1633838240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0.028, 3)
@@ -3380,6 +3618,13 @@ multimesh = SubResource("MultiMesh_cke8h")
 [node name="FloweringShrub_115" type="MeshInstance3D" parent="WallFootPlanting" unique_id=1826077821]
 transform = Transform3D(0.7864401, 0, 0.14666985, 0, 0.7752765, 0, -0.14666985, 0, 0.7864401, 18.65, 0.03, 9)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_115" unique_id=792766213]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_115/Hitbox" unique_id=894150250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="EastWineryGrass_116" type="Node3D" parent="WallFootPlanting" unique_id=1310343879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0.0308, 12)
@@ -3569,6 +3814,13 @@ multimesh = SubResource("MultiMesh_2nmoe")
 transform = Transform3D(0.48548397, 0, 0.6358501, 0, 0.7765533, 0, -0.6358501, 0, 0.48548397, 18.65, 0.03, 14)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_118" unique_id=1836636920]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_118/Hitbox" unique_id=404357078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="ContinuousEastBorder_119" type="Node3D" parent="WallFootPlanting" unique_id=1339109245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0.028, 4.7)
 
@@ -3683,9 +3935,23 @@ multimesh = SubResource("MultiMesh_yxoyg")
 transform = Transform3D(0.81748253, 0, -0.23285699, 0, 0.8742813, 0, 0.23285699, 0, 0.81748253, 7, 0.03, 15.512983)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_125" unique_id=775506933]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_125/Hitbox" unique_id=318605185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="FloweringShrub_126" type="MeshInstance3D" parent="WallFootPlanting" unique_id=1087170352]
 transform = Transform3D(-0.84689826, 0, -0.07254901, 0, 0.79679376, 0, 0.07254901, 0, -0.84689826, 15.5, 0.03, 15.528713)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="WallFootPlanting/FloweringShrub_126" unique_id=537798112]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallFootPlanting/FloweringShrub_126/Hitbox" unique_id=1088429401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="GardenPockets" type="Node3D" parent="." unique_id=111027279]
 
@@ -3842,10 +4108,6 @@ multimesh = SubResource("MultiMesh_dnjtr")
 [node name="GardenBed_137" type="Node3D" parent="GardenPockets" unique_id=1316939276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0.0308, 17.5)
 
-[node name="LivingGroundcover" type="MeshInstance3D" parent="GardenPockets/GardenBed_137" unique_id=63498226]
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_nf8wa")
-
 [node name="GrassTufts" type="MultiMeshInstance3D" parent="GardenPockets/GardenBed_137" unique_id=958682487]
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_afj01")
@@ -3937,6 +4199,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39640236, 0, -0.66734934)
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_gbuqx")
 
+[node name="LivingGroundcover2" type="MeshInstance3D" parent="GardenPockets/GardenBed_143" unique_id=1899577638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51428795, 0, -4.276579)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_gbuqx")
+
+[node name="LivingGroundcover3" type="MeshInstance3D" parent="GardenPockets/GardenBed_143" unique_id=1001369441]
+transform = Transform3D(0.9999394, 0, 0.011010341, 0, 1, 0, -0.011010341, 0, 0.9999394, 0.51428795, 0, -6.117507)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_gbuqx")
+
 [node name="GrassTufts" type="MultiMeshInstance3D" parent="GardenPockets/GardenBed_143" unique_id=813171091]
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_kldhv")
@@ -3964,53 +4236,133 @@ multimesh = SubResource("MultiMesh_da6m0")
 transform = Transform3D(0.8750355, 0, 0.22659466, 0, 0.90834826, 0, -0.22659466, 0, 0.8750355, -4.8, 0.03, -1.7)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/FloweringShrub_145" unique_id=1082416986]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/FloweringShrub_145/Hitbox" unique_id=2017017893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="LeafyShrub_146" type="MeshInstance3D" parent="GardenPockets" unique_id=1240512081]
 transform = Transform3D(-0.19924031, 0, 0.9761462, 0, 0.93515337, 0, -0.9761462, 0, -0.19924031, -2.2, 0.03, -1.9)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/LeafyShrub_146" unique_id=2084887758]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/LeafyShrub_146/Hitbox" unique_id=1423966709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="LeafyShrub_147" type="MeshInstance3D" parent="GardenPockets" unique_id=1148426553]
 transform = Transform3D(0.5010774, 0, 0.69978654, 0, 0.7365546, 0, -0.69978654, 0, 0.5010774, -4.5, 0.03, 4.5)
 mesh = ExtResource("5_0ibbe")
 
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/LeafyShrub_147" unique_id=134238926]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/LeafyShrub_147/Hitbox" unique_id=2039335165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="FloweringShrub_148" type="MeshInstance3D" parent="GardenPockets" unique_id=884092173]
 transform = Transform3D(0.44998196, 0, 0.6291437, 0, 0.83138156, 0, -0.6291437, 0, 0.44998196, -2.3, 0.03, 4.6)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/FloweringShrub_148" unique_id=716265257]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/FloweringShrub_148/Hitbox" unique_id=685656721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="LeafyShrub_149" type="MeshInstance3D" parent="GardenPockets" unique_id=675094633]
 transform = Transform3D(0.24409832, 0, 0.94067544, 0, 0.98309344, 0, -0.94067544, 0, 0.24409832, -4.1, 0.03, 9.8)
 mesh = ExtResource("5_0ibbe")
 
-[node name="LeafyShrub_150" type="MeshInstance3D" parent="GardenPockets" unique_id=2001823239]
-transform = Transform3D(0.38628548, 0, -0.92335385, 0, 1.0828925, 0, 0.92335385, 0, 0.38628548, -3.8, 0.03, 17.5)
-mesh = ExtResource("5_0ibbe")
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/LeafyShrub_149" unique_id=629696725]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/LeafyShrub_149/Hitbox" unique_id=1591036257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="FloweringShrub_151" type="MeshInstance3D" parent="GardenPockets" unique_id=863270954]
 transform = Transform3D(0.21236551, 0, -0.8206802, 0, 0.82414657, 0, 0.8206802, 0, 0.21236551, -13.2, 0.03, 9.6)
 mesh = ExtResource("4_rht2h")
 
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/FloweringShrub_151" unique_id=1904209505]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/FloweringShrub_151/Hitbox" unique_id=1535117601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="LeafyShrub_152" type="MeshInstance3D" parent="GardenPockets" unique_id=690390927]
 transform = Transform3D(0.6843105, 0, -0.33211133, 0, 0.7539735, 0, 0.33211133, 0, 0.6843105, -7, 0.03, 9.6)
 mesh = ExtResource("5_0ibbe")
+
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/LeafyShrub_152" unique_id=499557555]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/LeafyShrub_152/Hitbox" unique_id=1547530411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="LeafyShrub_153" type="MeshInstance3D" parent="GardenPockets" unique_id=1582280690]
 transform = Transform3D(0.065701194, 0, -0.9226122, 0, 0.9048494, 0, 0.9226122, 0, 0.065701194, 21.6, 0.03, 15.7)
 mesh = ExtResource("5_0ibbe")
 
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/LeafyShrub_153" unique_id=1573205214]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/LeafyShrub_153/Hitbox" unique_id=1341916520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="FloweringShrub_154" type="MeshInstance3D" parent="GardenPockets" unique_id=1063901853]
 transform = Transform3D(-0.32903937, 0, 0.9711223, 0, 1.0570744, 0, -0.9711223, 0, -0.32903937, 23, 0.03, 16)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/FloweringShrub_154" unique_id=385738628]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/FloweringShrub_154/Hitbox" unique_id=396408028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="LeafyShrub_155" type="MeshInstance3D" parent="GardenPockets" unique_id=1815451947]
 transform = Transform3D(0.14478448, 0, 0.9805106, 0, 0.9562427, 0, -0.9805106, 0, 0.14478448, 30.5, 0.03, 12.5)
 mesh = ExtResource("5_0ibbe")
 
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/LeafyShrub_155" unique_id=1569280404]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/LeafyShrub_155/Hitbox" unique_id=254326706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="LeafyShrub_156" type="MeshInstance3D" parent="GardenPockets" unique_id=2121588526]
 transform = Transform3D(0.5304135, 0, -0.70046484, 0, 0.89466935, 0, 0.70046484, 0, 0.5304135, 22.1, 0.03, -4.7)
 mesh = ExtResource("5_0ibbe")
 
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/LeafyShrub_156" unique_id=430304819]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/LeafyShrub_156/Hitbox" unique_id=264167188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
+
 [node name="FloweringShrub_157" type="MeshInstance3D" parent="GardenPockets" unique_id=918269872]
 transform = Transform3D(-0.61862385, 0, 0.7908627, 0, 0.96356255, 0, -0.7908627, 0, -0.61862385, 30.7, 0.03, -4.5)
 mesh = ExtResource("4_rht2h")
+
+[node name="Hitbox" type="StaticBody3D" parent="GardenPockets/FloweringShrub_157" unique_id=1332042421]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="GardenPockets/FloweringShrub_157/Hitbox" unique_id=901404136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("Hitbox_shrub")
 
 [node name="AdditionalTrees" type="Node3D" parent="." unique_id=1020526855]
 

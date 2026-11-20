@@ -74,7 +74,7 @@ func _prepare_round() -> void:
 
 		# Variant must be assigned BEFORE add_child()
 		add_child(p)
-		var spawns := $Map/PlayerSpawns.get_children()
+		var spawns := $PlayerSpawns.get_children()
 		if i < spawns.size():
 			p.global_position = (spawns[i] as Node3D).global_position
 
