@@ -2,12 +2,8 @@
 
 [ext_resource type="PackedScene" path="res://scenes/placeables/wall_straight.tscn" id="3_wall"]
 [ext_resource type="PackedScene" uid="uid://dlksbctdnm3ly" path="res://scenes/placeables/wall_post.tscn" id="5_post"]
-[ext_resource type="PackedScene" uid="uid://r813enoq0ixf" path="res://scenes/placeables/grape_vine.tscn" id="6_vine"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/grass_tuft_full.tscn" id="7_tuft"]
-[ext_resource type="PackedScene" uid="uid://06igqmhwgbxb" path="res://scenes/interactables/bottlingstation.tscn" id="9_7blmr"]
 [ext_resource type="PackedScene" path="res://scenes/placeables/ground_cobble.tscn" id="9_cobble"]
-[ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/interactables/stomping_station.tscn" id="10_t75ul"]
-[ext_resource type="PackedScene" uid="uid://cew2akjslgdes" path="res://scenes/interactables/fermentation_station.tscn" id="11_ngbmq"]
 [ext_resource type="PackedScene" uid="uid://bxorvplp3fncl" path="res://models/map/placeables/bottling_hut_shell_v03.glb" id="14_4stje"]
 [ext_resource type="PackedScene" uid="uid://dsflaqnqg2u4q" path="res://models/map/props/wall_wine_shelf.glb" id="15_agf7k"]
 [ext_resource type="PackedScene" uid="uid://d4ay5xvclices" path="res://models/map/props/wall_amber_lantern.glb" id="16_fe1tl"]
@@ -25,18 +21,18 @@
 [sub_resource type="Environment" id="Environment_vineyard"]
 background_mode = 1
 background_color = Color(0.48, 0.65, 0.82, 1)
-ambient_light_source = 2
+ambient_light_source = 3
 ambient_light_color = Color(0.7, 0.76, 0.84, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.18
+ambient_light_energy = 0.3
 tonemap_mode = 2
-tonemap_exposure = 0.9
+tonemap_exposure = 1.2
 glow_enabled = true
 glow_intensity = 0.15
 glow_hdr_threshold = 1.5
 adjustment_enabled = true
-adjustment_contrast = 1.08
-adjustment_saturation = 1.12
+adjustment_contrast = 1.2
+adjustment_saturation = 1.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8fo7a"]
 size = Vector3(12.378906, 5.055664, 1)
@@ -56,6 +52,13 @@ size = Vector3(1.5088501, 3.5249023, 0.3873291)
 [sub_resource type="BoxShape3D" id="BoxShape3D_43wry"]
 size = Vector3(2.175415, 1.9916992, 2.2617188)
 
+[sub_resource type="BoxShape3D" id="Hitbox_wallwineshel"]
+size = Vector3(2.05, 1.91, 0.49)
+
+[sub_resource type="CylinderShape3D" id="Hitbox_terracottaro"]
+height = 1.28
+radius = 0.4
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_tk8bu"]
 size = Vector3(1, 4.9656982, 13.036133)
 
@@ -65,9 +68,9 @@ size = Vector3(1, 4.9656982, 13.036133)
 environment = SubResource("Environment_vineyard")
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=2105773388]
-transform = Transform3D(0.81915206, 0.46984634, -0.32898995, 0, 0.57357645, 0.81915206, 0.57357645, -0.6710101, 0.46984634, 0, 0, 0)
-light_color = Color(1, 0.82, 0.61, 1)
-light_energy = 0.8
+transform = Transform3D(-0.28568834, -0.82230294, 0.49213815, 0, 0.5135412, 0.8580649, -0.9583226, 0.24513914, -0.14671274, 0, 0, 0)
+light_color = Color(1, 0.81960785, 0.6117647, 1)
+light_energy = 0.7
 shadow_enabled = true
 shadow_bias = 0.05
 shadow_normal_bias = 1.0
@@ -890,32 +893,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 15)
 [node name="Post_26" parent="Walls" unique_id=1916387982 instance=ExtResource("5_post")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
 
-[node name="Vineyard" type="Node3D" parent="." unique_id=448250542]
-
-[node name="VineRow_0_0" parent="Vineyard" unique_id=1784086051 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -13.5, 0, -4.5)
-
-[node name="VineRow_0_1" parent="Vineyard" unique_id=538187266 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -13.5, 0, -1.5)
-
-[node name="VineRow_0_2" parent="Vineyard" unique_id=1234543718 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -13.5, 0, 1.5)
-
-[node name="VineRow_0_3" parent="Vineyard" unique_id=1431964429 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -13.5, 0, 4.5)
-
-[node name="VineRow_2_0" parent="Vineyard" unique_id=2093938844 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, -4.5)
-
-[node name="VineRow_2_1" parent="Vineyard" unique_id=668517990 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, -1.5)
-
-[node name="VineRow_2_2" parent="Vineyard" unique_id=960960048 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, 1.5)
-
-[node name="VineRow_2_3" parent="Vineyard" unique_id=1785472851 instance=ExtResource("6_vine")]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -7.5, 0, 4.5)
-
 [node name="Stations" type="Node3D" parent="." unique_id=1889123873]
 
 [node name="StompStationPlaceholder" type="Marker3D" parent="Stations" unique_id=176134863]
@@ -931,7 +908,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1.5)
 
 [node name="StompStationPlaceholder2" type="Marker3D" parent="Stations" unique_id=1676803408]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 13.484288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.271047, 0, 13.484288)
 
 [node name="FermentationPlaceholder2" type="Marker3D" parent="Stations" unique_id=1720759591]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 13.484288)
@@ -976,29 +953,6 @@ transform = Transform3D(5.6623428e-08, 0, 1, 0, 1, 0, -0.75, 0, 7.54979e-08, 7.5
 [node name="SouthRight" parent="Decoration/WallGrass" unique_id=1104828442 instance=ExtResource("22_grass_strip")]
 transform = Transform3D(5.6623428e-08, 0, 1, 0, 1, 0, -0.75, 0, 7.54979e-08, 16.5, 0, 15.55)
 
-[node name="PlayerSpawns" type="Node3D" parent="." unique_id=805524003]
-
-[node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=427827261]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 11)
-
-[node name="Player2" type="Marker3D" parent="PlayerSpawns" unique_id=261488443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4999995, 0, 11)
-
-[node name="Player3" type="Marker3D" parent="PlayerSpawns" unique_id=1356237568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 17)
-
-[node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=1622586493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 17)
-
-[node name="Bottlingstation" parent="." unique_id=389281476 instance=ExtResource("9_7blmr")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.594915, 2.1090333, 15.0541115)
-
-[node name="StompingStation" parent="." unique_id=1482266665 instance=ExtResource("10_t75ul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.273, -2.7)
-
-[node name="FermentationStation" parent="." unique_id=479181345 instance=ExtResource("11_ngbmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.653071, 1.1199981, -3.6374736)
-
 [node name="DeliveryApron" type="Node3D" parent="." unique_id=1192806992]
 
 [node name="Cobble_0_0" parent="DeliveryApron" unique_id=1687175390 instance=ExtResource("25_walk")]
@@ -1020,7 +974,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 10.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 10.5)
 
 [node name="Cobble_0_3" parent="DeliveryApron" unique_id=1187400116 instance=ExtResource("25_walk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, -10.5)
 
 [node name="Cobble_0_4" parent="DeliveryApron" unique_id=298042970 instance=ExtResource("25_walk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -7.5)
@@ -1155,7 +1109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 7.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 7.5)
 
 [node name="Bottling Station Hut - Modular Study" parent="." unique_id=634437062 instance=ExtResource("14_4stje")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.400001, -0.114390075, 15.900002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Bottling Station Hut - Modular Study" unique_id=1360075639]
 
@@ -1198,8 +1152,22 @@ shape = SubResource("BoxShape3D_43wry")
 [node name="Corked - Warm Italian Winery Props" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=251479666 instance=ExtResource("15_agf7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.362285, 2.0355372, -5.678214)
 
+[node name="Hitbox" type="StaticBody3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props" unique_id=1952099019]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props/Hitbox" unique_id=2137822335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506, 0.245)
+shape = SubResource("Hitbox_wallwineshel")
+
 [node name="Corked - Warm Italian Winery Props2" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=1391686399 instance=ExtResource("15_agf7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5469332, 2.0355372, -5.678214)
+
+[node name="Hitbox" type="StaticBody3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props2" unique_id=992695476]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props2/Hitbox" unique_id=382947329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506, 0.245)
+shape = SubResource("Hitbox_wallwineshel")
 
 [node name="Corked - Warm Italian Winery Props3" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=529495558 instance=ExtResource("16_fe1tl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0354214, 3.1143901, -5.6704597)
@@ -1216,8 +1184,22 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.6
 [node name="Corked - Warm Italian Winery Props7" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=339854749 instance=ExtResource("17_0xl4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0.114390075, -4.800002)
 
+[node name="Hitbox" type="StaticBody3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props7" unique_id=161098808]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props7/Hitbox" unique_id=1424107815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
+
 [node name="Corked - Warm Italian Winery Props8" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=1275169174 instance=ExtResource("17_0xl4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1000004, 1.393362, -5.0691414)
+
+[node name="Hitbox" type="StaticBody3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props8" unique_id=938085127]
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Bottling Station Hut - Modular Study/StaticBody3D/Corked - Warm Italian Winery Props8/Hitbox" unique_id=913788856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
+shape = SubResource("Hitbox_terracottaro")
 
 [node name="Corked - Warm Italian Winery Props9" parent="Bottling Station Hut - Modular Study/StaticBody3D" unique_id=816676066 instance=ExtResource("18_8uklw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.100001, 0.114390075, -5.1000013)
@@ -1233,3 +1215,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.970092, 1.9828491, 0.12300
 shape = SubResource("BoxShape3D_tk8bu")
 
 [node name="EstateDressing" parent="." unique_id=1999727906 instance=ExtResource("23_estate")]
+
+[node name="PlayerSpawns" type="Node3D" parent="." unique_id=780620909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7000003, 0, 2.7)
+
+[node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=574619148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
+
+[node name="Player2" type="Marker3D" parent="PlayerSpawns" unique_id=1811988502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 6)
+
+[node name="Player3" type="Marker3D" parent="PlayerSpawns" unique_id=1855468999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 12)
+
+[node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=478893381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 12)
