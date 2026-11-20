@@ -30,6 +30,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		event is InputEventKey or event is InputEventMouseButton
 	) else event.device
 
+	if event.is_action_pressed("menu_back"):
+		get_viewport().set_input_as_handled()
+		_on_back_button_pressed()
+		return
+
 	if event.is_action_pressed("menu_join"):
 		var i: int = PlayerManager.join(device)
 
