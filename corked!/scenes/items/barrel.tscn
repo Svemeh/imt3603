@@ -31,3 +31,16 @@ shape = SubResource("CylinderShape3D_akdr4")
 transform = Transform3D(0.84870005, 0, 0, 0, 0.7653463, 0, 0, 0, 0.67762923, 0, -0.35032701, 0.0058557987)
 mesh = SubResource("CylinderMesh_3wo4y")
 surface_material_override/0 = SubResource("StandardMaterial3D_lpp3h")
+
+[node name="FillLabel" type="Label3D" parent="." unique_id=1847362915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.005
+billboard = 1
+no_depth_test = true
+render_priority = 10
+outline_render_priority = 9
+modulate = Color(1, 0.9, 0.55, 1)
+outline_modulate = Color(0.45, 0.02, 0.07, 1)
+text = "0/4"
+font_size = 96
+outline_size = 26

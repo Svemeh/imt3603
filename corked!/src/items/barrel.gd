@@ -31,6 +31,7 @@ var is_wine: bool = false:
 @export var fill_tween_time: float = 0.5
 
 @onready var liquid: MeshInstance3D = $Liquid
+@onready var fill_label: Label3D = $FillLabel
 
 ## This barrel's own copy of the liquid material
 var _liquid_material: StandardMaterial3D = null
@@ -55,6 +56,7 @@ func add_juice(amount: int) -> void:
 ## instant = true skips the smooth rise/drop.
 func update_liquid_visual(instant: bool = false) -> void:
 	_liquid_material.albedo_color = wine_color if is_wine else juice_color
+	fill_label.text = "%d/%d" % [juice_amount, MAX_CAPACITY]
 
 	if _liquid_tween:
 		_liquid_tween.kill()
