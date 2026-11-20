@@ -58,6 +58,10 @@ layout_mode = 2
 layout_mode = 2
 text = "SETTINGS"
 
+[node name="HowToPlayButton" parent="MenuContainter/ButtonsContainer" instance=ExtResource("2_nphty")]
+layout_mode = 2
+text = "HOW TO PLAY"
+
 [node name="CreditsButton" parent="MenuContainter/ButtonsContainer" unique_id=683412708 instance=ExtResource("2_nphty")]
 layout_mode = 2
 text = "CREDITS"
@@ -70,3 +74,5 @@ text = "QUIT"
 [connection signal="pressed" from="MenuContainter/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MenuContainter/ButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MenuContainter/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+
+[connection signal="pressed" from="MenuContainter/ButtonsContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]

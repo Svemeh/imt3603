@@ -15,6 +15,12 @@ var round_number: int = 1
 var _base_round_duration: float = -1.0
 var _resetting_round: bool = false
 var _owns_pause: bool = false
+## Holds the initial tutorial above the map/HUD. Removed when the round begins.
+var _tutorial_layer: CanvasLayer
+
+## Disable in the inspector to start immediately during development.
+## This is checked only on initial load, so later rounds do not repeat the guide.
+@export var show_start_tutorial: bool = true
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 const WINE_BOX_SCENE := preload("res://scenes/items/wine_box.tscn")
@@ -57,12 +63,16 @@ func _ready() -> void:
 	MenuMusic.stop_menu_music()
 	round_transition.next_round_requested.connect(_request_next_round)
 	round_transition.modifier_chosen.connect(_on_modifier_chosen)
-	_prepare_round()
+	# Spawn the map and players first, but leave the clock stopped for the popup.
+	_prepare_round(not show_start_tutorial)
+	if show_start_tutorial:
+		_show_start_tutorial()
 
 
 ## Reconnects the new round's nodes, restores the HUD and spawns the joined players.
 ## Used both on first load and after Skip; money and run statistics are retained.
-func _prepare_round() -> void:
+## start_timer=false prepares a playable scene without spending any round time.
+func _prepare_round(start_timer: bool = true) -> void:
 	hud = $Hud
 	round_timer = $RoundTimer
 	delivery_zone = $DeliveryPoint/DeliveryZone
@@ -77,7 +87,12 @@ func _prepare_round() -> void:
 	round_timer.round_ended.connect(_on_round_timer_round_ended)
 	delivery_zone.contents_changed.connect(_on_delivery_zone_contents_changed)
 	deliveryman.delivery_sent.connect(_on_delivery_sent)
-	round_timer.start_round()
+	if start_timer:
+		round_timer.start_round()
+	else:
+		# Show the full duration in the HUD without activating the timer.
+		round_timer.time_left = round_timer.round_duration
+		hud.update_timer(round_timer.time_left, round_timer.round_duration)
 	if debug_mode:
 		_spawn_debug_crates()
 		$AutomaticDoor.collision_layer = 0
@@ -101,6 +116,43 @@ func _prepare_round() -> void:
 		var spawns := $PlayerSpawns.get_children()
 		if i < spawns.size():
 			p.global_position = (spawns[i] as Node3D).global_position
+
+
+## Pause gameplay while keeping the tutorial responsive above the real map.
+func _show_start_tutorial() -> void:
+	_owns_pause = true
+	get_tree().paused = true
+	game_music.stream_paused = true
+	_tutorial_layer = CanvasLayer.new()
+	_tutorial_layer.name = "StartTutorial"
+	_tutorial_layer.layer = 100
+	# ALWAYS lets the UI receive input while players, stations, and timers are paused.
+	_tutorial_layer.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_tutorial_layer)
+	var guide = load("res://scenes/menus/how_to_play.tscn").instantiate()
+	# Configure before add_child(), because the guide builds its UI in _ready().
+	guide.in_game = true
+	guide.process_mode = Node.PROCESS_MODE_ALWAYS
+	guide.begin_requested.connect(_begin_after_tutorial)
+	guide.back_requested.connect(_leave_start_tutorial)
+	_tutorial_layer.add_child(guide)
+
+## Close the popup and start the already-loaded round; do not respawn players.
+func _begin_after_tutorial() -> void:
+	if not is_instance_valid(_tutorial_layer):
+		return
+	_tutorial_layer.queue_free()
+	_tutorial_layer = null
+	game_music.stream_paused = false
+	get_tree().paused = false
+	_owns_pause = false
+	round_timer.start_round()
+
+## Restore the tree before returning to the lobby so the lobby is not left paused.
+func _leave_start_tutorial() -> void:
+	get_tree().paused = false
+	_owns_pause = false
+	get_tree().change_scene_to_file("res://scenes/menus/lobby_menu.tscn")
 
 
 func _spawn_debug_crates() -> void:
