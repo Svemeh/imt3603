@@ -21,29 +21,29 @@ collision_layer = 5
 collision_mask = 0
 script = ExtResource("1_ferm")
 
-[node name="Model" parent="." instance=ExtResource("2_ferm")]
+[node name="Model" parent="." unique_id=1742573534 instance=ExtResource("2_ferm")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
-[node name="HopperShape" type="CollisionShape3D" parent="."]
+[node name="HopperShape" type="CollisionShape3D" parent="." unique_id=547787373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.275, -0.01, -0.985)
 shape = SubResource("BoxShape3D_ferm")
 
-[node name="ValveShape" type="CollisionShape3D" parent="."]
+[node name="ValveShape" type="CollisionShape3D" parent="." unique_id=1411429493]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.925, -0.01, 0.1)
 shape = SubResource("BoxShape3D_valve")
 
-[node name="MainBarrelShape" type="CollisionShape3D" parent="."]
+[node name="MainBarrelShape" type="CollisionShape3D" parent="." unique_id=1809931249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, -0.6)
 shape = SubResource("CylinderShape3D_main")
 
-[node name="FenceShape" type="CollisionShape3D" parent="."]
+[node name="FenceShape" type="CollisionShape3D" parent="." unique_id=263939478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.01, 0.16)
 shape = SubResource("BoxShape3D_fence")
 
-[node name="PourMarker" type="Marker3D" parent="."]
+[node name="PourMarker" type="Marker3D" parent="." unique_id=1484155489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, -1.12, -1)
 
-[node name="BarrelMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, -0.6, 1)
+[node name="BarrelMarker" type="Marker3D" parent="." unique_id=1911700866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9433744, -0.6, 2.3378074)
 
-[node name="FermentTimer" type="Timer" parent="."]
+[node name="FermentTimer" type="Timer" parent="." unique_id=491263131]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c36bn0dnihi8c"]
+
+[ext_resource type="Script" uid="uid://cuk8q5jox0pwh" path="res://src/interactables/crate_table.gd" id="1_fkjb3"]
+[ext_resource type="PackedScene" uid="uid://euu8c3o1o0sr" path="res://assets/models/table/table.glb" id="1_sxfu8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
+size = Vector3(1, 0.22851563, 0.39935303)
+
+[node name="CrateTable" type="StaticBody3D" unique_id=1786547588]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_fkjb3")
+
+[node name="table" parent="." unique_id=780600987 instance=ExtResource("1_sxfu8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1509405110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0029296875, 0.007232666)
+shape = SubResource("BoxShape3D_l0bqs")
+
+[node name="CratePlace" type="Marker3D" parent="." unique_id=465862293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30016375, 0.102733284, 0)

@@ -137,7 +137,7 @@ Core palette: terracotta orange · warm yellow · grape purple · olive/vine gre
 > **Prose rules for every module:** numbers, units, and defaults ("fast" is an opinion; "6 m/s" is a decision — wrong
 > numbers are fine, they are testable; missing numbers are not). One idea per paragraph, decision first, reason second.
 > Diagrams over paragraphs for anything spatial or temporal. Pick one term per concept ("stamina" *or* "energy") and use
-> it everywhere. "Etc." is a scope bug, not a word.
+> it everywhere. "Etc." is a scope bug, snot a word.
 
 ## **2.1 Player verbs & controls**
 
@@ -659,6 +659,43 @@ There is none. No language model or generator runs while the game is played.
 > Style, palette, shape language, reference board (link). Key assets and how each is being made — modelled, bought,
 > or generated, **with provenance** (see sec.12.2). Constraints that protect scope: camera distance, texture budget,
 > animation reuse plan.
+
+## 9.1 Style
+Style and core palette are set in sec.1.5. This section turns them into rules for making assets.
+
+- **Readability first:** every station, item and hazard must be recognisable from silhouette and colour at gameplay
+  distance. No realism, no photo-textures, no surface detail that disappears at camera distance.
+- **Palette rules:** grape purple is reserved for grapes, wine and wine-related items, so the product is always easy to
+  track. Environment uses warm stone, dark wood and olive green at low contrast so it stays in the background.
+  Interactable highlight colour: [decide] (colour-blind requirements in sec.7).
+- **Lighting look:** warm key light (sun `#FFD6A0`), cool ambient fill, saturation 1.2, contrast 1.05.
+- **Reference board:** [link to board].
+
+**Shape language**
+- *Stations and interactables:* chunky, rounded, slightly oversized compared with props, so they read as "use me".
+- *Environment (walls, ground, props):* boxy and beveled, built as a modular kit on a 3 × 3 m module.
+- *Hazards / broken states:* break the silhouette (tilted, missing parts) as well as changing colour.
+
+## 9.2 Key assets and provenance
+| Asset group | Examples | How it is made | Source files |
+|---|---|---|---|
+| Map kit | walls (straight/post/window), ground tiles (cobble, dirt 1–3, grass), grass tufts | Modelled in Blender 5.2 (AI-assisted via Blender MCP); dirt tiles script-generated | `art_source/`, `temp/*.py` |
+| Station & prop set | stomp_vat, fermentation_tanks, bottling_line, barrels, crates, lantern, olive tree, well, fence | Modelled in Blender 5.2 (AI-assisted via Blender MCP) | `art_source/` |
+| Bottling station hut | bottling_hut_shell v01–v03 | Modelled in Blender 5.2 (AI-assisted), iterated | `art_source/bottling_station_hut/` |
+| Player characters | 4 farmer colour variants, rigged and animated | Generated with Meshy AI (model, rig, animations) | `assets/models/players/` |
+| Gameplay items (older set) | bottle, wine crate, barrel lid, hammer, broom, table, delivery truck/guy, pressure plate | [fill in: who/how] (script-generated glTF via pygltflib/trimesh) | `assets/models/` |
+
+No bought or downloaded asset packs are used. If one is added, its licence goes in this table.
+How AI output was reviewed is declared in sec.12.2.
+
+## 9.3 Scope constraints
+- **Camera distance:** at the camera framing in sec.6.1, 1 m on screen is about 40 px at 1080p, so details smaller than
+  ~10 cm are not modelled.
+- **Texture budget:** props and ground tiles max 512², stations max 1024². Flat material colours preferred over
+  textures. Meshy character textures are downscaled to ≤1024².
+- **Polygon budget:** props < 2k tris, stations < 5k tris.
+- **Animation reuse:** all four farmers share one skeleton and one animation set (list in sec.4.3). Variants differ
+  only in colour. Stations animate with simple code-driven motion and shaders, not skeletal animation.
 
 ---
 

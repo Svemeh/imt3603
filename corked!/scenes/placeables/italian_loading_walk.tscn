@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://models/map/environment/italian_loading_walk.res" id="1_wycxg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyhik"]
+albedo_color = Color(0.27058825, 0.28235295, 0.23921569, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vl1bv"]
+material = SubResource("StandardMaterial3D_jyhik")
+size = Vector2(3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fovb2"]
+size = Vector3(3, 0.1, 3)
+
+[node name="ItalianLoadingWalk" type="Node3D" unique_id=1625177352]
+
+[node name="HandLaidStones" type="MeshInstance3D" parent="." unique_id=563037140]
+cast_shadow = 0
+mesh = ExtResource("1_wycxg")
+
+[node name="RecessedMortar" type="MeshInstance3D" parent="." unique_id=1880558513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
+mesh = SubResource("PlaneMesh_vl1bv")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=829301971]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1057794212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_fovb2")
