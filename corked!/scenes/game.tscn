@@ -97,6 +97,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9
 
 [node name="CrateTable" parent="." unique_id=1786547588 instance=ExtResource("10_ca42v")]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 16.941584, 0.5908952, 8.882295)
+
 [node name="BarrelStack" parent="." unique_id=1108354708 instance=ExtResource("10_ir15t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
 
@@ -114,3 +115,18 @@ script = ExtResource("11_preview")
 window_paths = Array[NodePath]([NodePath("../StompingStation/MinigameWindowPreview"), NodePath("../FermentationStation/MinigameWindowPreview"), NodePath("../Bottlingstation/RepairPopupAnchor/MinigameWindowPreview")])
 
 [node name="RoundTransition" parent="." unique_id=1920663775 instance=ExtResource("12_round_transition")]
+
+[node name="PlayerSpawns" type="Node3D" parent="." unique_id=672170910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.419197, 0, 9.561514)
+
+[node name="Player1" type="Marker3D" parent="PlayerSpawns" unique_id=1476265023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21772, 0, -0.94382286)
+
+[node name="Player2" type="Marker3D" parent="PlayerSpawns" unique_id=1839193216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0845184, 0, -1.0981331)
+
+[node name="Player3" type="Marker3D" parent="PlayerSpawns" unique_id=1616223269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3958588, 0, 1.6910973)
+
+[node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=1494465462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9490776, 0, 1.9830875)
