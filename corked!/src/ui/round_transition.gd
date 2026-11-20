@@ -162,9 +162,9 @@ func _build_choices() -> void:
 	if _choice_root:
 		_choice_root.queue_free()
 	_choice_root = VBoxContainer.new()
-	_choice_root.position = Vector2(77, 45)
-	_choice_root.size = Vector2(998, 385)
-	_choice_root.add_theme_constant_override("separation", 14)
+	_choice_root.position = Vector2(77, 40)
+	_choice_root.size = Vector2(998, 390)
+	_choice_root.add_theme_constant_override("separation", 8)
 	computer.get_node("Design").add_child(_choice_root)
 
 	_choice_root.add_child(_label("CHOOSE AN UPGRADE   -   $%d" % _balance, 34, HEADER_COLOR))
@@ -187,12 +187,12 @@ func _make_card(modifier: Dictionary) -> Control:
 	card.add_theme_stylebox_override("panel", _card_style())
 
 	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 8)
+	box.add_theme_constant_override("separation", 4)
 	card.add_child(box)
 
-	box.add_child(_label(modifier.title, 32, TITLE_COLOR))
-	box.add_child(_label("+ " + modifier.buff, 22, BUFF_COLOR))
-	box.add_child(_label("- " + modifier.debuff, 22, DEBUFF_COLOR))
+	box.add_child(_label(modifier.title, 30, TITLE_COLOR))
+	box.add_child(_label("+ " + modifier.buff, 20, BUFF_COLOR))
+	box.add_child(_label("- " + modifier.debuff, 20, DEBUFF_COLOR))
 
 	var spacer := Control.new()
 	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -240,7 +240,7 @@ func _label(text: String, font_size: int, color: Color) -> Label:
 func _button(text: String) -> Button:
 	var button := MENU_BUTTON.instantiate() as Button
 	button.text = text
-	button.custom_minimum_size = Vector2(0, 54)
+	button.custom_minimum_size = Vector2(0, 46)
 	button.size_flags_horizontal = Control.SIZE_FILL
 	button.add_theme_font_size_override("font_size", 24)
 	var normal := button.get_theme_stylebox("normal")
@@ -256,7 +256,7 @@ func _card_style() -> StyleBoxFlat:
 	style.border_color = Color(0.53, 0.37, 0.18, 0.85)
 	style.set_border_width_all(2)
 	style.set_corner_radius_all(14)
-	style.set_content_margin_all(16)
+	style.set_content_margin_all(12)
 	return style
 
 
