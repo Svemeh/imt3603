@@ -17,7 +17,6 @@ const HEADER_COLOR := Color(0.05, 0.12, 0.2)
 @onready var summary: Control = %Summary
 @onready var computer: Control = %Computer
 @onready var continue_button: Button = %ContinueButton
-@onready var skip_button: Button = %SkipButton
 ## Plays while the round-won screen is shown
 @onready var round_won_sound: AudioStreamPlayer = $RoundWonSound
 
@@ -28,6 +27,11 @@ var _balance: int = 0
 var _choice_root: Control
 var _first_button: Button
 var _grid: Array = []
+var _confirm_armed: bool = false
+var _arm_at_msec: int = 0
+
+const ARM_DELAY_MSEC := 400
+const CONFIRM_ACTIONS := ["interact"]
 var _col: int = 0
 var _row: int = 0
 
@@ -42,8 +46,8 @@ func _ready() -> void:
 	overlay.hide()
 	computer.resized.connect(_fit_computer)
 	_fit_computer()
-	continue_button.pressed.connect(_show_computer)
-	skip_button.hide()
+	continue_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	continue_button.focus_mode = Control.FOCUS_NONE
 
 ## Called only once the driver and truck have finished leaving the map.
 ## This layer processes while paused; the gameplay world beneath it does not.
@@ -66,8 +70,8 @@ func show_round_over(round_number: int, bottles: int, earned: int, balance: int)
 	overlay.show()
 	await _fade(overlay, 1.0)
 	continue_button.disabled = false
+	_disarm_confirm()
 	_busy = false
-	continue_button.grab_focus()
 
 ## Keeps the computer display intentionally empty for the later upgrade work.
 ## The Skip button sits below the monitor, outside its blank screen.
@@ -83,9 +87,9 @@ func _show_computer() -> void:
 	computer.modulate.a = 0.0
 	computer.show()
 	_fit_computer()
-	skip_button.disabled = true
 	_screen = &"computer"
 	await _fade(computer, 1.0)
+	_disarm_confirm()
 	_busy = false
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	_focus_cell(0, 0)
@@ -95,8 +99,6 @@ func _request_next_round() -> void:
 	if _busy or _screen != &"computer":
 		return
 	_busy = true
-	skip_button.disabled = true
-	skip_button.release_focus()
 	next_round_requested.emit()
 
 ## Game calls this after all fresh round nodes have been added and connected.
@@ -121,9 +123,9 @@ func _input(event: InputEvent) -> void:
 	if _screen == &"computer" and (event is InputEventMouse or _is_direction(event)):
 		get_viewport().set_input_as_handled()
 		return
-	if event.is_action_pressed("interact") or event.is_action_pressed("interact2") or event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("interact"):
 		get_viewport().set_input_as_handled()
-		if event.is_echo() or _busy:
+		if event.is_echo() or _busy or not _confirm_armed:
 			return
 		if _screen == &"summary":
 			_show_computer()
@@ -131,6 +133,8 @@ func _input(event: InputEvent) -> void:
 			var focused := _current_button()
 			if focused and not focused.disabled:
 				focused.pressed.emit()
+	elif event is InputEventMouseButton or event.is_action("interact2") or event.is_action("ui_accept"):
+		get_viewport().set_input_as_handled()
 
 ## The overlay inherits PROCESS_MODE_ALWAYS so these tweens also run while paused.
 func _fade(control: Control, alpha: float) -> void:
@@ -257,6 +261,8 @@ func _card_style() -> StyleBoxFlat:
 
 
 func _process(_delta: float) -> void:
+	if not _confirm_armed and Time.get_ticks_msec() >= _arm_at_msec and not _confirm_held():
+		_confirm_armed = true
 	if _screen != &"computer" or _busy or _grid.is_empty():
 		return
 	for action in DIRECTIONS:
@@ -308,3 +314,15 @@ func _set_selected(button: Button, selected: bool) -> void:
 
 func _exit_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func _disarm_confirm() -> void:
+	_confirm_armed = false
+	_arm_at_msec = Time.get_ticks_msec() + ARM_DELAY_MSEC
+
+
+func _confirm_held() -> bool:
+	for action in CONFIRM_ACTIONS:
+		if Input.is_action_pressed(action):
+			return true
+	return false
