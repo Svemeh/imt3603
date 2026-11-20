@@ -64,6 +64,8 @@ func act(action: String) -> String:
 
 
 func _ready() -> void:
+	run_speed *= Modifiers.run_speed_multiplier
+	fall_stun_time *= Modifiers.stun_time_multiplier
 	setup_player_variant()
 	animation_player.play(idle_animation)
 
@@ -456,7 +458,7 @@ func crash() -> void:
 		hand_marker.global_position.z
 	)
 
-	drop_item(true)
+	drop_item(item is WineBox)
 
 	# Item could not be dropped (e.g. the hammer)
 	if held_item == item:

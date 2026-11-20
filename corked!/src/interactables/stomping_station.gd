@@ -24,6 +24,7 @@ signal grape_finished
 @export var empty_grape_y: float = 0.005
 @export var full_grape_y: float = 0.305
 @onready var grape_fill: Node3D = $GrapeFill
+@onready var grape_label: Label3D = $GrapeLabel
 
 ## Where a docked barrel sits
 @onready var barrel_marker: Marker3D = $barrelMarker
@@ -42,11 +43,13 @@ var _mash: float = 0.0
 var _tick_time: float = 0.0
 
 func _ready() -> void:
+	stomps_required += Modifiers.extra_stomps
 	update_grape_visual()
 	_connect_stomp_popup()
 
 ## Loses decay_per_tick stomps every decay_interval seconds
 func _process(delta: float) -> void:
+	grape_label.visible = is_player_near()
 	if _mash <= 0.0:
 		_tick_time = 0.0
 		return
@@ -58,6 +61,7 @@ func _process(delta: float) -> void:
 
 func update_grape_visual() -> void:
 	var grape_count: int = _grapes.size()
+	grape_label.text = "Grapes %d/%d" % [grape_count, max_grape_capacity]
 
 	if grape_count <= 0:
 		grape_fill.visible = false
