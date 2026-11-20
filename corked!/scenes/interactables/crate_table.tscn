@@ -21,7 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0029296875, 0.007232666)
 shape = SubResource("BoxShape3D_l0bqs")
 
 [node name="CratePlace" type="Marker3D" parent="." unique_id=465862293]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30016375, 0.102733284, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36520004, 0.102733284, 0)
 
 [node name="CrateLabel" type="Label3D" parent="." unique_id=1583920476]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.35, 0)
