@@ -29,8 +29,11 @@ var is_wine: bool = false:
 @export var wine_color: Color = Color(0.45, 0.02, 0.07)
 ## Seconds the liquid takes to rise or drop to its new level
 @export var fill_tween_time: float = 0.5
+## How close (in meters, ignoring height) a player must be to see the fill label
+@export var label_range: float = 2.5
 
 @onready var liquid: MeshInstance3D = $Liquid
+@onready var fill_label: Label3D = $FillLabel
 
 ## This barrel's own copy of the liquid material
 var _liquid_material: StandardMaterial3D = null
@@ -45,6 +48,19 @@ func _ready() -> void:
 	liquid.set_surface_override_material(0, _liquid_material)
 	update_liquid_visual(true)
 
+## Only shows the fill label while a player is close to the barrel
+func _process(_delta: float) -> void:
+	fill_label.visible = _is_player_close()
+
+## True when any player is within label_range of the barrel
+func _is_player_close() -> bool:
+	for node in get_tree().current_scene.get_children():
+		if node is Player:
+			var offset: Vector3 = node.global_position - global_position
+			if Vector2(offset.x, offset.z).length() <= label_range:
+				return true
+	return false
+
 ## Adds amount of units of grape juice. Does not clamp, stomping station
 ## should check max_capacity (or the current juice amount)
 func add_juice(amount: int) -> void:
@@ -55,6 +71,7 @@ func add_juice(amount: int) -> void:
 ## instant = true skips the smooth rise/drop.
 func update_liquid_visual(instant: bool = false) -> void:
 	_liquid_material.albedo_color = wine_color if is_wine else juice_color
+	fill_label.text = "%d/%d" % [juice_amount, MAX_CAPACITY]
 
 	if _liquid_tween:
 		_liquid_tween.kill()

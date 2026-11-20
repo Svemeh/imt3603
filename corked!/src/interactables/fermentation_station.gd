@@ -38,6 +38,7 @@ enum Zone { RED, YELLOW, GREEN }
 
 @onready var barrel_marker: Marker3D = $BarrelMarker
 @onready var pour_marker: Marker3D = $PourMarker
+@onready var tank_label: Label3D = $TankLabel
 
 ## Barrel docked at the output spot, if any
 var barrel: Barrel = null
@@ -83,6 +84,8 @@ func is_running() -> bool:
 ## Everything runs here, also when no player is near, so the pressure keeps
 ## dropping while players are away fixing something else
 func _process(delta: float) -> void:
+	tank_label.text = "Tank %d/%d" % [_tank_amount, FermentationSettings.tank_capacity]
+	tank_label.visible = is_player_near()
 	# Only run when there is juice AND a docked barrel with room for wine
 	var should_run := _tank_amount > 0 and is_filling()
 	if should_run and not _active:
