@@ -4,6 +4,7 @@ extends Item
 
 ## How many bottles that fit in a crate
 @export var capacity: int = 4
+@export var floor_offset: float = 0.33
 
 ## Bottles currently in the crate
 var bottles: int = 0
@@ -64,4 +65,4 @@ func on_crashed() -> void:
 		return
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
-	global_position.y = 0.0
+	global_position.y = floor_offset

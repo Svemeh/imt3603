@@ -21,7 +21,7 @@ const WINE_BOX_SCENE := preload("res://scenes/items/wine_box.tscn")
 
 @export var debug_mode: bool = false
 @export var debug_full_crates: int = 6
-@export var debug_crate_origin: Vector3 = Vector3(23.5, 0, 6.5)
+@export var debug_crate_origin: Vector3 = Vector3(23.0, 0, 7.0)
 
 const PLAYER_VARIANTS := [
 	Player.PlayerVariant.YELLOW,
@@ -107,7 +107,7 @@ func _spawn_debug_crates() -> void:
 	for i in debug_full_crates:
 		var crate := WINE_BOX_SCENE.instantiate() as WineBox
 		add_child(crate)
-		crate.global_position = debug_crate_origin + Vector3((i % 2) * 1.0, 0, floorf(i / 2.0))
+		crate.global_position = debug_crate_origin + Vector3((i % 2) * 1.3, crate.floor_offset, floorf(i / 2.0) * 1.1)
 		crate.bottles = crate.capacity
 		crate._update_visuals()
 
