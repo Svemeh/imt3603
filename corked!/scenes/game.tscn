@@ -26,6 +26,7 @@
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
+delivery_opens_at = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=299118941]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660254, 0, -0.8660254, 0.5, 8.9999485, 10.010176, 9.98819)
@@ -126,7 +127,6 @@ autoplay = true
 
 [node name="AutomaticDoor" parent="." unique_id=1730021001 instance=ExtResource("90_door")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 3)
-collision_layer = 0
 
 [node name="PressurePlate" parent="." unique_id=1730021002 node_paths=PackedStringArray("doors") instance=ExtResource("91_plate")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9181156, 0, 12.385619)
