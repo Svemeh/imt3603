@@ -30,14 +30,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		event is InputEventKey or event is InputEventMouseButton
 	) else event.device
 
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("menu_join"):
 		var i: int = PlayerManager.join(device)
 
 		if i != -1:
 			player_slots[i].set_joined(true)
 			get_viewport().set_input_as_handled()
 
-	elif event.is_action_pressed("interact2"):
+	elif event.is_action_pressed("menu_leave"):
 		var i: int = PlayerManager.leave(device)
 
 		if i != -1:
