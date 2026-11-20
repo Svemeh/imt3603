@@ -17,6 +17,11 @@ var _resetting_round: bool = false
 var _owns_pause: bool = false
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
+const WINE_BOX_SCENE := preload("res://scenes/items/wine_box.tscn")
+
+@export var debug_mode: bool = false
+@export var debug_full_crates: int = 6
+@export var debug_crate_origin: Vector3 = Vector3(23.5, 0, 6.5)
 
 const PLAYER_VARIANTS := [
 	Player.PlayerVariant.YELLOW,
@@ -73,6 +78,9 @@ func _prepare_round() -> void:
 	delivery_zone.contents_changed.connect(_on_delivery_zone_contents_changed)
 	deliveryman.delivery_sent.connect(_on_delivery_sent)
 	round_timer.start_round()
+	if debug_mode:
+		_spawn_debug_crates()
+		$AutomaticDoor.collision_layer = 0
 
 	# add the players
 	for i in PlayerManager.MAX_PLAYERS:
@@ -91,6 +99,15 @@ func _prepare_round() -> void:
 		var spawns := $PlayerSpawns.get_children()
 		if i < spawns.size():
 			p.global_position = (spawns[i] as Node3D).global_position
+
+
+func _spawn_debug_crates() -> void:
+	for i in debug_full_crates:
+		var crate := WINE_BOX_SCENE.instantiate() as WineBox
+		add_child(crate)
+		crate.global_position = debug_crate_origin + Vector3((i % 2) * 1.0, 0, (i / 2) * 1.0)
+		crate.bottles = crate.capacity
+		crate._update_visuals()
 
 
 ## Increment money up or down by x and refreshes the HUD.
