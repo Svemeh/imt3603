@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bcf0yxfaiferx" path="res://assets/ui/settings_panel.png" id="3_8ughu"]
 [ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="4_8ughu"]
 [ext_resource type="Texture2D" uid="uid://c6wvkhxlnoqjw" path="res://assets/ui/corked_logo.png" id="5_x1up7"]
+[ext_resource type="Script" path="res://src/menus/menu_navigator.gd" id="nav_script"]
 
 [node name="CreditsMenu" type="Control" unique_id=591379799]
 layout_mode = 3
@@ -97,5 +98,9 @@ grow_horizontal = 2
 texture = ExtResource("5_x1up7")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="MenuNavigator" type="Node" parent="." node_paths=PackedStringArray("first_focus")]
+script = ExtResource("nav_script")
+first_focus = NodePath("../CreditsContainer/BackButton")
 
 [connection signal="pressed" from="CreditsContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://2qpja723bsxk" path="res://assets/ui/vineyard_background.png" id="2_3xe74"]
 [ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://assets/ui/menu_button.tscn" id="2_nphty"]
 [ext_resource type="Texture2D" uid="uid://c6wvkhxlnoqjw" path="res://assets/ui/corked_logo.png" id="3_3xe74"]
+[ext_resource type="Script" path="res://src/menus/menu_navigator.gd" id="nav_script"]
 
 [node name="MainMenu" type="Control" unique_id=1570372517]
 layout_mode = 3
@@ -65,6 +66,10 @@ text = "CREDITS"
 [node name="QuitButton" parent="MenuContainter/ButtonsContainer" unique_id=860992108 instance=ExtResource("2_nphty")]
 layout_mode = 2
 text = "QUIT"
+
+[node name="MenuNavigator" type="Node" parent="." node_paths=PackedStringArray("first_focus")]
+script = ExtResource("nav_script")
+first_focus = NodePath("../MenuContainter/ButtonsContainer/PlayButton")
 
 [connection signal="pressed" from="MenuContainter/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MenuContainter/ButtonsContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -31,3 +31,9 @@ func _on_fullscreen_toggle_toggled(toggled_on: bool) -> void:
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
     else:
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event.is_action_pressed("menu_back"):
+        get_viewport().set_input_as_handled()
+        _on_back_button_pressed()
