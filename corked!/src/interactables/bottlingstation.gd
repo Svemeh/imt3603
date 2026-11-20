@@ -73,6 +73,9 @@ var _hits: int = 0
 
 
 func _ready() -> void:
+	base_break_chance *= Modifiers.break_chance_multiplier
+	break_chance_step *= Modifiers.break_chance_multiplier
+	hits_to_fix += Modifiers.extra_repair_hits
 	## To start the break chance
 	_break_chance = base_break_chance
 	_spawn_crate()

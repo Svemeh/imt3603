@@ -95,9 +95,6 @@ window_scene = ExtResource("12_ferm_window")
 panel_size = Vector2i(300, 220)
 pixel_size = 0.028
 
-[node name="Bottling Station Hut - Modular Study" parent="Map" index="12" unique_id=634437062]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.900001, -0.12683767, 15.900002)
-
 [node name="HammerShelf" parent="." unique_id=1530165772 instance=ExtResource("7_kvuet")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9.27643)
 
@@ -126,14 +123,15 @@ window_paths = Array[NodePath]([NodePath("../StompingStation/MinigameWindowPrevi
 stream = ExtResource("17_rysoc")
 volume_db = -12.0
 autoplay = true
+
 [node name="AutomaticDoor" parent="." unique_id=1730021001 instance=ExtResource("90_door")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 3)
+collision_layer = 0
 
 [node name="PressurePlate" parent="." unique_id=1730021002 node_paths=PackedStringArray("doors") instance=ExtResource("91_plate")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9181156, 0, 12.385619)
 doors = [NodePath("../AutomaticDoor")]
 
-[editable path="Map"]
 [node name="PlayerSpawns" type="Node3D" parent="." unique_id=672170910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.419197, 0, 9.561514)
 
@@ -148,3 +146,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3958588, 0, 1.6910973)
 
 [node name="Player4" type="Marker3D" parent="PlayerSpawns" unique_id=1494465462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9490776, 0, 1.9830875)
+
+[editable path="Map"]
