@@ -12,10 +12,16 @@ extends Node
 
 ## Run state stays on Game; fresh stations/items must not reset the wallet.
 var round_number: int = 1
+var _base_round_duration: float = -1.0
 var _resetting_round: bool = false
 var _owns_pause: bool = false
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
+const WINE_BOX_SCENE := preload("res://scenes/items/wine_box.tscn")
+
+@export var debug_mode: bool = false
+@export var debug_full_crates: int = 6
+@export var debug_crate_origin: Vector3 = Vector3(23.0, 0, 7.0)
 
 const PLAYER_VARIANTS := [
 	Player.PlayerVariant.YELLOW,
@@ -50,6 +56,7 @@ var _delivery_open: bool = false
 func _ready() -> void:
 	MenuMusic.stop_menu_music()
 	round_transition.next_round_requested.connect(_request_next_round)
+	round_transition.modifier_chosen.connect(_on_modifier_chosen)
 	_prepare_round()
 
 
@@ -60,6 +67,9 @@ func _prepare_round() -> void:
 	round_timer = $RoundTimer
 	delivery_zone = $DeliveryPoint/DeliveryZone
 	deliveryman = $DeliveryPoint/Deliveryman
+	if _base_round_duration < 0.0:
+		_base_round_duration = round_timer.round_duration
+	round_timer.round_duration = _base_round_duration + Modifiers.extra_round_time
 	hud.update_money(money)
 	hud.update_quota(loaded_bottles, quota)
 	_delivery_open = false
@@ -68,6 +78,11 @@ func _prepare_round() -> void:
 	delivery_zone.contents_changed.connect(_on_delivery_zone_contents_changed)
 	deliveryman.delivery_sent.connect(_on_delivery_sent)
 	round_timer.start_round()
+	if debug_mode:
+		_spawn_debug_crates()
+		$AutomaticDoor.collision_layer = 0
+		_delivery_open = true
+		deliveryman.open_for_loading()
 
 	# add the players
 	for i in PlayerManager.MAX_PLAYERS:
@@ -86,6 +101,15 @@ func _prepare_round() -> void:
 		var spawns := $PlayerSpawns.get_children()
 		if i < spawns.size():
 			p.global_position = (spawns[i] as Node3D).global_position
+
+
+func _spawn_debug_crates() -> void:
+	for i in debug_full_crates:
+		var crate := WINE_BOX_SCENE.instantiate() as WineBox
+		add_child(crate)
+		crate.global_position = debug_crate_origin + Vector3((i % 2) * 1.3, crate.floor_offset, floorf(i / 2.0) * 1.1)
+		crate.bottles = crate.capacity
+		crate._update_visuals()
 
 
 ## Increment money up or down by x and refreshes the HUD.
@@ -117,9 +141,10 @@ func _on_delivery_sent(bottles: int) -> void:
 	await deliveryman.drive_off_finished
 	var won := bottles >= quota
 	if won:
-		increment_money(bottles * money_per_bottle)
+		var earned := bottles * _money_per_bottle()
+		increment_money(earned)
 		GameStats.bottles_sold += bottles
-		GameStats.money_earned += bottles * money_per_bottle
+		GameStats.money_earned += earned
 		GameStats.days_survived += 1
 		print("Day won! %d/%d bottles" % [bottles, quota])
 		GameStats.last_day_bottles = bottles
@@ -127,7 +152,7 @@ func _on_delivery_sent(bottles: int) -> void:
 		# Pause only after the drive-off has finished, so the truck animation completes.
 		_owns_pause = true
 		get_tree().paused = true
-		round_transition.show_round_over(round_number, bottles, bottles * money_per_bottle, money)
+		round_transition.show_round_over(round_number, bottles, earned, money)
 	else:
 		print("Day lost, truck sent with %d/%d bottles" % [bottles, quota])
 		GameStats.last_day_bottles = bottles
@@ -140,7 +165,7 @@ func _on_delivery_sent(bottles: int) -> void:
 func _on_round_timer_time_updated(time_left: float) -> void:
 	hud.update_timer(time_left, round_timer.round_duration)
 	var time_passed := round_timer.round_duration - time_left
-	if not _delivery_open and time_passed >= round_timer.round_duration * delivery_opens_at:
+	if not _delivery_open and time_passed >= round_timer.round_duration * Modifiers.delivery_opens_at(delivery_opens_at):
 		_delivery_open = true
 		deliveryman.open_for_loading()
 
@@ -154,6 +179,19 @@ func _on_round_timer_round_ended() -> void:
 	GameStats.last_day_quota = quota
 	GameStats.loss_reason = "Time ran out"
 	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
+
+
+func _money_per_bottle() -> int:
+	return maxi(money_per_bottle + Modifiers.extra_money_per_bottle, 0)
+
+
+func _on_modifier_chosen(modifier: Dictionary, remove_debuff: bool) -> void:
+	if remove_debuff:
+		var cost := Modifiers.cost_for(modifier, round_number)
+		if money < cost:
+			return
+		increment_money(-cost)
+	Modifiers.apply(modifier, remove_debuff)
 
 
 ## Defer the rebuild until the Skip button has finished emitting its signal.
@@ -193,7 +231,7 @@ func _start_next_round() -> void:
 	loaded_bottles = 0
 	round_number += 1
 	# Increase once per new round, before refreshing the quota display.
-	quota += randi_range(5, 10)
+	quota += randi_range(5, 10) + Modifiers.take_pending_quota()
 	_day_over = false
 	_prepare_round()
 	await round_transition.reveal_next_round()

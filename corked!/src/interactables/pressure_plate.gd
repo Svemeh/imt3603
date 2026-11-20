@@ -9,6 +9,8 @@ extends Area3D
 @onready var _pressed_model: Node3D = $Pressed
 
 var _players_on_plate: Array[Player] = []
+var _open_wait: float = 0.0
+var _doors_open: bool = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -34,8 +36,27 @@ func _update() -> void:
 	_unpressed_model.visible = not is_pressed()
 	_pressed_model.visible = is_pressed()
 
+	if is_pressed():
+		if _doors_open or _open_wait > 0.0:
+			return
+		_open_wait = Modifiers.door_open_delay
+		if _open_wait <= 0.0:
+			_set_doors_open(true)
+	else:
+		_open_wait = 0.0
+		_set_doors_open(false)
+
+func _physics_process(delta: float) -> void:
+	if not is_pressed() or _doors_open or _open_wait <= 0.0:
+		return
+	_open_wait -= delta
+	if _open_wait <= 0.0:
+		_set_doors_open(true)
+
+func _set_doors_open(value: bool) -> void:
+	_doors_open = value
 	for door in doors:
-		if is_pressed():
+		if value:
 			door.open()
 		else:
 			door.close()

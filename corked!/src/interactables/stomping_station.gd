@@ -43,6 +43,7 @@ var _mash: float = 0.0
 var _tick_time: float = 0.0
 
 func _ready() -> void:
+	stomps_required += Modifiers.extra_stomps
 	update_grape_visual()
 	_connect_stomp_popup()
 

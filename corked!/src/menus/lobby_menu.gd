@@ -54,4 +54,5 @@ func _on_start_game_button_pressed() -> void:
 		return
 	GameStats.reset()
 	FermentationSettings.reset()
+	Modifiers.reset()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
