@@ -53,6 +53,8 @@ const WINE_BOTTLE_SCENE: PackedScene = preload("res://scenes/items/full_wine_bot
 @onready var barrel_marker: Marker3D = $BarrelMarker
 ## Where the crate sits
 @onready var crate_marker: Marker3D = $CrateMarker
+## Shows how many bottles are in the crate
+@onready var crate_label: Label3D = $CrateLabel
 ## Marker3D the bottle travels through, in order (filler -> order -> conveyor
 ## end)
 @onready var _path_points: Array[Node] = $BottlePath.get_children()
@@ -73,6 +75,9 @@ var _hits: int = 0
 
 
 func _ready() -> void:
+	base_break_chance *= Modifiers.break_chance_multiplier
+	break_chance_step *= Modifiers.break_chance_multiplier
+	hits_to_fix += Modifiers.extra_repair_hits
 	## To start the break chance
 	_break_chance = base_break_chance
 	_spawn_crate()
@@ -84,6 +89,8 @@ func _physics_process(_delta: float) -> void:
 	if (crate == null or not is_instance_valid(crate) or crate.get_parent() 
 	!= crate_marker):
 		_spawn_crate()
+	crate_label.text = "Bottles %d/%d" % [crate.bottles, crate.capacity]
+	crate_label.visible = is_player_near()
 
 
 ## Function for spawn crate

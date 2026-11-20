@@ -15,12 +15,21 @@ extends Interactable
 
 ## Where the first crate goes (front corner of the tabletop)
 @onready var _anchor: Marker3D = $CratePlace
+## Shows how many crates are on the table
+@onready var crate_label: Label3D = $CrateLabel
 
 ## One entry per spot on the table, null when the spot is free
 var _spots: Array[WineBox] = []
 
 func _ready() -> void:
 	_spots.resize(crates_across * crates_deep)
+
+## Keeps the label up to date, also when a player picks a crate back up
+func _process(_delta: float) -> void:
+	_check_spots()
+	var used := _spots.size() - _spots.count(null)
+	crate_label.text = "Crates %d" % used
+	crate_label.visible = is_player_near()
 
 ## Frees spots whose crate has been picked up by a player
 func _check_spots() -> void:

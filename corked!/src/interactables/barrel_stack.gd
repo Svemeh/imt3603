@@ -14,7 +14,11 @@ const BARREL_SCENE: PackedScene = preload("res://scenes/items/barrel.tscn")
 	$Visuals/TopRight,
 ]
 
+var _max_barrels: int = 0
+
 func _ready() -> void:
+	remaining += Modifiers.extra_barrels
+	_max_barrels = maxi(remaining, _visuals.size())
 	_update_visuals()
 
 func has_barrels() -> bool:
@@ -37,7 +41,7 @@ func take_barrel(player: Player) -> bool:
 	return true
 
 func can_accept_item(item: Item) -> bool:
-	return item is Barrel and remaining < _visuals.size()
+	return item is Barrel and remaining < _max_barrels
 
 func accept_item(player: Player) -> void:
 	var barrel := player.transfer_item()

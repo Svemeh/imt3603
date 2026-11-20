@@ -969,6 +969,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vs5ma")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_room"]
+size = Vector3(8.4, 4, 11)
+
 [node name="StompingStation" type="StaticBody3D" unique_id=1482266665]
 collision_layer = 5
 collision_mask = 0
@@ -1804,6 +1807,29 @@ mesh = SubResource("ArrayMesh_b2841")
 stream = ExtResource("3_k23x7")
 volume_db = -10.0
 max_polyphony = 3
+
+[node name="GrapeLabel" type="Label3D" parent="." unique_id=1928374651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 1.6)
+visible = false
+pixel_size = 0.005
+billboard = 1
+no_depth_test = true
+render_priority = 10
+outline_render_priority = 9
+modulate = Color(1, 0.9, 0.55, 1)
+outline_modulate = Color(0.45, 0.02, 0.07, 1)
+font_size = 96
+outline_size = 26
+text = "Grapes 0/4"
+
+[node name="RoomArea" type="Area3D" parent="." unique_id=1402938471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77, 0.73, 0.5)
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomArea" unique_id=1402938472]
+shape = SubResource("BoxShape3D_room")
 
 [connection signal="body_entered" from="itemZone" to="." method="_on_item_zone_body_entered"]
 [connection signal="body_exited" from="itemZone" to="." method="_on_item_zone_body_exited"]

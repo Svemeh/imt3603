@@ -14,6 +14,9 @@ const GRAPE_SCENE: PackedScene = preload("res://scenes/items/grape.tscn")
 ## Whether this vine has a grape ready to harvest
 var has_grape: bool = true
 
+func _ready() -> void:
+	timer.wait_time = Modifiers.vine_regrow_time(timer.wait_time)
+
 ## Once cooldown timer finishes grape has regrown.
 ## Timer is found as a gd Timer node right under the grapevine node
 func _on_my_timer_timeout():

@@ -4,6 +4,7 @@ extends Item
 
 ## How many bottles that fit in a crate
 @export var capacity: int = 4
+@export var floor_offset: float = 0.33
 
 ## Bottles currently in the crate
 var bottles: int = 0
@@ -53,9 +54,15 @@ func get_display_name() -> String:
 
 ## All bottles break: large spill. Empty crate spills nothing
 func get_crash_spill_radius() -> float:
+	if Modifiers.unbreakable_crates:
+		return 0.0
 	return Spill.LARGE_RADIUS if bottles > 0 else 0.0
 
 ## Broken bottles, so the crate is gone
 func on_crashed() -> void:
-	if bottles > 0:
+	if bottles > 0 and not Modifiers.unbreakable_crates:
 		queue_free()
+		return
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	global_position.y = floor_offset
