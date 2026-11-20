@@ -187,9 +187,10 @@ func _money_per_bottle() -> int:
 
 func _on_modifier_chosen(modifier: Dictionary, remove_debuff: bool) -> void:
 	if remove_debuff:
-		if money < modifier.cost:
+		var cost := Modifiers.cost_for(modifier, round_number)
+		if money < cost:
 			return
-		increment_money(-modifier.cost)
+		increment_money(-cost)
 	Modifiers.apply(modifier, remove_debuff)
 
 

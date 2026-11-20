@@ -6,56 +6,56 @@ const ALL: Array[Dictionary] = [
 		"title": "Extra Barrel",
 		"buff": "One more barrel in the stack",
 		"debuff": "The door opens 3 seconds after someone steps on the plate",
-		"cost": 40,
+		"cost": 120,
 	},
 	{
 		"id": &"green_thumb",
 		"title": "Green Thumb",
 		"buff": "Grapes grow back 2 seconds faster",
 		"debuff": "Each grape takes 3 more stomps",
-		"cost": 30,
+		"cost": 100,
 	},
 	{
 		"id": &"sturdy_machine",
 		"title": "Sturdy Machine",
 		"buff": "The bottling machine breaks half as often",
 		"debuff": "Fermentation pressure drops 30% faster",
-		"cost": 50,
+		"cost": 150,
 	},
 	{
 		"id": &"early_driver",
 		"title": "Early Driver",
 		"buff": "The truck opens 10% earlier in the day",
 		"debuff": "Fixing the bottling machine takes 2 more hammer hits",
-		"cost": 40,
+		"cost": 120,
 	},
 	{
 		"id": &"overtime",
 		"title": "Overtime",
 		"buff": "Each day is 30 seconds longer",
 		"debuff": "Tomorrow's quota is 3 bottles higher",
-		"cost": 30,
+		"cost": 100,
 	},
 	{
 		"id": &"running_shoes",
 		"title": "Running Shoes",
 		"buff": "Everyone runs 15% faster",
 		"debuff": "Getting knocked over lasts twice as long",
-		"cost": 40,
+		"cost": 120,
 	},
 	{
 		"id": &"reinforced_bottles",
 		"title": "Reinforced Bottles",
 		"buff": "Dropped crates no longer break",
 		"debuff": "Each bottle sells for $3 less",
-		"cost": 40,
+		"cost": 120,
 	},
 	{
 		"id": &"good_vintage",
 		"title": "Good Vintage",
 		"buff": "Each bottle sells for $5 more",
 		"debuff": "Grapes grow back 2 seconds slower",
-		"cost": 30,
+		"cost": 100,
 	},
 ]
 
@@ -99,6 +99,9 @@ func apply(modifier: Dictionary, remove_debuff: bool) -> void:
 	_apply_buff(modifier.id)
 	if not remove_debuff:
 		_apply_debuff(modifier.id)
+
+func cost_for(modifier: Dictionary, day: int) -> int:
+	return modifier.cost * maxi(day, 1)
 
 func take_pending_quota() -> int:
 	var amount := pending_quota

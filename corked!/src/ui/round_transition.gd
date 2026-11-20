@@ -24,6 +24,7 @@ const HEADER_COLOR := Color(0.05, 0.12, 0.2)
 var _busy: bool = false
 var _screen: StringName = &"hidden"
 var _balance: int = 0
+var _day: int = 1
 var _choice_root: Control
 var _first_button: Button
 var _grid: Array = []
@@ -54,6 +55,7 @@ func _ready() -> void:
 func show_round_over(round_number: int, bottles: int, earned: int, balance: int) -> void:
 	round_won_sound.play()
 	_balance = balance
+	_day = round_number
 	_screen = &"summary"
 	_busy = true
 	# The computer uses an in-game evening clock; show the completed day below it.
@@ -202,8 +204,9 @@ func _make_card(modifier: Dictionary) -> Control:
 	pick.pressed.connect(_choose.bind(modifier, false))
 	box.add_child(pick)
 
-	var clean := _button("NO DEBUFF  $%d" % modifier.cost)
-	clean.disabled = _balance < modifier.cost
+	var cost := Modifiers.cost_for(modifier, _day)
+	var clean := _button("NO DEBUFF  $%d" % cost)
+	clean.disabled = _balance < cost
 	if clean.disabled:
 		clean.modulate = Color(1, 1, 1, 0.4)
 	clean.pressed.connect(_choose.bind(modifier, true))
@@ -221,7 +224,7 @@ func _make_card(modifier: Dictionary) -> Control:
 func _choose(modifier: Dictionary, remove_debuff: bool) -> void:
 	if _busy or _screen != &"computer":
 		return
-	if remove_debuff and _balance < modifier.cost:
+	if remove_debuff and _balance < Modifiers.cost_for(modifier, _day):
 		return
 	modifier_chosen.emit(modifier, remove_debuff)
 	_request_next_round()
