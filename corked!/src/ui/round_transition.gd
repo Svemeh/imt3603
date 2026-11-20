@@ -220,9 +220,10 @@ func _button(text: String) -> Button:
 	button.custom_minimum_size = Vector2(0, 54)
 	button.size_flags_horizontal = Control.SIZE_FILL
 	button.add_theme_font_size_override("font_size", 24)
+	var normal := button.get_theme_stylebox("normal")
 	var hover := button.get_theme_stylebox("hover")
 	button.focus_entered.connect(button.add_theme_stylebox_override.bind("normal", hover))
-	button.focus_exited.connect(button.remove_theme_stylebox_override.bind("normal"))
+	button.focus_exited.connect(button.add_theme_stylebox_override.bind("normal", normal))
 	return button
 
 
