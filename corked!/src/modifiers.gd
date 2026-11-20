@@ -46,7 +46,6 @@ const ALL: Array[Dictionary] = [
 ]
 
 const MIN_VINE_REGROW_TIME: float = 1.0
-const MIN_DELIVERY_OPENS_AT: float = 0.3
 
 var extra_barrels: int = 0
 var door_open_delay: float = 0.0
@@ -90,7 +89,7 @@ func vine_regrow_time(base: float) -> float:
 	return maxf(base + vine_regrow_change, MIN_VINE_REGROW_TIME)
 
 func delivery_opens_at(base: float) -> float:
-	return clampf(base + delivery_opens_change, MIN_DELIVERY_OPENS_AT, 1.0)
+	return clampf(base + delivery_opens_change, 0.0, 1.0)
 
 func _apply_buff(id: StringName) -> void:
 	match id:

@@ -81,6 +81,8 @@ func _prepare_round() -> void:
 	if debug_mode:
 		_spawn_debug_crates()
 		$AutomaticDoor.collision_layer = 0
+		_delivery_open = true
+		deliveryman.open_for_loading()
 
 	# add the players
 	for i in PlayerManager.MAX_PLAYERS:
