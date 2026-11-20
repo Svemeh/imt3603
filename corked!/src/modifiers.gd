@@ -37,6 +37,20 @@ const ALL: Array[Dictionary] = [
 		"cost": 30,
 	},
 	{
+		"id": &"running_shoes",
+		"title": "Running Shoes",
+		"buff": "Everyone runs 15% faster",
+		"debuff": "Getting knocked over lasts twice as long",
+		"cost": 40,
+	},
+	{
+		"id": &"reinforced_bottles",
+		"title": "Reinforced Bottles",
+		"buff": "Dropped crates no longer break",
+		"debuff": "Each bottle sells for $3 less",
+		"cost": 40,
+	},
+	{
 		"id": &"good_vintage",
 		"title": "Good Vintage",
 		"buff": "Each bottle sells for $5 more",
@@ -57,6 +71,9 @@ var delivery_opens_change: float = 0.0
 var extra_round_time: float = 0.0
 var extra_money_per_bottle: int = 0
 var pending_quota: int = 0
+var run_speed_multiplier: float = 1.0
+var stun_time_multiplier: float = 1.0
+var unbreakable_crates: bool = false
 
 func reset() -> void:
 	extra_barrels = 0
@@ -69,6 +86,9 @@ func reset() -> void:
 	extra_round_time = 0.0
 	extra_money_per_bottle = 0
 	pending_quota = 0
+	run_speed_multiplier = 1.0
+	stun_time_multiplier = 1.0
+	unbreakable_crates = false
 
 func roll_choices(count: int = 3) -> Array[Dictionary]:
 	var pool := ALL.duplicate()
@@ -105,6 +125,10 @@ func _apply_buff(id: StringName) -> void:
 			extra_round_time += 30.0
 		&"good_vintage":
 			extra_money_per_bottle += 5
+		&"running_shoes":
+			run_speed_multiplier *= 1.15
+		&"reinforced_bottles":
+			unbreakable_crates = true
 
 func _apply_debuff(id: StringName) -> void:
 	match id:
@@ -120,3 +144,7 @@ func _apply_debuff(id: StringName) -> void:
 			pending_quota += 3
 		&"good_vintage":
 			vine_regrow_change += 2.0
+		&"running_shoes":
+			stun_time_multiplier *= 2.0
+		&"reinforced_bottles":
+			extra_money_per_bottle -= 3

@@ -182,7 +182,7 @@ func _on_round_timer_round_ended() -> void:
 
 
 func _money_per_bottle() -> int:
-	return money_per_bottle + Modifiers.extra_money_per_bottle
+	return maxi(money_per_bottle + Modifiers.extra_money_per_bottle, 0)
 
 
 func _on_modifier_chosen(modifier: Dictionary, remove_debuff: bool) -> void:
