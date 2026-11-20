@@ -31,6 +31,9 @@ var money: int = 0
 ## need to figure out how this will work, since what if youre able to send some but
 ## not all? Should the game just end and full restart?
 @export var money_per_bottle: int = 10
+## How far through the round (0-1) the driver comes back and the truck opens
+## Uses the rounds own duration, it follows any change in the length of round
+@export_range(0.0, 1.0) var delivery_opens_at: float = 0.75
 
 ## Bottles currently loaded in truck
 var loaded_bottles: int = 0
@@ -38,6 +41,8 @@ var loaded_bottles: int = 0
 ## Without this ckeck the truck could drive off last second and the round could
 ## count as both a loss and a win
 var _day_over: bool = false
+## Set one the truck has opened this round
+var _delivery_open: bool = false
 
 
 func _ready() -> void:
@@ -54,6 +59,7 @@ func _prepare_round() -> void:
 	deliveryman = $DeliveryPoint/Deliveryman
 	hud.update_money(money)
 	hud.update_quota(loaded_bottles, quota)
+	_delivery_open = false
 	round_timer.time_updated.connect(_on_round_timer_time_updated)
 	round_timer.round_ended.connect(_on_round_timer_round_ended)
 	delivery_zone.contents_changed.connect(_on_delivery_zone_contents_changed)
@@ -130,6 +136,10 @@ func _on_delivery_sent(bottles: int) -> void:
 ## Forwards the timer's remaining time to the HUD's progress bar.
 func _on_round_timer_time_updated(time_left: float) -> void:
 	hud.update_timer(time_left, round_timer.round_duration)
+	var time_passed := round_timer.round_duration - time_left
+	if not _delivery_open and time_passed >= round_timer.round_duration * delivery_opens_at:
+		_delivery_open = true
+		deliveryman.open_for_loading()
 
 ## Called when a round's timer hits zero before the truck was sent. Ends the game.
 func _on_round_timer_round_ended() -> void:

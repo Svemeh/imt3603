@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhxl5ttjsu11" path="res://scenes/interactables/delivery/delivery_point.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://06igqmhwgbxb" path="res://scenes/interactables/bottlingstation.tscn" id="9_7blmr"]
 [ext_resource type="Script" uid="uid://ctutpwai0tgly" path="res://src/game_camera.gd" id="9_camera"]
+[ext_resource type="PackedScene" uid="uid://c36bn0dnihi8c" path="res://scenes/interactables/crate_table.tscn" id="10_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cqs6mvv25dha5" path="res://scenes/interactables/barrel_stack.tscn" id="10_ir15t"]
 [ext_resource type="PackedScene" uid="uid://b6hkmvrjfcamk" path="res://scenes/interactables/stomping_station.tscn" id="10_t75ul"]
 [ext_resource type="PackedScene" path="res://scenes/ui/station_window_mount.tscn" id="10_window"]
@@ -94,6 +95,8 @@ pixel_size = 0.028
 [node name="HammerShelf" parent="." unique_id=1530165772 instance=ExtResource("7_kvuet")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 7.7779016, 0.6760309, 9.27643)
 
+[node name="CrateTable" parent="." unique_id=1786547588 instance=ExtResource("10_ca42v")]
+transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 16.941584, 0.5908952, 8.882295)
 [node name="BarrelStack" parent="." unique_id=1108354708 instance=ExtResource("10_ir15t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8094912, 0, 9.807368)
 
