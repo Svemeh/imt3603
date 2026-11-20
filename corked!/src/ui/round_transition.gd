@@ -11,6 +11,8 @@ signal next_round_requested
 @onready var computer: Control = %Computer
 @onready var continue_button: Button = %ContinueButton
 @onready var skip_button: Button = %SkipButton
+## Plays while the round-won screen is shown
+@onready var round_won_sound: AudioStreamPlayer = $RoundWonSound
 
 ## Blocks repeated confirmation while fading or rebuilding the world.
 var _busy: bool = false
@@ -26,6 +28,7 @@ func _ready() -> void:
 ## Called only once the driver and truck have finished leaving the map.
 ## This layer processes while paused; the gameplay world beneath it does not.
 func show_round_over(round_number: int, bottles: int, earned: int, balance: int) -> void:
+	round_won_sound.play()
 	_screen = &"summary"
 	_busy = true
 	# The computer uses an in-game evening clock; show the completed day below it.
@@ -77,6 +80,7 @@ func _request_next_round() -> void:
 ## Game calls this after all fresh round nodes have been added and connected.
 ## Gameplay stays paused until the fade has fully revealed the restored world.
 func reveal_next_round() -> void:
+	round_won_sound.stop()
 	await _fade(overlay, 0.0)
 	overlay.hide()
 	computer.hide()

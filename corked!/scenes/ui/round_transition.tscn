@@ -3,19 +3,12 @@
 [ext_resource type="Script" uid="uid://dn72h8xswah4y" path="res://src/ui/round_transition.gd" id="1_script"]
 [ext_resource type="FontFile" uid="uid://wipddpnxbfn" path="res://assets/ui/PatrickHand-Regular.ttf" id="2_font"]
 [ext_resource type="PackedScene" uid="uid://c3n3516jdc57l" path="res://assets/ui/menu_button.tscn" id="3_button"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/launcher.png" id="icon_layout-grid"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/power.png" id="icon_power"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/search.png" id="icon_search"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/volume.png" id="icon_volume-2"]
-[ext_resource type="Texture2D" path="res://assets/ui/icons/wifi.png" id="icon_wifi"]
-
-[sub_resource type="Gradient" id="OfficeWallGradient"]
-colors = PackedColorArray(0.30, 0.32, 0.27, 1, 0.15, 0.18, 0.16, 1)
-
-[sub_resource type="GradientTexture2D" id="OfficeWallTexture"]
-gradient = SubResource("OfficeWallGradient")
-fill_from = Vector2(0, 0)
-fill_to = Vector2(0, 1)
+[ext_resource type="AudioStream" uid="uid://c87ro7blpgh2u" path="res://assets/audio/Round_transition_music.wav" id="9_akegc"]
+[ext_resource type="Texture2D" uid="uid://cat1lmpvr6yom" path="res://assets/ui/icons/launcher.png" id="icon_layout-grid"]
+[ext_resource type="Texture2D" uid="uid://cfwv776amw5o7" path="res://assets/ui/icons/power.png" id="icon_power"]
+[ext_resource type="Texture2D" uid="uid://cvxv066t0kpca" path="res://assets/ui/icons/search.png" id="icon_search"]
+[ext_resource type="Texture2D" uid="uid://b45a1vnwb425g" path="res://assets/ui/icons/volume.png" id="icon_volume-2"]
+[ext_resource type="Texture2D" uid="uid://dh1q22xghbvvv" path="res://assets/ui/icons/wifi.png" id="icon_wifi"]
 
 [sub_resource type="StyleBoxEmpty" id="Focus"]
 
@@ -40,6 +33,13 @@ corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
+
+[sub_resource type="Gradient" id="OfficeWallGradient"]
+colors = PackedColorArray(0.3, 0.32, 0.27, 1, 0.15, 0.18, 0.16, 1)
+
+[sub_resource type="GradientTexture2D" id="OfficeWallTexture"]
+gradient = SubResource("OfficeWallGradient")
+fill_to = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="Shadow"]
 bg_color = Color(0, 0, 0, 0.45)
@@ -237,7 +237,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OfficeWall" type="TextureRect" parent="Overlay/Computer"]
+[node name="OfficeWall" type="TextureRect" parent="Overlay/Computer" unique_id=1246954284]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,8 +248,9 @@ mouse_filter = 2
 texture = SubResource("OfficeWallTexture")
 expand_mode = 1
 
-[node name="OfficeWallTrim" type="ColorRect" parent="Overlay/Computer"]
+[node name="OfficeWallTrim" type="ColorRect" parent="Overlay/Computer" unique_id=170342148]
 layout_mode = 1
+anchors_preset = -1
 anchor_top = 0.78
 anchor_right = 1.0
 anchor_bottom = 0.78
@@ -257,8 +258,9 @@ offset_bottom = 5.0
 mouse_filter = 2
 color = Color(0.13, 0.105, 0.075, 1)
 
-[node name="DeskExtension" type="ColorRect" parent="Overlay/Computer"]
+[node name="DeskExtension" type="ColorRect" parent="Overlay/Computer" unique_id=1937379662]
 layout_mode = 1
+anchors_preset = -1
 anchor_top = 0.85
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -270,7 +272,6 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
-
 
 [node name="Desk" type="Polygon2D" parent="Overlay/Computer/Design" unique_id=481407049]
 color = Color(0.24, 0.17, 0.11, 1)
@@ -948,6 +949,8 @@ offset_left = 892.0
 offset_top = 555.0
 offset_right = 1130.0
 offset_bottom = 635.0
+grow_horizontal = 1
+grow_vertical = 1
 text = "SKIP"
 
 [node name="LauncherIcon" type="TextureRect" parent="Overlay/Computer/Design" unique_id=1782667307]
@@ -1004,3 +1007,8 @@ mouse_filter = 2
 texture = ExtResource("icon_power")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="RoundWonSound" type="AudioStreamPlayer" parent="." unique_id=916503879]
+process_mode = 3
+stream = ExtResource("9_akegc")
+volume_db = -12.0
