@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://ddcq2jts273pb" path="res://scenes/ui/round_transition.tscn" id="12_round_transition"]
 [ext_resource type="PackedScene" path="res://scenes/items/broom.tscn" id="13_broom"]
 [ext_resource type="AudioStream" uid="uid://cd32wep72102u" path="res://assets/audio/ItalianGameMusic.wav" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://d0f7dn1f8a5sf" path="res://scenes/interactables/automatic_door.tscn" id="90_door"]
+[ext_resource type="PackedScene" uid="uid://d2kd0dters7od" path="res://scenes/interactables/pressure_plate.tscn" id="91_plate"]
 
 [node name="Game" type="Node" unique_id=992513680]
 script = ExtResource("1_lbhrr")
@@ -124,6 +126,12 @@ window_paths = Array[NodePath]([NodePath("../StompingStation/MinigameWindowPrevi
 stream = ExtResource("17_rysoc")
 volume_db = -12.0
 autoplay = true
+[node name="AutomaticDoor" parent="." unique_id=1730021001 instance=ExtResource("90_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 3)
+
+[node name="PressurePlate" parent="." unique_id=1730021002 node_paths=PackedStringArray("doors") instance=ExtResource("91_plate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9181156, 0, 12.385619)
+doors = [NodePath("../AutomaticDoor")]
 
 [editable path="Map"]
 [node name="PlayerSpawns" type="Node3D" parent="." unique_id=672170910]

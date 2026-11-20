@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d0f7dn1f8a5sf"]
+
+[ext_resource type="Script" uid="uid://my4axt7cd770" path="res://src/interactables/automatic_door.gd" id="1_qt4a1"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_door"]
+albedo_color = Color(0.42, 0.26, 0.14, 1)
+
+[sub_resource type="BoxMesh" id="Mesh_door"]
+material = SubResource("Mat_door")
+size = Vector3(3, 2.5, 0.3)
+
+[sub_resource type="BoxShape3D" id="Shape_door"]
+size = Vector3(3, 2.5, 0.3)
+
+[node name="AutomaticDoor" type="AnimatableBody3D" unique_id=398909418]
+script = ExtResource("1_qt4a1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=398909419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+mesh = SubResource("Mesh_door")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=398909420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("Shape_door")
