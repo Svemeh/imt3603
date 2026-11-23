@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkonfo6ppd20l" path="res://assets/models/players/othermodels/Meshy_AI_Farmer_Purple_Colorwa_All_Animations.glb" id="5_2pi4t"]
 [ext_resource type="PackedScene" uid="uid://dkc2e4wiv8epk" path="res://assets/models/players/othermodels/Meshy_AI_Farmer_Green_Colorway_All_Animations.glb" id="7_1e1h3"]
 [ext_resource type="PackedScene" uid="uid://d34segsi3ooeg" path="res://assets/models/players/othermodels/Meshy_AI_Farmer_Blue_Colorway_All_Animations.glb" id="8_wfujq"]
+[ext_resource type="Script" path="res://src/menus/menu_navigator.gd" id="nav_script"]
 
 [sub_resource type="Animation" id="Animation_ceo08"]
 resource_name = "Idle_3"
@@ -835,6 +836,10 @@ offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "START GAME"
+
+[node name="MenuNavigator" type="Node" parent="." node_paths=PackedStringArray("first_focus")]
+script = ExtResource("nav_script")
+first_focus = NodePath("../StartGameButton")
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]

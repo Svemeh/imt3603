@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c074ripdp1u4i" path="res://assets/ui/volume_icon.png" id="5_ra22d"]
 [ext_resource type="Texture2D" uid="uid://c6wvkhxlnoqjw" path="res://assets/ui/corked_logo.png" id="5_t0e0l"]
 [ext_resource type="Texture2D" uid="uid://d3qequd0trha1" path="res://assets/ui/fullscreen_icon.png" id="6_myyqy"]
+[ext_resource type="Script" path="res://src/menus/menu_navigator.gd" id="nav_script"]
 
 [node name="SettingsMenu" type="Control" unique_id=773412079]
 layout_mode = 3
@@ -141,6 +142,10 @@ grow_horizontal = 2
 texture = ExtResource("5_t0e0l")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="MenuNavigator" type="Node" parent="." node_paths=PackedStringArray("first_focus")]
+script = ExtResource("nav_script")
+first_focus = NodePath("../SettingsContainer/VolumeContainer/VolumeSlider")
 
 [connection signal="value_changed" from="SettingsContainer/VolumeContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="toggled" from="SettingsContainer/FullscreenContainer/FullscreenToggle" to="." method="_on_fullscreen_toggle_toggled"]
