@@ -10,8 +10,12 @@ extends Interactable
 @export var crates_across: int = 1
 ## How many rows fit from the front to the back of the table (X value)
 @export var crates_deep: int = 4
-## Distance between crate centres: x = rows, z = across
-@export var crate_spacing: Vector3 = Vector3(1.1, 0.0, 1.1)
+## How many layers can be stacked on the crate table
+@export var crates_high: int = 3
+## Distance between crate centres: x = rows, y = layers, z = across
+@export var crate_spacing: Vector3 = Vector3(0.9, 0.6, 0.7)
+## Crate turn, to fit better on table
+@export var crate_turn: float = 90.0
 
 ## Where the first crate goes (front corner of the tabletop)
 @onready var _anchor: Marker3D = $CratePlace
@@ -22,7 +26,9 @@ extends Interactable
 var _spots: Array[WineBox] = []
 
 func _ready() -> void:
-	_spots.resize(crates_across * crates_deep)
+	_spots.resize(crates_across * crates_deep * crates_high)
+	# When a crate is taken, the one under it becomes the top one
+	child_exiting_tree.connect(func(_node): _update_pickable.call_deferred())
 
 ## Keeps the label up to date, also when a player picks a crate back up
 func _process(_delta: float) -> void:
@@ -56,17 +62,34 @@ func accept_item(player: Player) -> void:
 	player.remove_collision_exception_with(box)
 	box.reparent(self)
 	box.global_position = _spot_global_position(index)
-	box.rotation = Vector3.ZERO
+	box.rotation = Vector3(0.0, deg_to_rad(crate_turn), 0.0)
 	box.freeze = true
 	_spots[index] = box
+	_update_pickable()
 
 ## Where spot number index is: across first, then row by row
+## then the next layer on top in the same order
 func _spot_global_position(index: int) -> Vector3:
-	var across := index % crates_across
+	var per_layer := crates_across * crates_deep
 	@warning_ignore("integer_division")
-	var row := index / crates_across
-	var offset := Vector3(row * crate_spacing.x, 0.0, across * crate_spacing.z)
+	var layer := index / per_layer
+	var i := index % per_layer
+	var across := i % crates_across
+	@warning_ignore("integer_division")
+	var row := i / crates_across
+	var offset := Vector3(row * crate_spacing.x, layer * crate_spacing.y, across * crate_spacing.z)
 	return _anchor.global_position + _anchor.global_transform.basis.orthonormalized() * offset
+
+## Only the top crate in each stack can be picked up, so nothing floats
+func _update_pickable() -> void:
+	_check_spots()
+	var per_layer := crates_across * crates_deep
+	for i in _spots.size():
+		var box := _spots[i]
+		if box == null:
+			continue
+		var above := i + per_layer
+		box.can_pick_up = above >= _spots.size() or _spots[above] == null
 
 func can_interact(_player: Player) -> bool:
 	return false

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dkhahqyh2bhu" path="res://src/items/wine_box.gd" id="1_jp33x"]
 [ext_resource type="PackedScene" uid="uid://dtx83s36hgfjq" path="res://assets/models/WineCrate/wine_crate.glb" id="2_7wuki"]
-[ext_resource type="PackedScene" uid="uid://c5nrxiaxiy3sl" path="res://scenes/items/full_wine_box.tscn" id="3_uxydl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0bqs"]
 size = Vector3(1.3234863, 1.3830566, 1.3235397)
@@ -15,9 +14,6 @@ freeze = true
 script = ExtResource("1_jp33x")
 
 [node name="EmptyVisual" parent="." unique_id=2070446941 instance=ExtResource("2_7wuki")]
-
-[node name="FullVisual" parent="." unique_id=735876761 instance=ExtResource("3_uxydl")]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2133387884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005004883, 0.029907227, 0.009906769)

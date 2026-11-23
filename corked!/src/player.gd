@@ -458,7 +458,7 @@ func crash() -> void:
 		hand_marker.global_position.z
 	)
 
-	drop_item(item is WineBox)
+	drop_item(item is WineBox or item is Hammer)
 
 	# Item could not be dropped (e.g. the hammer)
 	if held_item == item:

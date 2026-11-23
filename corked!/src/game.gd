@@ -24,6 +24,7 @@ var _tutorial_layer: CanvasLayer
 
 const PLAYER_SCENE := preload("res://scenes/player.tscn")
 const WINE_BOX_SCENE := preload("res://scenes/items/wine_box.tscn")
+const FULL_BOTTLE_SCENE := preload("res://scenes/items/full_wine_bottle.tscn")
 
 @export var debug_mode: bool = false
 @export var debug_full_crates: int = 6
@@ -160,8 +161,8 @@ func _spawn_debug_crates() -> void:
 		var crate := WINE_BOX_SCENE.instantiate() as WineBox
 		add_child(crate)
 		crate.global_position = debug_crate_origin + Vector3((i % 2) * 1.3, crate.floor_offset, floorf(i / 2.0) * 1.1)
-		crate.bottles = crate.capacity
-		crate._update_visuals()
+		for b in crate.capacity:
+			crate.add_bottle(FULL_BOTTLE_SCENE.instantiate())
 
 
 ## Increment money up or down by x and refreshes the HUD.
