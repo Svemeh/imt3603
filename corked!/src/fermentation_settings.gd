@@ -20,6 +20,7 @@ const DEFAULT_NEEDLE_LAP_TIME: float = 1.5
 const DEFAULT_ZONE_SIZE_DEGREES: float = 45.0
 const DEFAULT_HIT_GRACE_DEGREES: float = 4.0
 const DEFAULT_PRESS_COOLDOWN: float = 0.3
+const DEFAULT_IDLE_LAP_LOSS: float = 0.15
 
 ## Max juice units the tank can hold at once (= max wine potential)
 var tank_capacity: int = DEFAULT_TANK_CAPACITY
@@ -52,6 +53,9 @@ var zone_size_degrees: float = DEFAULT_ZONE_SIZE_DEGREES
 var hit_grace_degrees: float = DEFAULT_HIT_GRACE_DEGREES
 ## Seconds after a press before the next press counts (stops button mashing)
 var press_cooldown: float = DEFAULT_PRESS_COOLDOWN
+## Barrel progress lost (0 -> 1 of one unit) when the needle does a full lap
+## without a press. Kept small since players are allowed to step away
+var idle_lap_loss: float = DEFAULT_IDLE_LAP_LOSS
 
 ## Call this whenever a brand new run starts
 func reset() -> void:
@@ -70,3 +74,4 @@ func reset() -> void:
 	zone_size_degrees = DEFAULT_ZONE_SIZE_DEGREES
 	hit_grace_degrees = DEFAULT_HIT_GRACE_DEGREES
 	press_cooldown = DEFAULT_PRESS_COOLDOWN
+	idle_lap_loss = DEFAULT_IDLE_LAP_LOSS

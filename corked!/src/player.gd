@@ -265,11 +265,21 @@ func _get_target() -> Interactable:
 ## attempts to interact with closest interactable
 func try_interact() -> void:
 	var target := _get_target()
+	if target == null:
+		target = _get_nearby_minigame()
 
 	if target:
 		target.interact(self)
 		# Update the popup after the action, so it sees the new machine state.
 		station_interacted.emit(target)
+
+## A running fermentation station close enough to play, even if the
+## InteractArea in front of the player is not touching it
+func _get_nearby_minigame() -> Interactable:
+	for station in get_tree().get_nodes_in_group("fermentation_stations"):
+		if station.can_play_from(self):
+			return station
+	return null
 
 ## True when the player is carrying something
 func is_holding() -> bool:
