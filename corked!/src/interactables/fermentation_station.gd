@@ -6,6 +6,8 @@ extends Interactable
 signal check_result(success: bool)
 ## Emitted when the pressure sat in red long enough to ruin one unit
 signal potential_lost
+## Emitted when the needle did a full lap without a press
+signal progress_lost
 
 ## The three pressure zones on the bar
 enum Zone { RED, YELLOW, GREEN }
@@ -35,6 +37,9 @@ enum Zone { RED, YELLOW, GREEN }
 ## How close (in meters, ignoring height) the player must stand to the
 ## output spot to dock a barrel
 @export var dock_range: float = 3.0
+## How close (in meters, ignoring height) the player must stand to keep
+## playing the minigame, no matter which way they are facing
+@export var minigame_range: float = 3.0
 
 @onready var barrel_marker: Marker3D = $BarrelMarker
 @onready var pour_marker: Marker3D = $PourMarker
@@ -60,9 +65,12 @@ var _active: bool = false
 var _red_time: float = 0.0
 ## Time left before another press counts
 var _cooldown: float = 0.0
+## How far the needle has turned since the last press, in radians
+var _angle_since_press: float = 0.0
 
 
 func _ready() -> void:
+	add_to_group("fermentation_stations")
 	_connect_window()
 
 
@@ -79,6 +87,12 @@ func _connect_window() -> void:
 ## The window manager uses this to keep the popup visible.
 func is_running() -> bool:
 	return _active
+
+
+## True when the minigame runs and the player is close enough to play it,
+## no matter which way they are facing
+func can_play_from(player: Player) -> bool:
+	return _active and _flat_distance(player.global_position, global_position) <= minigame_range
 
 
 ## Everything runs here, also when no player is near, so the pressure keeps
@@ -165,6 +179,7 @@ func _start_minigame() -> void:
 	pressure = FermentationSettings.start_pressure
 	_red_time = 0.0
 	_cooldown = 0.0
+	_angle_since_press = 0.0
 	fill_progress = 0.0
 	needle_angle = 0.0
 	_new_zone()
@@ -190,6 +205,11 @@ func _new_zone() -> void:
 ## Spins the needle and moves the zone if the needle passed it
 func _update_needle(delta: float) -> void:
 	needle_angle += TAU / FermentationSettings.needle_lap_time * delta
+	# A full lap without any press costs a little barrel progress
+	_angle_since_press += TAU / FermentationSettings.needle_lap_time * delta
+	if _angle_since_press >= TAU:
+		_angle_since_press -= TAU
+		_lose_lap_progress()
 	_cooldown = maxf(_cooldown - delta, 0.0)
 	# Needle went past the zone without a press: no penalty, just a new zone
 	var grace := deg_to_rad(FermentationSettings.hit_grace_degrees)
@@ -213,6 +233,7 @@ func _skill_check() -> void:
 	if _cooldown > 0.0:
 		return
 	_cooldown = FermentationSettings.press_cooldown
+	_angle_since_press = 0.0
 	var success := _is_needle_in_zone()
 	var was_red := get_zone() == Zone.RED
 	if success:
@@ -247,6 +268,12 @@ func _lose_potential() -> void:
 	print("Pressure too low! Lost one unit (tank %d/%d)" % [_tank_amount, FermentationSettings.tank_capacity])
 	if _tank_amount <= 0:
 		_tank_amount = 0
+
+
+## Needle went a full lap without a press: lose a bit of the unit flowing now
+func _lose_lap_progress() -> void:
+	fill_progress = maxf(fill_progress - FermentationSettings.idle_lap_loss, 0.0)
+	progress_lost.emit()
 
 
 ## Fills the docked barrel at the speed the pressure zone allows

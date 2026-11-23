@@ -60,6 +60,7 @@ func set_station(s: FermentationStation) -> void:
 	station = s
 	station.check_result.connect(_on_check_result)
 	station.potential_lost.connect(_on_potential_lost)
+	station.progress_lost.connect(_on_progress_lost)
 
 
 func _on_check_result(success: bool) -> void:
@@ -69,6 +70,12 @@ func _on_check_result(success: bool) -> void:
 
 func _on_potential_lost() -> void:
 	_loss_flash = LOSS_FLASH_TIME
+
+
+## Lap without a press: same red ring flash as a missed press
+func _on_progress_lost() -> void:
+	_flash = FLASH_TIME
+	_flash_color = RED
 
 
 func _process(delta: float) -> void:
